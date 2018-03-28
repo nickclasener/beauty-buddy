@@ -1,0 +1,126 @@
+* PROJECT BeautyBuddy
+** The Goal
+*** Concept
+Beautybuddy is a klant management system for the beauty salon.
+When i login i want to see my clients and a search bar where i can search for my clients by 
+name number or email(fuzzy-seach).
+When i click on the clients name(box) i will be shown that clients card.
+From the Client Card i will be able to:
+- Take notes, this way i can store my notes of the treatment fast.
+- Read my most recent notes first after (Timeline) i scroll down it loads the next 10 notes
+- View the clients credentials. 
+| Name | Email | Phone Number | Address |
+- Take a Intake. with all the questions included
+- in soccer camView a Intake.
+
+The Customer Credentials need to be stored.
+When a customer is added an intake has to be done.
+
+
+*** Extra features
+- Search clients from anywhere - toolbar 
+- Search notes for content
+- Add photo to klant credentials
+- add photo to notes
+- Send email to a klant.
+- Send a newsletter to all clients
+- Birthday alert
+
+
+*** What Should I Build first 
+# - Intergrate with Stripe Connect to do direct payouts
+
+# - Invite a employee
+# - Create accounts
+# - Logging As a employee
+# - Edit Intake
+# - Add Intake
+**** TODO  Edit Notes
+**** TODO Read Intake
+**** TODO Read Notes
+**** TODO Delete Clients
+**** TODO Update Clients
+**** TODO Create Clients
+**** TODO Read Client Notes 
+
+*** What should we test first?
+**** TODO Read Client Notes [0/3] 
+***** TODO View a authenticated user a list of clients [1/2]
+****** DONE Unauthenticated User
+       CLOSED: [2018-03-28 Wed 09:54]
+****** TODO Authenticated User
+***** TODO View a specific client from the list [1/2]
+***** TODO Allow user to see client notes [/]
+******* TODO Unauthenticated User
+****** TODO Authenticated User
+*** TODO do not allow user to see notes of other clients 
+**** TODO Add a Note
+
+** TODO KlantenKaart
+- naam
+- email
+- telefoon
+- mobiel
+- geboortedatum
+- straatnaam
+- huisnummer
+- postcode
+- plaats
+** TODO Intake Klant
+*** Questions
+- Wat is je verwachting t.a.v behandeling
+- verwachting m.b.t. huidverbetering
+- allergieen
+- Bijzonderheden
+- Medicatie
+- Heeft u een cosmetische in greep ondergaan
+- Ipl ondergaan
+- Laser behandeling gehad
+- Chemische peeling gehad
+- Kanker (open)
+  - Chemo
+  - Bestraling
+  - Immunotherapie
+- Huidkanker & Soort
+- Bloeddruk
+- Eczeem
+- Zon & Zonnebank
+- Operaties
+- Huidschimmel
+- Diabetes 1/2
+- Koortslip j/n
+- Vitrigilo j/n
+- Psoriasis j/n
+- Roken j/n
+- Overgang j/n
+- Zwanger j/n
+*** database
+$table->increments('id');
+$table->string('behandeling');
+$table->string('huidverbetering');
+$table->string('allergieen');
+$table->string('bijzonderheden');
+$table->string('bloeddruk');
+$table->string('chemisch');
+$table->string('cosmetisch');
+$table->string('diabetes');
+$table->string('eczeem');
+$table->string('huidkanker');
+$table->string('huidschimmel');
+$table->string('ipl');
+$table->string('kanker');
+$table->boolean('bestraling');
+$table->boolean('chemo');
+$table->boolean('immunotherapi');
+$table->string('laser');
+$table->string('medicatie');
+$table->string('operaties');
+$table->string('zon');
+$table->boolean('koortslip');
+$table->boolean('roken');
+$table->boolean('overgang');
+$table->boolean('psoriasis');
+$table->boolean('vitrigilo');
+$table->boolean('zwanger');
+$table->timestamps();
+** TODO Search

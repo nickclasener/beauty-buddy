@@ -1,0 +1,9 @@
+<p>{{$client->naam}}</p>
+<p>{{$client->email}}</p>
+<p>{{$client->telefoon}}</p>
+<p>{{$client->mobiel}}</p>
+<p>{{$client->geboortedatum}}</p>
+<p>{{$client->straatnaam}}</p>
+<p>{{$client->huisnummer}}</p>
+<p>{{$client->postcode}}</p>
+<p>{{$client->plaats}}</p>

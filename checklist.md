@@ -1,0 +1,2 @@
+## Before start
+[ ]  activate - Turbolinks
