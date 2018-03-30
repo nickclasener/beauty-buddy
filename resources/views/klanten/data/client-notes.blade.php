@@ -7,3 +7,10 @@
 <p>{{$client->huisnummer}}</p>
 <p>{{$client->postcode}}</p>
 <p>{{$client->plaats}}</p>
+
+@if($client->notes != null)
+	@foreach($client->notes as $note)
+		<p>{{$note->body}}</p>
+		<hr>
+	@endforeach
+@endif

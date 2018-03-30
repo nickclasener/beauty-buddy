@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use Illuminate\Http\Request;
-use function compact;
 use function view;
 
 class ClientsController extends Controller
@@ -51,6 +50,7 @@ class ClientsController extends Controller
 //		return compact('client');
 //		dd(compact('client'));
 
+//		return view('klanten.show');
 		return view('klanten.show', compact('client'));
 	}
 

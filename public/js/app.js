@@ -33647,7 +33647,7 @@ function identifierForContextKey(key) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./content_loader_controller.js": 72
+	"./content_loader_controller.js": 64
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -33666,20 +33666,7 @@ module.exports = webpackContext;
 webpackContext.id = 63;
 
 /***/ }),
-/* 64 */,
-/* 65 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33728,10 +33715,11 @@ var _class = function (_Controller) {
         value: function load() {
             var _this2 = this;
 
+            // console.log(this.data.get("url"));
             fetch(this.data.get("url")).then(function (response) {
                 return response.text();
             }).then(function (html) {
-                // console.log(this.element.innerHTML = html);
+                console.log(_this2.element.innerHTML = html);
                 _this2.element.innerHTML = html;
             });
         }
@@ -33757,6 +33745,12 @@ var _class = function (_Controller) {
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
 /* harmony default export */ __webpack_exports__["default"] = (_class);
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

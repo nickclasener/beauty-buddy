@@ -36,6 +36,11 @@
 	<link href="{{ mix('css/app.css') }}"
 				rel="stylesheet"
 	>
+	<style>
+		* {
+			/*outline: 1px red solid !important;*/
+		}
+	</style>
 </head>
 <body>
 <div id="app">

@@ -13,13 +13,13 @@ class ClientsController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function index ()
 	{
 		$clients = Client::all();
 
-		return view('klanten.data.index', compact('clients'));
+		return view('klanten.data.clients', compact('clients'));
 	}
 
 	/**
@@ -51,7 +51,7 @@ class ClientsController extends Controller
 	 */
 	public function show ( Client $client )
 	{
-		return view('klanten.data.show', compact('client'));
+		return view('klanten.data.client-notes', compact('client'));
 	}
 
 	/**

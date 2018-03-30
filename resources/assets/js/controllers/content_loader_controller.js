@@ -18,14 +18,15 @@ export default class extends Controller {
     }
 
     load() {
-
+        // console.log(this.data.get("url"));
         fetch(this.data.get("url"))
             .then(response => response.text())
             .then(html => {
-                // console.log(this.element.innerHTML = html);
+                console.log(this.element.innerHTML = html);
                 this.element.innerHTML = html;
             });
     }
+
 
     startRefreshing() {
         this.refreshTimer = setInterval(() => {

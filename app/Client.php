@@ -27,11 +27,21 @@ class Client extends Model
 
 	public function path ()
 	{
-		return "klanten/" . $this->slug;
+		return "/klanten/" . $this->slug;
 	}
 
 	public function dataPath ()
 	{
-		return "data/klanten/" . $this->slug;
+		return "/data/klanten/" . $this->slug;
+	}
+
+	public function creator ()
+	{
+		return $this->belongsTo(User::class, 'user_id');
+	}
+
+	public function notes ()
+	{
+		return $this->hasMany(Note::class);
 	}
 }

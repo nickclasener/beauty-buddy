@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Client;
+use App\Note;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -31,6 +32,7 @@ class ViewClientsTest extends TestCase
 	/** @test */
 	function a_user_can_view_a_client ()
 	{
+		// To make sure stimulus request’s the data
 		$this->get($this->client->path())
 			->assertStatus(200)
 			->assertSee('data-content-loader-url="' . $this->client->dataPath());
@@ -53,15 +55,31 @@ class ViewClientsTest extends TestCase
 	{
 		$this->get('klanten')
 			->assertStatus(200)
-			->assertSee('data-content-loader-url="data/klanten"');
+			->assertSee('data-content-loader-url="/data/klanten"');
 
-//		added because of stimulus
-		$this->get('data/klanten')
+		$this->get('/data/klanten')
 			->assertStatus(200)
 			->assertSee($this->client->naam)
 			->assertSee($this->client->email)
 			->assertSee($this->client->telefoon)
 			->assertSee($this->client->mobiel);
 
+	}
+
+	/** @test */
+	function a_user_can_view_all_notes_of_a_client ()
+	{
+		create(Note::class, [
+			'client_id' => $this->client->id,
+			'body'      => 'This is body',
+		], 2);
+
+		$this->get($this->client->path())
+			->assertStatus(200)
+			->assertSee('data-content-loader-url="' . $this->client->dataPath());
+
+		$this->get($this->client->dataPath())
+			->assertStatus(200)
+			->assertSee('This is body');
 	}
 }

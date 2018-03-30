@@ -4,6 +4,9 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Client::class, function ( Faker $faker ) {
 	return [
+		'user_id'       => function () {
+			return factory('App\User')->create()->id;
+		},
 		'naam'          => $faker->name,
 		'email'         => $faker->email,
 		'telefoon'      => $faker->phoneNumber,

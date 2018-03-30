@@ -15,16 +15,18 @@ class CreateClientsTable extends Migration
 	{
 		Schema::create('clients', function ( Blueprint $table ) {
 			$table->increments('id');
+			$table->integer('user_id'); // add a company id
+//            $table->integer('intake_id')->nullable();
 			$table->string('naam');
-			$table->string('slug');
-			$table->string('email');
-			$table->string('telefoon');
-			$table->string('mobiel');
-			$table->string('geboortedatum');
-			$table->string('straatnaam');
-			$table->string('huisnummer');
-			$table->string('postcode');
-			$table->string('plaats');
+			$table->string('slug')->unique();
+			$table->string('straatnaam')->nullable();
+			$table->string('huisnummer')->nullable();
+			$table->string('postcode')->nullable();
+			$table->string('plaats')->nullable();
+			$table->string('telefoon')->nullable();
+			$table->string('mobiel')->nullable();
+			$table->string('email')->nullable();
+			$table->dateTime('geboortedatum')->nullable();
 			$table->timestamps();
 		});
 	}
