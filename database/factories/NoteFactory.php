@@ -4,8 +4,8 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Note::class, function ( Faker $faker ) {
 	return [
-		'client_id' => function () {
-			return factory('App\Client')->create()->id;
+		'customer_id' => function () {
+			return factory('App\Customer')->create()->id;
 		},
 		'user_id'   => function () {
 			return factory('App\User')->create()->id;

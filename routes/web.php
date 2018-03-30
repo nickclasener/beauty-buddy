@@ -19,12 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/klanten', 'ClientsController', [
-	'parameters' => [ 'klanten' => 'client', ],
+Route::resource('/klanten', 'CustomerController', [
+	'parameters' => [ 'klanten' => 'customer', ],
 ]);
 
 Route::prefix('data')->namespace('Data')->group(function () {
-	Route::resource('/klanten', 'ClientsController', [
-		'parameters' => [ 'klanten' => 'client', ],
+	Route::resource('/klanten', 'CustomerController', [
+		'parameters' => [ 'klanten' => 'customer', ],
 	]);
 });

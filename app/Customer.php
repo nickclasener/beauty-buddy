@@ -5,12 +5,15 @@ namespace App;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Customer extends Model
 {
 	use Sluggable;
 
 	protected $guarded = [];
 
+	/**
+	 * @return array
+	 */
 	public function sluggable ()
 	{
 		return [
@@ -44,4 +47,10 @@ class Client extends Model
 	{
 		return $this->hasMany(Note::class);
 	}
+
+	public function intake ()
+	{
+		return $this->hasOne(Intake::class);
+	}
+
 }

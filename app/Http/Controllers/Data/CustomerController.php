@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Data;
 
-use App\Client;
+use App\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use function compact;
-use function view;
 
-class ClientsController extends Controller
+class CustomerController extends Controller
 {
 	/**
 	 * Display a listing of the resource.
@@ -17,9 +15,9 @@ class ClientsController extends Controller
 	 */
 	public function index ()
 	{
-		$clients = Client::all();
+		$customers = Customer::all();
 
-		return view('klanten.data.clients', compact('clients'));
+		return view('klanten.data.customers', compact('customers'));
 	}
 
 	/**
@@ -46,12 +44,12 @@ class ClientsController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param Client $client
+	 * @param Customer $customer
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function show ( Client $client )
+	public function show ( Customer $customer )
 	{
-		return view('klanten.data.client-notes', compact('client'));
+		return view('klanten.data.customer-notes', compact('customer'));
 	}
 
 	/**

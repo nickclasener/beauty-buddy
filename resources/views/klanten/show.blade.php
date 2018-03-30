@@ -2,12 +2,13 @@
 
 @section('content')
 	<div data-controller="content-loader"
-			 {{--data-content-loader-url="{{$client->dataPath()}}"--}}
-			 data-content-loader-url="{{$client->dataPath()}}"
-					{{--data-content-loader-refresh-interval="5000"--}}
+			 data-content-loader-url="{{$customer->dataPath()}}"
 	>
 	</div>
-	{{--@foreach($client->notes as $note)--}}
+	{{--@include('klanten.data.notes')--}}
+	{{--@foreach($customer->notes as $note)--}}
 	{{--<p>{{$note->body}}</p>--}}
 	{{--@endforeach--}}
+	@if($customer->intake != null)
+	@endif
 @endsection

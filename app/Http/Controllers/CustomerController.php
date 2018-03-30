@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
+use App\Customer;
 use Illuminate\Http\Request;
 use function view;
 
-class ClientsController extends Controller
+class CustomerController extends Controller
 {
 	/**
 	 * Display a listing of the resource.
@@ -42,16 +42,16 @@ class ClientsController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param Client $client
+	 * @param Customer $customer
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
 	 */
-	public function show ( Client $client )
+	public function show ( Customer $customer )
 	{
-//		return compact('client');
-//		dd(compact('client'));
+//		return compact('customer');
+//		dd(compact('customer'));
 
 //		return view('klanten.show');
-		return view('klanten.show', compact('client'));
+		return view('klanten.show', compact('customer'));
 	}
 
 	/**

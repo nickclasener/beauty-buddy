@@ -1,6 +1,7 @@
 import {Controller} from "stimulus";
 
 export default class extends Controller {
+
     initialize() {
         this.load();
     }
@@ -22,7 +23,8 @@ export default class extends Controller {
         fetch(this.data.get("url"))
             .then(response => response.text())
             .then(html => {
-                console.log(this.element.innerHTML = html);
+                // this.outputTarget.textContent = html;
+                // console.log(this.element.innerHTML = html);
                 this.element.innerHTML = html;
             });
     }

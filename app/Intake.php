@@ -4,16 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Note extends Model
+class Intake extends Model
 {
-	protected $guarded = [];
-
-	public function creator ()
-	{
-		return $this->belongsTo(User::class, 'user_id');
-
-	}
-
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
 	public function customer ()
 	{
 		return $this->belongsTo(Customer::class);

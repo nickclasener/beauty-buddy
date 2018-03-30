@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Client;
+use App\Customer;
 use App\Note;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -13,7 +13,7 @@ class NoteTest extends TestCase
 {
 	use RefreshDatabase;
 
-	protected $client;
+	protected $customer;
 
 	public function setUp ()
 	{
@@ -30,8 +30,8 @@ class NoteTest extends TestCase
 	}
 
 	/** @test */
-	function a_note_belongs_to_a_client ()
+	function a_note_belongs_to_a_customer ()
 	{
-		$this->assertInstanceOf(Client::class, $this->note->client);
+		$this->assertInstanceOf(Customer::class, $this->note->customer);
 	}
 }
