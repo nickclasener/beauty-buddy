@@ -19,12 +19,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/klanten', 'CustomerController', [
-	'parameters' => [ 'klanten' => 'customer', ],
-]);
-
-Route::prefix('data')->namespace('Data')->group(function () {
-	Route::resource('/klanten', 'CustomerController', [
+Route::group([ 'middleware' => 'auth' ], function () {
+	Route::resource('/klanten', 'CustomersController', [
 		'parameters' => [ 'klanten' => 'customer', ],
 	]);
+//	Route::get('/data/klanten', 'CustomersController@dataIndex');
+//])->middleware('auth');
+
+	Route::resource('/klanten/{customer}/notes', 'NotesController');
+
+	Route::prefix('data')->namespace('Data')->group(function () {
+		Route::resource('/klanten', 'CustomersController', [
+			'parameters' => [ 'klanten' => 'customer', ],
+		]);
+//	])->middleware('auth');
+	});
 });

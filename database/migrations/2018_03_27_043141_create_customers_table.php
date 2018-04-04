@@ -26,7 +26,7 @@ class CreateCustomersTable extends Migration
 			$table->string('telefoon')->nullable();
 			$table->string('mobiel')->nullable();
 			$table->string('email')->nullable();
-			$table->dateTime('geboortedatum')->nullable();
+			$table->date('geboortedatum')->nullable();
 			$table->timestamps();
 		});
 	}

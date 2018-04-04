@@ -28,6 +28,8 @@ class ViewCustomersTest extends TestCase
 			'postcode'      => '5896 AB',
 			'plaats'        => 'Laraville',
 		]);
+
+		$this->signIn();
 	}
 
 	/** @test */
@@ -72,7 +74,7 @@ class ViewCustomersTest extends TestCase
 	{
 		create(Note::class, [
 			'customer_id' => $this->customer->id,
-			'body'      => 'This is body',
+			'body'        => 'This is body',
 		], 2);
 
 		$this->get($this->customer->path())
@@ -88,7 +90,7 @@ class ViewCustomersTest extends TestCase
 	function a_user_can_view_the_intake_of_a_customer ()
 	{
 		create(Intake::class, [
-			'customer_id'       => $this->customer->id,
+			'customer_id'     => $this->customer->id,
 			'behandeling'     => 'FooBar',
 			'huidverbetering' => 'schimmel is verminderd',
 			'allergieen'      => 'noten',

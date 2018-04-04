@@ -1,8 +1,11 @@
 <div class="uk-card-body">
-	{{ $customer->intake->behandeling }}<br> {{ $customer->intake->huidverbetering }}<br> {{ $customer->intake->allergieen }}
-	<br> {{ $customer->intake->bijzonderheden }}<br> {{ $customer->intake->bloeddruk }}<br> {{ $customer->intake->chemisch }}
+	{{ $customer->intake->behandeling }}<br> {{ $customer->intake->huidverbetering }}
+	<br> {{ $customer->intake->allergieen }}
+	<br> {{ $customer->intake->bijzonderheden }}<br> {{ $customer->intake->bloeddruk }}
+	<br> {{ $customer->intake->chemisch }}
 	<br> {{ $customer->intake->cosmetisch
-		}}<br> {{ $customer->intake->diabetes }}<br> {{ $customer->intake->eczeem }}<br> {{ $customer->intake->huidkanker }}<br> {{ $customer->intake->huidschimmel
+		}}<br> {{ $customer->intake->diabetes }}<br> {{ $customer->intake->eczeem }}<br> {{ $customer->intake->huidkanker }}
+	<br> {{ $customer->intake->huidschimmel
 		}}<br> {{ $customer->intake->ipl }}<br> {{ $customer->intake->kanker }}<br>
 	<input type="checkbox"
 				 name="bestraling" {{ $customer->intake->bestraling ? 'checked' : '' }} /> Bestraling

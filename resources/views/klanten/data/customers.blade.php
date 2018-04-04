@@ -1,6 +1,7 @@
 @foreach($customers as $customer)
-	<a href="{{$customer->path()}}">
+	<a href="{{$customer->path()}}"
+	>
 		<p>{{$customer->naam}} | {{$customer->email}} | {{$customer->mobiel}} | {{$customer->telefoon}}</p>
 	</a>
-	<hr>
+	<hr class="border-b" >
 @endforeach

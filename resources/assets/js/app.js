@@ -6,13 +6,13 @@
 
 require('./bootstrap');
 
-// var Turbolinks = require("turbolinks");
-// Turbolinks.start();
+var Turbolinks = require("turbolinks");
 
-import {Application} from "stimulus";
-import {definitionsFromContext} from "stimulus/webpack-helpers";
+import { Application } from "stimulus";
+import { definitionsFromContext } from "stimulus/webpack-helpers";
 
 const application = Application.start();
 const context = require.context("./controllers", true, /\.js$/);
 application.load(definitionsFromContext(context));
 
+// Turbolinks.start();

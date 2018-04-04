@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
-use function view;
 
-class CustomerController extends Controller
+class CustomersController extends Controller
 {
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -15,28 +15,49 @@ class CustomerController extends Controller
 	 */
 	public function index ()
 	{
-		return view('klanten.index');
+		$customers = Customer::all();
+
+		return view('klanten.index', compact('customers'));
 	}
 
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function create ()
 	{
-		//
+		return view('klanten.create');
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
 	 */
 	public function store ( Request $request )
 	{
-		//
+		$this->validate($request, [
+			'naam'          => 'required',
+			'email'         => 'required|email',
+			'geboortedatum' => 'nullable|date',
+		]);
+
+		$customer = Customer::create([
+			'user_id'       => auth()->id(),
+			'naam'          => request('naam'),
+			'straatnaam'    => request('straatnaam'),
+			'huisnummer'    => request('huisnummer'),
+			'postcode'      => request('postcode'),
+			'plaats'        => request('plaats'),
+			'telefoon'      => request('telefoon'),
+			'mobiel'        => request('mobiel'),
+			'email'         => request('email'),
+			'geboortedatum' => request('geboortedatum'),
+		]);
+
+		return redirect($customer->path());
 	}
 
 	/**
