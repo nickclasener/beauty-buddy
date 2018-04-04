@@ -1,14 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-	<div data-controller="content-loader"
-			 data-content-loader-url="{{$customer->dataPath()}}"
-	>
-	</div>
-	{{--@include('klanten.data.notes')--}}
-	{{--@foreach($customer->notes as $note)--}}
-	{{--<p>{{$note->body}}</p>--}}
-	{{--@endforeach--}}
+	<p>{{$customer->naam}}</p>
+	<p>{{$customer->email}}</p>
+	<p>{{$customer->telefoon}}</p>
+	<p>{{$customer->mobiel}}</p>
+	<p>{{$customer->geboortedatum}}</p>
+	<p>{{$customer->straatnaam}}</p>
+	<p>{{$customer->huisnummer}}</p>
+	<p>{{$customer->postcode}}</p>
+	<p>{{$customer->plaats}}</p>
+	
+	@if($customer->notes != null)
+		@include('klanten._notes')
+	@endif
+	
 	@if($customer->intake != null)
+		@include('klanten._intake')
 	@endif
 @endsection

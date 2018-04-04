@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-	<div data-controller="content-loader"
-			 data-content-loader-url="/data/klanten"
-					{{--data-content-loader-refresh-interval="5000"--}}
-	>
-	</div>
+	@foreach($customers as $customer)
+		<a href="{{$customer->path()}}">
+			<p>{{$customer->naam}} | {{$customer->email}} | {{$customer->mobiel}} | {{$customer->telefoon}}</p>
+		</a>
+		<hr class="border-b" >
+	@endforeach
 @endsection
