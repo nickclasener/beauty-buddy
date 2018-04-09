@@ -6,7 +6,7 @@
 	<p>{{$customer->telefoon}}</p>
 	<p>{{$customer->mobiel}}</p>
 	<p>{{$customer->geboortedatum}}</p>
-	<p>{{$customer->straatnaam}}</p>
+	<p>{{$customer->adres}}</p>
 	<p>{{$customer->huisnummer}}</p>
 	<p>{{$customer->postcode}}</p>
 	<p>{{$customer->plaats}}</p>

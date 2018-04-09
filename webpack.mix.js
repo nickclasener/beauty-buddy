@@ -14,15 +14,25 @@ require('laravel-mix-purgecss');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .less('resources/assets/less/app.less', 'public/css')
-    .options({
-        postCss: [
-            tailwindcss('./tailwind.js'),
-        ]
-    })
-    .purgeCss()
-    .browserSync('beautybuddy-final.test');
+   .less('resources/assets/less/app.less', 'public/css')
+   .options({
+	   postCss: [
+		   tailwindcss('./tailwind.js'),
+	   ]
+   })
+   .purgeCss()
+   .browserSync({
+	   proxy: "beautybuddy-final.test",
+	   snippetOptions: {
+		   rule: {
+			   match: /<\/head>/i,
+			   fn: function ( snippet, match ) {
+				   return snippet + match;
+			   }
+		   }
+	   },
+   });
 
-if (mix.inProduction()) {
-    mix.version();
+if ( mix.inProduction() ) {
+	mix.version();
 }

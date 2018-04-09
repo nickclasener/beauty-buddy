@@ -2,19 +2,19 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Customer::class, function ( Faker $faker ) {
+$factory->define(App\Customer::class, function (Faker $faker) {
 	return [
-		'user_id'       => function () {
-			return factory('App\User')->create()->id;
-		},
-		'naam'          => $faker->name,
-		'email'         => $faker->email,
-		'telefoon'      => $faker->phoneNumber,
-		'mobiel'        => $faker->phoneNumber,
-		'geboortedatum' => $faker->date('d-m-Y'),
-		'straatnaam'    => $faker->streetName,
-		'huisnummer'    => $faker->buildingNumber,
-		'postcode'      => $faker->streetAddress,
-		'plaats'        => $faker->city,
+					'user_id'       => function () {
+						return factory('App\User')->create()->id;
+					},
+					'naam'          => $faker->name,
+					'email'         => $faker->email,
+					'telefoon'      => $faker->phoneNumber,
+					'mobiel'        => $faker->phoneNumber,
+					'geboortedatum' => $faker->date('d-m-Y'),
+					'adres'         => $faker->streetName,
+					'huisnummer'    => $faker->buildingNumber,
+					'postcode'      => $faker->streetAddress,
+					'plaats'        => $faker->city,
 	];
 });

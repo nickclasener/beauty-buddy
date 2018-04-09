@@ -21,7 +21,7 @@ class ViewCustomersTest extends TestCase {
 						'telefoon'      => '0564894576',
 						'mobiel'        => '0668598654',
 						'geboortedatum' => '20-12-1991',
-						'straatnaam'    => 'laralane',
+						'adres'         => 'laralane',
 						'huisnummer'    => '18',
 						'postcode'      => '5896 AB',
 						'plaats'        => 'Laraville',
