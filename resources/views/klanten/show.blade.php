@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+	<button data-controller="customer"
+					data-customer-url="{{$customer->path()}}"
+					data-action="click->customer#deleteCustomer"
+	>Delete
+	</button>
+	<a href="{{ $customer->path() }}/edit"
+	>edit
+	</a>
 	<p>{{$customer->naam}}</p>
 	<p>{{$customer->email}}</p>
 	<p>{{$customer->telefoon}}</p>

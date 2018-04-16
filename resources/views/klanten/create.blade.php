@@ -7,7 +7,9 @@
 	{{--method="post"--}}
 	{{-->{{ csrf_field() }}--}}
 	
-	<div data-controller="customer">
+	<div data-controller="customer"
+	
+	>
 		<label for="naam"
 		>Naam:</label>
 		<input type="text"
@@ -17,7 +19,6 @@
 					 data-target="customer.naam"
 					 required
 		>
-		<p data-target="customer.errornaam"></p>
 		<hr>
 		
 		<label for="email"
@@ -29,7 +30,6 @@
 					 data-target="customer.email"
 					 required
 		>
-		<p data-target="customer.erroremail"></p>
 		<hr>
 		
 		<label for="geboortedatum"
@@ -103,17 +103,9 @@
 		<hr>
 		
 		<button type="submit"
-						data-action="click->customer#addCustomer "
+						data-action="click->customer#addCustomer"
 		>Voeg toe
 		</button>
-		
-		@if (count($errors))
-			@foreach($errors->all() as $error)
-				<ul class="alert alert-danger">
-					<li>{{ $error }}</li>
-				</ul>
-			@endforeach
-		@endif
 	
 	</div>
 @endsection

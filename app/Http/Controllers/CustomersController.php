@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use function redirect;
 
 class CustomersController extends Controller {
 	
@@ -14,7 +13,8 @@ class CustomersController extends Controller {
 	 *
 	 * @return \Illuminate\View\View
 	 */
-	public function index() {
+	public function index()
+	{
 		$customers = Customer::all();
 		
 		return view('klanten.index', compact('customers'));
@@ -25,7 +25,8 @@ class CustomersController extends Controller {
 	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function create() {
+	public function create()
+	{
 		return view('klanten.create');
 	}
 	
@@ -35,17 +36,20 @@ class CustomersController extends Controller {
 	 * @param  \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
 	 */
-	public function store(Request $request) {
+	public function store(Request $request)
+	{
 		$validator = Validator::make($request->all(), [
 						'naam'          => 'required',
 						'email'         => 'required|email',
 						'geboortedatum' => 'nullable|date',
 		]);
-
+		
 		if ($validator->fails()) {
-
-			return redirect('/klanten/create')->withErrors($validator)->withInput();
+			return redirect('/klanten/create')
+							->withErrors($validator)
+							->withInput();
 		}
+		
 		$customer = Customer::create([
 						'user_id'       => auth()->id(),
 						'naam'          => request('naam'),
@@ -59,7 +63,6 @@ class CustomersController extends Controller {
 						'geboortedatum' => request('geboortedatum'),
 		]);
 		
-		
 		return redirect($customer->path());
 	}
 	
@@ -69,42 +72,71 @@ class CustomersController extends Controller {
 	 * @param Customer $customer
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
 	 */
-	public function show(Customer $customer) {
-//		return compact('customer');
-//		dd(compact('customer'));
-
-//		return view('klanten.show');
+	public function show(Customer $customer)
+	{
 		return view('klanten.show', compact('customer'));
 	}
 	
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param Customer $customer
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function edit($id) {
-		//
+	public function edit(Customer $customer)
+	{
+		return view('klanten.edit', compact('customer'));
 	}
 	
 	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request $request
-	 * @param  int                      $id
-	 * @return \Illuminate\Http\Response
+	 * @param Customer                  $customer
+	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
 	 */
-	public function update(Request $request, $id) {
-		//
+	public function update(Request $request, Customer $customer)
+	{
+		$validator = Validator::make($request->all(), [
+						'naam'          => 'required',
+						'email'         => 'required|email',
+						'geboortedatum' => 'nullable|date',
+		]);
+		
+		if ($validator->fails()) {
+			if ($request->expectsJson()) {
+				return response($customer);
+			}
+			
+			return redirect($request->path() . '/edit')
+							->withErrors($validator)
+							->withInput();
+		}
+		
+		$customer->update($request->all());
+		
+		if (request()->expectsJson()) {
+			return response($customer);
+		}
+		
+		return redirect($customer->path());
 	}
 	
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param Customer $customer
+	 * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 * @throws \Exception
 	 */
-	public function destroy($id) {
-		//
+	public function destroy(Customer $customer)
+	{
+		$customer->delete();
+		
+		if (request()->expectsJson()) {
+			return response(['responseURL' => '/klanten']);
+		}
+		
+		return redirect('/klanten');
 	}
 }

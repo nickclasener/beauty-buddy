@@ -12,46 +12,26 @@ export class ApplicationController extends Controller
 	laravelCreate( url, payload ) {
 		return new Promise(( resolve, reject ) => {
 			axios.post(url, payload)
-			     .then(response => {
-				     resolve(Turbolinks.visit(response.request.responseURL));
-			     })
-			     .catch(error => {
-				     reject(error);
-			     });
+			     .then(response => resolve(response))
+			     .catch(error => reject(error));
 		});
 	}
 
-	laravelUpdate( url, field, value ) {
+	laravelUpdate( url, payload ) {
 		return new Promise(( resolve, reject ) => {
-			const data = new FormData();
-			data.append(field, value);
-
-			Rails.ajax({
-				url,
-				type: "PUT",
-				data,
-				success: data => {
-					resolve(data);
-				},
-				error: ( _jqXHR, _textStatus, errorThrown ) => {
-					reject(errorThrown);
-				}
-			});
+			axios.put(url, payload)
+			     .then(response => resolve(response))
+			     .catch(error => reject(error));
 		});
 	}
 
 	laravelDelete( url ) {
 		return new Promise(( resolve, reject ) => {
-			Rails.ajax({
-				url,
-				type: "DELETE",
-				success: response => {
-					resolve(response);
-				},
-				error: ( _jqXHR, _textStatus, errorThrown ) => {
-					reject(errorThrown);
-				}
-			});
+			axios.delete(url)
+			     .then(response =>
+				     resolve(Turbolinks
+					     .visit(response.data.responseURL)))
+			     .catch(error => reject(error));
 		});
 	}
 }

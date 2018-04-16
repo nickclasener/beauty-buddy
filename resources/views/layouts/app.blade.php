@@ -94,5 +94,13 @@
 <main class="py-4">
 	@yield('content')
 </main>
+
+@if (count($errors))
+	@foreach($errors->all() as $error)
+		<ul class="alert alert-danger">
+			<li>{{ $error }}</li>
+		</ul>
+	@endforeach
+@endif
 </body>
 </html>

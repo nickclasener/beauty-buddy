@@ -13,8 +13,10 @@ class ViewCustomersTest extends TestCase {
 	
 	private $customer;
 	
-	public function setUp() {
+	public function setUp()
+	{
 		parent::setUp();
+		$this->signIn();
 		$this->customer = create(Customer::class, [
 						'naam'          => 'Jane Doe',
 						'email'         => 'jane@doe.com',
@@ -26,13 +28,11 @@ class ViewCustomersTest extends TestCase {
 						'postcode'      => '5896 AB',
 						'plaats'        => 'Laraville',
 		]);
-		
-		$this->signIn();
 	}
 	
 	/** @test */
-	function a_user_can_view_a_customer() {
-		
+	function a_user_can_view_a_customer()
+	{
 		$this->get($this->customer->path())
 						->assertStatus(200)
 						->assertSee('Jane Doe')
@@ -47,24 +47,23 @@ class ViewCustomersTest extends TestCase {
 	}
 	
 	/** @test */
-	function a_user_can_view_multiple_customers() {
-		
+	function a_user_can_view_multiple_customers()
+	{
 		$this->get('klanten')
 						->assertStatus(200)
 						->assertSee($this->customer->naam)
 						->assertSee($this->customer->email)
 						->assertSee($this->customer->telefoon)
 						->assertSee($this->customer->mobiel);
-		
 	}
 	
 	/** @test */
-	function a_user_can_view_all_notes_of_a_customer() {
+	function a_user_can_view_the_notes_of_a_customer()
+	{
 		create(Note::class, [
 						'customer_id' => $this->customer->id,
-						'body'        => 'This is body',
-		], 2);
-		
+						'body'        => 'This is body',],
+						2);
 		
 		$this->get($this->customer->path())
 						->assertStatus(200)
@@ -72,7 +71,8 @@ class ViewCustomersTest extends TestCase {
 	}
 	
 	/** @test */
-	function a_user_can_view_the_intake_of_a_customer() {
+	function a_user_can_view_the_intake_of_a_customer()
+	{
 		create(Intake::class, [
 						'customer_id'     => $this->customer->id,
 						'behandeling'     => 'FooBar',

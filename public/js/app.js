@@ -1376,10 +1376,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
 __webpack_require__(21);
-
-var Turbolinks = __webpack_require__(45);
 
 
 
@@ -1388,6 +1385,7 @@ var application = __WEBPACK_IMPORTED_MODULE_0_stimulus__["a" /* Application */].
 var context = __webpack_require__(64);
 application.load(Object(__WEBPACK_IMPORTED_MODULE_1_stimulus_webpack_helpers__["a" /* definitionsFromContext */])(context));
 
+// Rails.start();
 Turbolinks.start();
 
 /***/ }),
@@ -1426,14 +1424,15 @@ window.axios.defaults.responseType = 'text';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-var token = document.head.querySelector('meta[name="csrf-token"]');
+window.token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  // window.defaults.headers.common[ 'X-CSRF-TOKEN' ] = token.content;
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
-
+window.Turbolinks = __webpack_require__(45);
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -23417,6 +23416,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // import { Controller } from "stimulus";
 
 
+// const ENTER_KEY = 13;
+// const ESCAPE_KEY = 27;
+
 var _class = function (_ApplicationControlle) {
 	_inherits(_class, _ApplicationControlle);
 
@@ -23428,17 +23430,9 @@ var _class = function (_ApplicationControlle) {
 
 	_createClass(_class, [{
 		key: 'addCustomer',
-
-
-		// connect() {
-		// this.addCustomer();
-		// }
-
-		//
 		value: function addCustomer() {
+
 			this.laravelCreate('/klanten', {
-				// naam: "nick",
-				// email: "nick@nick.com",
 				naam: this.naam,
 				email: this.email,
 				geboortedatum: this.geboortedatum,
@@ -23448,16 +23442,47 @@ var _class = function (_ApplicationControlle) {
 				postcode: this.postcode,
 				telefoon: this.telefoon,
 				mobiel: this.mobiel
+			}).then(function (response) {
+				var url = response.request.responseURL;
+				if (url.match(/\/create/)) {
+					document.body.innerHTML = response.data;
+				} else {
+					Turbolinks.visit(url);
+				}
 			});
-			// .then(( response ) => this.getCustomerUrl(response.request.responseURL));
 		}
-
-		// getCustomerUrl( newurl ) {
-		// 	console.log(axios.get(newurl).then(response => response.data).then(html => {
-		// 		document.body.innerHTML = html;
-		// 	}));
-		// }
-
+	}, {
+		key: 'deleteCustomer',
+		value: function deleteCustomer() {
+			this.laravelDelete(this.url);
+		}
+	}, {
+		key: 'updateCustomer',
+		value: function updateCustomer() {
+			this.laravelUpdate(this.url, {
+				naam: this.naam,
+				email: this.email,
+				geboortedatum: this.geboortedatum,
+				adres: this.adres,
+				huisnummer: this.huisnummer,
+				plaats: this.plaats,
+				postcode: this.postcode,
+				telefoon: this.telefoon,
+				mobiel: this.mobiel
+			}).then(function (response) {
+				console.log(response);
+				if (url.match(/\/edit/)) {
+					document.body.innerHTML = response.data;
+				} else {
+					Turbolinks.visit('/klanten/' + response.data.slug);
+				}
+			});
+		}
+	}, {
+		key: 'url',
+		get: function get() {
+			return this.data.get("url");
+		}
 	}, {
 		key: 'naam',
 		get: function get() {
@@ -23549,29 +23574,20 @@ var ApplicationController = function (_Controller) {
 		value: function laravelCreate(url, payload) {
 			return new Promise(function (resolve, reject) {
 				axios.post(url, payload).then(function (response) {
-					resolve(Turbolinks.visit(response.request.responseURL));
+					return resolve(response);
 				}).catch(function (error) {
-					reject(error);
+					return reject(error);
 				});
 			});
 		}
 	}, {
 		key: "laravelUpdate",
-		value: function laravelUpdate(url, field, value) {
+		value: function laravelUpdate(url, payload) {
 			return new Promise(function (resolve, reject) {
-				var data = new FormData();
-				data.append(field, value);
-
-				Rails.ajax({
-					url: url,
-					type: "PUT",
-					data: data,
-					success: function success(data) {
-						resolve(data);
-					},
-					error: function error(_jqXHR, _textStatus, errorThrown) {
-						reject(errorThrown);
-					}
+				axios.put(url, payload).then(function (response) {
+					return resolve(response);
+				}).catch(function (error) {
+					return reject(error);
 				});
 			});
 		}
@@ -23579,15 +23595,10 @@ var ApplicationController = function (_Controller) {
 		key: "laravelDelete",
 		value: function laravelDelete(url) {
 			return new Promise(function (resolve, reject) {
-				Rails.ajax({
-					url: url,
-					type: "DELETE",
-					success: function success(response) {
-						resolve(response);
-					},
-					error: function error(_jqXHR, _textStatus, errorThrown) {
-						reject(errorThrown);
-					}
+				axios.delete(url).then(function (response) {
+					return resolve(Turbolinks.visit(response.data.responseURL));
+				}).catch(function (error) {
+					return reject(error);
 				});
 			});
 		}

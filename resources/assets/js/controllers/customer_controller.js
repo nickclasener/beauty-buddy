@@ -1,6 +1,9 @@
 // import { Controller } from "stimulus";
 import { ApplicationController } from '../support/application-controller';
 
+// const ENTER_KEY = 13;
+// const ESCAPE_KEY = 27;
+
 export default class extends ApplicationController
 {
 	static  targets = [
@@ -12,18 +15,12 @@ export default class extends ApplicationController
 		'plaats',
 		'postcode',
 		'telefoon',
-		'mobiel'
+		'mobiel',
 	];
 
-	// connect() {
-	// this.addCustomer();
-	// }
-
-	//
 	addCustomer() {
+
 		this.laravelCreate('/klanten', {
-			// naam: "nick",
-			// email: "nick@nick.com",
 			naam: this.naam,
 			email: this.email,
 			geboortedatum: this.geboortedatum,
@@ -33,15 +30,44 @@ export default class extends ApplicationController
 			postcode: this.postcode,
 			telefoon: this.telefoon,
 			mobiel: this.mobiel
+		}).then(response => {
+			let url = response.request.responseURL;
+			if ( url.match(/\/create/) ) {
+				document.body.innerHTML = response.data;
+			} else {
+				Turbolinks.visit(url);
+			}
 		});
-		// .then(( response ) => this.getCustomerUrl(response.request.responseURL));
 	}
 
-	// getCustomerUrl( newurl ) {
-	// 	console.log(axios.get(newurl).then(response => response.data).then(html => {
-	// 		document.body.innerHTML = html;
-	// 	}));
-	// }
+	deleteCustomer() {
+		this.laravelDelete(this.url);
+	}
+
+	updateCustomer() {
+		this.laravelUpdate(this.url, {
+			naam: this.naam,
+			email: this.email,
+			geboortedatum: this.geboortedatum,
+			adres: this.adres,
+			huisnummer: this.huisnummer,
+			plaats: this.plaats,
+			postcode: this.postcode,
+			telefoon: this.telefoon,
+			mobiel: this.mobiel
+		}).then(response => {
+			console.log(response);
+			if ( url.match(/\/edit/) ) {
+				document.body.innerHTML = response.data;
+			} else {
+				Turbolinks.visit(`/klanten/${response.data.slug}`);
+			}
+		});
+	}
+
+	get url() {
+		return this.data.get("url");
+	}
 
 	get naam() {
 		return this.naamTarget.value;
@@ -78,4 +104,6 @@ export default class extends ApplicationController
 	get mobiel() {
 		return this.mobielTarget.value;
 	}
+
+
 }
