@@ -7,6 +7,7 @@ import { ApplicationController } from '../support/application-controller';
 export default class extends ApplicationController
 {
 	static  targets = [
+		'url',
 		'naam',
 		'email',
 		'geboortedatum',
@@ -16,10 +17,12 @@ export default class extends ApplicationController
 		'postcode',
 		'telefoon',
 		'mobiel',
+		'errorNaam',
+		'errorEmail',
+		'errorGeboortedatum',
 	];
 
 	addCustomer() {
-
 		this.laravelCreate('/klanten', {
 			naam: this.naam,
 			email: this.email,
@@ -31,13 +34,14 @@ export default class extends ApplicationController
 			telefoon: this.telefoon,
 			mobiel: this.mobiel
 		}).then(response => {
-			let url = response.request.responseURL;
-			if ( url.match(/\/create/) ) {
-				document.body.innerHTML = response.data;
+			if ( !response.data.errors ) {
+				Turbolinks.visit(response.request.responseURL);
 			} else {
-				Turbolinks.visit(url);
+				this.errorNaam = response.data.errors.naam;
+				this.errorEmail = response.data.errors.email;
+				this.errorGeboortedatum = response.data.errors.geboortedatum;
 			}
-		});
+		}).catch(error => console.log(error));
 	}
 
 	deleteCustomer() {
@@ -56,13 +60,14 @@ export default class extends ApplicationController
 			telefoon: this.telefoon,
 			mobiel: this.mobiel
 		}).then(response => {
-			console.log(response);
-			if ( url.match(/\/edit/) ) {
-				document.body.innerHTML = response.data;
+			if ( !response.data.errors ) {
+				Turbolinks.visit(response.data);
 			} else {
-				Turbolinks.visit(`/klanten/${response.data.slug}`);
+				this.errorNaam = response.data.errors.naam;
+				this.errorEmail = response.data.errors.email;
+				this.errorGeboortedatum = response.data.errors.geboortedatum;
 			}
-		});
+		}).catch(error => console.log(error));
 	}
 
 	get url() {
@@ -105,5 +110,16 @@ export default class extends ApplicationController
 		return this.mobielTarget.value;
 	}
 
+	set errorNaam( error ) {
+		return this.errorNaamTarget.innerHTML = ( error ? error : "" );
+	}
+
+	set errorEmail( error ) {
+		return ( this.errorEmailTarget.innerHTML = error ? error : "" );
+	}
+
+	set errorGeboortedatum( error ) {
+		return this.errorGeboortedatumTarget.innerHTML = ( error ? error : "" );
+	}
 
 }

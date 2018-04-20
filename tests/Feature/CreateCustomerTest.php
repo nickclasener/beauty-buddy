@@ -26,8 +26,7 @@ class CreateCustomerTest extends TestCase {
 		$this->withExceptionHandling()->signIn();
 		$customer = make(Customer::class);
 		
-		$response = $this->post('/klanten', $customer->toArray());
-		
+		$response = $this->json('POST', '/klanten', $customer->toArray());
 		$this->get($response->headers->get('Location'))
 						->assertSee($customer->naam)
 						->assertSee($customer->adres)
@@ -44,21 +43,21 @@ class CreateCustomerTest extends TestCase {
 	function a_customer_requires_a_email()
 	{
 		$this->createCustomer(['email' => null])
-						->assertSessionHasErrors('email');
+						->assertJsonValidationErrors('email');
 	}
 	
 	/** @test */
 	function a_customer_birthday_is_a_date_format()
 	{
 		$this->createCustomer(['geboortedatum' => 'string'])
-						->assertSessionHasErrors('geboortedatum');
+						->assertJsonValidationErrors('geboortedatum');
 	}
 	
 	/** @test */
 	function a_customer_requires_a_naam()
 	{
 		$this->createCustomer(['naam' => null])
-						->assertSessionHasErrors('naam');
+						->assertJsonValidationErrors('naam');
 	}
 	
 	/** @test */
@@ -91,7 +90,7 @@ class CreateCustomerTest extends TestCase {
 		
 		$customer = make(Customer::class, $overrides);
 		
-		return $this->post('/klanten', $customer->toArray());
+		return $this->json('POST', '/klanten', $customer->toArray());
 	}
 	
 }

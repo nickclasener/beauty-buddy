@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use function compact;
+use function redirect;
+use function response;
 
 class CustomersController extends Controller {
 	
@@ -38,17 +41,26 @@ class CustomersController extends Controller {
 	 */
 	public function store(Request $request)
 	{
+//		validate(request()->all(), [
 		$validator = Validator::make($request->all(), [
 						'naam'          => 'required',
 						'email'         => 'required|email',
 						'geboortedatum' => 'nullable|date',
 		]);
 		
+		
 		if ($validator->fails()) {
-			return redirect('/klanten/create')
-							->withErrors($validator)
-							->withInput();
+			
+			if ($request->expectsJson()) {
+				return response()->json(['errors' => $validator->errors()]);
+			}
+
+//			return response();
+//			return redirect('/klanten/create')
+//							->withErrors($validator)
+//							->withInput();
 		}
+//		abort(203);
 		
 		$customer = Customer::create([
 						'user_id'       => auth()->id(),
@@ -64,6 +76,7 @@ class CustomersController extends Controller {
 		]);
 		
 		return redirect($customer->path());
+		
 	}
 	
 	/**
@@ -105,18 +118,18 @@ class CustomersController extends Controller {
 		
 		if ($validator->fails()) {
 			if ($request->expectsJson()) {
-				return response($customer);
+				return response()->json(['errors' => $validator->errors()]);
 			}
-			
-			return redirect($request->path() . '/edit')
-							->withErrors($validator)
-							->withInput();
+
+//			return redirect($customer->path() . '/edit')
+//							->withErrors($validator)
+//							->withInput();
 		}
 		
 		$customer->update($request->all());
 		
 		if (request()->expectsJson()) {
-			return response($customer);
+			return response($customer->path());
 		}
 		
 		return redirect($customer->path());

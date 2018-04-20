@@ -18,6 +18,7 @@
 					 data-target="customer.naam"
 					 required
 		>
+		<span data-target="customer.errorNaam"></span>
 		<hr>
 		
 		<label for="email"
@@ -29,6 +30,7 @@
 					 data-target="customer.email"
 					 required
 		>
+		<span data-target="customer.errorEmail"></span>
 		<hr>
 		
 		<label for="geboortedatum"
@@ -39,6 +41,7 @@
 					 value="{{ old('geboortedatum') ?:$customer->geboortedatum }}"
 					 data-target="customer.geboortedatum"
 		>
+		<span data-target="customer.errorGeboortedatum"></span>
 		<hr>
 		
 		<label for="adres"
@@ -103,9 +106,8 @@
 		
 		<button type="submit"
 						data-action="click->customer#updateCustomer"
-		>Voeg toe
+		>Update
 		</button>
-	
 	
 	</div>
 @endsection

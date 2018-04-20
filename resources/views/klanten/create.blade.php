@@ -19,6 +19,7 @@
 					 data-target="customer.naam"
 					 required
 		>
+		<span data-target="customer.errorNaam"></span>
 		<hr>
 		
 		<label for="email"
@@ -30,6 +31,7 @@
 					 data-target="customer.email"
 					 required
 		>
+		<span data-target="customer.errorEmail"></span>
 		<hr>
 		
 		<label for="geboortedatum"
@@ -40,6 +42,8 @@
 					 value="{{ old('geboortedatum') }}"
 					 data-target="customer.geboortedatum"
 		>
+		
+		<span data-target="customer.errorGeboortedatum"></span>
 		<hr>
 		
 		<label for="adres"

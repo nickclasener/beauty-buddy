@@ -23431,6 +23431,7 @@ var _class = function (_ApplicationControlle) {
 	_createClass(_class, [{
 		key: 'addCustomer',
 		value: function addCustomer() {
+			var _this2 = this;
 
 			this.laravelCreate('/klanten', {
 				naam: this.naam,
@@ -23443,12 +23444,15 @@ var _class = function (_ApplicationControlle) {
 				telefoon: this.telefoon,
 				mobiel: this.mobiel
 			}).then(function (response) {
-				var url = response.request.responseURL;
-				if (url.match(/\/create/)) {
-					document.body.innerHTML = response.data;
+				if (!response.data.errors) {
+					Turbolinks.visit(response.request.responseURL);
 				} else {
-					Turbolinks.visit(url);
+					_this2.errorNaam = response.data.errors.naam;
+					_this2.errorEmail = response.data.errors.email;
+					_this2.errorGeboortedatum = response.data.errors.geboortedatum;
 				}
+			}).catch(function (error) {
+				return console.log(error);
 			});
 		}
 	}, {
@@ -23459,6 +23463,8 @@ var _class = function (_ApplicationControlle) {
 	}, {
 		key: 'updateCustomer',
 		value: function updateCustomer() {
+			var _this3 = this;
+
 			this.laravelUpdate(this.url, {
 				naam: this.naam,
 				email: this.email,
@@ -23470,12 +23476,15 @@ var _class = function (_ApplicationControlle) {
 				telefoon: this.telefoon,
 				mobiel: this.mobiel
 			}).then(function (response) {
-				console.log(response);
-				if (url.match(/\/edit/)) {
-					document.body.innerHTML = response.data;
+				if (!response.data.errors) {
+					Turbolinks.visit(response.data);
 				} else {
-					Turbolinks.visit('/klanten/' + response.data.slug);
+					_this3.errorNaam = response.data.errors.naam;
+					_this3.errorEmail = response.data.errors.email;
+					_this3.errorGeboortedatum = response.data.errors.geboortedatum;
 				}
+			}).catch(function (error) {
+				return console.log(error);
 			});
 		}
 	}, {
@@ -23528,12 +23537,27 @@ var _class = function (_ApplicationControlle) {
 		get: function get() {
 			return this.mobielTarget.value;
 		}
+	}, {
+		key: 'errorNaam',
+		set: function set(error) {
+			return this.errorNaamTarget.innerHTML = error ? error : "";
+		}
+	}, {
+		key: 'errorEmail',
+		set: function set(error) {
+			return this.errorEmailTarget.innerHTML = error ? error : "";
+		}
+	}, {
+		key: 'errorGeboortedatum',
+		set: function set(error) {
+			return this.errorGeboortedatumTarget.innerHTML = error ? error : "";
+		}
 	}]);
 
 	return _class;
 }(__WEBPACK_IMPORTED_MODULE_0__support_application_controller__["a" /* ApplicationController */]);
 
-_class.targets = ['naam', 'email', 'geboortedatum', 'adres', 'huisnummer', 'plaats', 'postcode', 'telefoon', 'mobiel'];
+_class.targets = ['url', 'naam', 'email', 'geboortedatum', 'adres', 'huisnummer', 'plaats', 'postcode', 'telefoon', 'mobiel', 'errorNaam', 'errorEmail', 'errorGeboortedatum'];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),

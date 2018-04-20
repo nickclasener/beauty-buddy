@@ -25,7 +25,7 @@ class Customer extends Model {
 						],
 		];
 	}
-	
+
 	/**
 	 * @return string
 	 */
@@ -64,6 +64,6 @@ class Customer extends Model {
 	public function intake()
 	{
 		return $this->hasOne(Intake::class);
-	}
-	
+  }
+
 }

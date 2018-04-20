@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class UpdateCustomerTest extends TestCase {
+	
 	use RefreshDatabase;
 	
 	public function setUp()
@@ -27,31 +28,25 @@ class UpdateCustomerTest extends TestCase {
 	}
 	
 	/** @test */
-	function the_edit_page_shows_the_coresponding_values()
-	{
-		$this->signIn();
-		
-		$this->get($this->customer->path() . '/edit')
-						->assertStatus(200)
-						->assertSee('example example')
-						->assertSee('example@hotmail.com')
-						->assertSee('22-09-1960')
-						->assertSee('lararoad')
-						->assertSee('8')
-						->assertSee('4543lv')
-						->assertSee('laraville')
-						->assertSee('0316484247')
-						->assertSee('1234567893');
-	}
-	
-	/** @test */
 	function an_authenticated_user_can_update_a_customer()
 	{
-		$this->signIn()->withExceptionHandling()->updatedCustomer();
+		$this->signIn();
+		$customer = make(Customer::class, [
+						'naam'          => 'My new Name',
+						'email'         => 'mynewemail@email.com',
+						'adres'         => 'ikleefnuhier',
+						'huisnummer'    => '8',
+						'postcode'      => '6986AK',
+						'plaats'        => 'Angerlo',
+						'telefoon'      => '0313-484247',
+						'mobiel'        => '0631231940',
+						'geboortedatum' => '20-12-1991',
+		]);
 		
-		$response = $this->patch($this->customer->path(), $this->customer->toArray());
-		$response->assertSee('my-new-name');
+		$response = $this->put($this->customer->path(), $customer->toArray());
+		
 		$this->get($response->headers->get('Location'))
+						->assertSee('my-new-name')
 						->assertSee('My new Name')
 						->assertSee('mynewemail@email.com')
 						->assertSee('ikleefnuhier')
@@ -76,18 +71,33 @@ class UpdateCustomerTest extends TestCase {
 						->assertRedirect('/login');
 	}
 	
-	public function updatedCustomer()
+	/** @test */
+	function a_customer_requires_a_naam()
 	{
-		$this->get($this->customer->path() . '/edit')
-						->assertStatus(200);
-		$this->customer->naam = 'My new Name';
-		$this->customer->email = 'mynewemail@email.com';
-		$this->customer->adres = 'ikleefnuhier';
-		$this->customer->huisnummer = '8';
-		$this->customer->postcode = '6986AK';
-		$this->customer->plaats = 'Angerlo';
-		$this->customer->telefoon = '0313-484247';
-		$this->customer->mobiel = '0631231940';
-		$this->customer->geboortedatum = '20-12-1991';
+		$this->updateCustomer(['naam' => null])
+						->assertJsonValidationErrors('naam');
+	}
+	
+	/** @test */
+	function a_customer_requires_a_email()
+	{
+		$this->updateCustomer(['email' => null])
+						->assertJsonValidationErrors('email');
+	}
+	
+	/** @test */
+	function a_customer_birthday_is_a_date_format()
+	{
+		$this->updateCustomer(['geboortedatum' => 'string'])
+						->assertJsonValidationErrors('geboortedatum');
+	}
+	
+	protected function updateCustomer($overrides)
+	{
+		$this->withExceptionHandling()->signIn();
+		
+		$customer = make(Customer::class, $overrides);
+		
+		return $this->json('PUT', $this->customer->path(), $customer->toArray());
 	}
 }
