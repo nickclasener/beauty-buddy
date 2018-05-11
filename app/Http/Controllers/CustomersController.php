@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use function compact;
-use function redirect;
-use function response;
 
-class CustomersController extends Controller {
+class CustomersController extends Controller
+{
 	
 	/**
 	 * Display a listing of the resource.
@@ -18,6 +16,8 @@ class CustomersController extends Controller {
 	 */
 	public function index()
 	{
+		//		$customers = Customer::paginate(10)->sortBy('naam');
+		//		$customers = Customer::all()->sortBy('naam');
 		$customers = Customer::all();
 		
 		return view('klanten.index', compact('customers'));
@@ -37,30 +37,21 @@ class CustomersController extends Controller {
 	 * Store a newly created resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function store(Request $request)
 	{
-//		validate(request()->all(), [
 		$validator = Validator::make($request->all(), [
 						'naam'          => 'required',
 						'email'         => 'required|email',
 						'geboortedatum' => 'nullable|date',
 		]);
 		
-		
 		if ($validator->fails()) {
-			
 			if ($request->expectsJson()) {
 				return response()->json(['errors' => $validator->errors()]);
 			}
-
-//			return response();
-//			return redirect('/klanten/create')
-//							->withErrors($validator)
-//							->withInput();
 		}
-//		abort(203);
 		
 		$customer = Customer::create([
 						'user_id'       => auth()->id(),
@@ -76,7 +67,6 @@ class CustomersController extends Controller {
 		]);
 		
 		return redirect($customer->path());
-		
 	}
 	
 	/**
@@ -120,10 +110,6 @@ class CustomersController extends Controller {
 			if ($request->expectsJson()) {
 				return response()->json(['errors' => $validator->errors()]);
 			}
-
-//			return redirect($customer->path() . '/edit')
-//							->withErrors($validator)
-//							->withInput();
 		}
 		
 		$customer->update($request->all());

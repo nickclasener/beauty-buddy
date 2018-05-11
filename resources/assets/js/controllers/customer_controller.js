@@ -1,9 +1,6 @@
 // import { Controller } from "stimulus";
 import { ApplicationController } from '../support/application-controller';
 
-// const ENTER_KEY = 13;
-// const ESCAPE_KEY = 27;
-
 export default class extends ApplicationController
 {
 	static  targets = [
@@ -34,18 +31,22 @@ export default class extends ApplicationController
 			telefoon: this.telefoon,
 			mobiel: this.mobiel
 		}).then(response => {
-			if ( !response.data.errors ) {
-				Turbolinks.visit(response.request.responseURL);
-			} else {
+			if ( response.data.errors ) {
 				this.errorNaam = response.data.errors.naam;
 				this.errorEmail = response.data.errors.email;
 				this.errorGeboortedatum = response.data.errors.geboortedatum;
+			} else {
+				Turbolinks.visit(response.request.responseURL + "/edit", { action: "replace" });
+				Turbolinks.visit(response.request.responseURL);
 			}
-		}).catch(error => console.log(error));
+		});
 	}
 
 	deleteCustomer() {
-		this.laravelDelete(this.url);
+		this.laravelDelete(this.url)
+		    .then(response =>
+			    Turbolinks
+				    .visit(response.data.responseURL));
 	}
 
 	updateCustomer() {
@@ -67,7 +68,7 @@ export default class extends ApplicationController
 				this.errorEmail = response.data.errors.email;
 				this.errorGeboortedatum = response.data.errors.geboortedatum;
 			}
-		}).catch(error => console.log(error));
+		});
 	}
 
 	get url() {
@@ -122,4 +123,20 @@ export default class extends ApplicationController
 		return this.errorGeboortedatumTarget.innerHTML = ( error ? error : "" );
 	}
 
+	// Fixme: see notes_controller
+	naamTarget;
+	emailTarget;
+	geboortedatumTarget;
+	adresTarget;
+	huisnummerTarget;
+	plaatsTarget;
+	postcodeTarget;
+	telefoonTarget;
+	mobielTarget;
+	errorNaamTarget;
+	errorEmailTarget;
+	errorGeboortedatumTarget;
 }
+
+
+

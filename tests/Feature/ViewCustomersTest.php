@@ -7,8 +7,10 @@ use App\Intake;
 use App\Note;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use function create;
 
-class ViewCustomersTest extends TestCase {
+class ViewCustomersTest extends TestCase
+{
 	use RefreshDatabase;
 	
 	private $customer;
@@ -60,15 +62,31 @@ class ViewCustomersTest extends TestCase {
 	/** @test */
 	function a_user_can_view_the_notes_of_a_customer()
 	{
+		// TODO: add to Note a datetime
 		create(Note::class, [
 						'customer_id' => $this->customer->id,
-						'body'        => 'This is body',],
+						'body'        => 'This is body',
+						'date'        => '29-12-2018'],
 						2);
 		
 		$this->get($this->customer->path())
 						->assertStatus(200)
-						->assertSee('This is body');
+						->assertSee('This is body')
+						->assertSee('29-12-2018');
 	}
+
+//	/** @test */
+//	function a_user_can_view_multiple_notes_of_a_customer()
+//	{
+//		$this->signIn()->withExceptionHandling();
+////		create(Customer::class, ['id' => 1]);
+//		$note = create(Note::class, ['body' => 'foo', 'customer_id' => 1]);
+//		create(Note::class, ['body' => 'bar', 'customer_id' => 1]);
+//		create(Note::class, ['body' => 'baz', 'customer_id' => 1]);
+//		$this->get($note->basePath())
+//						->assertStatus(200)
+//						->assertSee('This is body');
+//	}
 	
 	/** @test */
 	function a_user_can_view_the_intake_of_a_customer()

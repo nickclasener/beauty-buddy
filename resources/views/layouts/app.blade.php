@@ -81,11 +81,12 @@
 							>@csrf</form>
 						</div>
 					</li>
+					<li><a href="/klanten"
+						>Klanten</a></li>
+					<li><a href="/klanten/create"
+						>Create Klant</a></li>
 				@endguest
-				<li><a href="/klanten"
-					>Klanten</a></li>
-				<li><a href="/klanten/create"
-					>Create Klant</a></li>
+			
 			</ul>
 		</div>
 	</div>

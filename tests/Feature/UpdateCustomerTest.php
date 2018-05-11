@@ -6,7 +6,8 @@ use App\Customer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class UpdateCustomerTest extends TestCase {
+class UpdateCustomerTest extends TestCase
+{
 	
 	use RefreshDatabase;
 	
@@ -60,6 +61,22 @@ class UpdateCustomerTest extends TestCase {
 	}
 	
 	/** @test */
+	function an_authenticated_user_can_edit_a_customer()
+	{
+		$this->signIn()->get($this->customer->path() . '/edit')
+						->assertStatus(200)
+						->assertSee('example example')
+						->assertSee('example@hotmail.com')
+						->assertSee('22-09-1960')
+						->assertSee('lararoad')
+						->assertSee('8')
+						->assertSee('4543lv')
+						->assertSee('laraville')
+						->assertSee('0316484247')
+						->assertSee('1234567893');
+	}
+	
+	/** @test */
 	function an_unauthenticated_user_cannnot_update_a_customer()
 	{
 		$this->withExceptionHandling();
@@ -100,4 +117,5 @@ class UpdateCustomerTest extends TestCase {
 		
 		return $this->json('PUT', $this->customer->path(), $customer->toArray());
 	}
+	
 }

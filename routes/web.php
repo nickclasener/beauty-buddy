@@ -11,17 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-	return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('/', function () {
+		return view('welcome');
+	});
+	
+	Route::get('/home', 'HomeController@index')->name('home');
 	Route::resource('/klanten', 'CustomersController', [
 					'parameters' => ['klanten' => 'customer',],
 	]);
-	Route::resource('/klanten/{customer}/notes', 'NotesController');
+	Route::resource('/klanten/{customer}/notities', 'NotesController', [
+					'parameters' => ['notities' => 'notes'],
+					'except'     => ['update', 'destroy'],
+	]);
+	
+	Route::delete('/notities/{note}', 'NotesController@destroy', [
+					'parameters' => ['notities' => 'notes'],
+	])->name('notities.destroy');
+	Route::match(['put', 'patch'], '/notities/{note}', 'NotesController@update', [
+					'parameters' => ['notities' => 'notes'],
+	])->name('notities.update');
 });

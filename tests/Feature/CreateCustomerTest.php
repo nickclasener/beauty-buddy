@@ -6,7 +6,8 @@ use App\Customer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class CreateCustomerTest extends TestCase {
+class CreateCustomerTest extends TestCase
+{
 	use RefreshDatabase;
 	
 	/** @test */
@@ -60,30 +61,6 @@ class CreateCustomerTest extends TestCase {
 						->assertJsonValidationErrors('naam');
 	}
 	
-	/** @test */
-	function a_unauthenticated_cannot_delete_a_customer()
-	{
-		$this->withExceptionHandling();
-		
-		$customer = create(Customer::class);
-		
-		$this->delete($customer->path())->assertRedirect('/login');
-		
-	}
-	
-	/** @test */
-	public function authenticated_users_can_delete_customers()
-	{
-		$this->signIn();
-		$customer = create(Customer::class, ['user_id' => auth()->id()]);
-		
-		$response = $this->json('DELETE', $customer->path());
-		
-		$response->assertStatus(200);
-		$this->assertDatabaseMissing('customers', ['id' => $customer->id]);
-		$this->assertEquals(0, Customer::count());
-	}
-	
 	protected function createCustomer($overrides = [])
 	{
 		$this->withExceptionHandling()->signIn();
@@ -92,5 +69,4 @@ class CreateCustomerTest extends TestCase {
 		
 		return $this->json('POST', '/klanten', $customer->toArray());
 	}
-	
 }

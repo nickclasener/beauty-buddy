@@ -25,7 +25,7 @@ class Customer extends Model {
 						],
 		];
 	}
-
+	
 	/**
 	 * @return string
 	 */
@@ -40,6 +40,14 @@ class Customer extends Model {
 	public function path()
 	{
 		return "/klanten/" . $this->slug;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function notesBasePath()
+	{
+		return "/klanten/" . $this->slug . "/notities";
 	}
 	
 	/**
@@ -64,6 +72,11 @@ class Customer extends Model {
 	public function intake()
 	{
 		return $this->hasOne(Intake::class);
-  }
-
+	}
+	
+	public function addNote($note)
+	{
+		$this->notes()->create($note);
+	}
+	
 }

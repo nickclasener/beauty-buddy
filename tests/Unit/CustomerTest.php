@@ -13,33 +13,77 @@ class CustomerTest extends TestCase {
 	
 	protected $customer;
 	
-	public function setUp() {
+	public function setUp()
+	{
 		parent::setUp();
 		$this->customer = create(Customer::class);
 	}
 	
+	
 	/** @test */
-	function a_customer_has_a_path() {
+	function a_customer_has_a_path()
+	{
 		$this->assertEquals("/klanten/{$this->customer->slug}",
 						$this->customer->path()
 		);
-		
 	}
 	
 	/** @test */
-	function a_customer_has_a_creator() {
+	function a_customer_has_a_basePath_for_notes()
+	{
+		$this->assertEquals("/klanten/{$this->customer->slug}/notities",
+						$this->customer->notesBasePath()
+		);
+	}
+	
+	/** @test */
+	function a_customer_has_a_creator()
+	{
 		$this->assertInstanceOf(User::class, $this->customer->creator);
 	}
 	
 	/** @test */
-	function a_customer_has_many_notes() {
+	function a_customer_has_many_notes()
+	{
 		$this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->customer->notes);
 	}
 	
 	/** @test */
-	function a_customer_has_a_intake() {
+	function a_customer_has_a_intake()
+	{
 		create(Intake::class, ['customer_id' => $this->customer->id]);
 		$this->assertInstanceOf('Illuminate\Database\Eloquent\Model', $this->customer->intake);
 	}
+	
+	/** @test */
+	function a_customer_can_add_a_note()
+	{
+		$this->customer->addNote([
+						'body'    => 'FooBar',
+						'user_id' => 1,
+		]);
+		
+		$this->assertCount(1, $this->customer->notes);
+	}
+	
+	/** @test */
+	function a_customer_automatically_sets_the_slug_on_create()
+	{
+		$customer = create(Customer::class, ['naam' => 'John Doe']);
+		
+		$this->assertEquals('john-doe', $customer->slug);
+	}
+	
+	/** @test */
+	function a_customer_will_always_increment_a_slug_if_its_a_duplicate()
+	{
+		create(Customer::class, ['naam' => 'John Doe']);
+		create(Customer::class, ['naam' => 'John Doe']);
+		$latestCustomer = create(Customer::class, ['naam' => 'John Doe']);
+		
+		$this->assertEquals('john-doe-2', $latestCustomer->slug);
+		
+	}
+	
 	
 }
