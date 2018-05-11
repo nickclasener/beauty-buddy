@@ -45,7 +45,7 @@ class CreateNotesForACustomerTest extends TestCase
 		// Act
 		$this->json('post', $customer->path() . '/notities', $note->toArray());
 		// Assert
-		$this->get($customer->path())
+		$this->get($note->path())
 						->assertSee('I exist :D')
 						->assertSee('24-12-2018');
 	}
