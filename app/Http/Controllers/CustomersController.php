@@ -77,7 +77,7 @@ class CustomersController extends Controller
 	 */
 	public function show(Customer $customer)
 	{
-		return view('klanten.show', compact('customer'));
+		return view('klanten.show', compact('customer'))->render();
 	}
 	
 	/**

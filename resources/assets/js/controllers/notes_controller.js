@@ -1,26 +1,35 @@
 // import { Controller } from "stimulus";
 import { ApplicationController } from '../support/application-controller';
 
+// let identifier;
+
 export default class extends ApplicationController
 {
 	static  targets = [
+		'id',
+		'userId',
 		'url',
 		'body',
 		'date',
 		'note',
+		'userId',
 		'noteEdit',
 		'errorBody',
 		'errorDate',
 	];
 
-	// initialize() {
-	// 	this.note.style.display = "block";
-	// 	this.noteEdit.style.display = "none";
-	// }
-
+	connect() {
+		// console.log(this.note);
+		// console.log(this.getControllerByIdentifier(this.identifier));
+		// console.log(this.data.get('test'));
+		// console.log(this.dateTarget.outerHTML);
+		// console.log(this.note);
+		// console.log(this.bodyTarget.outerHTML);
+	}
 
 	addNote() {
 		this.laravelCreate(this.url, {
+			// user_id: this.userId,
 			body: this.body,
 			date: this.date,
 		}).then(response => {
@@ -34,29 +43,6 @@ export default class extends ApplicationController
 			}
 		});
 	}
-
-	// editNote() {
-	// 	// editNote( event ) {
-	// 	// 	event.preventDefault();
-	// 	// event.preventDefault();
-	// 	this.note.style.display = "none";
-	// 	this.noteEdit.style.display = "block";
-	// 	// console.log($("#note").addClass("hidden"));
-	// 	// this.note.class.add('hidden');
-	// 	// this.noteEdit.class.remove('hidden');
-	// }
-	//
-	// cancelEditNote() {
-	// 	this.note.style.display = "block";
-	// 	this.noteEdit.style.display = "none";
-	// }
-	//
-	// editing( index ) {
-	// 	// this.index = index;
-	// 	// this.noteTargets.forEach(( el, i ) => {
-	// 	// 	el.classList.toggle("note--current", index === i);
-	// 	// });
-	// }
 
 	deleteNote() {
 		this.laravelDelete(this.url)
@@ -72,13 +58,15 @@ export default class extends ApplicationController
 	}
 
 	updateNote() {
-		console.log(this.data.get("url"));
-		console.log(this.url);
+
+		console.log(this.bodyTarget.value);
+		// console.log(this.data.get);
 		this.laravelUpdate(this.url, {
+			id: this.id,
 			body: this.body,
 			date: this.date,
 		}).then(response => {
-			console.log(response);
+			// console.log(response);
 			// if ( !response.data.errors ) {
 			// 	Turbolinks.visit(response.data);
 			// } else {
@@ -89,6 +77,14 @@ export default class extends ApplicationController
 		});
 	}
 
+	get id() {
+		return this.data.get("id");
+	}
+
+	get userId() {
+		return this.data.get("userId");
+	}
+
 	get url() {
 		return this.data.get("url");
 	}
@@ -97,15 +93,12 @@ export default class extends ApplicationController
 		return this.bodyTarget.value;
 	}
 
-	// get id() {
-	// 	return this.dateTarget.value;
-	// }
-
 	get date() {
 		return this.dateTarget.value;
 	}
 
 	get note() {
+		// console.log(this.noteTarget.innerHTML);
 		return this.noteTarget.value;
 	}
 
@@ -146,6 +139,7 @@ export default class extends ApplicationController
 	noteTargets;
 	bodyTarget;
 	dateTarget;
+	noteTarget;
 	errorBodyTarget;
 	errorDateTarget;
 

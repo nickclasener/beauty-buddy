@@ -4,33 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Note;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use function compact;
+use function view;
 
 class NotesController extends Controller
 {
+
+//	public function show(Customer $customer, Note $note)
+//	{
+//		return view('notes.show', compact('customer'));
+//	}
+//
 	/**
 	 * @param Customer $customer
-	 * @param Request  $request
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function store(Customer $customer, Request $request)
+	public function store(Customer $customer)
 	{
-		
-		$validator = Validator::make($request->all(), [
+		$validator = Validator::make(request()->all(), [
 						'body' => 'required',
 						'date' => 'nullable|date',
 		]);
 		
 		if ($validator->fails()) {
-			if ($request->expectsJson()) {
-				return response()->json(['errors' => $validator->errors()]);
+			if (request()->expectsJson()) {
+				return response()->json(['errors' => $validator->errors()], 422);
 			}
 		}
 		
-		$customer->addNote([
-						'body' => request('body'),
-		]);
+		$customer->addNote(request()->all());
 		
 		return view('notes.show', compact('customer'));
 	}
@@ -67,8 +70,8 @@ class NotesController extends Controller
 	}
 	
 	/**
-	 * @param Note $note
-	 * @param      $id
+	 * @param Customer $customer
+	 * @param          $id
 	 * @return Note|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function edit(Customer $customer, $id)

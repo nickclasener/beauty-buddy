@@ -5,7 +5,8 @@ namespace App;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model {
+class Customer extends Model
+{
 	
 	use Sluggable;
 	
@@ -76,7 +77,7 @@ class Customer extends Model {
 	
 	public function addNote($note)
 	{
-		$this->notes()->create($note);
+		return $this->notes()->create($note);
 	}
 	
 }

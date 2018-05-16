@@ -8,7 +8,8 @@ use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class CustomerTest extends TestCase {
+class CustomerTest extends TestCase
+{
 	use RefreshDatabase;
 	
 	protected $customer;
@@ -60,9 +61,11 @@ class CustomerTest extends TestCase {
 	{
 		$this->customer->addNote([
 						'body'    => 'FooBar',
+						'date'    => '20-20-1991',
 						'user_id' => 1,
 		]);
 		
+		$this->assertDatabaseHas('notes', ['body' => 'FooBar']);
 		$this->assertCount(1, $this->customer->notes);
 	}
 	

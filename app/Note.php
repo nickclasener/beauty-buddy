@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Note extends Model
 {
 	protected $guarded = [];
-	
-//	protected $with = ['creator'];
+
+	protected $with = ['creator'];
 	
 	public function path()
 	{

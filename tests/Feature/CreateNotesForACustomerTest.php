@@ -15,7 +15,7 @@ class CreateNotesForACustomerTest extends TestCase
 	{
 		parent::setUp();
 		
-		create(Customer::class, ['id' => 1, 'naam' => 'john doe']);
+		$this->customer = create(Customer::class, ['id' => 1, 'naam' => 'john doe']);
 		$this->note = create(Note::class, [
 						'id'          => 1,
 						'customer_id' => 1,
@@ -37,17 +37,18 @@ class CreateNotesForACustomerTest extends TestCase
 	{
 		// Arrange
 		$this->withExceptionHandling()->signIn();
-		$customer = create(Customer::class);
 		$note = make(Note::class, [
-						'body' => 'I exist :D',
-						'date' => '24-12-2018',
+						'customer_id' => 1,
+						'id'          => 3,
+//						'user_id'     => 1,
+						'body'        => 'I exist :D',
+						'date'        => '24-12-2018',
 		]);
+//		dd($this->customer->notesBasePath());
 		// Act
-		$this->json('post', $customer->path() . '/notities', $note->toArray());
-		// Assert
-		$this->get($note->path())
-						->assertSee('I exist :D')
-						->assertSee('24-12-2018');
+		$response = $this->json('POST', $this->customer->notesBasePath(), $note->toArray());
+		$this->assertDatabaseHas('notes', ['body' => 'I exist :D']);
+		
 	}
 	
 	/** @test */
