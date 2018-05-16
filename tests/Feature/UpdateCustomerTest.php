@@ -92,21 +92,21 @@ class UpdateCustomerTest extends TestCase
 	function a_customer_requires_a_naam()
 	{
 		$this->updateCustomer(['naam' => null])
-						->assertJsonValidationErrors('naam');
+						->assertSessionHasErrors('naam');
 	}
 	
 	/** @test */
 	function a_customer_requires_a_email()
 	{
 		$this->updateCustomer(['email' => null])
-						->assertJsonValidationErrors('email');
+						->assertSessionHasErrors('email');
 	}
 	
 	/** @test */
 	function a_customer_birthday_is_a_date_format()
 	{
 		$this->updateCustomer(['geboortedatum' => 'string'])
-						->assertJsonValidationErrors('geboortedatum');
+						->assertSessionHasErrors('geboortedatum');
 	}
 	
 	protected function updateCustomer($overrides)
@@ -115,7 +115,7 @@ class UpdateCustomerTest extends TestCase
 		
 		$customer = make(Customer::class, $overrides);
 		
-		return $this->json('PUT', $this->customer->path(), $customer->toArray());
+		return $this->put($this->customer->path(), $customer->toArray());
 	}
 	
 }

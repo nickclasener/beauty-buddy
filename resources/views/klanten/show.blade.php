@@ -4,11 +4,8 @@
 	
 	@include('notes.create')
 	
-	
-	<button data-controller="customer"
-					data-customer-url="{{$customer->path()}}"
-					data-action="click->customer#deleteCustomer"
-	>Delete
+	<button>
+		Delete
 	</button>
 	<a href="{{ $customer->path() }}/edit"
 	>edit
@@ -22,12 +19,9 @@
 	<p>{{$customer->huisnummer}}</p>
 	<p>{{$customer->postcode}}</p>
 	<p>{{$customer->plaats}}</p>
+	
 	@if($customer->notes != null)
-		<notes>
-			{{--@foreach($customer->notes as $note)--}}
-			@include('notes.show')
-			{{--@endforeach--}}
-		</notes>
+		@include('notes.show')
 	@endif
 	
 	@if($customer->intake != null)

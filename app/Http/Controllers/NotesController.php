@@ -28,14 +28,14 @@ class NotesController extends Controller
 		]);
 		
 		if ($validator->fails()) {
-			if (request()->expectsJson()) {
-				return response()->json(['errors' => $validator->errors()], 422);
-			}
+			return back()
+							->withErrors($validator)
+							->withInput();
 		}
 		
 		$customer->addNote(request()->all());
 		
-		return view('notes.show', compact('customer'));
+		return redirect($customer->path());
 	}
 	
 	/**
@@ -46,25 +46,18 @@ class NotesController extends Controller
 	 */
 	public function update(Note $note)
 	{
-//		dd(compact('note'));
 		$validator = Validator::make(request()->all(), [
 						'body' => 'required',
 						'date' => 'nullable|date',
 		]);
 		
 		if ($validator->fails()) {
-			if (request()->expectsJson()) {
-				return response()->json([
-								'errors' => $validator->errors(),
-				]);
-			}
+			return back()
+							->withErrors($validator)
+							->withInput();
 		}
 		
 		$note->update(request()->all());
-		
-		if (request()->expectsJson()) {
-			return response($note->path());
-		}
 		
 		return redirect($note->customer->path());
 	}

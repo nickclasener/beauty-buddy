@@ -44,21 +44,21 @@ class CreateCustomerTest extends TestCase
 	function a_customer_requires_a_email()
 	{
 		$this->createCustomer(['email' => null])
-						->assertJsonValidationErrors('email');
+						->assertSessionHasErrors('email');
 	}
 	
 	/** @test */
 	function a_customer_birthday_is_a_date_format()
 	{
 		$this->createCustomer(['geboortedatum' => 'string'])
-						->assertJsonValidationErrors('geboortedatum');
+						->assertSessionHasErrors('geboortedatum');
 	}
 	
 	/** @test */
 	function a_customer_requires_a_naam()
 	{
 		$this->createCustomer(['naam' => null])
-						->assertJsonValidationErrors('naam');
+						->assertSessionHasErrors('naam');
 	}
 	
 	protected function createCustomer($overrides = [])
@@ -67,6 +67,6 @@ class CreateCustomerTest extends TestCase
 		
 		$customer = make(Customer::class, $overrides);
 		
-		return $this->json('POST', '/klanten', $customer->toArray());
+		return $this->post('/klanten', $customer->toArray());
 	}
 }

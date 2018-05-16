@@ -48,9 +48,9 @@ class CustomersController extends Controller
 		]);
 		
 		if ($validator->fails()) {
-			if ($request->expectsJson()) {
-				return response()->json(['errors' => $validator->errors()]);
-			}
+			return back()
+							->withErrors($validator)
+							->withInput();
 		}
 		
 		$customer = Customer::create([
@@ -77,7 +77,7 @@ class CustomersController extends Controller
 	 */
 	public function show(Customer $customer)
 	{
-		return view('klanten.show', compact('customer'))->render();
+		return view('klanten.show', compact('customer'));
 	}
 	
 	/**
@@ -107,16 +107,12 @@ class CustomersController extends Controller
 		]);
 		
 		if ($validator->fails()) {
-			if ($request->expectsJson()) {
-				return response()->json(['errors' => $validator->errors()]);
-			}
+			return back()
+							->withErrors($validator)
+							->withInput();
 		}
 		
 		$customer->update($request->all());
-		
-		if (request()->expectsJson()) {
-			return response($customer->path());
-		}
 		
 		return redirect($customer->path());
 	}
@@ -131,10 +127,6 @@ class CustomersController extends Controller
 	public function destroy(Customer $customer)
 	{
 		$customer->delete();
-		
-		if (request()->expectsJson()) {
-			return response(['responseURL' => '/klanten']);
-		}
 		
 		return redirect('/klanten');
 	}
