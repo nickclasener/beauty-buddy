@@ -3,9 +3,9 @@
 	<a>
 		Delete
 	</a>
-	<button>
+	<a href="">
 		Edit
-	</button>
+	</a>
 	<p>{{$note->body}}</p>
 	<p>{{$note->date}}</p>
 	<hr>

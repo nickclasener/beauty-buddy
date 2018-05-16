@@ -3,10 +3,10 @@
 @section('content')
 	
 	Voeg een nieuwe klant toe
-	{{--<form action="/klanten"--}}
-	{{--method="post"--}}
-	{{-->{{ csrf_field() }}--}}
-	
+	<form action="/klanten"
+				method="post"
+	>@csrf
+		
 		<label for="naam"
 		>Naam:</label>
 		<input type="text"
@@ -94,6 +94,6 @@
 		<button type="submit"
 		>Voeg toe
 		</button>
-	
+	</form>
 @endsection
 

@@ -33,7 +33,11 @@ class NotesController extends Controller
 							->withInput();
 		}
 		
-		$customer->addNote(request()->all());
+		$customer->addNote([
+						'user_id' => auth()->id(),
+						'body'    => request('body'),
+						'date'    => request('date'),
+		]);
 		
 		return redirect($customer->path());
 	}
