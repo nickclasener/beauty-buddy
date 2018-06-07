@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-	<meta charset="utf-8" >
+	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible"
 				content="IE=edge"
 	>
@@ -81,9 +81,9 @@
 							>@csrf</form>
 						</div>
 					</li>
-					<li><a href="/klanten"
+					<li><a href="{{route('klanten.index')}}"
 						>Klanten</a></li>
-					<li><a href="/klanten/create"
+					<li><a href="{{route('klanten.create')}}"
 						>Create Klant</a></li>
 				@endguest
 			

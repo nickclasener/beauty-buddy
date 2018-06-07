@@ -108,7 +108,7 @@ class ViewCustomersTest extends TestCase
 						'kanker'          => 'Lorem Ipsum 8',
 						'bestraling'      => true,
 						'chemo'           => false,
-						'immunotherapi'   => false,
+						'immunotherapie'  => false,
 						'laser'           => 'Lorem Ipsum 9',
 						'medicatie'       => 'Lorem Ipsum 10',
 						'operaties'       => 'Lorem Ipsum 11',

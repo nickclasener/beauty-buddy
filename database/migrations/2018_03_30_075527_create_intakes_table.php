@@ -11,9 +11,9 @@ class CreateIntakesTable extends Migration
 	 *
 	 * @return void
 	 */
-	public function up ()
+	public function up()
 	{
-		Schema::create('intakes', function ( Blueprint $table ) {
+		Schema::create('intakes', function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('user_id');
 			$table->integer('customer_id')->unique();
@@ -32,7 +32,7 @@ class CreateIntakesTable extends Migration
 			$table->string('kanker')->nullable();
 			$table->boolean('bestraling')->nullable();
 			$table->boolean('chemo')->nullable();
-			$table->boolean('immunotherapi')->nullable();
+			$table->boolean('immunotherapie')->nullable();
 			$table->string('laser')->nullable();
 			$table->string('medicatie')->nullable();
 			$table->string('operaties')->nullable();
@@ -46,13 +46,13 @@ class CreateIntakesTable extends Migration
 			$table->timestamps();
 		});
 	}
-
+	
 	/**
 	 * Reverse the migrations.
 	 *
 	 * @return void
 	 */
-	public function down ()
+	public function down()
 	{
 		Schema::dropIfExists('intakes');
 	}

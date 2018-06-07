@@ -1,5 +1,5 @@
 Voeg een nieuwe notitie toe
-<form action="{{$customer->notesBasePath()}}"
+<form action="{{ route('notities.store', $customer) }}"
 			method="post"
 >@csrf
 	

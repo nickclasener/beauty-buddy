@@ -1,17 +1,17 @@
-<form action="{{$customer->notesBasePath()}}"
+<form action="{{route('notities.update',$note)}}"
 			method="post"
 >@method('PATCH') @csrf
 	<label for="body"
 	>Notitie:</label>
+	<br>
 	<textarea type="text"
 						rows="5"
 						name="body"
 						placeholder="Hoe is de behandeling gegaan? Zijn er veder noemenswaardigheden"
 						required
-	>
-		{{ old('body') ?:$note->body}}
+	>{{ old('body') ?:$note->body}}
 		</textarea>
-	<hr>
+	<br>
 	<label for="date"
 	>Datum:</label>
 	<input type="date"
@@ -20,8 +20,7 @@
 				 value="{{ old('date') ?:$note->date}}"
 				 required
 	>
-	<hr>
-	
+	<br>
 	<button type="submit"
 	>Update
 	</button>

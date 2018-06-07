@@ -6,6 +6,7 @@ use App\Customer;
 use App\Note;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use function route;
 
 class CreateNotesForACustomerTest extends TestCase
 {
@@ -40,13 +41,12 @@ class CreateNotesForACustomerTest extends TestCase
 		$note = make(Note::class, [
 						'customer_id' => 1,
 						'id'          => 3,
-//						'user_id'     => 1,
 						'body'        => 'I exist :D',
 						'date'        => '24-12-2018',
 		]);
 //		dd($this->customer->notesBasePath());
 		// Act
-		$response = $this->post($this->customer->notesBasePath(), $note->toArray());
+		$response = $this->post(route('notities.store', $this->customer), $note->toArray());
 		$this->assertDatabaseHas('notes', ['body' => 'I exist :D']);
 		
 	}

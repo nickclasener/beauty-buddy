@@ -2,18 +2,27 @@
 
 namespace App;
 
+use App\Search\Searchable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-	
+	use Searchable;
 	use Sluggable;
 	
 	/**
 	 * @var array
 	 */
-	protected $guarded = [];
+	protected $guarded = ['id'];
+	
+	protected static function boot()
+	{
+		parent::boot();
+		static::deleting(function ($customer) {
+			$customer->notes()->delete();
+		});
+	}
 	
 	/**
 	 * @return array
@@ -41,14 +50,6 @@ class Customer extends Model
 	public function path()
 	{
 		return "/klanten/" . $this->slug;
-	}
-	
-	/**
-	 * @return string
-	 */
-	public function notesBasePath()
-	{
-		return "/klanten/" . $this->slug . "/notities";
 	}
 	
 	/**
@@ -80,4 +81,18 @@ class Customer extends Model
 		return $this->notes()->create($note);
 	}
 	
+	public function addIntake($intake)
+	{
+		return $this->intake()->create($intake);
+	}
+	
+	public function deleteIntake()
+	{
+		return $this->intake()->delete();
+	}
+	
+	public function updateIntake($intake)
+	{
+		return $this->intake()->update($intake);
+	}
 }

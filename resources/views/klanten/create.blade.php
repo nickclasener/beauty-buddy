@@ -92,7 +92,7 @@
 		<hr>
 		
 		<button type="submit"
-		>Voeg toe
+		>Opslaan
 		</button>
 	</form>
 @endsection

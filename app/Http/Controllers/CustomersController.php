@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use function route;
 
 class CustomersController extends Controller
 {
@@ -114,7 +115,7 @@ class CustomersController extends Controller
 		
 		$customer->update($request->all());
 		
-		return redirect($customer->path());
+		return redirect(route('klanten.show', $customer));
 	}
 	
 	/**

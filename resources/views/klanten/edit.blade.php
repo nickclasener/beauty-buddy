@@ -2,7 +2,7 @@
 
 @section('content')
 	
-	<form action="{{$customer->path()}}"
+	<form action="{{route('klanten.update',$customer)}}"
 				method="post"
 	>
 		@method('PATCH')
@@ -93,6 +93,5 @@
 		<button type="submit"
 		>Update
 		</button>
-	
 	</form>
 @endsection

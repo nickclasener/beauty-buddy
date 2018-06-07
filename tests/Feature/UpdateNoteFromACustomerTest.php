@@ -6,6 +6,7 @@ use App\Customer;
 use App\Note;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use function route;
 
 class UpdateNoteFromACustomerTest extends TestCase
 {
@@ -28,10 +29,10 @@ class UpdateNoteFromACustomerTest extends TestCase
 	{
 		$this->withExceptionHandling();
 		
-		$this->get($this->note->path() . '/edit')
+		$this->get(route('notities.edit', [$this->customer, $this->note]))
 						->assertRedirect('/login');
 		
-		$this->patch($this->note->basePath(), $this->note->toArray())
+		$this->patch(route('notities.update', $this->note), $this->note->toArray())
 						->assertRedirect('/login');
 	}
 	
@@ -56,7 +57,7 @@ class UpdateNoteFromACustomerTest extends TestCase
 	function an_authenticated_user_can_edit_a_note()
 	{
 		$this->signIn();
-		$response = $this->get($this->note->path() . '/edit');
+		$response = $this->get($this->note->path() . '/bewerken');
 //		dd($response);
 		$response->assertStatus(200)
 						->assertSee('A falsis, parma teres poeta.')

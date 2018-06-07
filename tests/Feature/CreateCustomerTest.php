@@ -27,7 +27,7 @@ class CreateCustomerTest extends TestCase
 		$this->withExceptionHandling()->signIn();
 		$customer = make(Customer::class);
 		
-		$response = $this->json('POST', '/klanten', $customer->toArray());
+		$response = $this->post('/klanten', $customer->toArray());
 		$this->get($response->headers->get('Location'))
 						->assertSee($customer->naam)
 						->assertSee($customer->adres)
