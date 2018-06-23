@@ -2,23 +2,19 @@
 
 @section('content')
 	
-	{{--<form action="/klanten"--}}
-	{{--method="post"--}}
-	{{-->{{ csrf_field() }}--}}
-	
-	<div data-controller="customer"
-			 data-customer-url="{{$customer->path()}}"
+	<form action="{{route('klanten.update',$customer)}}"
+				method="post"
 	>
+		@method('PATCH')
+		@csrf
 		<label for="naam"
 		>Naam:</label>
 		<input type="text"
 					 name="naam"
 					 placeholder="Naam"
 					 value="{{ old('naam') ?:$customer->naam }}"
-					 data-target="customer.naam"
 					 required
 		>
-		<span data-target="customer.errorNaam"></span>
 		<hr>
 		
 		<label for="email"
@@ -27,10 +23,8 @@
 					 name="email"
 					 placeholder="Email"
 					 value="{{ old('email')?:$customer->email }}"
-					 data-target="customer.email"
 					 required
 		>
-		<span data-target="customer.errorEmail"></span>
 		<hr>
 		
 		<label for="geboortedatum"
@@ -39,9 +33,7 @@
 					 name="geboortedatum"
 					 placeholder="Geboortedatum"
 					 value="{{ old('geboortedatum') ?:$customer->geboortedatum }}"
-					 data-target="customer.geboortedatum"
 		>
-		<span data-target="customer.errorGeboortedatum"></span>
 		<hr>
 		
 		<label for="adres"
@@ -50,7 +42,6 @@
 					 name="adres"
 					 placeholder="Adres"
 					 value="{{ old('adres') ?:$customer->adres}}"
-					 data-target="customer.adres"
 		>
 		<hr>
 		
@@ -60,7 +51,6 @@
 					 name="huisnummer"
 					 placeholder="Huisnummer"
 					 value="{{ old('huisnummer') ?:$customer->huisnummer}}"
-					 data-target="customer.huisnummer"
 		>
 		<hr>
 		
@@ -70,7 +60,6 @@
 					 name="plaats"
 					 placeholder="Plaats"
 					 value="{{ old('plaats') ?:$customer->plaats}}"
-					 data-target="customer.plaats"
 		>
 		<hr>
 		
@@ -80,7 +69,6 @@
 					 name="postcode"
 					 placeholder="Postcode"
 					 value="{{ old('postcode') ?:$customer->postcode}}"
-					 data-target="customer.postcode"
 		>
 		<hr>
 		
@@ -90,7 +78,6 @@
 					 name="telefoon"
 					 placeholder="Telefoon"
 					 value="{{ old('telefoon') ?:$customer->telefoon}}"
-					 data-target="customer.telefoon"
 		>
 		<hr>
 		
@@ -100,14 +87,11 @@
 					 name="mobiel"
 					 placeholder="Mobiel"
 					 value="{{ old('mobiel') ?:$customer->mobiel}}"
-					 data-target="customer.mobiel"
 		>
 		<hr>
 		
 		<button type="submit"
-						data-action="click->customer#updateCustomer"
 		>Update
 		</button>
-	
-	</div>
+	</form>
 @endsection

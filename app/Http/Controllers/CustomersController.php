@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use function route;
 
 class CustomersController extends Controller
 {
@@ -48,9 +49,9 @@ class CustomersController extends Controller
 		]);
 		
 		if ($validator->fails()) {
-			if ($request->expectsJson()) {
-				return response()->json(['errors' => $validator->errors()]);
-			}
+			return back()
+							->withErrors($validator)
+							->withInput();
 		}
 		
 		$customer = Customer::create([
@@ -77,7 +78,7 @@ class CustomersController extends Controller
 	 */
 	public function show(Customer $customer)
 	{
-		return view('klanten.show', compact('customer'))->render();
+		return view('klanten.show', compact('customer'));
 	}
 	
 	/**
@@ -107,18 +108,14 @@ class CustomersController extends Controller
 		]);
 		
 		if ($validator->fails()) {
-			if ($request->expectsJson()) {
-				return response()->json(['errors' => $validator->errors()]);
-			}
+			return back()
+							->withErrors($validator)
+							->withInput();
 		}
 		
 		$customer->update($request->all());
 		
-		if (request()->expectsJson()) {
-			return response($customer->path());
-		}
-		
-		return redirect($customer->path());
+		return redirect(route('klanten.show', $customer));
 	}
 	
 	/**
@@ -131,10 +128,6 @@ class CustomersController extends Controller
 	public function destroy(Customer $customer)
 	{
 		$customer->delete();
-		
-		if (request()->expectsJson()) {
-			return response(['responseURL' => '/klanten']);
-		}
 		
 		return redirect('/klanten');
 	}

@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Customer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use function create;
 
 class UpdateCustomerTest extends TestCase
 {
@@ -31,7 +32,7 @@ class UpdateCustomerTest extends TestCase
 	/** @test */
 	function an_authenticated_user_can_update_a_customer()
 	{
-		$this->signIn();
+		$this->signIn()->withoutExceptionHandling();
 		$customer = make(Customer::class, [
 						'naam'          => 'My new Name',
 						'email'         => 'mynewemail@email.com',
@@ -45,7 +46,8 @@ class UpdateCustomerTest extends TestCase
 		]);
 		
 		$response = $this->put($this->customer->path(), $customer->toArray());
-		
+//		dd($response);
+//		dd($this->get($response->headers));
 		$this->get($response->headers->get('Location'))
 						->assertSee('my-new-name')
 						->assertSee('My new Name')
@@ -60,10 +62,11 @@ class UpdateCustomerTest extends TestCase
 		
 	}
 	
+	
 	/** @test */
 	function an_authenticated_user_can_edit_a_customer()
 	{
-		$this->signIn()->get($this->customer->path() . '/edit')
+		$this->signIn()->get($this->customer->path() . '/bewerken')
 						->assertStatus(200)
 						->assertSee('example example')
 						->assertSee('example@hotmail.com')
@@ -81,7 +84,7 @@ class UpdateCustomerTest extends TestCase
 	{
 		$this->withExceptionHandling();
 		
-		$this->get($this->customer->path() . '/edit')
+		$this->get($this->customer->path() . '/bewerken')
 						->assertRedirect('/login');
 		
 		$this->patch($this->customer->path(), $this->customer->toArray())
@@ -92,21 +95,21 @@ class UpdateCustomerTest extends TestCase
 	function a_customer_requires_a_naam()
 	{
 		$this->updateCustomer(['naam' => null])
-						->assertJsonValidationErrors('naam');
+						->assertSessionHasErrors('naam');
 	}
 	
 	/** @test */
 	function a_customer_requires_a_email()
 	{
 		$this->updateCustomer(['email' => null])
-						->assertJsonValidationErrors('email');
+						->assertSessionHasErrors('email');
 	}
 	
 	/** @test */
 	function a_customer_birthday_is_a_date_format()
 	{
 		$this->updateCustomer(['geboortedatum' => 'string'])
-						->assertJsonValidationErrors('geboortedatum');
+						->assertSessionHasErrors('geboortedatum');
 	}
 	
 	protected function updateCustomer($overrides)
@@ -115,7 +118,7 @@ class UpdateCustomerTest extends TestCase
 		
 		$customer = make(Customer::class, $overrides);
 		
-		return $this->json('PUT', $this->customer->path(), $customer->toArray());
+		return $this->put($this->customer->path(), $customer->toArray());
 	}
 	
 }

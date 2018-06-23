@@ -17,7 +17,7 @@ class CustomerTest extends TestCase
 	public function setUp()
 	{
 		parent::setUp();
-		$this->customer = create(Customer::class);
+		$this->customer = create(Customer::class, ['id' => 1]);
 	}
 	
 	
@@ -26,14 +26,6 @@ class CustomerTest extends TestCase
 	{
 		$this->assertEquals("/klanten/{$this->customer->slug}",
 						$this->customer->path()
-		);
-	}
-	
-	/** @test */
-	function a_customer_has_a_basePath_for_notes()
-	{
-		$this->assertEquals("/klanten/{$this->customer->slug}/notities",
-						$this->customer->notesBasePath()
 		);
 	}
 	
@@ -57,7 +49,7 @@ class CustomerTest extends TestCase
 	}
 	
 	/** @test */
-	function a_customer_can_add_a_note()
+	function a_user_can_add_a_note_to_a_customer()
 	{
 		$this->customer->addNote([
 						'body'    => 'FooBar',
@@ -68,6 +60,39 @@ class CustomerTest extends TestCase
 		$this->assertDatabaseHas('notes', ['body' => 'FooBar']);
 		$this->assertCount(1, $this->customer->notes);
 	}
+	
+	/** @test */
+	function a_user_can_add_a_intake_to_a_costumer()
+	{
+		$this->customer->addIntake([
+						'behandeling'     => 'FooBar',
+						'huidverbetering' => 'FooBaz',
+						'user_id'         => 1,
+		]);
+		$this->assertDatabaseHas('intakes', [
+						'behandeling'     => 'FooBar',
+						'huidverbetering' => 'FooBaz',
+		]);
+	}
+	
+	/** @test */
+	function a_user_cannot_add_multiple_intakes_to_a_customer()
+	{
+		$this->expectException("Illuminate\Database\QueryException");
+		$this->customer->addIntake([
+						'customer_id'     => 1,
+						'behandeling'     => 'FooBar',
+						'huidverbetering' => 'FooBaz',
+						'user_id'         => 1,
+		]);
+		$this->customer->addIntake([
+						'customer_id'     => 1,
+						'behandeling'     => 'FooBar2',
+						'huidverbetering' => 'FooBaz2',
+						'user_id'         => 1,
+		]);
+	}
+	
 	
 	/** @test */
 	function a_customer_automatically_sets_the_slug_on_create()
@@ -88,5 +113,26 @@ class CustomerTest extends TestCase
 		
 	}
 	
+	/** @test */
+	function a_user_can_delete_a_intake_off_a_customer()
+	{
+		create(Intake::class, ['customer_id' => 1]);
+		
+		$this->assertDatabaseHas('intakes', ['customer_id' => 1]);
+		
+		$this->customer->deleteIntake();
+		
+		$this->assertDatabaseMissing('intakes', ['customer_id' => 1]);
+	}
 	
+	/** @test */
+	function a_user_can_update_a_intake_off_a_customer()
+	{
+		create(Intake::class, ['customer_id' => 1, 'id' => 1, 'behandeling' => 'FooBar']);
+		
+		$this->assertDatabaseHas('intakes', ['customer_id' => 1, 'id' => 1, 'behandeling' => 'FooBar']);
+		$intake = ['customer_id' => 1, 'id' => 1, 'behandeling' => 'FooBaz'];
+		$this->customer->updateIntake($intake);
+		$this->assertDatabaseHas('intakes', ['customer_id' => 1, 'id' => 1, 'behandeling' => 'FooBaz']);
+	}
 }

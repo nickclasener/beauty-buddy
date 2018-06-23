@@ -6,6 +6,7 @@ use App\Customer;
 use App\Note;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use function route;
 
 class CreateNotesForACustomerTest extends TestCase
 {
@@ -40,13 +41,12 @@ class CreateNotesForACustomerTest extends TestCase
 		$note = make(Note::class, [
 						'customer_id' => 1,
 						'id'          => 3,
-//						'user_id'     => 1,
 						'body'        => 'I exist :D',
 						'date'        => '24-12-2018',
 		]);
 //		dd($this->customer->notesBasePath());
 		// Act
-		$response = $this->json('POST', $this->customer->notesBasePath(), $note->toArray());
+		$response = $this->post(route('notities.store', $this->customer), $note->toArray());
 		$this->assertDatabaseHas('notes', ['body' => 'I exist :D']);
 		
 	}
@@ -59,8 +59,8 @@ class CreateNotesForACustomerTest extends TestCase
 		$customer = create(Customer::class);
 		$note = make(Note::class, ['body' => null]);
 		
-		$this->json('POST', $customer->path() . '/notities', $note->toArray())
-						->assertJsonValidationErrors('body');
+		$this->post($customer->path() . '/notities', $note->toArray())
+						->assertSessionHasErrors('body');
 	}
 	
 	/** @test */
@@ -70,8 +70,8 @@ class CreateNotesForACustomerTest extends TestCase
 		$customer = create(Customer::class);
 		$note = make(Note::class, ['date' => 'string']);
 		
-		$this->json('POST', $customer->path() . '/notities', $note->toArray())
-						->assertJsonValidationErrors('date');
+		$this->post($customer->path() . '/notities', $note->toArray())
+						->assertSessionHasErrors('date');
 	}
 	
 	/** @test */
@@ -88,9 +88,8 @@ class CreateNotesForACustomerTest extends TestCase
 	public function authenticated_can_delete_a_note_from_a_customer()
 	{
 		$this->signIn();
-		$response = $this->delete($this->note->basePath());
+		$this->delete($this->note->basePath());
 		
-		$response->assertStatus(302);
 		
 		$this->assertDatabaseMissing('notes', ['id' => 1]);
 		$this->assertDatabaseHas('notes', ['id' => 2]);

@@ -1,9 +1,8 @@
 Voeg een nieuwe notitie toe
-<div data-controller="notes"
-		 data-notes-url="{{$customer->notesBasePath()}}"
-		 data-notes-customerurl="{{$customer->path()}}"
-		 data-notes-user-id="{{$customer->user_id}}"
->
+<form action="{{ route('notities.store', $customer) }}"
+			method="post"
+>@csrf
+	
 	<label for="body"
 	>Notitie:</label>
 	<br>
@@ -12,10 +11,8 @@ Voeg een nieuwe notitie toe
 						name="body"
 						placeholder="Hoe is de behandeling gegaan? Zijn er veder noemenswaardigheden"
 						value="{{ old('body') }}"
-						data-target="notes.body"
 						required
 	></textarea>
-	<span data-target="notes.errorBody"></span>
 	<hr>
 	<label for="date"
 	>Datum:</label>
@@ -23,14 +20,12 @@ Voeg een nieuwe notitie toe
 				 name="date"
 				 placeholder="dd-mm-yyyy"
 				 value="{{ old('date') }}"
-				 data-target="notes.date"
 				 required
 	>
-	<span data-target="notes.errorDate"></span>
 	<hr>
 	
 	<button type="submit"
-					data-action="click->notes#addNote"
-	>Voeg Notitie Toe
+	>Voeg Notitie
 	</button>
-</div>
+</form>
+<hr>
