@@ -1,1 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100px" height="100px" viewBox="-247 370.9 100 100" style="enable-background:new -247 370.9 100 100;"
+	 xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{display:inline;fill:#FFFFFF;stroke:#231F20;stroke-width:1.125;stroke-miterlimit:10;}
+	.st2{display:inline;fill:none;stroke:#231F20;stroke-width:1.125;stroke-miterlimit:10;}
+</style>
+<g id="Layer_1_1_" class="st0">
+	<rect x="-488.9" y="747.6" class="st1" width="90" height="90"/>
+	<circle class="st1" cx="-443.9" cy="792.6" r="45"/>
+	<line class="st2" x1="-443.9" y1="747.6" x2="-443.9" y2="837.6"/>
+	<line class="st2" x1="-488.9" y1="792.6" x2="-398.9" y2="792.6"/>
+</g>
+<g>
+	<path d="M-197.7,445.7c0.4,0.4,1,0.4,1.4,0l13-12.9c1-1,1-2.6,0-3.5c-1-1-2.6-1-3.5,0l-7.6,7.7v-50.6c0-1.4-1.1-2.5-2.5-2.5
+		c-1.6,0-2.7,1.1-2.7,2.5V437l-7.6-7.7c-1-1-2.6-1-3.5,0c-1,1-1,2.6,0,3.5L-197.7,445.7z"/>
+	<path d="M-149.8,430.9c-1.4,0-2.5,1.1-2.5,2.5v19.4h-89.4v-19.4c0-1.4-1.1-2.5-2.5-2.5s-2.5,1.1-2.5,2.5v21.9
+		c0,1.4,1.1,2.5,2.5,2.5h94.4c1.4,0,2.5-1.1,2.5-2.5v-21.9C-147.3,432-148.4,430.9-149.8,430.9z"/>
+</g>
+</svg>

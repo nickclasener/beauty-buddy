@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-	use Searchable;
+//	use Searchable;
 	use Sluggable;
 	
 	/**

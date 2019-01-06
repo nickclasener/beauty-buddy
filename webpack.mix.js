@@ -12,7 +12,7 @@ require('laravel-mix-purgecss');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
+mix.copyDirectory('resources/assets/img', 'public/img');
 mix.js('resources/assets/js/app.js', 'public/js')
    .less('resources/assets/less/app.less', 'public/css')
    .options({
@@ -22,7 +22,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
    })
    .purgeCss()
    .browserSync({
-	   proxy: "beautybuddy-final.test",
+	   proxy: "beauty-buddy.test",
 	   snippetOptions: {
 		   rule: {
 			   match: /<\/head>/i,

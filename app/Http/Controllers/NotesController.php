@@ -24,7 +24,6 @@ class NotesController extends Controller
 	{
 		$validator = Validator::make(request()->all(), [
 						'body' => 'required',
-						'date' => 'nullable|date',
 		]);
 		
 		if ($validator->fails()) {
@@ -36,7 +35,6 @@ class NotesController extends Controller
 		$customer->addNote([
 						'user_id' => auth()->id(),
 						'body'    => request('body'),
-						'date'    => request('date'),
 		]);
 		
 		return redirect($customer->path());
@@ -52,7 +50,6 @@ class NotesController extends Controller
 	{
 		$validator = Validator::make(request()->all(), [
 						'body' => 'required',
-						'date' => 'nullable|date',
 		]);
 		
 		if ($validator->fails()) {

@@ -20,7 +20,6 @@ class UpdateNoteFromACustomerTest extends TestCase
 						'id'          => 1,
 						'customer_id' => 1,
 						'body'        => 'A falsis, parma teres poeta.',
-						'date'        => '2-04-2018',
 		]);
 	}
 	
@@ -42,14 +41,12 @@ class UpdateNoteFromACustomerTest extends TestCase
 		$this->signIn()->withExceptionHandling();
 		$note = make(Note::class, [
 						'body' => 'Cur historia congregabo?',
-						'date' => '20-12-1991',
 		]);
 		
 		$response = $this->put($this->note->basePath(), $note->toArray());
 		
 		$this->get($response->headers->get('Location'))
-						->assertSee('Cur historia congregabo?')
-						->assertSee('20-12-1991');
+						->assertSee('Cur historia congregabo?');
 		
 	}
 	
@@ -60,7 +57,6 @@ class UpdateNoteFromACustomerTest extends TestCase
 		$response = $this->get($this->note->path() . '/bewerken');
 //		dd($response);
 		$response->assertStatus(200)
-						->assertSee('A falsis, parma teres poeta.')
-						->assertSee('2-04-2018');
+						->assertSee('A falsis, parma teres poeta.');
 	}
 }

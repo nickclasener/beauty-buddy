@@ -17,14 +17,14 @@ use App\Repository\NotesRepository;
 
 Auth::routes();
 
-//Route::get('/', function () {
-//	return view('phpprofessionals');
-//});
+Route::get('/', function () {
+	return view('notes.notes');
+});
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/', function () {
-		return view('welcome');
-	});
+//	Route::get('/', function () {
+//		return view('welcome');
+//	});
 	
 	Route::get('/home', 'HomeController@index')->name('home');
 	// Klanten Routes
