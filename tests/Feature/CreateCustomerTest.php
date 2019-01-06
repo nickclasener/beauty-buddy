@@ -30,7 +30,7 @@ class CreateCustomerTest extends TestCase
 		$response = $this->post('/klanten', $customer->toArray());
 		$this->get($response->headers->get('Location'))
 						->assertSee($customer->naam)
-						->assertSee($customer->straatnaam)
+						->assertSee($customer->adres)
 						->assertSee($customer->huisnummer)
 						->assertSee($customer->postcode)
 						->assertSee($customer->plaats)

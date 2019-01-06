@@ -20,7 +20,7 @@ class UpdateCustomerTest extends TestCase
 						'naam'          => 'example example',
 						'email'         => 'example@hotmail.com',
 						'geboortedatum' => '22-09-1960',
-						'straatnaam'    => 'lararoad',
+						'adres'         => 'lararoad',
 						'huisnummer'    => '8',
 						'postcode'      => '4543lv',
 						'plaats'        => 'laraville',
@@ -36,7 +36,7 @@ class UpdateCustomerTest extends TestCase
 		$customer = make(Customer::class, [
 						'naam'          => 'My new Name',
 						'email'         => 'mynewemail@email.com',
-						'straatnaam'    => 'ikleefnuhier',
+						'adres'         => 'ikleefnuhier',
 						'huisnummer'    => '8',
 						'postcode'      => '6986AK',
 						'plaats'        => 'Angerlo',

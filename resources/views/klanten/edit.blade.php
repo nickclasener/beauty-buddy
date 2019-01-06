@@ -36,12 +36,12 @@
 		>
 		<hr>
 		
-		<label for="straatnaam"
-		>Straatnaam:</label>
+		<label for="adres"
+		>Adres:</label>
 		<input type="text"
-					 name="straatnaam"
-					 placeholder="Straatnaam"
-					 value="{{ old('straatnaam') ?:$customer->straatnaam}}"
+					 name="adres"
+					 placeholder="Adres"
+					 value="{{ old('adres') ?:$customer->adres}}"
 		>
 		<hr>
 		

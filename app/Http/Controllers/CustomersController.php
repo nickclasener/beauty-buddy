@@ -57,7 +57,7 @@ class CustomersController extends Controller
 		$customer = Customer::create([
 						'user_id'       => auth()->id(),
 						'naam'          => request('naam'),
-						'straatnaam'    => request('straatnaam'),
+						'adres'         => request('adres'),
 						'huisnummer'    => request('huisnummer'),
 						'postcode'      => request('postcode'),
 						'plaats'        => request('plaats'),
@@ -78,7 +78,7 @@ class CustomersController extends Controller
 	 */
 	public function show(Customer $customer)
 	{
-		return view('notes.notes', compact('customer'));
+		return view('klanten.show', compact('customer'));
 	}
 	
 	/**

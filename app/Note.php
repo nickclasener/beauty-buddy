@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
 {
-//	use Searchable;
+	use Searchable;
 	
 	protected $guarded = [];
 	protected $with = ['creator'];

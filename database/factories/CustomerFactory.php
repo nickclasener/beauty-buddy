@@ -12,9 +12,9 @@ $factory->define(App\Customer::class, function (Faker $faker) {
 					'telefoon'      => $faker->phoneNumber,
 					'mobiel'        => $faker->phoneNumber,
 					'geboortedatum' => $faker->date('d-m-Y'),
-					'straatnaam'    => $faker->streetName,
+					'adres'         => $faker->streetName,
 					'huisnummer'    => $faker->buildingNumber,
-					'postcode'      => $faker->postcode,
+					'postcode'      => $faker->streetAddress,
 					'plaats'        => $faker->city,
 	];
 });

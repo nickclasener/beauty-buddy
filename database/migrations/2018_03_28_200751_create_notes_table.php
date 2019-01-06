@@ -18,6 +18,7 @@ class CreateNotesTable extends Migration
 			$table->integer('customer_id');
 			$table->integer('user_id');
 			$table->text('body');
+			$table->date('date')->nullable();
 			$table->timestamps();
 		});
 	}

@@ -42,6 +42,7 @@ class CreateNotesForACustomerTest extends TestCase
 						'customer_id' => 1,
 						'id'          => 3,
 						'body'        => 'I exist :D',
+						'date'        => '24-12-2018',
 		]);
 //		dd($this->customer->notesBasePath());
 		// Act
@@ -62,6 +63,16 @@ class CreateNotesForACustomerTest extends TestCase
 						->assertSessionHasErrors('body');
 	}
 	
+	/** @test */
+	function a_customer_birthday_is_a_date_format()
+	{
+		$this->withExceptionHandling()->signIn();
+		$customer = create(Customer::class);
+		$note = make(Note::class, ['date' => 'string']);
+		
+		$this->post($customer->path() . '/notities', $note->toArray())
+						->assertSessionHasErrors('date');
+	}
 	
 	/** @test */
 	function a_unauthenticated_cannot_delete_a_note_from_a_customer()
