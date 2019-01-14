@@ -24,6 +24,12 @@ class NoteTest extends TestCase
 	}
 	
 	/** @test */
+	function hello()
+	{
+	   return $this->hello();
+	}
+	
+	/** @test */
 	function a_note_has_a_path() {
 		$this->assertEquals("klanten/{$this->note->customer->slug}/notities/{$this->note->id}",
 						$this->note->path()

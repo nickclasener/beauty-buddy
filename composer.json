@@ -39,6 +39,9 @@
       "database/seeds",
       "database/factories"
     ],
+    "files": [
+      "app/utilities/functions.php"
+    ],
     "psr-4": {
       "App\\": "app/"
     }

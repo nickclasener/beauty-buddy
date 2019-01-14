@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Search\Searchable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -49,9 +48,13 @@ class Customer extends Model
 	 */
 	public function path()
 	{
-		return "/klanten/" . $this->slug;
+		return "klanten/" . $this->slug;
 	}
 	
+	public function pathNotes()
+	{
+		return $this->path()."/notities";
+	}
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */

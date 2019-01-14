@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Search\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model

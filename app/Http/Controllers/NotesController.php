@@ -10,12 +10,12 @@ use function view;
 
 class NotesController extends Controller
 {
-
-//	public function show(Customer $customer, Note $note)
-//	{
-//		return view('notes.show', compact('customer'));
-//	}
-//
+	
+	public function index(Customer $customer, Note $note)
+	{
+		return view('notes.index', compact('customer'));
+	}
+	
 	/**
 	 * @param Customer $customer
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
