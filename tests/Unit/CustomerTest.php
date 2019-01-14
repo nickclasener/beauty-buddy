@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Customer;
 use App\Intake;
+use App\Note;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -20,12 +21,19 @@ class CustomerTest extends TestCase
 		$this->customer = create(Customer::class, ['id' => 1]);
 	}
 	
-	
 	/** @test */
 	function a_customer_has_a_path()
 	{
-		$this->assertEquals("/klanten/{$this->customer->slug}",
+		$this->assertEquals("klanten/{$this->customer->slug}",
 						$this->customer->path()
+		);
+	}
+	
+	/** @test */
+	function a_customer_has_a_path_to_notes()
+	{
+		$this->assertEquals("klanten/{$this->customer->slug}/notities",
+						$this->customer->pathNotes()
 		);
 	}
 	
@@ -38,14 +46,23 @@ class CustomerTest extends TestCase
 	/** @test */
 	function a_customer_has_many_notes()
 	{
-		$this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->customer->notes);
+		$this->assertInstanceOf('Illuminate\Database\Eloquent\Collection',
+						$this->customer->notes);
+	}
+	
+	/** @test */
+	function a_customer_has_many_huidanalyses()
+	{
+		$this->assertInstanceOf('Illuminate\Database\Eloquent\Collection',
+						$this->customer->huidanalyses);
 	}
 	
 	/** @test */
 	function a_customer_has_a_intake()
 	{
 		create(Intake::class, ['customer_id' => $this->customer->id]);
-		$this->assertInstanceOf('Illuminate\Database\Eloquent\Model', $this->customer->intake);
+		$this->assertInstanceOf('Illuminate\Database\Eloquent\Model',
+						$this->customer->intake);
 	}
 	
 	/** @test */
@@ -62,7 +79,39 @@ class CustomerTest extends TestCase
 	}
 	
 	/** @test */
-	function a_user_can_add_a_intake_to_a_costumer()
+	function a_customer_month_year_notes()
+	{
+		$this->withoutExceptionHandling();
+		create(Note::class, [
+						'created_at'  => '2016-01-06 08:09:54',
+						'customer_id' => 1,
+		]);
+		create(Note::class, [
+						'created_at'  => '2016-01-06 08:09:54',
+						'customer_id' => 1,
+		]);
+		create(Note::class, [
+						'created_at'  => '2019-02-06 08:09:54',
+						'customer_id' => 1,
+		]);
+		create(Note::class, [
+						'created_at'  => '2019-03-06 08:09:54',
+						'customer_id' => 1,
+		]);
+		create(Note::class, [
+						'created_at'  => '2012-04-06 08:09:54',
+						'customer_id' => 1,
+		]);
+		create(Note::class, [
+						'created_at'  => '2012-04-06 08:09:54',
+						'customer_id' => 1,
+		]);
+		
+		$this->assertCount(4, $this->customer->monthYearNotes());
+	}
+	
+	/** @test */
+	function a_user_can_add_a_intake_to_a_customer()
 	{
 		$this->customer->addIntake([
 						'behandeling'     => 'FooBar',
@@ -92,7 +141,6 @@ class CustomerTest extends TestCase
 						'user_id'         => 1,
 		]);
 	}
-	
 	
 	/** @test */
 	function a_customer_automatically_sets_the_slug_on_create()
@@ -128,11 +176,27 @@ class CustomerTest extends TestCase
 	/** @test */
 	function a_user_can_update_a_intake_off_a_customer()
 	{
-		create(Intake::class, ['customer_id' => 1, 'id' => 1, 'behandeling' => 'FooBar']);
+		create(Intake::class, [
+						'customer_id' => 1,
+						'id'          => 1,
+						'behandeling' => 'FooBar',
+		]);
 		
-		$this->assertDatabaseHas('intakes', ['customer_id' => 1, 'id' => 1, 'behandeling' => 'FooBar']);
-		$intake = ['customer_id' => 1, 'id' => 1, 'behandeling' => 'FooBaz'];
+		$this->assertDatabaseHas('intakes', [
+						'customer_id' => 1,
+						'id'          => 1,
+						'behandeling' => 'FooBar',
+		]);
+		$intake = [
+						'customer_id' => 1,
+						'id'          => 1,
+						'behandeling' => 'FooBaz',
+		];
 		$this->customer->updateIntake($intake);
-		$this->assertDatabaseHas('intakes', ['customer_id' => 1, 'id' => 1, 'behandeling' => 'FooBaz']);
+		$this->assertDatabaseHas('intakes', [
+						'customer_id' => 1,
+						'id'          => 1,
+						'behandeling' => 'FooBaz',
+		]);
 	}
 }
