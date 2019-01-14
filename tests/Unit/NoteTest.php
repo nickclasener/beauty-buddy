@@ -8,9 +8,9 @@ use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class NoteTest extends TestCase {
+class NoteTest extends TestCase
+{
 	use RefreshDatabase;
-	
 	
 	public function setUp()
 	{
