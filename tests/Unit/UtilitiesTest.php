@@ -8,7 +8,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use function create;
 use function dayMonth;
-use function dd;
 
 class utilitiesTest extends TestCase
 {

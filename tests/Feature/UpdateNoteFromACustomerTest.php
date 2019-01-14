@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Customer;
 use App\Note;
+use function dd;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use function route;
@@ -46,7 +47,7 @@ class UpdateNoteFromACustomerTest extends TestCase
 		]);
 		
 		$response = $this->put($this->note->basePath(), $note->toArray());
-		
+//	dd($response);
 		$this->get($response->headers->get('Location'))
 						->assertSee('Cur historia congregabo?')
 						->assertSee('20-12-1991');

@@ -23,11 +23,6 @@ class NoteTest extends TestCase
 		$this->note = create(Note::class);
 	}
 	
-	/** @test */
-	function hello()
-	{
-	   return $this->hello();
-	}
 	
 	/** @test */
 	function a_note_has_a_path() {

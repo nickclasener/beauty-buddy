@@ -188,11 +188,11 @@
 		@include('layouts._submenu',['customer'=>$customer])
 		
 		<div class="w-full bg-white pb-10 mb-10">
-{{--			@yield('content')--}}
-			@if($customer->notes != null)
+			@yield('content')
+{{--			@if($customer->notes != null)--}}
 				{{--@include('notes.create')--}}
-				@include('klanten._notes', ['customer' => $customer])
-			@endif
+{{--				@include('klanten._notes', ['customer' => $customer])--}}
+			{{--@endif--}}
 		</div>
 	</div>
 </div>

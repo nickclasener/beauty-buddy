@@ -53,8 +53,9 @@ class Customer extends Model
 	
 	public function pathNotes()
 	{
-		return $this->path()."/notities";
+		return $this->path() . "/notities";
 	}
+	
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
@@ -69,6 +70,18 @@ class Customer extends Model
 	public function notes()
 	{
 		return $this->hasMany(Note::class);
+	}
+	
+	public function monthYearNotes()
+	{
+		return $this->notes->sortByDesc('created_at')->groupBy(function ($notes) {
+			return $notes->created_at->format('F, Y');
+		});
+	}
+	
+	public function huidanalyses()
+	{
+		return $this->hasMany(Huidanalyse::class);
 	}
 	
 	/**
