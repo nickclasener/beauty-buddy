@@ -11,16 +11,6 @@
 						required
 	>{{ old('body') ?:$note->body}}
 		</textarea>
-	<br>
-	<label for="date"
-	>Datum:</label>
-	<input type="date"
-				 name="date"
-				 placeholder="dd-mm-yyyy"
-				 value="{{ old('date') ?:$note->date}}"
-				 required
-	>
-	<br>
 	<button type="submit"
 	>Update
 	</button>

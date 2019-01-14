@@ -22,7 +22,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
    })
    .purgeCss()
    .browserSync({
-	   proxy: "beautybuddy-final.test",
+	   proxy: "beauty-buddy.test",
 	   snippetOptions: {
 		   rule: {
 			   match: /<\/head>/i,

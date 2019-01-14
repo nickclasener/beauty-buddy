@@ -8,7 +8,6 @@
 		Edit
 	</a>
 	<p>{{$note->body}}</p>
-	<p>{{$note->date}}</p>
 	<hr>
 @endforeach
 

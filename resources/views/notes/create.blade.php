@@ -14,16 +14,6 @@ Voeg een nieuwe notitie toe
 						required
 	></textarea>
 	<hr>
-	<label for="date"
-	>Datum:</label>
-	<input type="date"
-				 name="date"
-				 placeholder="dd-mm-yyyy"
-				 value="{{ old('date') }}"
-				 required
-	>
-	<hr>
-	
 	<button type="submit"
 	>Voeg Notitie
 	</button>
