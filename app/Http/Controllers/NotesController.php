@@ -6,6 +6,7 @@ use App\Customer;
 use App\Note;
 use Illuminate\Support\Facades\Validator;
 use function compact;
+use function redirect;
 use function view;
 
 class NotesController extends Controller
@@ -23,16 +24,26 @@ class NotesController extends Controller
 	
 	public function store(Customer $customer)
 	{
-		$validator = Validator::make(request()->all(), [
-						'body' => 'required',
-		]);
-		
-		if ($validator->fails()) {
-			return back()
-							->withErrors($validator)
-							->withInput();
+//		$validator = Validator::make(request()->all(), [
+//						'body' => 'required',
+//		]);
+//
+//		if ($validator->fails()) {
+//			return back()
+//							->withErrors($validator)
+//							->withInput();
+//		}
+		if (request()->ajax()) {
+			return response([
+							'responseURL' => 'hello',
+			]);
+//			$customer->addNote([
+//							'user_id' => auth()->id(),
+//							'body'    => request('body'),
+//			]);
+
+//			return 200;
 		}
-		
 		$customer->addNote([
 						'user_id' => auth()->id(),
 						'body'    => request('body'),
@@ -69,12 +80,25 @@ class NotesController extends Controller
 	
 	public function destroy(Note $note)
 	{
-		$note->delete();
-		if (request()->expectsJson()) {
-			return response([
-							'responseURL' => $note->customer->path(),
-			]);
+		if (request()->ajax()) {
+			$note->delete();
+			
+			return 200;
 		}
+
+//		$note->delete();
+
+//		return back();
+//		if (request()->expectsJson()) {
+//			$note->delete();
+//
+////		return view('notes.index')->with($customer)->render();
+//			return response([
+//							'responsehtml' =>  view('notes.index')->render()->with($customer)
+//											->render()
+//							//							'responseURL' => $note->customer->path(),
+//			]);
+//		}
 		
 		return back();
 	}

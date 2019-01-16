@@ -3,15 +3,16 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+// Slow loading big pages
+// var Turbolinks = require("turbolinks");
+// Turbolinks.start();
+// require('jquery');
+
 require('./bootstrap');
 
+import { Application } from "stimulus";
+import { definitionsFromContext } from "stimulus/webpack-helpers";
 
-// import { Application } from "stimulus";
-// import { definitionsFromContext } from "stimulus/webpack-helpers";
-//
-// const application = Application.start();
-// const context = require.context("./controllers", true, /\.js$/);
-// application.load(definitionsFromContext(context));
-
-// Rails.start();
-Turbolinks.start();
+const application = Application.start();
+const context = require.context("./controllers", true, /\.js$/);
+application.load(definitionsFromContext(context));

@@ -17,23 +17,32 @@ class ResetPasswordController extends Controller
 	| explore this trait and override any methods you wish to tweak.
 	|
 	*/
-
+	
 	use ResetsPasswords;
-
+	
 	/**
 	 * Where to redirect users after resetting their password.
 	 *
 	 * @var string
 	 */
 	protected $redirectTo = '/home';
-
+	
 	/**
 	 * Create a new controller instance.
 	 *
 	 * @return void
 	 */
-	public function __construct ()
+	public function __construct()
 	{
 		$this->middleware('guest');
 	}
+	
+//	protected function redirectPath()
+//	{
+//		if (method_exists($this, 'redirectUserTo')) {
+//			return $this->redirectUserTo();
+//		}
+//
+//		return property_exists($this, 'redirectTo') ? $this->redirectTo : '/klanten';
+//	}
 }

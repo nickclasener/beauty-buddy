@@ -11,5 +11,6 @@ $factory->define(App\Note::class, function (Faker $faker) {
 						return factory('App\User')->create()->id;
 					},
 					'body'        => $faker->paragraph($nbSentences = 10, $variableNbSentences = true),
+					'created_at'  => $faker->dateTime,
 	];
 });
