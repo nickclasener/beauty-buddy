@@ -71,6 +71,14 @@ class NotesController extends Controller
 							->withInput();
 		}
 		
+		if (request()->ajax()) {
+			
+			$note->update(request()->all());
+			
+			return view('notes.show', compact('note'));
+			
+		}
+		
 		$note->update(request()->all());
 		
 		return redirect($note->customer->path());
