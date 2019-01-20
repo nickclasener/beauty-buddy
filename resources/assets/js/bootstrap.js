@@ -20,6 +20,7 @@ try {
  * a simple convenience so we don't have to attach every token manually.
  */
 
+window.Turbolinks = require("turbolinks");
 window.axios = require('axios');
 
 window.axios.defaults.headers.common[ 'X-Requested-With' ] = 'XMLHttpRequest';

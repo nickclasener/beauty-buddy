@@ -16,14 +16,18 @@ class CreateNotesForACustomerTest extends TestCase
 	{
 		parent::setUp();
 		
-		$this->customer = create(Customer::class, ['id' => 1, 'naam' => 'john doe']);
+		$this->customer = create(Customer::class, ['id'   => 1,
+																							 'naam' => 'john doe',
+		]);
 		$this->note = create(Note::class, [
 						'id'          => 1,
 						'customer_id' => 1,
 						'body'        => 'Foo',
 		]);
 		
-		create(Note::class, ['id' => 2, 'customer_id' => 1]);
+		create(Note::class, ['id'          => 2,
+												 'customer_id' => 1,
+		]);
 	}
 	
 	/** @test */
@@ -43,9 +47,9 @@ class CreateNotesForACustomerTest extends TestCase
 						'id'          => 3,
 						'body'        => 'I exist :D',
 		]);
-//		dd($this->customer->notesBasePath());
 		// Act
 		$response = $this->post(route('notities.store', $this->customer), $note->toArray());
+		
 		$this->assertDatabaseHas('notes', ['body' => 'I exist :D']);
 		
 	}

@@ -5,10 +5,10 @@ namespace Tests\Feature;
 use App\Customer;
 use App\Intake;
 use App\Note;
-use function dd;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use function create;
+use function route;
 
 class ViewCustomersTest extends TestCase
 {
@@ -96,9 +96,12 @@ class ViewCustomersTest extends TestCase
 						'customer_id' => 1,
 		]);
 //		dd($this->note->path());
-		$this->get($note->path())
+		$this->get(route('klanten.show', $this->customer))
 						->assertStatus(200)
-						->assertSee('This is body');
+						->assertSee('This is body')
+						->assertSee('foo')
+						->assertSee('bar')
+						->assertSee('baz');
 	}
 	
 	/** @test */

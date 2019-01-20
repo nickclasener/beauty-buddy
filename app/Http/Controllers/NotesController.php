@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Note;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use function compact;
 use function redirect;
@@ -12,42 +13,48 @@ use function view;
 class NotesController extends Controller
 {
 	
-	public function index(Customer $customer, Note $note)
+	public function index(Customer $customer)
 	{
 		return view('notes.index', compact('customer'));
 	}
 	
 	public function show(Customer $customer, Note $note)
 	{
+
+//		$note = Note::findOrFail($id);
+
+//		return view('notes.show', compact('customer', 'note'));
 		return view('notes.show', compact('customer'));
 	}
 	
-	public function store(Customer $customer)
+	public function store(Customer $customer, Request $request)
 	{
-//		$validator = Validator::make(request()->all(), [
-//						'body' => 'required',
-//		]);
-//
-//		if ($validator->fails()) {
-//			return back()
-//							->withErrors($validator)
-//							->withInput();
-//		}
-		if (request()->ajax()) {
-			return response([
-							'responseURL' => 'hello',
-			]);
-//			$customer->addNote([
-//							'user_id' => auth()->id(),
-//							'body'    => request('body'),
-//			]);
-
-//			return 200;
+		$validator = Validator::make(request()->all(), [
+						'body' => 'required',
+		]);
+		
+		if ($validator->fails()) {
+			return back()
+							->withErrors($validator)
+							->withInput();
 		}
+		
+		if (request()->ajax()) {
+			
+			$customer->addNote([
+							'user_id' => auth()->id(),
+							'body'    => request('body'),
+			]);
+			
+			return view('notes.show', compact('customer'));
+			
+		}
+		
 		$customer->addNote([
 						'user_id' => auth()->id(),
 						'body'    => request('body'),
 		]);
+		
 		
 		return redirect($customer->path());
 	}
@@ -85,8 +92,8 @@ class NotesController extends Controller
 			
 			return 200;
 		}
-
-//		$note->delete();
+		
+		$note->delete();
 
 //		return back();
 //		if (request()->expectsJson()) {

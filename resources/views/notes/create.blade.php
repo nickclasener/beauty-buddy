@@ -5,9 +5,7 @@
 				data-create-url="{{ route('notities.store', $customer) }}"
 				data-create-customer="{{ $customer }}"
 				data-action="submit->create#submit"
-
-
->@csrf
+>  @method('POST')@csrf
 	<div class=" border-b border-buddy-teal-light focus-within:border-buddy-teal-dark pt-10 pl-10 pr-10">
 	<textarea type="text"
 						class="resize-none w-full"
@@ -19,7 +17,6 @@ Zijn er veder noemenswaardigheden"
 						value="{{ old('body') }}"
 						required
 	></textarea>
-		@method('POST')@csrf
 		
 		<hr>
 		<button type="submit"

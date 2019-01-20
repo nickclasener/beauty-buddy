@@ -51,10 +51,12 @@ Route::group(['middleware' => 'auth'], function () {
 		
 		return compact('note');
 	});
-	Route::get('klanten/{customer}/notities', 'NotesController@index')->name('notities.index');
+	
 	Route::delete('/notities/{note}', 'NotesController@destroy')->name('notities.destroy');
 	Route::get('klanten/{customer}/notities/nieuw', 'NotesController@create')->name('notities.create');
-	Route::get('klanten/{customer}/notities/{notes}', 'NotesController@show')->name('notities.show');
+	Route::get('klanten/{customer}/notities', 'NotesController@show')->name('notities.show');
+	Route::get('klanten/{customer}/notities', 'NotesController@index')->name('notities.index');
+//	Route::get('klanten/{customer}/notities/{notes}', 'NotesController@show')->name('notities.show');
 	Route::get('klanten/{customer}/notities/{notes}/bewerken', 'NotesController@edit')->name('notities.edit');
 	Route::post('klanten/{customer}/notities', 'NotesController@store')->name('notities.store');
 	Route::match([
@@ -72,6 +74,5 @@ Route::group(['middleware' => 'auth'], function () {
 					'put',
 					'patch',
 	], 'klanten/{customer}/intake/{intake}', 'IntakeController@update')->name('intake.update');
-	
 	
 });
