@@ -46,7 +46,7 @@ class NotesController extends Controller
 							'body'    => request('body'),
 			]);
 			
-			return view('notes.show', compact('customer'));
+			return view('notes._index', compact('customer'));
 			
 		}
 		

@@ -2,8 +2,6 @@ import { Controller } from "stimulus";
 
 export class NotesController extends Controller
 {
-
-
 	getControllerByIdentifier( identifier ) {
 		return this.application.controllers.find(controller => {
 			return controller.context.identifier === identifier;
@@ -19,5 +17,4 @@ export class NotesController extends Controller
 			event.target.closest(parent).remove();
 		}
 	}
-
 }
