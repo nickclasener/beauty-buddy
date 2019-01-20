@@ -19,9 +19,9 @@ class CreateAIntakeForACustomerTest extends TestCase
 		
 		$customer = create(Customer::class, ['id' => 1]);
 		$this->get(route('intake.create', $customer))
-						->assertRedirect('/login');
+						->assertRedirect('login');
 		$this->post(route('intake.store', $customer))
-						->assertRedirect('/login');
+						->assertRedirect('login');
 	}
 	
 	/** @test */

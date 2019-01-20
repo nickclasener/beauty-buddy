@@ -10,6 +10,7 @@ use function view;
 
 class IntakeController extends Controller
 {
+	
 	/**
 	 * Display a listing of the resource.
 	 *

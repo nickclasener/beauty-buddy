@@ -25,8 +25,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/', function () {
 		return view('klanten.create');
 	});
-
-//	Route::get('/home', 'HomeController@index')->name('home');
+	
+	Route::get('/home', 'HomeController@index')->name('home');
 	// Klanten Routes
 	Route::get('klanten/search', function (CustomersRepository $repository) {
 		$customer = $repository->search((string) request('q'));
@@ -76,6 +76,10 @@ Route::group(['middleware' => 'auth'], function () {
 	], 'klanten/{customer}/intake/{intake}', 'IntakeController@update')->name('intake.update');
 	
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
