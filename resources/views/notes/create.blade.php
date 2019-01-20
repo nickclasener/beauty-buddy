@@ -1,9 +1,8 @@
-<form
-				action="{{ route('notities.store', $customer) }}"
-				method="POST"
-				data-controller="create"
-				data-create-url="{{ route('notities.store', $customer) }}"
-				data-action="submit->create#submit"
+<form action="{{ route('notities.store', $customer) }}"
+			method="POST"
+			data-controller="create"
+			data-create-url="{{ route('notities.store', $customer) }}"
+			data-action="submit->create#submit"
 >  @method('POST')@csrf
 	<div class=" border-b border-buddy-teal-light focus-within:border-buddy-teal-dark pt-10 pl-10 pr-10">
 	<textarea type="text"

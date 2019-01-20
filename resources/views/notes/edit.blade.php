@@ -15,7 +15,8 @@ Zijn er veder noemenswaardigheden"
 						required
 	>{{ old('body') ?: $note->body }}</textarea>
 		<button type="submit"
-						class=""
+						class="px-10 py-5 border rounded"
+		
 		>Voeg Notitie
 		</button>
 	</div>

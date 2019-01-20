@@ -1,4 +1,6 @@
-<div id="edit" data-controller="toggle">
+<div id="edit"
+		 data-controller="toggle"
+>
 	<p data-target="toggle.show"
 		 data-action="click->toggle#toggle"
 	>
@@ -7,7 +9,7 @@
 			 data-target="toggle.hidden"
 			 data-action="click->toggle#toggle"
 	>
-		@include('notes.edit')
+		@include('notes.edit',[$note])
 	</div>
 	<div class="flex justify-between">
 		<small class="font-hairline">{{ timeAmPm($note) }}</small>

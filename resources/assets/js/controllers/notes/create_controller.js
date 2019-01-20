@@ -7,13 +7,9 @@ export default class extends NotesController
 	submit( event ) {
 		event.preventDefault();
 		axios.post(this.data.get('url'), {
-			body: this.body
+			body: this.bodyTarget.value
 		}).then(response => {
-			this.element.innerHTML = response.data;
+			this.element.closest('#notes').innerHTML = response.data;
 		}).catch(error => console.log(error));
-	}
-
-	get body() {
-		return this.bodyTarget.value;
 	}
 }
