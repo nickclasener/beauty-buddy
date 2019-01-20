@@ -2,7 +2,7 @@ import { NotesController } from "./notes_controller";
 
 export default class extends NotesController
 {
-	static targets = [ "body", "notes" ];
+	static targets = [ "body" ];
 
 
 	submit( event ) {
@@ -11,6 +11,7 @@ export default class extends NotesController
 			body: this.body
 		})
 		     .then(response => {
+			     console.log(response);
 			     this.element.innerHTML = response.data;
 
 		     })

@@ -15,9 +15,9 @@
 					<div class="flex justify-between">
 						<small class="font-hairline">{{ timeAmPm($note) }}</small>
 						<div class="flex hidden">
-							<a href="{{ route('notities.edit',[$customer,$note->id]) }}"
-								 class="h-5"
-							>
+							{{--<a href="{{ route('notities.edit',[$note->id]) }}"--}}
+								 {{--class="h-5"--}}
+							{{-->--}}
 								@svg('icon-136-document-edit',['class'=>'ml-1 fill-current text-teal'])
 							</a>
 							<form action="{{  route('notities.destroy',$note) }}"

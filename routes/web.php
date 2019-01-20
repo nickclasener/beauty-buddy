@@ -23,10 +23,10 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/', function () {
-		return view('welcome');
+		return view('klanten.create');
 	});
-	
-	Route::get('/home', 'HomeController@index')->name('home');
+
+//	Route::get('/home', 'HomeController@index')->name('home');
 	// Klanten Routes
 	Route::get('klanten/search', function (CustomersRepository $repository) {
 		$customer = $repository->search((string) request('q'));
@@ -54,9 +54,9 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	Route::delete('/notities/{note}', 'NotesController@destroy')->name('notities.destroy');
 	Route::get('klanten/{customer}/notities/nieuw', 'NotesController@create')->name('notities.create');
-	Route::get('klanten/{customer}/notities', 'NotesController@show')->name('notities.show');
+//	Route::get('klanten/{customer}/notities', 'NotesController@show')->name('notities.show');
 	Route::get('klanten/{customer}/notities', 'NotesController@index')->name('notities.index');
-//	Route::get('klanten/{customer}/notities/{notes}', 'NotesController@show')->name('notities.show');
+	Route::get('klanten/{customer}/notities/{notes}', 'NotesController@show')->name('notities.show');
 	Route::get('klanten/{customer}/notities/{notes}/bewerken', 'NotesController@edit')->name('notities.edit');
 	Route::post('klanten/{customer}/notities', 'NotesController@store')->name('notities.store');
 	Route::match([
@@ -76,3 +76,7 @@ Route::group(['middleware' => 'auth'], function () {
 	], 'klanten/{customer}/intake/{intake}', 'IntakeController@update')->name('intake.update');
 	
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
