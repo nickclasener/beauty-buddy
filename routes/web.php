@@ -23,7 +23,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/', function () {
-		return view('welcome');
+		return view('klanten.create');
 	});
 	
 	Route::get('/home', 'HomeController@index')->name('home');
@@ -51,9 +51,11 @@ Route::group(['middleware' => 'auth'], function () {
 		
 		return compact('note');
 	});
-	Route::get('klanten/{customer}/notities', 'NotesController@index')->name('notities.index');
+	
 	Route::delete('/notities/{note}', 'NotesController@destroy')->name('notities.destroy');
 	Route::get('klanten/{customer}/notities/nieuw', 'NotesController@create')->name('notities.create');
+//	Route::get('klanten/{customer}/notities', 'NotesController@show')->name('notities.show');
+	Route::get('klanten/{customer}/notities', 'NotesController@index')->name('notities.index');
 	Route::get('klanten/{customer}/notities/{notes}', 'NotesController@show')->name('notities.show');
 	Route::get('klanten/{customer}/notities/{notes}/bewerken', 'NotesController@edit')->name('notities.edit');
 	Route::post('klanten/{customer}/notities', 'NotesController@store')->name('notities.store');
@@ -73,5 +75,12 @@ Route::group(['middleware' => 'auth'], function () {
 					'patch',
 	], 'klanten/{customer}/intake/{intake}', 'IntakeController@update')->name('intake.update');
 	
-	
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

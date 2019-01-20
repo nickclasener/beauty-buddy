@@ -12,7 +12,6 @@
 	<meta name="csrf-token"
 				content="{{ csrf_token() }}"
 	>
-	
 	<title>{{ config('app.name', 'Laravel') }}</title>
 	<!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}"
@@ -29,6 +28,7 @@
 	<link href="{{ asset('css/app.css') }}"
 				rel="stylesheet"
 	>
+	@routes
 </head>
 <body class="bg-bg font-sans text-base-font">
 <nav class="w-full h-15 bg-white mb-5">
@@ -41,11 +41,12 @@
 		>
 	</div>
 </nav>
-
+{{--@include('layouts.app3')--}}
 <div class="container mx-auto flex">
+	
 	<div class="bg-white w-1/3 mt-15 py-10 h-full">
 		<div class="flex flex-col items-center mb-5">
-			<a class="self-end bg-buddy-teal-light rounded-full w-15 h-15 flex justify-center mr-10"
+			<a class="self-end bg-buddy-teal-light rounded-full w-15 h-15 flex justify-center mr-9 "
 				 href="{{ route('klanten.edit',$customer) }}"
 			>@svg('icon-136-document-edit',['class'=>'ml-2 fill-current text-white self-center'])</a>
 			<div class="h-50 w-50 mb-5">
@@ -78,7 +79,7 @@
 				>
 				<button class="h-5 w-5"
 								data-action="clipboard#copy"
-				>@svg('icon-33-clipboard-add',['class'=>' -mt-2'],['class'=>' -mt-2'])
+				>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
 				</button>
 			</div>
 			
@@ -184,15 +185,12 @@
 		</div>
 	</div>
 	<div class="ml-5 w-2/3">
-		
-		@include('layouts._submenu',['customer'=>$customer])
-		
+		@if($customer!= null)
+			
+			@include('layouts._submenu',['customer'=>$customer])
+		@endif
 		<div class="w-full bg-white pb-10 mb-10">
 			@yield('content')
-{{--			@if($customer->notes != null)--}}
-				{{--@include('notes.create')--}}
-{{--				@include('klanten._notes', ['customer' => $customer])--}}
-			{{--@endif--}}
 		</div>
 	</div>
 </div>

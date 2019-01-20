@@ -11,7 +11,6 @@
   },
   "devDependencies": {
     "axios": "^0.18.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "browser-sync": "^2.23.6",
     "browser-sync-webpack-plugin": "2.0.1",
     "cross-env": "^5.1",
@@ -22,9 +21,14 @@
     "lodash": "^4.17.4",
     "moment": "^2.19.1",
     "popper.js": "^1.12",
-    "tailwindcss": "^0.5.1",
-    "turbolinks": "^5.1.1",
-    "vue": "^2.1.10",
-    "vue-router": "^3.0.1"
+    "resolve-url-loader": "^2.3.1",
+    "tailwindcss": "^0.7.3"
+  },
+  "dependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "jquery": "^3.3.1",
+    "jquery-ujs": "^1.2.2",
+    "stimulus": "^1.1.1",
+    "turbolinks": "^5.1.1"
   }
 }

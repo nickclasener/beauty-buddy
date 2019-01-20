@@ -4,27 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Note;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use function compact;
+use function redirect;
 use function view;
 
 class NotesController extends Controller
 {
 	
-	public function index(Customer $customer, Note $note)
+	public function index(Customer $customer)
 	{
 		return view('notes.index', compact('customer'));
 	}
 	
-	/**
-	 * @param Customer $customer
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
-	public function store(Customer $customer)
+	public function show(Customer $customer, Note $note)
+	{
+
+//		$note = Note::findOrFail($id);
+
+//		return view('notes.show', compact('customer', 'note'));
+		return view('notes.show', compact('customer'));
+	}
+	
+	public function store(Customer $customer, Request $request)
 	{
 		$validator = Validator::make(request()->all(), [
 						'body' => 'required',
-						'date' => 'nullable|date',
 		]);
 		
 		if ($validator->fails()) {
@@ -33,32 +39,44 @@ class NotesController extends Controller
 							->withInput();
 		}
 		
+		if (request()->ajax()) {
+			
+			$customer->addNote([
+							'user_id' => auth()->id(),
+							'body'    => request('body'),
+			]);
+			
+			return view('notes._index', compact('customer'));
+			
+		}
+		
 		$customer->addNote([
 						'user_id' => auth()->id(),
 						'body'    => request('body'),
-						'date'    => request('date'),
 		]);
+		
 		
 		return redirect($customer->path());
 	}
 	
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param Note $note
-	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
-	 */
 	public function update(Note $note)
 	{
 		$validator = Validator::make(request()->all(), [
 						'body' => 'required',
-						'date' => 'nullable|date',
 		]);
 		
 		if ($validator->fails()) {
 			return back()
 							->withErrors($validator)
 							->withInput();
+		}
+		
+		if (request()->ajax()) {
+			
+			$note->update(request()->all());
+			
+			return view('notes.show', compact('note'));
+			
 		}
 		
 		$note->update(request()->all());
@@ -66,11 +84,6 @@ class NotesController extends Controller
 		return redirect($note->customer->path());
 	}
 	
-	/**
-	 * @param Customer $customer
-	 * @param          $id
-	 * @return Note|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
 	public function edit(Customer $customer, $id)
 	{
 		
@@ -80,19 +93,27 @@ class NotesController extends Controller
 		return view('notes.edit', compact('note'));
 	}
 	
-	/**
-	 * @param Note $note
-	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
-	 * @throws \Exception
-	 */
 	public function destroy(Note $note)
 	{
-		$note->delete();
-		if (request()->expectsJson()) {
-			return response([
-							'responseURL' => $note->customer->path(),
-			]);
+		if (request()->ajax()) {
+			$note->delete();
+			
+			return 200;
 		}
+		
+		$note->delete();
+
+//		return back();
+//		if (request()->expectsJson()) {
+//			$note->delete();
+//
+////		return view('notes.index')->with($customer)->render();
+//			return response([
+//							'responsehtml' =>  view('notes.index')->render()->with($customer)
+//											->render()
+//							//							'responseURL' => $note->customer->path(),
+//			]);
+//		}
 		
 		return back();
 	}

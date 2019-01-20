@@ -8,6 +8,7 @@ use App\Note;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use function create;
+use function route;
 
 class ViewCustomersTest extends TestCase
 {
@@ -25,10 +26,14 @@ class ViewCustomersTest extends TestCase
 						'telefoon'      => '0564894576',
 						'mobiel'        => '0668598654',
 						'geboortedatum' => '20-12-1991',
-						'adres'         => 'laralane',
+						'straatnaam'    => 'laralane',
 						'huisnummer'    => '18',
 						'postcode'      => '5896 AB',
 						'plaats'        => 'Laraville',
+		]);
+		$this->note = create(Note::class, [
+						'customer_id' => $this->customer->id,
+						'body'        => 'This is body',
 		]);
 	}
 	
@@ -66,27 +71,38 @@ class ViewCustomersTest extends TestCase
 		create(Note::class, [
 						'customer_id' => $this->customer->id,
 						'body'        => 'This is body',
-						'date'        => '29-12-2018'],
+		],
 						2);
 		
 		$this->get($this->customer->path())
 						->assertStatus(200)
-						->assertSee('This is body')
-						->assertSee('29-12-2018');
+						->assertSee('This is body');
 	}
-
-//	/** @test */
-//	function a_user_can_view_multiple_notes_of_a_customer()
-//	{
-//		$this->signIn()->withExceptionHandling();
-////		create(Customer::class, ['id' => 1]);
-//		$note = create(Note::class, ['body' => 'foo', 'customer_id' => 1]);
-//		create(Note::class, ['body' => 'bar', 'customer_id' => 1]);
-//		create(Note::class, ['body' => 'baz', 'customer_id' => 1]);
-//		$this->get($note->basePath())
-//						->assertStatus(200)
-//						->assertSee('This is body');
-//	}
+	
+	/** @test */
+	function a_user_can_view_multiple_notes_of_a_customer()
+	{
+		$this->signIn()->withExceptionHandling();
+		$note = create(Note::class, [
+						'body'        => 'foo',
+						'customer_id' => 1,
+		]);
+		create(Note::class, [
+						'body'        => 'bar',
+						'customer_id' => 1,
+		]);
+		create(Note::class, [
+						'body'        => 'baz',
+						'customer_id' => 1,
+		]);
+//		dd($this->note->path());
+		$this->get(route('klanten.show', $this->customer))
+						->assertStatus(200)
+						->assertSee('This is body')
+						->assertSee('foo')
+						->assertSee('bar')
+						->assertSee('baz');
+	}
 	
 	/** @test */
 	function a_user_can_view_the_intake_of_a_customer()

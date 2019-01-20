@@ -37,12 +37,12 @@
 		
 		<hr>
 		
-		<label for="adres"
-		>Adres:</label>
+		<label for="straatnaam"
+		>Straatnaam:</label>
 		<input type="text"
-					 name="adres"
-					 placeholder="Adres"
-					 value="{{ old('adres') }}"
+					 name="straatnaam"
+					 placeholder="Straatnaam"
+					 value="{{ old('straatnaam') }}"
 		>
 		<hr>
 		

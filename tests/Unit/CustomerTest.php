@@ -70,7 +70,6 @@ class CustomerTest extends TestCase
 	{
 		$this->customer->addNote([
 						'body'    => 'FooBar',
-						'date'    => '20-20-1991',
 						'user_id' => 1,
 		]);
 		

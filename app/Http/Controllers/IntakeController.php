@@ -10,6 +10,7 @@ use function view;
 
 class IntakeController extends Controller
 {
+	
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -26,7 +27,7 @@ class IntakeController extends Controller
 	 * @param $customer
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function create($customer)
+	public function create(Customer $customer)
 	{
 		return view('intake.create', compact('customer'));
 	}
