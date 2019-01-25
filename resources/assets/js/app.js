@@ -11,7 +11,7 @@ require('./bootstrap');
 
 import { Application } from "stimulus";
 import { definitionsFromContext } from "stimulus/webpack-helpers";
-
+//:TODO refactor stimulus to nested controllers... Look into mutation-observers
 const application = Application.start();
 const context = require.context("./controllers", true, /\.js$/);
 // const notes = require.context("./controllers/notes", true, /\.js$/);
