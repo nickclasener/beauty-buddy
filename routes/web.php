@@ -76,11 +76,3 @@ Route::group(['middleware' => 'auth'], function () {
 	], 'klanten/{customer}/intake/{intake}', 'IntakeController@update')->name('intake.update');
 	
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

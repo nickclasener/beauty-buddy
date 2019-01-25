@@ -110,6 +110,9 @@
 								</form>
 							</div>
 						</li>
+						<li>
+							<a href="{{ route('klanten.create') }}">Nieuwe Klant</a>
+						</li>
 					@endguest
 				</ul>
 			</div>

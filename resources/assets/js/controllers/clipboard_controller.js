@@ -9,5 +9,4 @@ export default class extends Controller
 		this.sourceTarget.select();
 		document.execCommand("copy");
 	}
-
 }

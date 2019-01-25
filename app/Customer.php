@@ -112,3 +112,4 @@ class Customer extends Model
 		return $this->intake()->update($intake);
 	}
 }
+

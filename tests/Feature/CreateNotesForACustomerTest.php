@@ -16,8 +16,9 @@ class CreateNotesForACustomerTest extends TestCase
 	{
 		parent::setUp();
 		
-		$this->customer = create(Customer::class, ['id'   => 1,
-																							 'naam' => 'john doe',
+		$this->customer = create(Customer::class, [
+						'id'   => 1,
+						'naam' => 'john doe',
 		]);
 		$this->note = create(Note::class, [
 						'id'          => 1,
@@ -25,8 +26,9 @@ class CreateNotesForACustomerTest extends TestCase
 						'body'        => 'Foo',
 		]);
 		
-		create(Note::class, ['id'          => 2,
-												 'customer_id' => 1,
+		create(Note::class, [
+						'id'          => 2,
+						'customer_id' => 1,
 		]);
 	}
 	
@@ -88,5 +90,7 @@ class CreateNotesForACustomerTest extends TestCase
 		$this->assertDatabaseHas('notes', ['id' => 2]);
 		$this->assertDatabaseHas('customers', ['id' => 1]);
 	}
+	
+	
 }
 

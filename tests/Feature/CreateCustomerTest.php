@@ -38,6 +38,7 @@ class CreateCustomerTest extends TestCase
 						->assertSee($customer->mobiel)
 						->assertSee($customer->email)
 						->assertSee($customer->geboortedatum);
+		
 	}
 	
 	/** @test */

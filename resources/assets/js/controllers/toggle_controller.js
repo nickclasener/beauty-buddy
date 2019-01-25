@@ -4,10 +4,8 @@ export default class extends Controller
 {
 	static targets = [ "show", "hidden" ];
 
-	toggle( event ) {
+	toggle() {
 		this.showTarget.classList.toggle('hidden');
 		this.hiddenTarget.classList.toggle('hidden');
-		// event.stopPropagation();
 	}
-
 }
