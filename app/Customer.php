@@ -7,109 +7,85 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-//	use Searchable;
 	use Sluggable;
-	
-	/**
-	 * @var array
-	 */
-	protected $guarded = ['id'];
-	
-	protected static function boot()
-	{
-		parent::boot();
-		static::deleting(function ($customer) {
-			$customer->notes()->delete();
-		});
-	}
-	
-	/**
-	 * @return array
-	 */
-	public function sluggable()
+	protected $guarded = [ 'id' ];
+
+	public function sluggable ()
 	{
 		return [
-						'slug' => [
-										'source' => 'naam',
-						],
+				'slug' => [
+						'source' => 'naam',
+				],
 		];
 	}
-	
-	/**
-	 * @return string
-	 */
-	public function getRouteKeyName()
+
+	public function pathNotes ()
 	{
-		return 'slug';
+		return $this->path() . 'notities';
 	}
-	
-	/**
-	 * @return string
-	 */
-	public function path()
+
+	public function path ()
 	{
-		return "klanten/" . $this->slug;
+		return 'klanten/' . $this->slug;
 	}
-	
-	public function pathNotes()
-	{
-		return $this->path() . "/notities";
-	}
-	
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function creator()
+
+	public function creator ()
 	{
 		return $this->belongsTo(User::class, 'user_id');
 	}
-	
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function notes()
+
+	public function monthYearNotes ()
 	{
-		return $this->hasMany(Note::class);
-	}
-	
-	public function monthYearNotes()
-	{
-		return $this->notes->sortByDesc('created_at')->groupBy(function ($notes) {
+		return $this->notes->sortByDesc('created_at')->groupBy(function ( $notes ) {
 			return $notes->created_at->format('F, Y');
 		});
 	}
-	
-	public function huidanalyses()
+
+	public function huidanalyses ()
 	{
 		return $this->hasMany(Huidanalyse::class);
 	}
-	
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
-	 */
-	public function intake()
-	{
-		return $this->hasOne(Intake::class);
-	}
-	
-	public function addNote($note)
+
+	public function addNote ( $note )
 	{
 		return $this->notes()->create($note);
 	}
-	
-	public function addIntake($intake)
+
+	public function notes ()
+	{
+		return $this->hasMany(Note::class);
+	}
+
+	public function addIntake ( $intake )
 	{
 		return $this->intake()->create($intake);
 	}
-	
-	public function deleteIntake()
+
+	public function intake ()
+	{
+		return $this->hasOne(Intake::class);
+	}
+
+	public function deleteIntake ()
 	{
 		return $this->intake()->delete();
 	}
-	
-	public function updateIntake($intake)
+
+	public function updateIntake ( $intake )
 	{
 		return $this->intake()->update($intake);
 	}
-}
 
+	protected static function boot ()
+	{
+		parent::boot();
+		static::deleting(function ( $customer ) {
+			$customer->notes()->delete();
+		});
+	}
+
+	public function getRouteKeyName ()
+	{
+		return 'slug';
+	}
+}

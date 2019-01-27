@@ -20,6 +20,7 @@
 		<label for="email"
 		>Email:</label>
 		<input type="text"
+					 class="h-2"
 					 name="email"
 					 placeholder="Email"
 					 value="{{ old('email') }}"

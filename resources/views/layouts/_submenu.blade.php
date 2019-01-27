@@ -1,15 +1,15 @@
 <div class="h-15 w-full bg-green-lightest flex justify-around items-center">
 	<a class=" no-underline"
-		 {{--href="{{ route('notities.index', $customer) }}"--}}
-		 href=""
+	   {{--href="{{ route('notities.index', $customer) }}"--}}
+	   href=""
 	>Notes</a>
 	<a class=" no-underline"
-		 href=""
+	   href=""
 	>Huidanalyse</a>
 	<a class=" no-underline"
-		 href=""
+	   href=""
 	>Product Advies</a>
 	<a class=" no-underline"
-		 href=""
+	   href=""
 	>Intake</a>
 </div>

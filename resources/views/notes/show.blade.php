@@ -25,7 +25,7 @@
 					>
 						@svg('icon-136-document-edit',['class'=>'ml-1 fill-current text-teal'])
 					</button>
-					<form action="{{  route('notities.destroy',$note) }}"
+					<form action="{{ route('notities.destroy',$note) }}"
 								method="POST"
 								data-action="note#delete monthyear#update"
 					>
