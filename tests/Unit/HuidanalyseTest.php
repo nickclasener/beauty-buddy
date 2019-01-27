@@ -3,15 +3,15 @@
 namespace Tests\Unit;
 
 use App\Customer;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class HuidanalyseTest extends TestCase
 {
 //	use RefreshDatabase;
-//		/** @test */
-//	function a_note_belongs_to_a_customer()
+//
+//	/** @test */
+//	function a_note_belongs_to_a_customer ()
 //	{
 //		$this->assertInstanceOf(Customer::class, $this->note->customer);
 //	}
