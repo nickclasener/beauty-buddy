@@ -7,8 +7,8 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          cacheResult="true"
+         executionOrder="defects,reverse"
          processIsolation="false"
-         printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer"
          stopOnFailure="true">
     <testsuites>
         <testsuite name="Feature">

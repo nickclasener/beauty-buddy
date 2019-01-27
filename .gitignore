@@ -13,11 +13,11 @@ npm-debug.log
 yarn-error.log
 .env
 .phpunit.result.cache
+_ide_helper.php
+.phpstorm.meta.php
 GPATH
 GRTAGS
 GTAGS
 tags
 tags.lock
 tags.temp
-_ide_helper.php
-.phpstorm.meta.php

@@ -21,7 +21,7 @@ class Customer extends Model
 
 	public function pathNotes ()
 	{
-		return $this->path() . 'notities';
+		return $this->path() . '/notities';
 	}
 
 	public function path ()
