@@ -32,16 +32,16 @@ Route::group([ 'middleware' => 'auth' ], function () {
 
 		return compact('customer');
 	});
-	Route::get('klanten', 'CustomersController@index')->name('klanten.index');
-	Route::delete('klanten/{customer}', 'CustomersController@destroy')->name('klanten.destroy');
-	Route::get('klanten/nieuw', 'CustomersController@create')->name('klanten.create');
-	Route::get('klanten/{customer}', 'CustomersController@show')->name('klanten.show');
-	Route::post('klanten', 'CustomersController@store')->name('klanten.store');
-	Route::get('klanten/{customer}/bewerken', 'CustomersController@edit')->name('klanten.edit');
+	Route::get('klanten', 'CustomerController@index')->name('klanten.index');
+	Route::delete('klanten/{customer}', 'CustomerController@destroy')->name('klanten.destroy');
+	Route::get('klanten/nieuw', 'CustomerController@create')->name('klanten.create');
+	Route::get('klanten/{customer}', 'CustomerController@show')->name('klanten.show');
+	Route::post('klanten', 'CustomerController@store')->name('klanten.store');
+	Route::get('klanten/{customer}/bewerken', 'CustomerController@edit')->name('klanten.edit');
 	Route::match([
 			'PATCH',
 			'PUT',
-	], 'klanten/{customer}', 'CustomersController@update')->name('klanten.update');
+	], 'klanten/{customer}', 'CustomerController@update')->name('klanten.update');
 
 	// Notitie Routes
 	Route::get('klanten/{customer}/notities/search', function ( NotesRepository $repository ) {
@@ -51,17 +51,43 @@ Route::group([ 'middleware' => 'auth' ], function () {
 		return compact('note');
 	});
 
-	Route::delete('notities/{note}', 'NotesController@destroy')->name('notities.destroy');
-	Route::get('klanten/{customer}/notities/nieuw', 'NotesController@create')->name('notities.create');
-	//	Route::get('klanten/{customer}/notities', 'NotesController@show')->name('notities.show');
-	Route::get('klanten/{customer}/notities', 'NotesController@index')->name('notities.index');
-	Route::get('klanten/{customer}/notities/{notes}', 'NotesController@show')->name('notities.show');
-	Route::get('klanten/{customer}/notities/{notes}/bewerken', 'NotesController@edit')->name('notities.edit');
-	Route::post('klanten/{customer}/notities', 'NotesController@store')->name('notities.store');
+	Route::delete('notities/{note}', 'NoteController@destroy')->name('notities.destroy');
+	Route::get('klanten/{customer}/notities/nieuw', 'NoteController@create')->name('notities.create');
+	//	Route::get('klanten/{customer}/notities', 'NoteController@show')->name('notities.show');
+	Route::get('klanten/{customer}/notities', 'NoteController@index')->name('notities.index');
+	Route::get('klanten/{customer}/notities/{notes}', 'NoteController@show')->name('notities.show');
+	Route::get('klanten/{customer}/notities/{notes}/bewerken', 'NoteController@edit')->name('notities.edit');
+	Route::post('klanten/{customer}/notities', 'NoteController@store')->name('notities.store');
 	Route::match([
 			'put',
 			'patch',
-	], '/notities/{note}', 'NotesController@update')->name('notities.update');
+	], '/notities/{note}', 'NoteController@update')->name('notities.update');
+
+	// Huidanalyses Routes
+	Route::get('klanten/{customer}/huidanalyses/{huidanalyse}', 'HuidanalyseController@show')->name('huidanalyses.show');
+	Route::get('klanten/{customer}/huidanalyses', 'HuidanalyseController@index')->name('huidanalyses.index');
+	Route::delete('huidanalyses/{huidanalyse}', 'HuidanalyseController@destroy')->name('huidanalyses.destroy');
+	Route::get('klanten/{customer}/huidanalyses/{huidanalyse}/bewerken', 'HuidanalyseController@edit')
+	     ->name('huidanalyses.edit');
+	Route::post('klanten/{customer}/huidanalyses', 'HuidanalyseController@store')->name('huidanalyses.store');
+	Route::match([
+			'put',
+			'patch',
+	], '/huidanalyses/{huidanalyse}', 'HuidanalyseController@update')->name('huidanalyses.update');
+
+	// DailyAdvice Routes
+	//	Route::get('klanten/{customer}/dagelijks-advies/nieuw', 'DailyAdviceController@create')->name('dailyadvice.create');
+	Route::get('klanten/{customer}/dagelijks-advies/{dailyAdvice}', 'DailyAdviceController@show')
+	     ->name('dailyadvice.show');
+	Route::get('klanten/{customer}/dagelijks-advies', 'DailyAdviceController@index')->name('dailyadvice.index');
+	Route::delete('dagelijks-advies/{dailyAdvice}', 'DailyAdviceController@destroy')->name('dailyadvice.destroy');
+	Route::post('klanten/{customer}/dagelijks-advies', 'DailyAdviceController@store')->name('dailyadvice.store');
+	Route::get('klanten/{customer}/dagelijks-advies/{dailyAdvice}/bewerken', 'DailyAdviceController@edit')
+	     ->name('dailyadvice.edit');
+	Route::match([
+			'put',
+			'patch',
+	], '/dagelijks-advies/{dailyAdvice}', 'DailyAdviceController@update')->name('dailyadvice.update');
 
 	// Intake Routes
 	Route::post('klanten/{customer}/intake', 'IntakeController@store')->name('intake.store');

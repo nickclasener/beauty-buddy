@@ -1,0 +1,11 @@
+watch:
+  directories:
+    - app
+    - database
+    - tests
+    - resources
+    - routes
+  fileMask: '*.php'
+phpunit:
+  binaryPath: vendor/bin/phpunit
+  arguments: '--stop-on-failure'

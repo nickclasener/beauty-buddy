@@ -3,21 +3,63 @@
 namespace Tests\Feature;
 
 use App\Customer;
+use App\DailyAdvice;
+use App\Huidanalyse;
+use App\Intake;
+use App\Note;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use function create;
 
-/**
- * @internal
- * @coversNothing
- */
-final class UpdateCustomerTest extends TestCase
+class UpdateCustomerTest extends TestCase
 {
 	use RefreshDatabase;
+	private $customer;
+	private $dailyAdvice;
+	private $huidanalyse;
+	private $intake;
+	private $note;
 
-	public function testAnAuthenticatedUserCanUpdateACustomer ()
+	public function setUp ()
 	{
-		$this->signIn()->withoutExceptionHandling();
+		parent::setUp();
+		$this->signIn();
+		$this->customer = create(Customer::class, [
+				'naam'          => 'example example',
+				'email'         => 'example@hotmail.com',
+				'geboortedatum' => '22-09-1960',
+				'straatnaam'    => 'lararoad',
+				'huisnummer'    => '8',
+				'postcode'      => '4543lv',
+				'plaats'        => 'laraville',
+				'telefoon'      => '0316484247',
+				'mobiel'        => '1234567893',
+		]);
+		$this->intake = create(Intake::class, [
+				'id'          => 1,
+				'customer_id' => $this->customer->id,
+				'behandeling' => 'A falsis, parma teres poeta.',
+		]);
+		$this->note = create(Note::class, [
+				'id'          => 1,
+				'customer_id' => $this->customer->id,
+				'body'        => 'A falsis, parma teres poeta.',
+		]);
+		$this->huidanalyse = create(Huidanalyse::class, [
+				'id'          => 1,
+				'customer_id' => $this->customer->id,
+				'body'        => 'Original huidanalyse',
+		]);
+		$this->dailyAdvice = create(DailyAdvice::class, [
+				'customer_id' => $this->customer->id,
+				'morning'     => 'Original Ochtend',
+				'midday'      => 'Original Middag',
+				'evening'     => 'Original Avond',
+		]);
+	}
+
+	/** @test */
+	public function an_authenticated_user_can_update_a_customer ()
+	{
 		$customer = make(Customer::class, [
 				'naam'          => 'My new Name',
 				'email'         => 'mynewemail@email.com',
@@ -31,8 +73,7 @@ final class UpdateCustomerTest extends TestCase
 		]);
 
 		$response = $this->put($this->customer->path(), $customer->toArray());
-		//		dd($response);
-		//		dd($this->get($response->headers));
+
 		$this->get($response->headers->get('Location'))
 		     ->assertSee('my-new-name')
 		     ->assertSee('My new Name')
@@ -46,9 +87,10 @@ final class UpdateCustomerTest extends TestCase
 		     ->assertSee('20-12-1991');
 	}
 
-	public function testAnAuthenticatedUserCanEditACustomer ()
+	/** @test */
+	public function an_authenticated_user_can_edit_a_customer ()
 	{
-		$this->signIn()->get($this->customer->path() . '/bewerken')
+		$this->get($this->customer->path() . '/bewerken')
 		     ->assertStatus(200)
 		     ->assertSee('example example')
 		     ->assertSee('example@hotmail.com')
@@ -61,18 +103,8 @@ final class UpdateCustomerTest extends TestCase
 		     ->assertSee('1234567893');
 	}
 
-	public function testAnUnauthenticatedUserCannnotUpdateACustomer ()
-	{
-		$this->withExceptionHandling();
-
-		$this->get($this->customer->path() . '/bewerken')
-		     ->assertRedirect('/login');
-
-		$this->patch($this->customer->path(), $this->customer->toArray())
-		     ->assertRedirect('/login');
-	}
-
-	public function testACustomerRequiresANaam ()
+	/** @test */
+	public function a_customer_requires_a_naam ()
 	{
 		$this->updateCustomer([ 'naam' => null ])
 		     ->assertSessionHasErrors('naam');
@@ -80,39 +112,72 @@ final class UpdateCustomerTest extends TestCase
 
 	protected function updateCustomer ( $overrides )
 	{
-		$this->withExceptionHandling()->signIn();
-
 		$customer = make(Customer::class, $overrides);
 
 		return $this->put($this->customer->path(), $customer->toArray());
 	}
 
-	public function testACustomerRequiresAEmail ()
+	/** @test */
+	public function a_customer_requires_a_email ()
 	{
 		$this->updateCustomer([ 'email' => null ])
 		     ->assertSessionHasErrors('email');
 	}
 
-	public function testACustomerBirthdayIsADateFormat ()
+	/** @test */
+	public function a_customer_birthday_is_a_date_format ()
 	{
 		$this->updateCustomer([ 'geboortedatum' => 'string' ])
 		     ->assertSessionHasErrors('geboortedatum');
 	}
 
-	protected function setUp ()
+	/** @test */
+	function an_authenticated_user_can_update_a_note_of_a_customer ()
 	{
-		parent::setUp();
-
-		$this->customer = create(Customer::class, [
-				'naam'          => 'example example',
-				'email'         => 'example@hotmail.com',
-				'geboortedatum' => '22-09-1960',
-				'straatnaam'    => 'lararoad',
-				'huisnummer'    => '8',
-				'postcode'      => '4543lv',
-				'plaats'        => 'laraville',
-				'telefoon'      => '0316484247',
-				'mobiel'        => '1234567893',
+		$note = make(Note::class, [
+				'id'   => $this->note->id,
+				'body' => 'Cur historia congregabo?',
 		]);
+		$response = $this->put(route('notities.update', $this->note), $note->toArray());
+
+		$this->get($response->headers->get('Location'))
+		     ->assertSee('Cur historia congregabo?');
+
 	}
+
+	/** @test */
+	function an_authenticated_user_can_edit_a_note ()
+	{
+		$response = $this->get(route('notities.edit', [
+				$this->customer,
+				$this->note->id,
+		]));
+		$response->assertStatus(200)
+		         ->assertSee('A falsis, parma teres poeta.');
+	}
+
+	/** @test */
+	function an_authenticated_user_can_update_a_huidanalyse_of_a_customer ()
+	{
+		$huidanalyse = make(Huidanalyse::class, [
+				'body' => 'Updated Huidanalyse',
+		]);
+
+		$response = $this->put(route('huidanalyses.update', $this->huidanalyse), $huidanalyse->toArray());
+		$this->get($response->headers->get('Location'))
+		     ->assertSee('Updated Huidanalyse');
+
+	}
+
+	/** @test */
+	function an_authenticated_user_can_edit_a_huidanalyse ()
+	{
+		$response = $this->get(route('huidanalyses.edit', [
+				$this->customer,
+				$this->huidanalyse->id,
+		]));
+		$response->assertStatus(200)
+		         ->assertSee('Original huidanalyse');
+	}
+
 }

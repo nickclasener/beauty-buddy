@@ -6,15 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
 {
-	//	use Searchable;
-
 	protected $guarded = [];
 	protected $with    = [ 'creator' ];
-
-	protected static function boot ()
-	{
-		parent::boot();
-	}
 
 	public function path ()
 	{
@@ -29,7 +22,6 @@ class Note extends Model
 	public function creator ()
 	{
 		return $this->belongsTo(User::class, 'user_id');
-
 	}
 
 	public function customer ()

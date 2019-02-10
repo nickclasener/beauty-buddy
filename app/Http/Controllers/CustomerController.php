@@ -8,13 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use function compact;
 use function route;
 
-class CustomersController extends Controller
+class CustomerController extends Controller
 {
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\View\View
-	 */
 	public function index ()
 	{
 		//		$customers = Customer::paginate(10)->sortBy('naam');
@@ -24,22 +19,11 @@ class CustomersController extends Controller
 		return view('klanten.index', compact('customers'));
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
 	public function create ()
 	{
 		return view('klanten.create');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\JsonResponse
-	 */
 	public function store ( Request $request )
 	{
 		$validator = Validator::make($request->all(), [
@@ -67,38 +51,19 @@ class CustomersController extends Controller
 				'geboortedatum' => request('geboortedatum'),
 		]);
 
-		return redirect($customer->path());
+		return redirect(route('notities.index', $customer));
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param Customer $customer
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
-	 */
 	public function show ( Customer $customer )
 	{
 		return view('notes.index', compact('customer'));
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param Customer $customer
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
 	public function edit ( Customer $customer )
 	{
 		return view('klanten.edit', compact('customer'));
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param Customer                  $customer
-	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
-	 */
 	public function update ( Request $request, Customer $customer )
 	{
 		$validator = Validator::make($request->all(), [
@@ -118,13 +83,6 @@ class CustomersController extends Controller
 		return redirect(route('klanten.show', $customer));
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param Customer $customer
-	 * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-	 * @throws \Exception
-	 */
 	public function destroy ( Customer $customer )
 	{
 		$customer->delete();

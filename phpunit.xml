@@ -7,9 +7,10 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          cacheResult="true"
-         executionOrder="defects,reverse"
          processIsolation="false"
-         stopOnFailure="true">
+         stopOnFailure="true"
+         executionOrder="defects"
+>
     <testsuites>
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>

@@ -14,9 +14,23 @@ if ( ! function_exists('timeAmPm') ) {
 	}
 }
 
-if ( ! function_exists('set_active') ) {
-	function set_active ( $uri, $class )
+if ( ! function_exists('active_route_set_class') ) {
+	function active_route_set_class ( $uri, $class = null )
 	{
-		return Request::is($uri) ? $class : '';
+		//		$uri = ltrim($uri, '/');
+		//		dd($uri);
+		//		dd(Route::currentRouteName());
+		//		dd(request()->path());
+		//		dd(ltrim($uri, '/'));
+
+		return Route::is($uri) ? $class : 'inactive';
+		//		return Route::is($uri) ? $class : 'inactive';
+	}
+}
+
+if ( ! function_exists('checkbox') ) {
+	function checkbox ( $boolean )
+	{
+		return $boolean ? 'checked' : '';
 	}
 }

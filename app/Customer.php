@@ -10,6 +10,22 @@ class Customer extends Model
 	use Sluggable;
 	protected $guarded = [ 'id' ];
 
+	public function getRouteKeyName ()
+	{
+		return 'slug';
+	}
+
+	protected static function boot ()
+	{
+		parent::boot();
+		static::deleting(function ( $customer ) {
+			$customer->notes()->delete();
+			$customer->intake()->delete();
+			$customer->huidanalyses()->delete();
+			$customer->dailyAdvices()->delete();
+		});
+	}
+
 	public function sluggable ()
 	{
 		return [
@@ -41,11 +57,6 @@ class Customer extends Model
 		});
 	}
 
-	public function huidanalyses ()
-	{
-		return $this->hasMany(Huidanalyse::class);
-	}
-
 	public function addNote ( $note )
 	{
 		return $this->notes()->create($note);
@@ -56,14 +67,48 @@ class Customer extends Model
 		return $this->hasMany(Note::class);
 	}
 
-	public function addIntake ( $intake )
+	public function monthYearHuidanalyses ()
 	{
-		return $this->intake()->create($intake);
+		return $this->huidanalyses->sortByDesc('created_at')->groupBy(function ( $huidanalyses ) {
+			return $huidanalyses->created_at->format('F, Y');
+		});
 	}
 
-	public function intake ()
+	public function addHuidanalyse ( $huidanalyse )
 	{
-		return $this->hasOne(Intake::class);
+		return $this->huidanalyses()->create($huidanalyse);
+	}
+
+	public function huidanalyses ()
+	{
+		return $this->hasMany(Huidanalyse::class);
+	}
+
+	//	public function updateDailyAdvice ( $dailyAdvice )
+	//	{
+	//		return $this->dailyAdvices()->update($dailyAdvice);
+	//	}
+
+	public function monthYearDailyAdvices ()
+	{
+		return $this->dailyAdvices->sortByDesc('created_at')->groupBy(function ( $dailyAdvices ) {
+			return $dailyAdvices->created_at->format('F, Y');
+		});
+	}
+
+	public function addDailyAdvice ( $dailyAdvice )
+	{
+		return $this->dailyAdvices()->create($dailyAdvice);
+	}
+
+	public function dailyAdvices ()
+	{
+		return $this->hasMany(DailyAdvice::class);
+	}
+
+	public function deleteDailyAdvice ()
+	{
+		return $this->dailyAdvices()->delete();
 	}
 
 	public function deleteIntake ()
@@ -71,21 +116,18 @@ class Customer extends Model
 		return $this->intake()->delete();
 	}
 
+	public function intake ()
+	{
+		return $this->hasOne(Intake::class);
+	}
+
+	public function addIntake ( $intake )
+	{
+		return $this->intake()->create($intake);
+	}
+
 	public function updateIntake ( $intake )
 	{
 		return $this->intake()->update($intake);
-	}
-
-	protected static function boot ()
-	{
-		parent::boot();
-		static::deleting(function ( $customer ) {
-			$customer->notes()->delete();
-		});
-	}
-
-	public function getRouteKeyName ()
-	{
-		return 'slug';
 	}
 }
