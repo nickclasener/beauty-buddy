@@ -5,7 +5,7 @@
 	<a class="no-underline px-12 py-5 {{ active_route_set_class('huidanalyses.index','active') }}"
 	   href="{{ route('huidanalyses.index', $customer) }}"
 	>Huidanalyse</a>
-	<a class="no-underline px-12 py-5 {{ active_route_set_class('dailyadvice','active') }}"
+	<a class="no-underline px-12 py-5 {{ active_route_set_class('dailyadvice.index','active') }}"
 	   href="{{ route('dailyadvice.index', [$customer]) }}"
 	>Product Advies</a>
 	<a class="no-underline px-12 py-5 {{ active_route_set_class('active') }}"

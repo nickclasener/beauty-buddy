@@ -111,6 +111,9 @@
 							</div>
 						</li>
 						<li>
+							<a href="{{ route('klanten.index') }}">Klanten</a>
+						</li>
+						<li>
 							<a href="{{ route('klanten.create') }}">Nieuwe Klant</a>
 						</li>
 					@endguest

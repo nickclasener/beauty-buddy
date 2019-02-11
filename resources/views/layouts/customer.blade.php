@@ -45,7 +45,7 @@
 <div class="container mx-auto flex">
 	<div class="bg-white w-1/3 my-15 py-10 h-full">
 		<div class="flex flex-col items-center mb-5">
-			<a class="self-end bg-buddy-teal-light rounded-full w-15 h-15 flex justify-center mr-9 "
+			<a class="self-end bg-buddy-lightest rounded-full w-15 h-15 flex justify-center mr-9 "
 			   href="{{ route('klanten.edit',$customer) }}"
 			>@svg('icon-136-document-edit',['class'=>'ml-2 fill-current text-white self-center'])</a>
 			<div class="h-50 w-50 mb-5">

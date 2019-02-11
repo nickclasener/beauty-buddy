@@ -42,19 +42,19 @@ class DailyAdviceOfCustomerTest extends TestCase
 		     ->assertSee('Avond');
 	}
 
-	//	/** @test */
-	//	function an_authenticated_user_can_create_a_daily_advice_for_a_customer ()
-	//	{
-	//		//		$response = $this->withoutExceptionHandling()->get(route('dailyadvice.create', [
-	//		$response = $this->get(route('dailyadvice.create', [
-	//				$this->customer,
-	//		]));
-	//
-	//		$response->assertStatus(200)
-	//		         ->assertSee('name="morning"')
-	//		         ->assertSee('name="midday"')
-	//		         ->assertSee('name="evening"');
-	//	}
+		/** @test */
+	function an_authenticated_user_can_create_a_daily_advice_for_a_customer ()
+	{
+		//		$response = $this->withoutExceptionHandling()->get(route('dailyadvice.create', [
+		$response = $this->get(route('dailyadvice.create', [
+				$this->customer,
+		]));
+
+		$response->assertStatus(200)
+		         ->assertSee('name="morning"')
+		         ->assertSee('name="midday"')
+		         ->assertSee('name="evening"');
+	}
 
 	/** @test */
 	function a_authenticated_user_can_add_a_daily_advice_to_a_customer ()
