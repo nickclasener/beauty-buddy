@@ -48,10 +48,10 @@ class IntakeOfCustomerTest extends TestCase
 	/** @test */
 	function a_authenticated_user_can_add_a_intake_to_a_customer ()
 	{
+		$this->withoutExceptionHandling();
 		$intake = make(Intake::class, [ 'customer_id' => $this->customer2->id ]);
 
 		$response = $this->post(route('intake.store', $this->customer2), $intake->toArray());
-
 		$this->get($response->headers->get('Location'))
 		     ->assertSee($intake->behandeling)
 		     ->assertSee($intake->huidverbetering)
@@ -66,18 +66,18 @@ class IntakeOfCustomerTest extends TestCase
 		     ->assertSee($intake->huidschimmel)
 		     ->assertSee($intake->ipl)
 		     ->assertSee($intake->kanker)
-		     ->assertSee($intake->bestraling)
-		     ->assertSee($intake->chemo)
-		     ->assertSee($intake->immunotherapie)
+		     ->assertSee(checkbox($intake->bestraling))
+		     ->assertSee(checkbox($intake->chemo))
+		     ->assertSee(checkbox($intake->immunotherapie))
 		     ->assertSee($intake->laser)
 		     ->assertSee($intake->medicatie)
 		     ->assertSee($intake->operaties)
 		     ->assertSee($intake->zon)
-		     ->assertSee($intake->koortslip)
-		     ->assertSee($intake->roken)
-		     ->assertSee($intake->overgang)
-		     ->assertSee($intake->psoriasis)
-		     ->assertSee($intake->vitrigilo)
-		     ->assertSee($intake->zwanger);
+		     ->assertSee(checkbox($intake->koortslip))
+		     ->assertSee(checkbox($intake->roken))
+		     ->assertSee(checkbox($intake->overgang))
+		     ->assertSee(checkbox($intake->psoriasis))
+		     ->assertSee(checkbox($intake->vitrigilo))
+		     ->assertSee(checkbox($intake->zwanger));
 	}
 }

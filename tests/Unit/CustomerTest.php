@@ -19,6 +19,7 @@ class CustomerTest extends TestCase
 	use RefreshDatabase;
 
 	protected $customer;
+
 	private   $dailyAdvice;
 
 	public function setUp ()

@@ -12,7 +12,9 @@ class NoteController extends Controller
 
 	public function index ( Customer $customer )
 	{
-		return view('notes.index', compact('customer'));
+		return view('notes.index')->with([
+				'customer' => $customer,
+		]);
 	}
 
 	public function store ( Customer $customer, Request $request )
@@ -34,7 +36,9 @@ class NoteController extends Controller
 					'body'    => request('body'),
 			]);
 
-			return view('notes._index', compact('customer'));
+			return view('notes._index')->with([
+					'customer' => $customer,
+			]);
 
 		}
 
@@ -43,16 +47,19 @@ class NoteController extends Controller
 				'body'    => request('body'),
 		]);
 
-		return redirect($customer->path());
+		return redirect(route('notities.index', [
+				'customer' => $customer,
+		]));
 	}
 
 	public function show ( Customer $customer, $id )
 	{
 		$note = Note::findOrFail($id);
 
-		return view('notes.show', compact(
-				'customer', 'note'
-		));
+		return view('notes.show')->with([
+				'customer' => $customer,
+				'note'     => $note,
+		]);
 	}
 
 	public function edit ( Customer $customer, $id )
@@ -60,10 +67,10 @@ class NoteController extends Controller
 
 		$note = Note::findOrFail($id);
 
-		return view('notes.edit', compact(
-				'customer',
-				'note'
-		));
+		return view('notes.edit')->with([
+				'customer' => $customer,
+				'note'     => $note,
+		]);
 	}
 
 	public function update ( Note $note )
@@ -82,13 +89,15 @@ class NoteController extends Controller
 		//		if ( request()->ajax() ) {
 		//			$note->update(request()->all());
 		//
-		//			return view('notes.show', compact(
-		//					'note'
-		//			));
+		//			return view('notes.show')->with([
+		//					'note'=>$note
+		//			]);
 		//		}
 		$note->update(request()->all());
 
-		return redirect($note->customer->path());
+		return redirect(route('klanten.show', [
+				'customer' => $note->customer,
+		]));
 	}
 
 	public function destroy ( Note $note )

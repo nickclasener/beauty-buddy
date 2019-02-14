@@ -42,7 +42,7 @@ class DailyAdviceOfCustomerTest extends TestCase
 		     ->assertSee('Avond');
 	}
 
-//		/** @test */
+	//		/** @test */
 	//	function an_authenticated_user_can_create_a_daily_advice_for_a_customer ()
 	//	{
 	//		//		$response = $this->withoutExceptionHandling()->get(route('dailyadvice.create', [
@@ -59,15 +59,14 @@ class DailyAdviceOfCustomerTest extends TestCase
 	/** @test */
 	function a_authenticated_user_can_add_a_daily_advice_to_a_customer ()
 	{
+		$this->withoutExceptionHandling();
 		$dailyAdvice = make(DailyAdvice::class, [
 				'customer_id' => $this->customer->id,
 				'morning'     => 'Nieuwe Ochtend',
 				'midday'      => 'Nieuwe Middag',
 				'evening'     => 'Nieuwe Avond',
 		]);
-
-		$response = $this->withoutExceptionHandling()
-		                 ->post(route('dailyadvice.store', $this->customer), $dailyAdvice->toArray());
+		$response = $this->post(route('dailyadvice.store', $this->customer), $dailyAdvice->toArray());
 		$this->get($response->headers->get('Location'))
 		     ->assertStatus(200)
 		     ->assertSee('Nieuwe Ochtend')

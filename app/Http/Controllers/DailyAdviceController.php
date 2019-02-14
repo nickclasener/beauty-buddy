@@ -9,12 +9,14 @@ class DailyAdviceController extends Controller
 {
 	public function index ( Customer $customer )
 	{
-		return view('dailyadvice.index', compact('customer'));
+		return view('dailyadvice.index')->with([
+				'customer' => $customer,
+		]);
 	}
 
 	//	public function create ( Customer $customer )
 	//	{
-	//		return view('dailyadvice.create', compact('customer'));
+	//		return view('dailyadvice.create')->with(['customer'));
 	//	}
 
 	public function store ( Customer $customer )
@@ -26,21 +28,27 @@ class DailyAdviceController extends Controller
 				'evening' => request('evening'),
 		]);
 
-		return redirect(route('dailyadvice.index', compact('customer')));
+		return redirect(route('dailyadvice.index', [
+				'customer' => $customer,
+		]));
 	}
 
 	public function show ( Customer $customer, $id )
 	{
 		$dailyAdvice = DailyAdvice::findOrFail($id);
 
-		return view('dailyadvice.show', compact(
-				'customer', 'dailyAdvice'
-		));
+		return view('dailyadvice.show')->with([
+				'customer'    => $customer,
+				'dailyAdvice' => $dailyAdvice,
+		]);
 	}
 
 	public function edit ( Customer $customer, DailyAdvice $dailyAdvice )
 	{
-		return view('dailyadvice.edit', compact('customer', 'dailyAdvice'));
+		return view('dailyadvice.edit')->with([
+				'customer'    => $customer,
+				'dailyAdvice' => $dailyAdvice,
+		]);
 	}
 
 	public function update ( DailyAdvice $dailyAdvice )

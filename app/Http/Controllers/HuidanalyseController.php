@@ -10,7 +10,9 @@ class HuidanalyseController extends Controller
 {
 	public function index ( Customer $customer )
 	{
-		return view('huidanalyses.index', compact('customer'));
+		return view('huidanalyses.index')->with([
+				'customer' => $customer,
+		]);
 	}
 
 	public function store ( Customer $customer )
@@ -32,7 +34,7 @@ class HuidanalyseController extends Controller
 		//					'body'    => request('body'),
 		//			]);
 		//
-		//			return view('huidanalyses._index', compact('customer'));
+		//			return view('huidanalyses._index')->with(['customer'));
 		//
 		//		}
 
@@ -41,14 +43,19 @@ class HuidanalyseController extends Controller
 				'body'    => request('body'),
 		]);
 
-		return redirect(route('huidanalyses.index', compact('customer')));
+		return redirect(route('huidanalyses.index', [
+				'customer' => $customer,
+		]));
 	}
 
 	public function show ( Customer $customer, $id )
 	{
 		$huidanalyse = Huidanalyse::findOrFail($id);
 
-		return view('huidanalyses.show', compact('customer', 'huidanalyse'));
+		return view('huidanalyses.show')->with([
+				'customer'    => $customer,
+				'huidanalyse' => $huidanalyse,
+		]);
 	}
 
 	public function edit ( Customer $customer, $id )
@@ -56,10 +63,10 @@ class HuidanalyseController extends Controller
 
 		$huidanalyse = Huidanalyse::findOrFail($id);
 
-		return view('huidanalyses.edit', compact(
-				'customer',
-				'huidanalyse'
-		));
+		return view('huidanalyses.edit')->with([
+				'customer'    => $customer,
+				'huidanalyse' => $huidanalyse,
+		]);
 	}
 
 	public function update ( Huidanalyse $huidanalyse )
@@ -77,7 +84,7 @@ class HuidanalyseController extends Controller
 		//
 		//			$huidanalyse->update(request()->all());
 		//
-		//			return view('huidanalyses.show', compact('huidanalyse'));
+		//			return view('huidanalyses.show')->with(['huidanalyse'));
 		//
 		//		}
 		$huidanalyse->update(request()->all());

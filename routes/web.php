@@ -32,11 +32,11 @@ Route::group([ 'middleware' => 'auth' ], function () {
 
 		return compact('customer');
 	});
-	Route::get('klanten', 'CustomerController@index')->name('klanten.index');
-	Route::delete('klanten/{customer}', 'CustomerController@destroy')->name('klanten.destroy');
 	Route::get('klanten/nieuw', 'CustomerController@create')->name('klanten.create');
-	Route::get('klanten/{customer}', 'CustomerController@show')->name('klanten.show');
+	Route::get('klanten', 'CustomerController@index')->name('klanten.index');
 	Route::post('klanten', 'CustomerController@store')->name('klanten.store');
+	Route::delete('klanten/{customer}', 'CustomerController@destroy')->name('klanten.destroy');
+	Route::get('klanten/{customer}', 'CustomerController@show')->name('klanten.show');
 	Route::get('klanten/{customer}/bewerken', 'CustomerController@edit')->name('klanten.edit');
 	Route::match([
 			'PATCH',
@@ -90,8 +90,9 @@ Route::group([ 'middleware' => 'auth' ], function () {
 	], '/dagelijks-advies/{dailyAdvice}', 'DailyAdviceController@update')->name('dailyadvice.update');
 
 	// Intake Routes
-	Route::post('klanten/{customer}/intake', 'IntakeController@store')->name('intake.store');
 	Route::get('klanten/{customer}/intake/nieuw', 'IntakeController@create')->name('intake.create');
+	Route::get('klanten/{customer}/intake/{intake}', 'IntakeController@show')->name('intake.show');
+	Route::post('klanten/{customer}/intake', 'IntakeController@store')->name('intake.store');
 	Route::delete('klanten/{customer}/intake/{intake}', 'IntakeController@destroy')->name('intake.destroy');
 	Route::get('klanten/{customer}/intake/{intake}/bewerken', 'IntakeController@edit')->name('intake.edit');
 	Route::match([

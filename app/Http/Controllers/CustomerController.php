@@ -5,18 +5,17 @@ namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use function compact;
 use function route;
 
 class CustomerController extends Controller
 {
 	public function index ()
 	{
-		//		$customers = Customer::paginate(10)->sortBy('naam');
-		//		$customers = Customer::all()->sortBy('naam');
 		$customers = Customer::all();
 
-		return view('klanten.index', compact('customers'));
+		return view('klanten.index')->with([
+				'customers' => $customers,
+		]);
 	}
 
 	public function create ()
@@ -56,12 +55,16 @@ class CustomerController extends Controller
 
 	public function show ( Customer $customer )
 	{
-		return view('notes.index', compact('customer'));
+		return view('notes.index')->with([
+				'customer' => $customer,
+		]);
 	}
 
 	public function edit ( Customer $customer )
 	{
-		return view('klanten.edit', compact('customer'));
+		return view('klanten.edit')->with([
+				'customer' => $customer,
+		]);
 	}
 
 	public function update ( Request $request, Customer $customer )
@@ -80,13 +83,15 @@ class CustomerController extends Controller
 
 		$customer->update($request->all());
 
-		return redirect(route('klanten.show', $customer));
+		return redirect(route('klanten.show', [
+				'customer' => $customer,
+		]));
 	}
 
 	public function destroy ( Customer $customer )
 	{
 		$customer->delete();
 
-		return redirect('/klanten');
+		return redirect(route('klanten.destroy'));
 	}
 }

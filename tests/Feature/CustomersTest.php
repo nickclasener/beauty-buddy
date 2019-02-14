@@ -84,7 +84,7 @@ class CustomersTest extends TestCase
 	/** @test */
 	function a_user_can_view_a_customer ()
 	{
-		$this->get($this->customer->path())
+		$this->get(route('klanten.show', $this->customer))
 		     ->assertStatus(200)
 		     ->assertSee('Jane Doe')
 		     ->assertSee('jane@doe.com')
@@ -111,6 +111,7 @@ class CustomersTest extends TestCase
 	/** @test */
 	function a_authenticated_user_can_add_a_customer ()
 	{
+		$this->withoutExceptionHandling();
 		$customer = make(Customer::class);
 
 		$response = $this->post('/klanten', $customer->toArray());
@@ -225,7 +226,10 @@ class CustomersTest extends TestCase
 	/** @test */
 	function view_the_intake_on_a_customer_page ()
 	{
-		$this->get($this->customer->path())
+		$this->get(route('intake.show', [
+				$this->customer,
+				$this->intake,
+		]))
 		     ->assertStatus(200)
 		     ->assertSee('FooBar')
 		     ->assertSee('schimmel is verminderd')

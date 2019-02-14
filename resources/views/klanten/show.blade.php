@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 	<div class="flex flex-col items-center mb-5">
 		<a class="self-end bg-buddy-teal-light rounded-full w-15 h-15 flex justify-center mr-9 "
 		   href="{{ route('klanten.edit',$customer) }}"
@@ -142,5 +140,4 @@
 			</button>
 		</div>
 	</div>
-
 @endsection

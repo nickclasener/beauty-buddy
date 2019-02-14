@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use App\Customer;
 use App\DailyAdvice;
 use App\Huidanalyse;
-use App\Intake;
 use App\Note;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -16,7 +15,6 @@ class UpdateCustomerTest extends TestCase
 	private $customer;
 	private $dailyAdvice;
 	private $huidanalyse;
-	private $intake;
 	private $note;
 
 	public function setUp ()
@@ -33,11 +31,6 @@ class UpdateCustomerTest extends TestCase
 				'plaats'        => 'laraville',
 				'telefoon'      => '0316484247',
 				'mobiel'        => '1234567893',
-		]);
-		$this->intake = create(Intake::class, [
-				'id'          => 1,
-				'customer_id' => $this->customer->id,
-				'behandeling' => 'A falsis, parma teres poeta.',
 		]);
 		$this->note = create(Note::class, [
 				'id'          => 1,

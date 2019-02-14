@@ -41,7 +41,6 @@
 		>
 	</div>
 </nav>
-{{--@include('layouts.app3')--}}
 <div class="container mx-auto flex">
 	<div class="bg-white w-1/3 my-15 py-10 h-full">
 		<div class="flex flex-col items-center mb-5">
@@ -192,9 +191,12 @@
 		</div>
 	</div>
 </div>
-@if ($customer->intake != null)
-	@include('intake.show')
+@if (count($errors))
+	@foreach ($errors->all() as $error)
+		<ul class="alert alert-danger">
+			<li>{{ $error }}</li>
+		</ul>
+	@endforeach
 @endif
-
 </body>
 </html>

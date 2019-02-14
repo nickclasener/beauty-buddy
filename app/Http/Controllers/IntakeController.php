@@ -15,7 +15,9 @@ class IntakeController extends Controller
 
 	public function create ( Customer $customer )
 	{
-		return view('intake.create', compact('customer'));
+		return view('intake.create')->with([
+				'customer' => $customer,
+		]);
 	}
 
 	public function store ( Customer $customer )
@@ -50,18 +52,25 @@ class IntakeController extends Controller
 				'zwanger'         => request('zwanger'),
 		]);
 
-		return redirect($customer->path());
+		return redirect(route('intake.show', [
+				'customer' => $customer,
+				'intake'   => $customer->intake,
+		]));
 	}
 
-	public function show ( Intake $intake )
+	public function show ( Customer $customer, Intake $intake )
 	{
-		//
+		return view('intake.show')->with([
+				'customer' => $customer,
+				'intake'   => $intake,
+		]);
 	}
 
 	public function edit ( Intake $intake )
 	{
-		//		Review: below
-		return view('notes.edit', compact('intake'));
+		return view('notes.edit')->with([
+				'intake' => $intake,
+		]);
 	}
 
 	public function update ( Customer $customer )
@@ -96,12 +105,15 @@ class IntakeController extends Controller
 				'zwanger'         => request('zwanger'),
 		]);
 
-		return redirect($customer->path());
+		return redirect(route('intake.show', [
+				'customer' => $customer,
+				'intake'   => $customer->intake,
+		]));
 	}
 
 	public function destroy ( Customer $customer )
 	{
-		$customer->deleteIntake($customer);
+		$customer->deleteIntake();
 
 		return redirect(route('klanten.show', $customer));
 	}
