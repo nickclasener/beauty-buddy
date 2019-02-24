@@ -15,7 +15,7 @@
 			<div class="hidden"
 					 data-target="toggle.hidden"
 			>
-				@include('notes.edit',[$note])
+				@include('klanten.notes.edit',[$note])
 			</div>
 			<div class="flex justify-between">
 				<small class="font-hairline">{{ timeAmPm($note) }}</small>

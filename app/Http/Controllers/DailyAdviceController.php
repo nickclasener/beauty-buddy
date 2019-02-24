@@ -9,9 +9,10 @@ class DailyAdviceController extends Controller
 {
 	public function index ( Customer $customer )
 	{
-		return view('dailyadvice.index')->with([
-				'customer' => $customer,
-		]);
+		return view('dailyadvice.index')
+				->with([
+						'customer' => $customer,
+				]);
 	}
 
 	//	public function create ( Customer $customer )

@@ -12,7 +12,6 @@
 	<meta name="csrf-token"
 	      content="{{ csrf_token() }}"
 	>
-
 	<title>{{ config('app.name', 'Laravel') }}</title>
 	<!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}"
@@ -22,22 +21,18 @@
 	<link rel="dns-prefetch"
 	      href="https://fonts.gstatic.com"
 	>
-	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600"
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
 	      rel="stylesheet"
-	      type="text/css"
 	>
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}"
 	      rel="stylesheet"
 	>
+	@routes
 </head>
-<body>
-
-
-<main class="py-4">
-	@yield('content')
-</main>
-
+<body class="bg-bg font-sans text-base-font">
+@include('layouts._navbar')
+@yield('main')
 @if (count($errors))
 	@foreach ($errors->all() as $error)
 		<ul class="alert alert-danger">

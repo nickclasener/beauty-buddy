@@ -1,7 +1,7 @@
 <div data-controller="notes"
      data-notes-url="{{ route('notities.store',$customer) }}"
 >
-	@include('notes.create')
+	@include('klanten.notes.create')
 	<div class="pt-10">
 		@foreach ($customer->monthYearNotes() as $monthYear => $notes)
 			<div data-controller="monthyear"
@@ -10,7 +10,7 @@
 				<h2 class="font-hairline text-buddy-teal pb-10"
 				>{{ $monthYear }}</h2>
 				@foreach ($notes as $note)
-					@include('notes.show',[$note])
+					@include('klanten.notes.show',[$note])
 				@endforeach
 			</div>
 		@endforeach

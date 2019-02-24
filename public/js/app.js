@@ -1392,7 +1392,7 @@ var application = __WEBPACK_IMPORTED_MODULE_0_stimulus__["a" /* Application */].
 var context = __webpack_require__(69);
 application.load(Object(__WEBPACK_IMPORTED_MODULE_1_stimulus_webpack_helpers__["a" /* definitionsFromContext */])(context));
 
-// Turbolinks.start();
+Turbolinks.start();
 
 /***/ }),
 /* 21 */
@@ -34086,6 +34086,7 @@ function identifierForContextKey(key) {
 
 var map = {
 	"./clipboard_controller.js": 70,
+	"./customer_controller.js": 81,
 	"./monthyear_controller.js": 71,
 	"./note_controller.js": 72,
 	"./notes_controller.js": 73,
@@ -34342,6 +34343,91 @@ _class.targets = ["show", "hidden"];
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(1);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var _class = function (_Controller) {
+    _inherits(_class, _Controller);
+
+    function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass(_class, [{
+        key: "create",
+        value: function create(event) {
+            event.preventDefault();
+            axios.post(this.data.get('url'), this.form).then(function (response) {
+                Turbolinks.visit(response.data);
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        }
+    }, {
+        key: "edit",
+        value: function edit(event) {
+            var _this2 = this;
+
+            event.preventDefault();
+            axios.patch(this.data.get("update"), this.form).then(function (response) {
+                _this2.element.outerHTML = response.data;
+            });
+        }
+    }, {
+        key: "delete",
+        value: function _delete(event) {
+            var _this3 = this;
+
+            event.preventDefault();
+            console.log(this.data.get("destroy"));
+            axios.delete(this.data.get("destroy")).then(function () {
+                _this3.element.remove();
+            });
+        }
+    }, {
+        key: "form",
+        get: function get() {
+            return {
+                naam: this.naamTarget.value,
+                straatnaam: this.straatnaamTarget.value,
+                huisnummer: this.huisnummerTarget.value,
+                postcode: this.postcodeTarget.value,
+                plaats: this.plaatsTarget.value,
+                telefoon: this.telefoonTarget.value,
+                mobiel: this.mobielTarget.value,
+                email: this.emailTarget.value,
+                geboortedatum: this.geboortedatumTarget.value
+            };
+        }
+    }]);
+
+    return _class;
+}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
+
+_class.targets = ["naam", "straatnaam", "huisnummer", "postcode", "plaats", "telefoon", "mobiel", "email", "geboortedatum"];
+/* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ })
 /******/ ]);

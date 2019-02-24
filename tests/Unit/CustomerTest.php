@@ -20,7 +20,7 @@ class CustomerTest extends TestCase
 
 	protected $customer;
 
-	private   $dailyAdvice;
+	private $dailyAdvice;
 
 	public function setUp ()
 	{

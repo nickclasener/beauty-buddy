@@ -12,7 +12,7 @@ class NoteController extends Controller
 
 	public function index ( Customer $customer )
 	{
-		return view('notes.index')->with([
+		return view('klanten.notes.index')->with([
 				'customer' => $customer,
 		]);
 	}
@@ -36,7 +36,7 @@ class NoteController extends Controller
 					'body'    => request('body'),
 			]);
 
-			return view('notes._index')->with([
+			return view('klanten.notes._index')->with([
 					'customer' => $customer,
 			]);
 
@@ -56,7 +56,7 @@ class NoteController extends Controller
 	{
 		$note = Note::findOrFail($id);
 
-		return view('notes.show')->with([
+		return view('klanten.notes.show')->with([
 				'customer' => $customer,
 				'note'     => $note,
 		]);
@@ -67,7 +67,7 @@ class NoteController extends Controller
 
 		$note = Note::findOrFail($id);
 
-		return view('notes.edit')->with([
+		return view('klanten.notes.edit')->with([
 				'customer' => $customer,
 				'note'     => $note,
 		]);
@@ -75,27 +75,26 @@ class NoteController extends Controller
 
 	public function update ( Note $note )
 	{
-		//		dd($note);
-		//		$validator = Validator::make(request()->all(), [
-		//				'body' => 'required',
-		//		]);
-		//
-		//		if ( $validator->fails() ) {
-		//			return back()
-		//					->withErrors($validator)
-		//					->withInput();
-		//		}
-		//
-		//		if ( request()->ajax() ) {
-		//			$note->update(request()->all());
-		//
-		//			return view('notes.show')->with([
-		//					'note'=>$note
-		//			]);
-		//		}
+		$validator = Validator::make(request()->all(), [
+				'body' => 'required',
+		]);
+
+		if ( $validator->fails() ) {
+			return back()
+					->withErrors($validator)
+					->withInput();
+		}
+
+		if ( request()->ajax() ) {
+			$note->update(request()->all());
+
+			return view('klanten.notes.show')->with([
+					'note' => $note,
+			]);
+		}
 		$note->update(request()->all());
 
-		return redirect(route('klanten.show', [
+		return redirect(route('notities.index', [
 				'customer' => $note->customer,
 		]));
 	}

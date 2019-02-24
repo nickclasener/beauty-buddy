@@ -49,13 +49,16 @@ class CustomerController extends Controller
 				'email'         => request('email'),
 				'geboortedatum' => request('geboortedatum'),
 		]);
+		if ( request()->ajax() ) {
+			return route('notities.index', $customer);
+		}
 
 		return redirect(route('notities.index', $customer));
 	}
 
 	public function show ( Customer $customer )
 	{
-		return view('notes.index')->with([
+		return view('klanten.show')->with([
 				'customer' => $customer,
 		]);
 	}
@@ -83,7 +86,7 @@ class CustomerController extends Controller
 
 		$customer->update($request->all());
 
-		return redirect(route('klanten.show', [
+		return redirect(route('notities.show', [
 				'customer' => $customer,
 		]));
 	}

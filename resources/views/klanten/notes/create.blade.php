@@ -1,8 +1,7 @@
 <form action="{{ route('notities.store', $customer) }}"
       method="POST"
       data-action="notes#create"
->
-	@method('POST')@csrf
+>@method('POST')@csrf
 	<div class=" border-b border-buddy-teal-light focus-within:border-buddy-teal-dark pt-10 pl-10 pr-10">
 	<textarea type="text"
 	          class="resize-none w-full"
