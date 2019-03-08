@@ -1,4 +1,4 @@
-<form action="{{ route('intake.destroy',[$customer,$customer->intake]) }}"
+<form action="{{ route('intake.destroy',[$customer,$customer->intake], false) }}"
       method="POST"
 >
 	@method('DELETE')@csrf

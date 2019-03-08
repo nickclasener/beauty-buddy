@@ -49,8 +49,9 @@ class CustomerController extends Controller
 				'email'         => request('email'),
 				'geboortedatum' => request('geboortedatum'),
 		]);
+
 		if ( request()->ajax() ) {
-			return route('notities.index', $customer);
+			return redirect(route('notities.index', $customer));
 		}
 
 		return redirect(route('notities.index', $customer));
@@ -86,7 +87,13 @@ class CustomerController extends Controller
 
 		$customer->update($request->all());
 
-		return redirect(route('notities.show', [
+		if ( request()->ajax() ) {
+			return route('notities.index', [
+					'customer' => $customer,
+			]);
+		}
+
+		return redirect(route('notities.index', [
 				'customer' => $customer,
 		]));
 	}
@@ -94,7 +101,10 @@ class CustomerController extends Controller
 	public function destroy ( Customer $customer )
 	{
 		$customer->delete();
+		if ( request()->ajax() ) {
+			return route('klanten.create');
+		}
 
-		return redirect(route('klanten.destroy'));
+		return redirect(route('klanten.create'));
 	}
 }

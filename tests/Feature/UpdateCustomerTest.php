@@ -53,6 +53,7 @@ class UpdateCustomerTest extends TestCase
 	/** @test */
 	public function an_authenticated_user_can_update_a_customer ()
 	{
+		$this->withoutExceptionHandling();
 		$customer = make(Customer::class, [
 				'naam'          => 'My new Name',
 				'email'         => 'mynewemail@email.com',
@@ -64,9 +65,7 @@ class UpdateCustomerTest extends TestCase
 				'mobiel'        => '0631231940',
 				'geboortedatum' => '20-12-1991',
 		]);
-
 		$response = $this->put($this->customer->path(), $customer->toArray());
-
 		$this->get($response->headers->get('Location'))
 		     ->assertSee('my-new-name')
 		     ->assertSee('My new Name')
@@ -172,5 +171,4 @@ class UpdateCustomerTest extends TestCase
 		$response->assertStatus(200)
 		         ->assertSee('Original huidanalyse');
 	}
-
 }

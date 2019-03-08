@@ -12,14 +12,17 @@ try {
 
 } catch (e) {
 }
-// require('./jquery_ujs');
-// window.Rails = require('./rails-ujs');
+// window.Rails = window.$.rails = require('jquery-ujs');
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
  * a simple convenience so we don't have to attach every token manually.
  */
-
+// require('jquery-ujs');
+// require('@rails/ujs');
+require('turbolinks-animate');
+require('animate.css');
+require('gsap');
 window.Turbolinks = require("turbolinks");
 window.axios = require('axios');
 
@@ -31,8 +34,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-const token = document.head.querySelector('meta[name="csrf-token"]');
-
+let token = document.head.querySelector('meta[name="csrf-token"]');
 if (token) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
@@ -44,6 +46,7 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -60,3 +63,4 @@ $.ajaxSetup({
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+

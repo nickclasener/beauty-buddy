@@ -1,6 +1,6 @@
 <div data-controller="dailyadvice"
-     {{--     data-dailyadvice-update="{{ route('dailyadvices.update', $dailyAdvice) }}"--}}
-     {{--     data-dailyadvice-destroy="{{ route('dailyadvices.destroy', $dailyAdvice) }}"--}}
+     {{--     data-dailyadvice-update="{{ route('dailyadvices.update', $dailyAdvice, false) }}"--}}
+     {{--     data-dailyadvice-destroy="{{ route('dailyadvices.destroy', $dailyAdvice, false) }}"--}}
      class="w-full flex-shrink flex pt-5 pl-5"
 >
 	<div class="w-2.5 h-2.5 border border-buddy-teal rounded-full flex-no-shrink"></div>
@@ -27,7 +27,7 @@
 					>
 						@svg('icon-136-document-edit',['class'=>'ml-1 fill-current text-teal'])
 					</button>
-					<form action="{{ route('dailyadvice.destroy', $dailyAdvice) }}"
+					<form action="{{ route('dailyadvice.destroy', $dailyAdvice, false) }}"
 					      method="POST"
 					      data-action="dailyadvice#delete monthyear#update"
 					>

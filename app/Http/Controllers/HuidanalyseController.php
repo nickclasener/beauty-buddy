@@ -10,7 +10,7 @@ class HuidanalyseController extends Controller
 {
 	public function index ( Customer $customer )
 	{
-		return view('huidanalyses.index')->with([
+		return view('klanten.huidanalyses.index')->with([
 				'customer' => $customer,
 		]);
 	}
@@ -27,16 +27,18 @@ class HuidanalyseController extends Controller
 					->withInput();
 		}
 
-		//		if ( request()->ajax() ) {
-		//
-		//			$customer->addHuidanalyse([
-		//					'user_id' => auth()->id(),
-		//					'body'    => request('body'),
-		//			]);
-		//
-		//			return view('huidanalyses._index')->with(['customer'));
-		//
-		//		}
+		if ( request()->ajax() ) {
+
+			$customer->addHuidanalyse([
+					'user_id' => auth()->id(),
+					'body'    => request('body'),
+			]);
+
+			return view('klanten.huidanalyses._index')->with([
+					'customer' => $customer,
+			]);
+
+		}
 
 		$customer->addHuidanalyse([
 				'user_id' => auth()->id(),
@@ -52,7 +54,7 @@ class HuidanalyseController extends Controller
 	{
 		$huidanalyse = Huidanalyse::findOrFail($id);
 
-		return view('huidanalyses.show')->with([
+		return view('klanten.huidanalyses.show')->with([
 				'customer'    => $customer,
 				'huidanalyse' => $huidanalyse,
 		]);
@@ -63,7 +65,7 @@ class HuidanalyseController extends Controller
 
 		$huidanalyse = Huidanalyse::findOrFail($id);
 
-		return view('huidanalyses.edit')->with([
+		return view('klanten.huidanalyses.edit')->with([
 				'customer'    => $customer,
 				'huidanalyse' => $huidanalyse,
 		]);
@@ -80,16 +82,17 @@ class HuidanalyseController extends Controller
 					->withErrors($validator)
 					->withInput();
 		}
-		//		if ( request()->ajax() ) {
-		//
-		//			$huidanalyse->update(request()->all());
-		//
-		//			return view('huidanalyses.show')->with(['huidanalyse'));
-		//
-		//		}
+		if ( request()->ajax() ) {
+
+			$huidanalyse->update(request()->all());
+
+			return view('huidanalyses.show')->with([
+					'huidanalyse' => $huidanalyse,
+			]);
+		}
 		$huidanalyse->update(request()->all());
 
-		return redirect(route('huidanalyses.show', [
+		return redirect(route('huidanalyses.index', [
 				$huidanalyse->customer,
 				$huidanalyse,
 		]));

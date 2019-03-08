@@ -1,4 +1,4 @@
-<form action="{{ route('dailyadvice.store', $customer) }}"
+<form action="{{ route('dailyadvice.store', $customer, false) }}"
       method="POST"
 		{{--data-action="dailyadvice#create"--}}
 >

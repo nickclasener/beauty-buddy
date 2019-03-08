@@ -2,7 +2,7 @@
 {{--{{ $dailyAdvice->midday }}--}}
 {{--{{ $dailyAdvice->evening }}--}}
 
-<form action="{{ route('dailyadvice.update', $dailyAdvice) }}"
+<form action="{{ route('dailyadvice.update', $dailyAdvice, false) }}"
       method="POST"
 		{{--data-action="note#edit"--}}
 >@method('PATCH') @csrf

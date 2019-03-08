@@ -1,5 +1,5 @@
 <div data-controller="notes"
-		{{--     data-notes-url="{{ route('notities.store',$customer) }}"--}}
+		{{--     data-notes-url="{{ route('notities.store', $customer, false) }}"--}}
 >
 	@include('dailyadvice.create')
 	<div class="pt-10">

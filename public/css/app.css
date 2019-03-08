@@ -571,6 +571,11 @@ table {
  * @import "components/forms";
  */
 
+.turbolinks-progress-bar {
+  height: 50px;
+  background-color: green;
+}
+
 .active {
   color: #156358;
   border-bottom-width: 1px;
@@ -579,6 +584,31 @@ table {
 
 .inactive {
   color: #70afa6;
+}
+
+@-webkit-keyframes grow {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: auto;
+  }
+}
+
+@keyframes grow {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: auto;
+  }
+}
+
+.grow {
+  -webkit-animation-name: grow;
+          animation-name: grow;
 }
 
 /**
@@ -3735,6 +3765,10 @@ table {
 
 .focus\:font-black:focus {
   font-weight: 900;
+}
+
+.h-0 {
+  height: 0;
 }
 
 .h-1 {
@@ -10759,6 +10793,10 @@ table {
     font-weight: 900;
   }
 
+  .xs\:h-0 {
+    height: 0;
+  }
+
   .xs\:h-1 {
     height: .25rem;
   }
@@ -17749,6 +17787,10 @@ table {
 
   .sm\:focus\:font-black:focus {
     font-weight: 900;
+  }
+
+  .sm\:h-0 {
+    height: 0;
   }
 
   .sm\:h-1 {
@@ -24743,6 +24785,10 @@ table {
     font-weight: 900;
   }
 
+  .md\:h-0 {
+    height: 0;
+  }
+
   .md\:h-1 {
     height: .25rem;
   }
@@ -31735,6 +31781,10 @@ table {
     font-weight: 900;
   }
 
+  .lg\:h-0 {
+    height: 0;
+  }
+
   .lg\:h-1 {
     height: .25rem;
   }
@@ -38725,6 +38775,10 @@ table {
 
   .xl\:focus\:font-black:focus {
     font-weight: 900;
+  }
+
+  .xl\:h-0 {
+    height: 0;
   }
 
   .xl\:h-1 {

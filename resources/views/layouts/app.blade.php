@@ -10,7 +10,6 @@
 	<meta name="csrf-token"
 	      content="{{ csrf_token() }}"
 	>
-
 	<title>{{ config('app.name', 'Laravel') }}</title>
 
 	<!-- Scripts -->
@@ -62,13 +61,13 @@
 					@guest
 						<li class="nav-item">
 							<a class="nav-link"
-							   href="{{ route('login') }}"
+							   href="{{ route('login', false) }}"
 							>{{ __('Login') }}</a>
 						</li>
 						@if (Route::has('register'))
 							<li class="nav-item">
 								<a class="nav-link"
-								   href="{{ route('register') }}"
+								   href="{{ route('register', false) }}"
 								>{{ __('Register') }}</a>
 							</li>
 						@endif
@@ -90,14 +89,14 @@
 							     aria-labelledby="navbarDropdown"
 							>
 								<a class="dropdown-item"
-								   href="{{ route('logout') }}"
+								   href="{{ route('logout', false) }}"
 								   onclick="event.preventDefault();document.getElementById('logout-form').submit();"
 								>
 									{{ __('Logout') }}
 								</a>
 
 								<form id="logout-form"
-								      action="{{ route('logout') }}"
+								      action="{{ route('logout', false) }}"
 								      method="POST"
 								      style="display: none;"
 								>
@@ -106,10 +105,10 @@
 							</div>
 						</li>
 						<li>
-							<a href="{{ route('klanten.index') }}">Klanten</a>
+							<a href="{{ route('klanten.index', false) }}">Klanten</a>
 						</li>
 						<li>
-							<a href="{{ route('klanten.create') }}">Nieuwe Klant</a>
+							<a href="{{ route('klanten.create', false) }}">Nieuwe Klant</a>
 						</li>
 					@endguest
 				</ul>

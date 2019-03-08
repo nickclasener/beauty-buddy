@@ -1,7 +1,7 @@
 let mix = require('laravel-mix');
 let tailwindcss = require('tailwindcss');
 require('laravel-mix-purgecss');
-
+// let LiveReloadPlugin = require('webpack-livereload-plugin');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -22,7 +22,8 @@ mix.js('resources/assets/js/app.js', 'public/js')
     })
     .purgeCss()
     .browserSync({
-        proxy: "beauty-buddy.test",
+        proxy: 'beauty-buddy.test',
+        open: false,
         snippetOptions: {
             rule: {
                 match: /<\/head>/i,
@@ -31,6 +32,11 @@ mix.js('resources/assets/js/app.js', 'public/js')
                 }
             }
         },
+        // })
+        // .webpackConfig({
+        //     plugins: [
+        //         new LiveReloadPlugin()
+        //     ]
     });
 
 if (mix.inProduction()) {

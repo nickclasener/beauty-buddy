@@ -530,6 +530,7 @@ module.exports = {
     height: {
         'auto': 'auto',
         'px': '1px',
+        '0': '0',
         '1': '0.25rem',
         '2': '0.5rem',
         '2.5': '0.625rem',
@@ -900,12 +901,21 @@ module.exports = {
     modules: {
         appearance: ['responsive'],
         backgroundAttachment: ['responsive'],
-        backgroundColors: ['responsive', 'hover', 'focus'],
+        backgroundColors: [
+            'responsive',
+            'hover',
+            'focus'
+        ],
         backgroundPosition: ['responsive'],
         backgroundRepeat: ['responsive'],
         backgroundSize: ['responsive'],
         borderCollapse: [],
-        borderColors: ['responsive', 'hover', 'focus', 'focus-within'],
+        borderColors: [
+            'responsive',
+            'hover',
+            'focus',
+            'focus-within'
+        ],
         borderRadius: ['responsive'],
         borderStyle: ['responsive'],
         borderWidths: ['responsive'],
@@ -914,7 +924,11 @@ module.exports = {
         flexbox: ['responsive'],
         float: ['responsive'],
         fonts: ['responsive'],
-        fontWeights: ['responsive', 'hover', 'focus'],
+        fontWeights: [
+            'responsive',
+            'hover',
+            'focus'
+        ],
         height: ['responsive'],
         leading: ['responsive'],
         lists: ['responsive'],
@@ -924,8 +938,20 @@ module.exports = {
         minHeight: ['responsive'],
         minWidth: ['responsive'],
         negativeMargin: ['responsive'],
-        objectFit: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-        objectPosition: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+        objectFit: [
+            'responsive',
+            'hover',
+            'focus',
+            'active',
+            'group-hover'
+        ],
+        objectPosition: [
+            'responsive',
+            'hover',
+            'focus',
+            'active',
+            'group-hover'
+        ],
         opacity: ['responsive'],
         outline: ['focus'],
         overflow: ['responsive'],
@@ -933,14 +959,26 @@ module.exports = {
         pointerEvents: ['responsive'],
         position: ['responsive'],
         resize: ['responsive'],
-        shadows: ['responsive', 'hover', 'focus'],
+        shadows: [
+            'responsive',
+            'hover',
+            'focus'
+        ],
         svgFill: [],
         svgStroke: [],
         tableLayout: ['responsive'],
         textAlign: ['responsive'],
-        textColors: ['responsive', 'hover', 'focus'],
+        textColors: [
+            'responsive',
+            'hover',
+            'focus'
+        ],
         textSizes: ['responsive'],
-        textStyle: ['responsive', 'hover', 'focus'],
+        textStyle: [
+            'responsive',
+            'hover',
+            'focus'
+        ],
         tracking: ['responsive'],
         userSelect: ['responsive'],
         verticalAlign: ['responsive'],

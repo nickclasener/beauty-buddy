@@ -4,7 +4,7 @@
 
 	<div class="flex flex-col items-center mb-5">
 		<a class="self-end bg-buddy-teal-light rounded-full w-15 h-15 flex justify-center mr-9 "
-		   href="{{ route('klanten.edit',$customer) }}"
+		   href="{{ route('klanten.edit', $customer, false) }}"
 		>@svg('icon-136-document-edit',['class'=>'ml-2 fill-current text-white self-center'])</a>
 		<div class="h-50 w-50 mb-5">
 			<img src="{{ asset('img/logan-browning.jpg') }}"

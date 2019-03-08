@@ -1,41 +1,40 @@
-<div data-controller="note"
-		 data-note-update="{{ route('notities.update', $note) }}"
-		 data-note-destroy="{{ route('notities.destroy', $note) }}"
-		 class="w-full flex-shrink flex pt-5 pl-5"
+<div data-controller="note toggle"
+     data-target="note.note"
+     data-note-reset="{{ route('notities.index',$customer,false) }}"
+     data-note-update="{{ route('notities.update', $note, false) }}"
+     data-note-destroy="{{ route('notities.destroy', $note, false) }}"
+     @if ( isset($created) && $note->id === $created)
+     data-note="{{ $created }}"
+     class="animated grow fadeIn"
+		@endif
 >
-	<div class="w-2.5 h-2.5 border border-buddy-teal rounded-full flex-no-shrink"></div>
-	<p class="ml-5 font-thin flex-no-shrink">{{ dayMonth($note) }}</p>
-	<div class="ml-5 w-full">
-		<div data-controller="toggle"
+
+	<div class="w-full flex-shrink flex pt-5 pl-5">
+		<div class="w-2.5 h-2.5 border border-buddy-teal rounded-full flex-no-shrink"></div>
+		<p class="ml-5 font-thin flex-no-shrink">{{ dayMonth($note) }}</p>
+		<div class="ml-5 w-full"
+		     data-action="click->toggle#toggle"
+		     data-target="toggle.show"
 		>
-			<p data-target="toggle.show"
-				 data-action="click->toggle#toggle"
-			>
-				{{ $note->body }}</p>
-			<div class="hidden"
-					 data-target="toggle.hidden"
-			>
-				@include('klanten.notes.edit',[$note])
+			<div class="flex justify-between">
+				<p data-target="note.content"
+				>
+					{{ $note->body }}
+				</p>
 			</div>
 			<div class="flex justify-between">
 				<small class="font-hairline">{{ timeAmPm($note) }}</small>
-				<div class="flex ">
-					<button data-action="click->toggle#toggle"
-									class="h-5"
-					>
-						@svg('icon-136-document-edit',['class'=>'ml-1 fill-current text-teal'])
-					</button>
-					<form action="{{ route('notities.destroy',$note) }}"
-								method="POST"
-								data-action="note#delete monthyear#update"
-					>
-						@method('DELETE')@csrf
-						<button type="submit">
-							@svg('icon-26-trash-can', ['class'=>'mt-5 h-5 fill-current text-red'])
-						</button>
-					</form>
-				</div>
 			</div>
 		</div>
+		<div class="hidden"
+		     data-target="toggle.hide"
+		>
+			@include('klanten.notes.edit',[$note])
+		</div>
+		<a href=""
+		   data-action="click->note#delete monthyear#update"
+		>
+			@svg('cross-circle', ['class'=>'h-5 fill-current text-red'])
+		</a>
 	</div>
 </div>

@@ -1,9 +1,8 @@
-<form action="{{ route('huidanalyses.store', $customer) }}"
+<form action="{{ route('huidanalyses.store', $customer, false) }}"
       method="POST"
       data-action="huidanalyses#create"
->
-	@method('POST')@csrf
-	<div class=" border-b border-buddy-teal-light focus-within:border-buddy-teal-dark pt-10 pl-10 pr-10">
+>  @method('POST')@csrf
+	<div class="border-b border-dashed focus-within:border-buddy-lightest mpt-10 pl-10 pr-10">
 	<textarea type="text"
 	          class="resize-none w-full"
 	          rows="5"

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Note;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Request;
 
 class NoteController extends Controller
 {
@@ -17,7 +17,7 @@ class NoteController extends Controller
 		]);
 	}
 
-	public function store ( Customer $customer, Request $request )
+	public function store ( Customer $customer )
 	{
 		$validator = Validator::make(request()->all(), [
 				'body' => 'required',
@@ -30,14 +30,14 @@ class NoteController extends Controller
 		}
 
 		if ( request()->ajax() ) {
-
-			$customer->addNote([
+			$note = $customer->addNote([
 					'user_id' => auth()->id(),
 					'body'    => request('body'),
 			]);
 
-			return view('klanten.notes._index')->with([
+			return view('klanten.notes._list')->with([
 					'customer' => $customer,
+					'created'  => $note->id,
 			]);
 
 		}
@@ -64,7 +64,6 @@ class NoteController extends Controller
 
 	public function edit ( Customer $customer, $id )
 	{
-
 		$note = Note::findOrFail($id);
 
 		return view('klanten.notes.edit')->with([
@@ -73,7 +72,7 @@ class NoteController extends Controller
 		]);
 	}
 
-	public function update ( Note $note )
+	public function update ( Note $note, Request $request )
 	{
 		$validator = Validator::make(request()->all(), [
 				'body' => 'required',
@@ -89,7 +88,8 @@ class NoteController extends Controller
 			$note->update(request()->all());
 
 			return view('klanten.notes.show')->with([
-					'note' => $note,
+					'customer' => $note->customer,
+					'note'     => $note,
 			]);
 		}
 		$note->update(request()->all());
@@ -102,11 +102,12 @@ class NoteController extends Controller
 	public function destroy ( Note $note )
 	{
 		if ( request()->ajax() ) {
+			$customer = $note->customer;
 			$note->delete();
 
-			return 200;
+			//			return array_first($customer->notes) ? 200 : 205;
+			return response(null, array_first($customer->notes) ? 200 : 205);
 		}
-
 		$note->delete();
 
 		return back();

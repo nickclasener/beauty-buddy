@@ -35,6 +35,23 @@ class NotesOfCustomerTest extends TestCase
 	}
 
 	/** @test */
+	function an_authenticated_user_can_add_a_note_to_a_customer_via_ajax ()
+	{
+		// Arrange
+		$note = make(Note::class, [
+				'customer_id' => 1,
+				'id'          => 3,
+				'body'        => 'I exist ajax :D',
+		]);
+		// Act
+		//		TODO: create the ajax stimulus js tests
+		//		$this->json('post', route('notities.store', $this->customer), $note->toArray())->assertExactJson($note);
+		$this->json('post', route('notities.store', $this->customer), $note->toArray());
+
+		$this->assertDatabaseHas('notes', [ 'body' => 'I exist ajax :D' ]);
+	}
+
+	/** @test */
 	function an_authenticated_user_can_add_a_note_to_a_customer ()
 	{
 		// Arrange

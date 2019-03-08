@@ -1,8 +1,8 @@
-<form action="{{ route('notities.update', $note) }}"
+<form action="{{ route('notities.update', $note, false) }}"
       method="POST"
-      data-action="note#edit"
+      data-action="note#edit toggle#toggle"
 >@method('PATCH') @csrf
-	<div class="border-b border-buddy-teal-light focus-within:border-buddy-teal-dark pt-10 pl-10 pr-10">
+	<div class="border-b border-buddy-teal-light focus-within:border-buddy-teal-dark pl-10 pr-10">
 	<textarea type="text"
 	          class="resize-none w-full"
 	          rows="5"
@@ -15,6 +15,10 @@ Zijn er veder noemenswaardigheden"
 		<button type="submit"
 		        class="px-10 py-5 border rounded"
 		>Update Notitie
+		</button>
+		<button data-action="click->toggle#toggle"
+		        class="px-10 py-5 border rounded"
+		>Cancel
 		</button>
 	</div>
 </form>

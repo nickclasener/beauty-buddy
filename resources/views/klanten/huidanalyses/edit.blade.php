@@ -1,4 +1,4 @@
-<form action="{{ route('huidanalyses.update', $huidanalyse) }}"
+<form action="{{ route('huidanalyses.update', $huidanalyse, false) }}"
       method="POST"
       data-action="huidanalyse#edit"
 >@method('PATCH') @csrf
@@ -14,7 +14,11 @@ Zijn er veder noemenswaardigheden"
 	>{{ old('body') ?: $huidanalyse->body }}</textarea>
 		<button type="submit"
 		        class="px-10 py-5 border rounded"
-		>Voeg Notitie
+		>Update Huidanalyse
+		</button>
+		<button data-action="huidanalyses#cancel"
+		        class="px-10 py-5 border rounded"
+		>Cancel
 		</button>
 	</div>
 </form>

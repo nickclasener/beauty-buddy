@@ -1,17 +1,15 @@
 @extends('layouts.main')
 @section('main')
 	<div class="container mx-auto flex">
-		<div class="bg-white mx-auto w-1/2 my-15 py-10 h-full"
-		>
-			<form action="{{ route('klanten.store') }}"
-			      data-controller="customer"
+		<div class="bg-white mx-auto w-1/2 my-15 py-10 h-full">
+			<form action="{{ route('klanten.store', false) }}"
 			      method="POST"
-			      data-customer-url="{{ route('klanten.store') }}"
-			      data-target="customer.form"
+			      data-controller="customer"
+			      data-customer-url="{{ route('klanten.store', false) }}"
 			      data-action="customer#create"
 			>@method('POST')@csrf
 				<div class="px-15">
-					<h2 class="font-hairline text-buddy-teal  mb-5">Contactinformatie</h2>
+					<h2 class="font-hairline text-buddy-teal mb-5">Contactinformatie</h2>
 					<label for="naam"
 					       class="font-hairline"
 					>Naam</label>

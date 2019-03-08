@@ -1,8 +1,22 @@
 <div class="flex flex-col items-center mb-5">
-	<div class="self-end bg-buddy-lightest rounded-full w-15 h-15 flex justify-center mr-9"
-	     data-action="click->toggle#toggle"
-	>
-		@svg('icon-136-document-edit',['class'=>'ml-2 fill-current text-white self-center'])
+	<div class="flex justify-between w-full">
+		<form action="{{ route('klanten.destroy', $customer, false) }}"
+		      method="POST"
+		      data-action="customer#delete"
+		>
+			@method('DELETE')@csrf
+			<button type="submit"
+			        class="self-end bg-buddy-lightest rounded-full w-15 h-15 flex justify-center ml-9"
+			>
+				@svg('icon-26-trash-can',['class'=>'fill-current text-white self-center'])
+			</button>
+		</form>
+
+		<button class="self-end bg-buddy-lightest rounded-full w-15 h-15 flex justify-center mr-9"
+		        data-action="toggle#toggle"
+		>
+			@svg('icon-136-document-edit',['class'=>'ml-2 fill-current text-white self-center'])
+		</button>
 	</div>
 	<div class="h-50 w-50 mb-5">
 		<img src="{{ asset('img/logan-browning.jpg') }}"

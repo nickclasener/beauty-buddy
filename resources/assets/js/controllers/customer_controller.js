@@ -16,25 +16,31 @@ export default class extends Controller {
     create(event) {
         event.preventDefault();
         axios.post(this.data.get('url'), this.form).then(response => {
+            Turbolinks.visit(response.request.responseURL);
+        }).catch(error => console.log(error));
+    }
+
+    update(event) {
+        event.preventDefault();
+        axios.put(this.data.get("update"), this.form).then(response => {
             Turbolinks.visit(response.data);
         }).catch(error => console.log(error));
     }
 
-
-    edit(event) {
-        event.preventDefault();
-        axios.patch(this.data.get("update"), this.form).then(response => {
-            this.element.outerHTML = response.data;
-        });
-    }
-
     delete(event) {
         event.preventDefault();
-        console.log(this.data.get("destroy"));
-        axios.delete(this.data.get("destroy"))
-            .then(() => {
-                this.element.remove();
-            });
+        //Todo: Change to personalized
+        if (confirm('Weet je zeker dat je de klant wil verwijderen')) {
+            axios.delete(this.data.get("destroy"), this.form)
+                .then(response => {
+                    Turbolinks.visit(response.data);
+                }).catch(error => console.log(error));
+        }
+    }
+
+    cancel(event) {
+        event.preventDefault();
+        this.form = '';
     }
 
     get form() {
@@ -49,5 +55,17 @@ export default class extends Controller {
             email: this.emailTarget.value,
             geboortedatum: this.geboortedatumTarget.value,
         };
+    }
+
+    set form(text) {
+        this.naamTarget.value = text;
+        this.straatnaamTarget.value = text;
+        this.huisnummerTarget.value = text;
+        this.postcodeTarget.value = text;
+        this.plaatsTarget.value = text;
+        this.telefoonTarget.value = text;
+        this.mobielTarget.value = text;
+        this.emailTarget.value = text;
+        this.geboortedatumTarget.value = text;
     }
 }

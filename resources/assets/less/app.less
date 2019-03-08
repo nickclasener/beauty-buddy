@@ -35,12 +35,34 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
+//input, textarea, button {
+//@apply text-base-font;
+//}
+.turbolinks-progress-bar {
+  height: 50px;
+  background-color: green;
+}
+
 .active {
 @apply text-buddy-darkest border-b border-buddy-darkest;
 }
 
 .inactive {
 @apply text-buddy-lighter;
+}
+
+@keyframes grow {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: auto;
+  }
+}
+
+.grow {
+  animation-name: grow;
 }
 
 /**
@@ -52,7 +74,7 @@
  * @import "tailwindcss/utilities";
  */
 @tailwind utilities;
-
+//@import "~animate.css";
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.
