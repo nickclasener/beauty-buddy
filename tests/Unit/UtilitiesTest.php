@@ -58,4 +58,34 @@ class UtilitiesTest extends TestCase
 		$this->assertEquals('checked', checkbox($booleanTrue));
 		$this->assertEquals('', checkbox($booleanFalse));
 	}
+
+	/** @test */
+	function monthYearDesc ()
+	{
+		create(Note::class, [
+				'created_at'  => '1991-12-20 08:09:54',
+				'customer_id' => 1,
+		]);
+		create(Note::class, [
+				'created_at'  => '1991-12-20 08:09:54',
+				'customer_id' => 1,
+		]);
+		create(Note::class, [
+				'created_at'  => '1990-12-20 08:09:54',
+				'customer_id' => 1,
+		]);
+		create(Note::class, [
+				'created_at'  => '1990-12-20 08:09:54',
+				'customer_id' => 1,
+		]);
+
+		$this->assertCount(2, monthYearDesc($this->customer->notes));
+
+	}
+
+	/** @test */
+	function month_year_of_a_note ()
+	{
+		$this->assertEquals('December, 1991', monthYear($this->note));
+	}
 }

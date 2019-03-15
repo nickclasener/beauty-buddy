@@ -9,6 +9,8 @@
  *
  * @import "tailwindcss/preflight";
  */
+@import "~animate.css";
+
 @tailwind preflight;
 
 /**
@@ -35,12 +37,12 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
-//input, textarea, button {
-//@apply text-base-font;
-//}
-.turbolinks-progress-bar {
-  height: 50px;
-  background-color: green;
+input, textarea, button {
+@apply text-base-font;
+}
+
+label {
+@apply font-hairline;
 }
 
 .active {
@@ -51,19 +53,92 @@
 @apply text-buddy-lighter;
 }
 
-@keyframes grow {
-  from {
+.section {
+  overflow: hidden;
+  transition: max-height 0.3s linear; // note that we're transitioning max-height, not height!
+  transition-delay: 0s;
+  height: auto;
+  //opacity: 100;
+  max-height: 800px; // still have to hard-code a value!
+}
+
+.section.collapsed {
+  //opacity: 0;
+  max-height: 0;
+}
+
+//.accordion-toggle {
+//  padding: 0 15px;
+//}
+//.accordion-toggle:hover {
+//  background: #00727d;
+//}
+
+//.grow {
+//  //display: flex;
+//  //flex-direction: column;
+//  animation-delay: 1s;
+//  animation: grow 5s;
+//}
+//
+//
+//@keyframes grow {
+//  //0% {
+//  //  transform: translateX(-100%);
+//  //}
+//  //100% {
+//  //  transform: translateX(0);
+//  //}
+//  //from {
+//  //  flex-grow: 0;
+//  //}
+//  //to {
+//  //  flex-grow: 12;
+//  //}
+//  0% {
+//    height: 0;
+//    opacity: 0;
+//  }
+//  33% {
+//    height: 33%;
+//    opacity: 0;
+//  }
+//  66% {
+//    height: 66%;
+//    opacity: 66%;
+//  }
+//  100% {
+//    height: 100%;
+//    opacity: 100%;
+//  }
+//}
+
+.grow-end {
+  animation: grow-end 1s;
+}
+
+@keyframes grow-end {
+  100% {
     height: 0;
+    opacity: 0;
   }
-
-  to {
-    height: auto;
+  66% {
+    height: 33%;
+    opacity: 33%;
+  }
+  33% {
+    height: 66%;
+    opacity: 66%;
+  }
+  0% {
+    height: 100%;
+    opacity: 100%;
   }
 }
 
-.grow {
-  animation-name: grow;
-}
+//.hide{
+//  @apply hidden
+//}
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
@@ -74,7 +149,6 @@
  * @import "tailwindcss/utilities";
  */
 @tailwind utilities;
-//@import "~animate.css";
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.

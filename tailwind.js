@@ -593,6 +593,8 @@ module.exports = {
 
     minHeight: {
         '0': '0',
+        '11': '2.75rem',
+        '16': '4rem',
         'full': '100%',
         'screen': '100vh',
     },
@@ -668,6 +670,7 @@ module.exports = {
     padding: {
         'px': '1px',
         '0': '0',
+        '0.5': '0.125rem',
         '1': '0.25rem',
         '2': '0.5rem',
         '2.5': '0.625rem',
@@ -707,6 +710,7 @@ module.exports = {
         'auto': 'auto',
         'px': '1px',
         '0': '0',
+        '0.5': '0.125rem',
         '1': '0.25rem',
         '2': '0.5rem',
         '2.5': '0.625rem',

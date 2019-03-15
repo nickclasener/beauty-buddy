@@ -69,6 +69,13 @@ class CustomerTest extends TestCase
 		);
 	}
 
+//	/** @test */
+	//	function count_the_notes_a_customer_has ()
+	//	{
+	//		create(Note::class, [ 'customer_id' => $this->customer->id ], 5);
+	//		$this->assertEquals(count($this->customer->notes), $this->customer->countNotes);
+	//	}
+
 	/** @test */
 	function a_customer_has_many_notes ()
 	{

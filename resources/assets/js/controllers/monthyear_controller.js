@@ -1,31 +1,38 @@
-import {Controller} from "stimulus";
+import {ApplicationController} from "../controllers/application-controller";
 
-export default class extends Controller {
-    static targets = ["monthyear"];
+export default class extends ApplicationController {
+    static targets = ["monthyear", "content"];
+
+    remove() {
+        // REVIEW: jquery_ujs this.monthyear.children.length <= 1 && this.monthyear.remove();
+        if (this.monthyear.children.length <= 2) {
+            TweenLite.to(this.monthyear, 1, {
+                autoAlpha: 0,
+                height: 0,
+                scale: 0,
+                onCompleteScope: this.monthyear,
+                onComplete: function () {
+                    this.remove();
+                }
+            });
+        }
+    }
 
     update() {
-        // REVIEW: jquery_ujs this.monthyear.children.length <= 1 && this.monthyear.remove();
-        this.monthyear.children.length <= 2 &&
-        TweenLite.to(this.note, 0.5, {
-            height: 0,
-            opacity: 0,
-            onCompleteScope: this.monthyear,
-            onComplete: function () {
-                this.remove();
-            }
-        });
-        // $(this.monthyear)
-        //     .animate({
-        //     height: 0,
-        //     opacity: 0
-        // }, 1000, "swing", function () {
-        //     this.remove();
-        // });
-
-
+        if (this.monthyear.children.length <= 2) {
+            TweenLite.to(this.monthyear, 1, {
+                autoAlpha: 0,
+                height: 0,
+                scale: 0,
+            }).reverse(1);
+        }
     }
 
     get monthyear() {
         return this.monthyearTarget;
+    }
+
+    get content() {
+        return this.contentTarget.innerText;
     }
 }

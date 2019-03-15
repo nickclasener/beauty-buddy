@@ -49,4 +49,6 @@ class NoteTest extends TestCase
 	{
 		$this->assertInstanceOf(Customer::class, $this->note->customer);
 	}
+
+
 }

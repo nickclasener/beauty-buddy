@@ -1,4 +1,5 @@
-	<div class="h-15 w-full bg-buddy-lightest flex justify-around items-center">
+	<div class="h-15 w-full bg-buddy-lightest flex justify-around items-center"
+	data-controller="submenu">
 		<a class="no-underline px-12 py-5 {{ active_route_set_class('notities.index','active') }}"
 		   href="{{ route('notities.index', $customer, false) }}"
 		>Notes</a>

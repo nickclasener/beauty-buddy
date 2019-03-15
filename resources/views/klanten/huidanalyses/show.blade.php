@@ -1,4 +1,5 @@
 <div data-controller="huidanalyse"
+     data-target="huidanalyses.huidanalyse"
      data-huidanalyse-update="{{ route('huidanalyses.update', $huidanalyse, false) }}"
      data-huidanalyse-destroy="{{ route('huidanalyses.destroy', $huidanalyse, false) }}"
      class="w-full flex-shrink flex pt-5 pl-5"

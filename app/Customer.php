@@ -52,9 +52,7 @@ class Customer extends Model
 
 	public function monthYearNotes ()
 	{
-		return $this->notes->sortByDesc('created_at')->groupBy(function ( $notes ) {
-			return $notes->created_at->format('F, Y');
-		});
+		return monthYearDesc($this->notes);
 	}
 
 	public function addNote ( $note )
@@ -69,9 +67,7 @@ class Customer extends Model
 
 	public function monthYearHuidanalyses ()
 	{
-		return $this->huidanalyses->sortByDesc('created_at')->groupBy(function ( $huidanalyses ) {
-			return $huidanalyses->created_at->format('F, Y');
-		});
+		return monthYearDesc($this->huidanalyses);
 	}
 
 	public function addHuidanalyse ( $huidanalyse )
@@ -91,9 +87,7 @@ class Customer extends Model
 
 	public function monthYearDailyAdvices ()
 	{
-		return $this->dailyAdvices->sortByDesc('created_at')->groupBy(function ( $dailyAdvices ) {
-			return $dailyAdvices->created_at->format('F, Y');
-		});
+		return monthYearDesc($this->dailyAdvices);
 	}
 
 	public function addDailyAdvice ( $dailyAdvice )

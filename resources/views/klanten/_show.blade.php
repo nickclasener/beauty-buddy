@@ -8,7 +8,7 @@
 			<button type="submit"
 			        class="self-end bg-buddy-lightest rounded-full w-15 h-15 flex justify-center ml-9"
 			>
-				@svg('icon-26-trash-can',['class'=>'fill-current text-white self-center'])
+				@svg('icon-27-trash-can',['class'=>'fill-current text-white self-center'])
 			</button>
 		</form>
 

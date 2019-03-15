@@ -15,26 +15,26 @@
 	<meta name="csrf-param"
 	      content="_token"
 	/>
-
+	<!-- Scripts -->
+	<script src="{{ asset('js/app.js') }}"
+	        defer
+	></script>
 	<title>{{ config('app.name', 'Laravel') }}</title>
 	@routes
 
 	<!-- Fonts -->
 	<link rel="dns-prefetch"
 	      href="https://fonts.gstatic.com"
+
 	>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
 	      rel="stylesheet"
+
 	>
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}"
 	      rel="stylesheet"
 	>
-	<!-- Scripts -->
-	<script src="{{ asset('js/app.js') }}"
-	        defer
-	></script>
-	<meta name="turbolinks-cache-control" content="no-cache">
 </head>
 <body class="bg-bg font-sans text-base-font">
 @include('layouts._navbar')
@@ -47,8 +47,8 @@
 	@endforeach
 @endif
 
-{{--@if(config('app.env') === 'local')--}}
-{{--<script src="http://localhost:35729/livereload.js"></script>--}}
-{{--@endif--}}
+@if(config('app.env') === 'local')
+	<script src="http://localhost:35729/livereload.js"></script>
+@endif
 </body>
 </html>

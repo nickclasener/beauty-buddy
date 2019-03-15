@@ -1,18 +1,15 @@
-<div data-controller="huidanalyses"
-     data-huidanalyses-url="{{ route('huidanalyses.store', $customer, false) }}"
->
-	@include('klanten.huidanalyses.create')
-	<div class="pt-10">
+<div data-controller="huidanalyses">
+	<div class="pb-10">
+		@include('klanten.huidanalyses.create')
 		@foreach ($customer->monthYearHuidanalyses() as $monthYear => $huidanalyses)
-			<div data-controller="monthyear"
-			     data-target="monthyear.monthyear"
-			>
-				<h2 class="font-hairline text-buddy-teal pb-10"
-				>{{ $monthYear }}</h2>
-				@foreach ($customer->huidanalyses as $huidanalyse)
-					@include('klanten.huidanalyses.show',[$huidanalyse])
-				@endforeach
-			</div>
+			<h2 class="font-hairline text-buddy-teal pb-10"
+			    {{--data-controller="monthyear"--}}
+			    {{--data-target="monthyear.monthyear"--}}
+			    data-target="huidanalyses.monthyear"
+			>{{ $monthYear }}</h2>
+			@foreach ($huidanalyses as $huidanalyse)
+				@include('klanten.huidanalyses.show',$huidanalyse)
+			@endforeach
 		@endforeach
 	</div>
 </div>

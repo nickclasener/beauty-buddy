@@ -28,18 +28,21 @@ class NoteController extends Controller
 					->withErrors($validator)
 					->withInput();
 		}
-
 		if ( request()->ajax() ) {
 			$note = $customer->addNote([
 					'user_id' => auth()->id(),
 					'body'    => request('body'),
 			]);
 
-			return view('klanten.notes._list')->with([
-					'customer' => $customer,
-					'created'  => $note->id,
-			]);
-
+//			return view('klanten.notes.show')->with([
+//					'customer' => $customer,
+//					'note'     => $note,
+//					'created'  => $note->id,
+//			]);
+						return view('klanten.notes._list')->with([
+								'customer' => $customer,
+								'created'  => $note->id,
+						]);
 		}
 
 		$customer->addNote([
@@ -105,8 +108,9 @@ class NoteController extends Controller
 			$customer = $note->customer;
 			$note->delete();
 
-			//			return array_first($customer->notes) ? 200 : 205;
+			//			return response(count($customer->notes));
 			return response(null, array_first($customer->notes) ? 200 : 205);
+			//			return response(array_first($customer->notes) ? 200 : 205);
 		}
 		$note->delete();
 

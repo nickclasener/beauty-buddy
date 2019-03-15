@@ -34,3 +34,19 @@ if ( ! function_exists('checkbox') ) {
 		return $boolean ? 'checked' : '';
 	}
 }
+
+if ( ! function_exists('monthYearDesc') ) {
+	function monthYearDesc ( $array )
+	{
+		return $array->sortByDesc('created_at')->groupBy(function ( $array ) {
+			return $array->created_at->format('F, Y');
+		});
+	}
+}
+
+if ( ! function_exists('monthYear') ) {
+	function monthYear ( $model )
+	{
+		return $model->created_at->format('F, Y');
+	}
+}

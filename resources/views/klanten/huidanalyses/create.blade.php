@@ -1,6 +1,8 @@
 <form action="{{ route('huidanalyses.store', $customer, false) }}"
-      method="POST"
-      data-action="huidanalyses#create"
+      data-controller="huidanalyse"
+      data-huidanalyse-create="{{ route('huidanalyses.store', $customer, false) }}"
+      data-action="huidanalyse#create"
+      class="py-5"
 >  @method('POST')@csrf
 	<div class="border-b border-dashed focus-within:border-buddy-lightest mpt-10 pl-10 pr-10">
 	<textarea type="text"
@@ -9,12 +11,12 @@
 	          name="body"
 	          placeholder="Hoe is de behandeling gegaan?
 Zijn er veder noemenswaardigheden"
-	          data-target="huidanalyses.body"
+	          data-target="huidanalyse.body"
 	          required
 	>{{ old('body') }}</textarea>
 		<hr>
 		<div class="w-full flex">
-			<button data-action="huidanalyses#cancel"
+			<button data-action="huidanalyse#cancel"
 			        class="w-1/2 px-5 py-5 rounded mb-5 mx-5 text-red"
 			>
 				Annuleer
@@ -26,3 +28,4 @@ Zijn er veder noemenswaardigheden"
 		</div>
 	</div>
 </form>
+

@@ -13,6 +13,9 @@ class HuidanalyseController extends Controller
 		return view('klanten.huidanalyses.index')->with([
 				'customer' => $customer,
 		]);
+		//		return view('klanten.huidanalyses.index')->with([
+		//				'customer' => $customer,
+		//		]);
 	}
 
 	public function store ( Customer $customer )
@@ -29,13 +32,14 @@ class HuidanalyseController extends Controller
 
 		if ( request()->ajax() ) {
 
-			$customer->addHuidanalyse([
+			$huidanalyse = $customer->addHuidanalyse([
 					'user_id' => auth()->id(),
 					'body'    => request('body'),
 			]);
 
-			return view('klanten.huidanalyses._index')->with([
-					'customer' => $customer,
+			//			return view('klanten.huidanalyses._index')->with([
+			return view('klanten.huidanalyses.show')->with([
+					'huidanalyse' => $huidanalyse,
 			]);
 
 		}
