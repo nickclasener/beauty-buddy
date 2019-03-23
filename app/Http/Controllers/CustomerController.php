@@ -51,6 +51,7 @@ class CustomerController extends Controller
 		]);
 
 		if ( request()->ajax() ) {
+
 			return redirect(route('notities.index', $customer));
 		}
 

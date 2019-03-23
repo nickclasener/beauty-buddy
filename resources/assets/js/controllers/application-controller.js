@@ -7,6 +7,7 @@ export class ApplicationController extends Controller {
         });
     }
 
+
     laravelCreate(url, data) {
         return new Promise((resolve, reject) => {
             axios({

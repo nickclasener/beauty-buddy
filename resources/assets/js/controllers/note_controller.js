@@ -1,6 +1,9 @@
-import {ApplicationController} from "../controllers/application-controller";
+// import {ApplicationController} from "../controllers/application-controller";
+//
+// export default class extends ApplicationController {
+import {Controller} from "stimulus";
 
-export default class extends ApplicationController {
+export default class extends Controller {
     static targets = [
         "body",
         "content",
@@ -8,16 +11,20 @@ export default class extends ApplicationController {
     ];
 
     initialize() {
-        if (this.data.get("monthyear") !== null) {
-            this.updateMonthYear(this.data.get("monthyear"));
-        }
+        // if (this.data.get("monthyear") !== null) {
+        //     this.updateMonthYear(this.data.get("monthyear"));
+        // }
 
         if (this.data.get('created') !== null) {
-            TweenLite.to(this.note, 1, {
+
+            TweenLite.set(this.note, {
+                height: "auto"
+            });
+            TweenLite.from(this.note, 1, {
                 autoAlpha: 0,
                 height: 0,
                 scale: 0,
-            }).reverse(1);
+            });
         }
         // console.log(this.note);
         // console.log(this.element);
@@ -31,7 +38,6 @@ export default class extends ApplicationController {
 
     edit(event) {
         event.preventDefault();
-        // this.laravelUpdate(this.data.get("update"), {body: this.body});
         axios.patch(this.data.get("update"), {
             body: this.body
         }).then(response => {
@@ -44,10 +50,8 @@ export default class extends ApplicationController {
     }
 
     remove() {
-        // const note = this.note;
         TweenLite.to(this.note, 1, {
-            autoAlpha: 0,
-            // delay: 0.3,
+            opacity: 0,
             height: 0,
             scale: 0,
             onCompleteScope: this.note,
@@ -55,19 +59,62 @@ export default class extends ApplicationController {
                 this.remove();
             }
         });
+        // Toast.fire({
+        //     type: 'error',
+        //     title: 'Notitie is verwijderd'
+        // });
+        // TweenLite.to(this.note, {
+        //     autoAlpha: 1,
+        //     height: "100%",
+        //     scale: 1,
+        // });
+        // TweenLite.from(this.note, 1, {
+        //     autoAlpha: 0,
+        //     scale: 0,
+        //     height: 0,
+        // }).reverse(1);
+        // const note = this.note;
+
     }
 
     delete(event) {
-        console.log(this.data.get("trash"));
         event.preventDefault();
-        axios.delete(this.data.get("destroy"))
-            .then(() => {
-                Toast.fire({
-                    type: 'error',
-                    title: 'Notitie is verwijderd'
-                });
-            }).catch(error => console.log(error));
 
+        // isImmediatePropagationStopped
+        // const monthyear = this.element.closest('#monthyear');
+        // let swal = new Promise((resolve, reject) => {
+        // let swal = function () {
+        Swal.fire({
+            title: 'Weet je zeker?',
+            text: "Deze handeling kan niet terug gedraait worden",
+            type: 'error',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            preConfirm: () => {
+                return [
+                    axios.delete(this.data.get("destroy")
+                    ).then(() => {
+                    }).catch(error => console.log(error))
+                ];
+            }
+        }).then(result => {
+            if (result.value) {
+
+                // axios.delete(this.data.get("destroy")
+                // ).then(() => {
+                // }).catch(error => console.log(error));
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'Your file has been deleted.',
+                    type: 'success',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+            }
+        });
+        // };
+        // });
+        // console.log(swal);
     }
 
     cancel(event) {
@@ -75,16 +122,10 @@ export default class extends ApplicationController {
         this.body = null;
     }
 
-    deleteNote(note) {
-        let notesController = this.getControllerByIdentifier("notes");
-        // monthyearController.update(monthyear);
-        notesController.deleteNote(note);
-    }
-
-    updateMonthYear(monthyear) {
-        let monthyearController = this.getControllerByIdentifier("monthyear");
-        // monthyearController.update(monthyear);
-        monthyearController.update();
+    removeMonthYear() {
+        // console.log(this.get
+        // let monthyearController = this.getControllerByIdentifier("monthyear");
+        // return monthyearController.remove();
     }
 
     get body() {
@@ -93,16 +134,6 @@ export default class extends ApplicationController {
 
     set body(text) {
         return this.bodyTarget.value = text;
-    }
-
-    get datastatus() {
-        // return this.datastatusTarget;
-        this.data.get("datastatus");
-    }
-
-    set datastatus(text) {
-        // return this.datastatusTarget = text;
-        this.data.set("datastatus", text);
     }
 
     get content() {

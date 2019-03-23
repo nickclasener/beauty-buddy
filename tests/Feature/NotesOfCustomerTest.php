@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Customer;
 use App\Note;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -25,22 +26,28 @@ class NotesOfCustomerTest extends TestCase
 		$this->note = create(Note::class, [
 				'id'          => 1,
 				'customer_id' => 1,
+				'user_id'     => 1,
 				'body'        => 'Foo',
+				'created_at'  => Carbon::tomorrow(),
 		]);
 
 		create(Note::class, [
 				'id'          => 2,
 				'customer_id' => 1,
+				'user_id'     => 1,
+				'created_at'  => Carbon::yesterday(),
 		]);
 	}
 
 	/** @test */
 	function an_authenticated_user_can_add_a_note_to_a_customer_via_ajax ()
 	{
+
 		// Arrange
 		$note = make(Note::class, [
-				'customer_id' => 1,
 				'id'          => 3,
+				'customer_id' => 1,
+				'user_id'     => 1,
 				'body'        => 'I exist ajax :D',
 		]);
 		// Act

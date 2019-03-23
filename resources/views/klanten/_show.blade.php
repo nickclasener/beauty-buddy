@@ -1,21 +1,24 @@
 <div class="flex flex-col items-center mb-5">
-	<div class="flex justify-between w-full">
+	<div class="flex justify-between w-full px-12.5">
 		<form action="{{ route('klanten.destroy', $customer, false) }}"
 		      method="POST"
 		      data-action="customer#delete"
 		>
 			@method('DELETE')@csrf
 			<button type="submit"
-			        class="self-end bg-buddy-lightest rounded-full w-15 h-15 flex justify-center ml-9"
+					{{--class="self-end bg-buddy-lightest rounded-full w-15 h-15 flex justify-center ml-9"--}}
 			>
-				@svg('icon-27-trash-can',['class'=>'fill-current text-white self-center'])
+				{{--@svg('icon-27-trash-can',['class'=>'fill-current text-white self-center'])--}}
+				@svg('icon-27-trash-can',['class'=>'mt-2 fill-current self-center text-red-lighter hover:text-red-light'])
 			</button>
 		</form>
 
-		<button class="self-end bg-buddy-lightest rounded-full w-15 h-15 flex justify-center mr-9"
-		        data-action="toggle#toggle"
+		<button data-action="toggle#toggle"
+				{{--class="self-end bg-buddy-lightest rounded-full w-15 h-15 flex justify-center mr-9"--}}
+
 		>
-			@svg('icon-136-document-edit',['class'=>'ml-2 fill-current text-white self-center'])
+			@svg('icon-136-document-edit',['class'=>'mt-2 -mr-2 fill-current self-center text-buddy-lightest
+			hover:text-buddy-darker'])
 		</button>
 	</div>
 	<div class="h-50 w-50 mb-5">
@@ -30,7 +33,7 @@
 	<h2 class="font-hairline">{{ $customer->geboortedatum }}</h2>
 </div>
 <hr class="border-b border-dashed mb-5 mx-10">
-<div class="px-15">
+<div class="px-14">
 	<h2 class="font-hairline text-buddy-teal  mb-5">Contactinformatie</h2>
 
 	<label for="email"
@@ -92,7 +95,7 @@
 </div>
 
 <hr class="border-b border-dashed mb-5 mx-10">
-<div class="mx-15">
+<div class="mx-14">
 	<h2 class="font-hairline text-buddy-teal  mb-5">Adresinformatie</h2>
 
 	<label for="straatnaam + huisnummer"

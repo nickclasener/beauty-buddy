@@ -3,8 +3,20 @@ import {ApplicationController} from "../controllers/application-controller";
 export default class extends ApplicationController {
     static targets = ["monthyear", "content"];
 
-    remove() {
-        // REVIEW: jquery_ujs this.monthyear.children.length <= 1 && this.monthyear.remove();
+    initialize() {
+        if (this.data.get("created") !== null) {
+            TweenLite.set(this.monthyear, {
+                height: "auto"
+            });
+            TweenLite.from(this.monthyear, 1, {
+                autoAlpha: 0,
+                height: 0,
+                scale: 0,
+            });
+        }
+    }
+
+    remove(event) {
         if (this.monthyear.children.length <= 2) {
             TweenLite.to(this.monthyear, 1, {
                 autoAlpha: 0,
@@ -15,24 +27,19 @@ export default class extends ApplicationController {
                     this.remove();
                 }
             });
+            event.stopImmediatePropagation();
         }
     }
 
-    update() {
-        if (this.monthyear.children.length <= 2) {
-            TweenLite.to(this.monthyear, 1, {
-                autoAlpha: 0,
-                height: 0,
-                scale: 0,
-            }).reverse(1);
-        }
+    get content() {
+        return this.contentTarget;
     }
 
     get monthyear() {
         return this.monthyearTarget;
     }
 
-    get content() {
-        return this.contentTarget.innerText;
+    set monthyear(text) {
+        return this.monthyearTarget.innerHTML = text;
     }
 }

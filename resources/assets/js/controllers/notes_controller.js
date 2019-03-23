@@ -1,8 +1,7 @@
 import {ApplicationController} from "../controllers/application-controller";
 
 export default class extends ApplicationController {
-    static targets = ["body", "exist", "form", "list", "note"];
-
+    static targets = ["body", "exist", "form", "list", "note", "monthyear"];
 
     create(event) {
         event.preventDefault();
@@ -10,10 +9,11 @@ export default class extends ApplicationController {
             body: this.body,
         }).then(response => {
             this.body = null;
-            console.log(response);
-            // this.updateNote(response.data);
-            this.list = response.data;
-
+            if (response.headers[0] === 'note') {
+                this.note = response.data;
+            } else if (response.headers[0] === 'monthyear') {
+                this.monthyear = response.data;
+            }
             Toast.fire({
                 type: 'success',
                 title: 'Notitie is toegevoegd'
@@ -28,7 +28,6 @@ export default class extends ApplicationController {
 
     updateNote(note) {
         let noteController = this.getControllerByIdentifier("note");
-        // monthyearController.update(monthyear);
         noteController.create(note);
     }
 
@@ -52,8 +51,21 @@ export default class extends ApplicationController {
         this.list.outerHTML = text;
     }
 
+    get monthyear() {
+        return this.monthyearTarget;
+    }
+
+    set monthyear(text) {
+        return this.monthyearTarget.insertAdjacentHTML('beforebegin', text);
+        // return this.monthyearTarget.outerHTML = text;
+    }
+
     get note() {
         return this.noteTarget;
+    }
+
+    set note(text) {
+        return this.noteTarget.insertAdjacentHTML('beforebegin', text);
     }
 
 
@@ -61,7 +73,5 @@ export default class extends ApplicationController {
         return this.noteTargets;
     }
 
-    // set notes(text) {
-    //     this.notes.outerHTML = text;
-    // }
+
 }

@@ -3,11 +3,8 @@
      data-note-reset="{{ route('notities.index',$customer,false) }}"
      data-note-update="{{ route('notities.update', $note, false) }}"
      data-note-destroy="{{ route('notities.destroy', $note, false) }}"
-     @if ( isset($created) && $note->id === $created)
+     @if ( isset($noteCreated) && $note->id === $noteCreated)
      data-note-created="{{ true }}"
-     data-note-monthyear="{{ monthYear($note) }}"
-     {{--id="created-note"--}}
-     class="overflow-hidden"
 		@endif
 >
 	<div class="w-full flex-shrink flex pt-5 pl-5">
@@ -17,7 +14,7 @@
 		     data-action="click->toggle#toggle "
 		     data-target="toggle.show"
 		>
-		<div class="flex justify-between">
+			<div class="flex justify-between">
 				<p data-target="note.content"
 				>
 					{{ $note->body }}
@@ -34,10 +31,9 @@
 		</div>
 		<a href=""
 		   data-action="note#delete monthyear#remove note#remove"
-				{{--data-action="note#delete"--}}
+				{{--data-action="note#delete "--}}
 		>
-			@svg('icon-27-trash-can', ['class'=>' fill-current text-red-lighter hover:text-red-light
-			float-right mr-3'])
+			@svg('icon-27-trash-can', ['class'=>'fill-current text-red-lighter hover:text-red-light float-right mr-1'])
 		</a>
 	</div>
 </div>

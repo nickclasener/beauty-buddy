@@ -9,11 +9,17 @@ use Request;
 
 class NoteController extends Controller
 {
-
 	public function index ( Customer $customer )
 	{
+		$notes = $customer->notes()
+		                  ->where('user_id', $customer->user_id)
+//		                  ->orderByDesc('created_at')->get();
+								              ->orderByDesc('created_at')
+						                  ->paginate(15);
+
 		return view('klanten.notes.index')->with([
 				'customer' => $customer,
+				'notes'    => $notes,
 		]);
 	}
 
@@ -28,21 +34,45 @@ class NoteController extends Controller
 					->withErrors($validator)
 					->withInput();
 		}
-		if ( request()->ajax() ) {
+		if ( request()->json() ) {
 			$note = $customer->addNote([
 					'user_id' => auth()->id(),
 					'body'    => request('body'),
 			]);
+			$notes = $customer->notes()
+			                  ->where('user_id', $note->user_id)
+			                  ->whereYear('created_at', $note->created_at)
+			                  ->whereMonth('created_at', $note->created_at)
+			                  ->get();
 
-//			return view('klanten.notes.show')->with([
-//					'customer' => $customer,
-//					'note'     => $note,
-//					'created'  => $note->id,
-//			]);
-						return view('klanten.notes._list')->with([
-								'customer' => $customer,
-								'created'  => $note->id,
-						]);
+			if ( count($notes) === 1 ) {
+				return response(
+						$content = view('klanten.notes._monthyear')->with([
+								'customer'         => $customer,
+								'notes'            => $notes,
+								'monthYear'        => monthYear($note),
+								'monthyearCreated' => $note->id,
+						]),
+						200,
+						[ 'monthyear' ]
+				);
+			}
+
+			return response(
+					$content = view('klanten.notes.show')->with([
+							'customer'    => $customer,
+							'note'        => $note,
+							'noteCreated' => $note->id,
+					]),
+					200,
+					[ 'note' ]
+			);
+
+			//			return view('klanten.notes._list')->with([
+			//					'customer' => $customer,
+			//					//								'customer' => $customer,
+			//					'created'  => $note->id,
+			//			]);
 		}
 
 		$customer->addNote([

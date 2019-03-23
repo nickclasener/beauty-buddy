@@ -16,7 +16,7 @@ Zijn er veder noemenswaardigheden"
 	>{{ old('body') ?: $note->body }}</textarea>
 		<hr>
 		<div class="w-full flex">
-			<button data-action="toggle#toggle"
+			<button data-action="note#cancel toggle#toggle"
 			        class="w-1/2 px-5 py-5 rounded mb-5 mx-5 text-red-lighter hover:text-red-light"
 			>Cancel
 			</button>
