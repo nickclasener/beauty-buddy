@@ -31,6 +31,7 @@
 		<a href=""
 		   data-action="note#delete monthyear#remove note#remove"
 		>
+
 			@svg('icon-27-trash-can', ['class'=>'fill-current text-red-lighter hover:text-red-light float-right mr-1'])
 		</a>
 	</div>
