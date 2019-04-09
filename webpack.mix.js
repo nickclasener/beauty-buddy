@@ -32,12 +32,12 @@ mix.js('resources/assets/js/app.js', 'public/js')
                 }
             }
         },
-    })
-    .webpackConfig({
-        plugins: [
-            new LiveReloadPlugin()
-        ]
     });
+// .webpackConfig({
+//     plugins: [
+//         new LiveReloadPlugin()
+//     ]
+// });
 
 if (mix.inProduction()) {
     mix.version();

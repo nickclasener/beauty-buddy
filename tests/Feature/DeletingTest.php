@@ -63,7 +63,7 @@ class DeletingTest extends TestCase
 	public function authenticated_user_can_delete_a_note_from_a_customer ()
 	{
 		create(Note::class);
-		$this->delete(route('notities.destroy', $this->note));
+		$this->delete(route('notes.destroy', $this->note));
 
 		$this->assertDatabaseMissing('notes', [ 'id' => 1 ]);
 		$this->assertDatabaseHas('notes', [ 'id' => 2 ]);

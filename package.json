@@ -26,9 +26,10 @@
     "webpack-livereload-plugin": "^1.2.0"
   },
   "dependencies": {
-    "babel-plugin-transform-class-properties": "^6.24.1",
+    "animate.css": "^3.7.0",
     "gsap": "^2.1.2",
     "jquery": "^3.3.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "stimulus": "^1.1.1",
     "stimulus-conductor": "^1.0.3",
     "sweetalert2": "^8.3.0",

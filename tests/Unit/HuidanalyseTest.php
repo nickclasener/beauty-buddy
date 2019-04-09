@@ -19,8 +19,8 @@ class HuidanalyseTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->customer = create(Customer::class, [ 'id' => 1 ]);
-		$this->huidanalyse = create(Huidanalyse::class, [ 'id' => $this->customer->id ]);
+		$this->customer = create(Customer::class);
+		$this->huidanalyse = create(Huidanalyse::class, [ 'customer_id' => $this->customer->id ]);
 	}
 
 	/** @test */

@@ -43,25 +43,24 @@ Route::group([ 'middleware' => 'auth' ], function () {
 			'PUT',
 	], 'klanten/{customer}', 'CustomerController@update')->name('klanten.update');
 
-	// Notitie Routes
+	// Note Routes
 	Route::get('klanten/{customer}/notities/search', function ( NotesRepository $repository ) {
 		//	Route::get('notities/search', function (NotesRepository $repository) {
 		$note = $repository->search((string)request('q'));
 
 		return compact('note');
 	});
-
-	Route::delete('notities/{note}', 'NoteController@destroy')->name('notities.destroy');
-	Route::get('klanten/{customer}/notities/nieuw', 'NoteController@create')->name('notities.create');
-	//	Route::get('klanten/{customer}/notities', 'NoteController@show')->name('notities.show');
-	Route::get('klanten/{customer}/notities', 'NoteController@index')->name('notities.index');
-	Route::get('klanten/{customer}/notities/{notes}', 'NoteController@show')->name('notities.show');
-	Route::get('klanten/{customer}/notities/{notes}/bewerken', 'NoteController@edit')->name('notities.edit');
-	Route::post('klanten/{customer}/notities', 'NoteController@store')->name('notities.store');
+	Route::delete('notities/{note}', 'NoteController@destroy')->name('notes.destroy');
+	Route::get('klanten/{customer}/notities/nieuw', 'NoteController@create')->name('notes.create');
+	//	Route::get('klanten/{customer}/notities', 'NoteController@show')->name('notes.show');
+	Route::get('klanten/{customer}/notities', 'NoteController@index')->name('notes.index');
+	Route::get('klanten/{customer}/notities/{notes}', 'NoteController@show')->name('notes.show');
+	Route::get('klanten/{customer}/notities/{notes}/bewerken', 'NoteController@edit')->name('notes.edit');
+	Route::post('klanten/{customer}/notities', 'NoteController@store')->name('notes.store');
 	Route::match([
 			'put',
 			'patch',
-	], '/notities/{note}', 'NoteController@update')->name('notities.update');
+	], '/notities/{note}', 'NoteController@update')->name('notes.update');
 
 	// Huidanalyses Routes
 	Route::get('klanten/{customer}/huidanalyses/{huidanalyse}', 'HuidanalyseController@show')->name('huidanalyses.show');

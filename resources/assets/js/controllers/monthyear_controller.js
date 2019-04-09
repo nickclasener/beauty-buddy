@@ -9,9 +9,9 @@ export default class extends ApplicationController {
                 height: "auto"
             });
             TweenLite.from(this.monthyear, 1, {
-                autoAlpha: 0,
+                delay: 0.5,
+                opacity: 0,
                 height: 0,
-                scale: 0,
             });
         }
     }
@@ -19,9 +19,9 @@ export default class extends ApplicationController {
     remove(event) {
         if (this.monthyear.children.length <= 2) {
             TweenLite.to(this.monthyear, 1, {
-                autoAlpha: 0,
+                delay: 0.5,
+                opacity: 0,
                 height: 0,
-                scale: 0,
                 onCompleteScope: this.monthyear,
                 onComplete: function () {
                     this.remove();

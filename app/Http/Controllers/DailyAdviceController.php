@@ -9,7 +9,7 @@ class DailyAdviceController extends Controller
 {
 	public function index ( Customer $customer )
 	{
-		return view('dailyadvice.index')
+		return view('klanten.dailyadvice.index')
 				->with([
 						'customer' => $customer,
 				]);
@@ -38,7 +38,7 @@ class DailyAdviceController extends Controller
 	{
 		$dailyAdvice = DailyAdvice::findOrFail($id);
 
-		return view('dailyadvice.show')->with([
+		return view('klanten.dailyadvice.show')->with([
 				'customer'    => $customer,
 				'dailyAdvice' => $dailyAdvice,
 		]);
@@ -46,7 +46,7 @@ class DailyAdviceController extends Controller
 
 	public function edit ( Customer $customer, DailyAdvice $dailyAdvice )
 	{
-		return view('dailyadvice.edit')->with([
+		return view('klanten.dailyadvice.edit')->with([
 				'customer'    => $customer,
 				'dailyAdvice' => $dailyAdvice,
 		]);

@@ -52,20 +52,20 @@ class UnauthenticatedUserCantTest extends TestCase
 	/** @test */
 	function an_unauthenticated_user_cannot_update_a_note_of_a_customer ()
 	{
-		$this->get(route('notities.edit', [
+		$this->get(route('notes.edit', [
 				$this->customer,
 				$this->note,
 		]))
 		     ->assertRedirect('/login');
 
-		$this->patch(route('notities.update', $this->note), $this->note->toArray())
+		$this->patch(route('notes.update', $this->note), $this->note->toArray())
 		     ->assertRedirect('/login');
 	}
 
 	/** @test */
 	function an_unauthenticated_user_cannot_delete_a_note_from_a_customer ()
 	{
-		$this->delete($this->note->basePath())
+		$this->delete(route('notes.destroy', $this->note))
 		     ->assertRedirect('/login');
 	}
 
@@ -81,9 +81,15 @@ class UnauthenticatedUserCantTest extends TestCase
 	/** @test */
 	function an_unauthenticated_user_cannot_update_a_intake_of_a_customer ()
 	{
-		$this->get(route('intake.edit', [ $this->customer, $this->intake ]))
+		$this->get(route('intake.edit', [
+				$this->customer,
+				$this->intake,
+		]))
 		     ->assertRedirect('login');
-		$this->patch(route('intake.update', [ $this->customer, $this->intake ]), $this->intake->toArray())
+		$this->patch(route('intake.update', [
+				$this->customer,
+				$this->intake,
+		]), $this->intake->toArray())
 		     ->assertRedirect('login');
 	}
 }

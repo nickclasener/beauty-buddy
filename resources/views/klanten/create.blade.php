@@ -114,6 +114,9 @@
 					<button type="submit"
 					>Opslaan
 					</button>
+					<button data-action="customer#cancel"
+					>Annuleer
+					</button>
 				</div>
 			</form>
 			<hr>

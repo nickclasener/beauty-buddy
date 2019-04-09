@@ -1,8 +1,6 @@
 <div data-controller="notes"
-     data-notes-url="{{ route('notities.store', $customer, false) }}"
-     data-notes-index="{{ route('notities.index', $customer, false) }}"
-		{{--     data-notes-grow="{{  !array_first($customer->notes) ? 'true' : 'false' }}"--}}
-
+     data-notes-url="{{ route('notes.store', $customer, false) }}"
+     data-notes-index="{{ route('notes.index', $customer, false) }}"
 >
 	<div class="pb-10">
 		@include('klanten.notes.create')

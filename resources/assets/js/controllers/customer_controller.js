@@ -16,8 +16,20 @@ export default class extends Controller {
     create(event) {
         event.preventDefault();
         axios.post(this.data.get('url'), this.form).then(response => {
-            Turbolinks.visit(response.request.responseURL);
+            console.log(response);
+            Swal.fire({
+                type: 'success',
+                title: 'Nieuwe klant is toegevoegd',
+                showConfirmButton: false,
+                timer: 2000,
+                onClose: () => {
+                    return [
+                        Turbolinks.visit(response.request.responseURL)
+                    ];
+                }
+            });
         }).catch(error => console.log(error));
+
     }
 
     update(event) {
@@ -30,12 +42,32 @@ export default class extends Controller {
     delete(event) {
         event.preventDefault();
         //Todo: Change to personalized
-        if (confirm('Weet je zeker dat je de klant wil verwijderen')) {
-            axios.delete(this.data.get("destroy"), this.form)
-                .then(response => {
-                    Turbolinks.visit(response.data);
-                }).catch(error => console.log(error));
-        }
+        Swal.fire({
+            title: 'Wilt u de klant permanent verwijderen?',
+            // text: "Deze handeling kan niet terug gedraaid worden",
+            type: 'error',
+            showCancelButton: true,
+            confirmButtonText: 'Ja, verwijder klant',
+            cancelButtonText: 'Annuleer deze actie'
+        }).then(result => {
+            if (result.value) {
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'Your file has been deleted.',
+                    type: 'success',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    onClose: () => {
+                        return [
+                            axios.delete(this.data.get("destroy"), this.form
+                            ).then(response => {
+                                Turbolinks.visit(response.data);
+                            }).catch(error => console.log(error))
+                        ];
+                    }
+                });
+            }
+        });
     }
 
     cancel(event) {

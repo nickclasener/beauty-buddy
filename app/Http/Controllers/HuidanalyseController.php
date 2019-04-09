@@ -5,17 +5,20 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Huidanalyse;
 use Illuminate\Support\Facades\Validator;
+use Request;
 
 class HuidanalyseController extends Controller
 {
 	public function index ( Customer $customer )
 	{
+		$huidanalyses = $customer->huidanalyses()
+		                         ->orderByDesc('created_at')->get();
+		//				              ->orderByDesc('created_at')
+		//		                  ->paginate(15);
 		return view('klanten.huidanalyses.index')->with([
-				'customer' => $customer,
+				'customer'     => $customer,
+				'huidanalyses' => $huidanalyses,
 		]);
-		//		return view('klanten.huidanalyses.index')->with([
-		//				'customer' => $customer,
-		//		]);
 	}
 
 	public function store ( Customer $customer )
@@ -29,19 +32,45 @@ class HuidanalyseController extends Controller
 					->withErrors($validator)
 					->withInput();
 		}
-
 		if ( request()->ajax() ) {
-
 			$huidanalyse = $customer->addHuidanalyse([
 					'user_id' => auth()->id(),
 					'body'    => request('body'),
 			]);
+			$huidanalyses = $customer->huidanalyses()
+			                         ->where('user_id', $huidanalyse->user_id)
+			                         ->whereYear('created_at', $huidanalyse->created_at)
+			                         ->whereMonth('created_at', $huidanalyse->created_at)
+			                         ->get();
 
-			//			return view('klanten.huidanalyses._index')->with([
-			return view('klanten.huidanalyses.show')->with([
-					'huidanalyse' => $huidanalyse,
-			]);
+			if ( count($huidanalyses) === 1 ) {
+				return response(
+						$content = view('klanten.huidanalyses._monthyear')->with([
+								'customer'         => $customer,
+								'huidanalyses'     => $huidanalyses,
+								'monthYear'        => monthYear($huidanalyse),
+								'monthyearCreated' => $huidanalyse->id,
+						]),
+						200,
+						[ 'monthyear' ]
+				);
+			}
 
+			return response(
+					$content = view('klanten.huidanalyses.show')->with([
+							'customer'           => $customer,
+							'huidanalyse'        => $huidanalyse,
+							'huidanalyseCreated' => $huidanalyse->id,
+					]),
+					200,
+					[ 'huidanalyse' ]
+			);
+
+			//			return view('klanten.huidanalyses._list')->with([
+			//					'customer' => $customer,
+			//					//								'customer' => $customer,
+			//					'created'  => $huidanalyse->id,
+			//			]);
 		}
 
 		$customer->addHuidanalyse([
@@ -66,7 +95,6 @@ class HuidanalyseController extends Controller
 
 	public function edit ( Customer $customer, $id )
 	{
-
 		$huidanalyse = Huidanalyse::findOrFail($id);
 
 		return view('klanten.huidanalyses.edit')->with([
@@ -75,7 +103,7 @@ class HuidanalyseController extends Controller
 		]);
 	}
 
-	public function update ( Huidanalyse $huidanalyse )
+	public function update ( Huidanalyse $huidanalyse, Request $request )
 	{
 		$validator = Validator::make(request()->all(), [
 				'body' => 'required',
@@ -86,31 +114,35 @@ class HuidanalyseController extends Controller
 					->withErrors($validator)
 					->withInput();
 		}
-		if ( request()->ajax() ) {
 
+		if ( request()->ajax() ) {
 			$huidanalyse->update(request()->all());
 
-			return view('huidanalyses.show')->with([
+			return view('klanten.huidanalyses.show')->with([
+					'customer'    => $huidanalyse->customer,
 					'huidanalyse' => $huidanalyse,
 			]);
 		}
 		$huidanalyse->update(request()->all());
 
 		return redirect(route('huidanalyses.index', [
-				$huidanalyse->customer,
-				$huidanalyse,
+				'customer' => $huidanalyse->customer,
 		]));
 	}
 
 	public function destroy ( Huidanalyse $huidanalyse )
 	{
 		if ( request()->ajax() ) {
+			$customer = $huidanalyse->customer;
 			$huidanalyse->delete();
 
-			return 200;
+			//			return response(count($customer->huidanalyses));
+			return response(null, array_first($customer->huidanalyses) ? 200 : 205);
+			//			return response(array_first($customer->huidanalyses) ? 200 : 205);
 		}
 		$huidanalyse->delete();
 
 		return back();
 	}
+
 }

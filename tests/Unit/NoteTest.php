@@ -12,30 +12,15 @@ class NoteTest extends TestCase
 {
 	use RefreshDatabase;
 
+	private $customer;
 	private $note;
 
 	public function setUp ()
 	{
 		parent::setUp();
 
-		create(Customer::class, [ 'id' => 1 ]);
-		$this->note = create(Note::class);
-	}
-
-	/** @test */
-	function a_note_has_a_path ()
-	{
-		$this->assertEquals("klanten/{$this->note->customer->slug}/notities/{$this->note->id}",
-				$this->note->path()
-		);
-	}
-
-	/** @test */
-	function a_note_has_a_basePath ()
-	{
-		$this->assertEquals("/notities/{$this->note->id}",
-				$this->note->basePath()
-		);
+		$this->customer = create(Customer::class);
+		$this->note = create(Note::class, [ 'customer_id' => $this->customer->id ]);
 	}
 
 	/** @test */
@@ -49,6 +34,4 @@ class NoteTest extends TestCase
 	{
 		$this->assertInstanceOf(Customer::class, $this->note->customer);
 	}
-
-
 }

@@ -1,0 +1,16 @@
+# From:      [huidanalyse_controller.js]
+# No.Files:  1
+# Time:      0.0s
+
+
+
+
+# Usage:
+#	 s                    = next todo
+#	 w                    = previous todo
+#	 r                    = refresh result
+#	 f or enter           = goto todo location
+#	 d                    = open context panel
+#	 a                    = close context panel
+#	 move caret, then tab = select todo
+s = hi

@@ -4,5 +4,5 @@ namespace App\Repository;
 
 interface CustomersRepository
 {
-	public function search($query = "");
+	public function search ( $query = '' );
 }

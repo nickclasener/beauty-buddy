@@ -1,8 +1,7 @@
-<form action="{{ route('notities.update', $note, false) }}"
+<form action="{{ route('notes.update', $note, false) }}"
       method="POST"
-      data-action="note#edit toggle#grow toggle#toggle"
+      data-action="note#edit toggle#toggle"
       class="w-full"
-      data-target="note.form"
 >@method('PATCH') @csrf
 	<div class="border-b border-dashed focus-within:border-buddy-lightest pl-10 pr-10">
 	<textarea type="text"
@@ -16,13 +15,13 @@ Zijn er veder noemenswaardigheden"
 	>{{ old('body') ?: $note->body }}</textarea>
 		<hr>
 		<div class="w-full flex">
-			<button data-action="note#cancel toggle#toggle"
-			        class="w-1/2 px-5 py-5 rounded mb-5 mx-5 text-red-lighter hover:text-red-light"
-			>Cancel
-			</button>
 			<button type="submit"
-			        class="w-1/2  py-5 border rounded mb-5 mx-5  border-buddy-lightest hover:border-buddy-lighter text-buddy-lightest hover:text-buddy-darkest"
-			>Update Notitie
+			        class="w-1/2  py-5  mb-5 text-buddy-lightest hover:text-buddy-darker"
+			>Wijzig Notitie
+			</button>
+			<button data-action="note#cancel toggle#toggle"
+			        class="w-1/2 px-5 py-5 rounded mb-5 text-red-lighter hover:text-red-light"
+			>Cancel
 			</button>
 		</div>
 	</div>

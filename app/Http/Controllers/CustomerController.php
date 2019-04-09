@@ -12,7 +12,6 @@ class CustomerController extends Controller
 	public function index ()
 	{
 		$customers = Customer::all();
-
 		return view('klanten.index')->with([
 				'customers' => $customers,
 		]);
@@ -32,9 +31,16 @@ class CustomerController extends Controller
 		]);
 
 		if ( $validator->fails() ) {
+			if ( request()->ajax() ) {
+				return back()->with(422)
+				             ->withErrors($validator)
+				             ->withInput();
+			}
+
 			return back()
 					->withErrors($validator)
 					->withInput();
+
 		}
 
 		$customer = Customer::create([
@@ -52,10 +58,10 @@ class CustomerController extends Controller
 
 		if ( request()->ajax() ) {
 
-			return redirect(route('notities.index', $customer));
+			return redirect(route('notes.index', $customer));
 		}
 
-		return redirect(route('notities.index', $customer));
+		return redirect(route('notes.index', $customer));
 	}
 
 	public function show ( Customer $customer )
@@ -89,12 +95,12 @@ class CustomerController extends Controller
 		$customer->update($request->all());
 
 		if ( request()->ajax() ) {
-			return route('notities.index', [
+			return route('notes.index', [
 					'customer' => $customer,
 			]);
 		}
 
-		return redirect(route('notities.index', [
+		return redirect(route('notes.index', [
 				'customer' => $customer,
 		]));
 	}

@@ -52,8 +52,8 @@ class NotesOfCustomerTest extends TestCase
 		]);
 		// Act
 		//		TODO: create the ajax stimulus js tests
-		//		$this->json('post', route('notities.store', $this->customer), $note->toArray())->assertExactJson($note);
-		$this->json('post', route('notities.store', $this->customer), $note->toArray());
+		//		$this->json('post', route('notes.store', $this->customer), $note->toArray())->assertExactJson($note);
+		$this->json('post', route('notes.store', $this->customer), $note->toArray());
 
 		$this->assertDatabaseHas('notes', [ 'body' => 'I exist ajax :D' ]);
 	}
@@ -68,7 +68,7 @@ class NotesOfCustomerTest extends TestCase
 				'body'        => 'I exist :D',
 		]);
 		// Act
-		$this->post(route('notities.store', $this->customer), $note->toArray());
+		$this->post(route('notes.store', $this->customer), $note->toArray());
 
 		$this->assertDatabaseHas('notes', [ 'body' => 'I exist :D' ]);
 
@@ -87,7 +87,7 @@ class NotesOfCustomerTest extends TestCase
 	/** @test */
 	public function authenticated_can_delete_a_note_from_a_customer ()
 	{
-		$this->delete($this->note->basePath());
+		$this->delete(route('notes.destroy', $this->note));
 
 		$this->assertDatabaseMissing('notes', [ 'id' => 1 ]);
 		$this->assertDatabaseHas('notes', [ 'id' => 2 ]);
@@ -101,7 +101,7 @@ class NotesOfCustomerTest extends TestCase
 				'id'   => $this->note->id,
 				'body' => 'Cur historia congregabo?',
 		]);
-		$response = $this->put(route('notities.update', $this->note), $note->toArray());
+		$response = $this->put(route('notes.update', $this->note), $note->toArray());
 
 		$this->get($response->headers->get('Location'))
 		     ->assertSee('Cur historia congregabo?');
@@ -111,7 +111,7 @@ class NotesOfCustomerTest extends TestCase
 	/** @test */
 	function an_authenticated_user_can_edit_a_note ()
 	{
-		$response = $this->get(route('notities.edit', [
+		$response = $this->get(route('notes.edit', [
 				$this->customer,
 				$this->note->id,
 		]));

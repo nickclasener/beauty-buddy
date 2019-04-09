@@ -130,7 +130,7 @@ class UpdateCustomerTest extends TestCase
 				'id'   => $this->note->id,
 				'body' => 'Cur historia congregabo?',
 		]);
-		$response = $this->put(route('notities.update', $this->note), $note->toArray());
+		$response = $this->put(route('notes.update', $this->note), $note->toArray());
 
 		$this->get($response->headers->get('Location'))
 		     ->assertSee('Cur historia congregabo?');
@@ -140,7 +140,7 @@ class UpdateCustomerTest extends TestCase
 	/** @test */
 	function an_authenticated_user_can_edit_a_note ()
 	{
-		$response = $this->get(route('notities.edit', [
+		$response = $this->get(route('notes.edit', [
 				$this->customer,
 				$this->note->id,
 		]));

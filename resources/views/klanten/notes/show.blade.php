@@ -1,8 +1,7 @@
 <div data-controller="note toggle"
      data-target="notes.note note.note"
-     data-note-reset="{{ route('notities.index',$customer,false) }}"
-     data-note-update="{{ route('notities.update', $note, false) }}"
-     data-note-destroy="{{ route('notities.destroy', $note, false) }}"
+     data-note-update="{{ route('notes.update', $note, false) }}"
+     data-note-destroy="{{ route('notes.destroy', $note, false) }}"
      @if ( isset($noteCreated) && $note->id === $noteCreated)
      data-note-created="{{ true }}"
 		@endif
@@ -31,7 +30,6 @@
 		</div>
 		<a href=""
 		   data-action="note#delete monthyear#remove note#remove"
-				{{--data-action="note#delete "--}}
 		>
 			@svg('icon-27-trash-can', ['class'=>'fill-current text-red-lighter hover:text-red-light float-right mr-1'])
 		</a>

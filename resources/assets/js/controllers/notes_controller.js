@@ -1,7 +1,7 @@
-import {ApplicationController} from "../controllers/application-controller";
+import {Controller} from "stimulus";
 
-export default class extends ApplicationController {
-    static targets = ["body", "exist", "form", "list", "note", "monthyear"];
+export default class extends Controller {
+    static targets = ["body", "note", "monthyear"];
 
     create(event) {
         event.preventDefault();
@@ -14,9 +14,11 @@ export default class extends ApplicationController {
             } else if (response.headers[0] === 'monthyear') {
                 this.monthyear = response.data;
             }
-            Toast.fire({
+            Swal.fire({
                 type: 'success',
-                title: 'Notitie is toegevoegd'
+                title: 'Notitie is toegevoegd',
+                showConfirmButton: false,
+                timer: 2000
             });
         }).catch(error => console.log(error));
     }
@@ -24,11 +26,6 @@ export default class extends ApplicationController {
     cancel(event) {
         event.preventDefault();
         this.body = '';
-    }
-
-    updateNote(note) {
-        let noteController = this.getControllerByIdentifier("note");
-        noteController.create(note);
     }
 
     get body() {
@@ -57,7 +54,6 @@ export default class extends ApplicationController {
 
     set monthyear(text) {
         return this.monthyearTarget.insertAdjacentHTML('beforebegin', text);
-        // return this.monthyearTarget.outerHTML = text;
     }
 
     get note() {

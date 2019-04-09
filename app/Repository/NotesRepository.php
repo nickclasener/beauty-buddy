@@ -4,5 +4,5 @@ namespace App\Repository;
 
 interface NotesRepository
 {
-	public function search($query = "");
+	public function search ( $query = '' );
 }

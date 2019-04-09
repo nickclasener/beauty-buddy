@@ -12,11 +12,10 @@ class NoteController extends Controller
 	public function index ( Customer $customer )
 	{
 		$notes = $customer->notes()
-		                  ->where('user_id', $customer->user_id)
-//		                  ->orderByDesc('created_at')->get();
-								              ->orderByDesc('created_at')
-						                  ->paginate(15);
-
+				//		                  ->where('user_id', $customer->user_id)
+				              ->orderByDesc('created_at')->get();
+		//				              ->orderByDesc('created_at')
+		//		                  ->paginate(15);
 		return view('klanten.notes.index')->with([
 				'customer' => $customer,
 				'notes'    => $notes,
@@ -34,7 +33,7 @@ class NoteController extends Controller
 					->withErrors($validator)
 					->withInput();
 		}
-		if ( request()->json() ) {
+		if ( request()->ajax() ) {
 			$note = $customer->addNote([
 					'user_id' => auth()->id(),
 					'body'    => request('body'),
@@ -80,7 +79,7 @@ class NoteController extends Controller
 				'body'    => request('body'),
 		]);
 
-		return redirect(route('notities.index', [
+		return redirect(route('notes.index', [
 				'customer' => $customer,
 		]));
 	}
@@ -127,7 +126,7 @@ class NoteController extends Controller
 		}
 		$note->update(request()->all());
 
-		return redirect(route('notities.index', [
+		return redirect(route('notes.index', [
 				'customer' => $note->customer,
 		]));
 	}

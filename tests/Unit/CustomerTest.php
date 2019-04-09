@@ -38,7 +38,7 @@ class CustomerTest extends TestCase
 				$this->customer->path()
 		);
 	}
-
+	
 	/** @test */
 	function a_customer_automatically_sets_the_slug_on_create ()
 	{

@@ -111,7 +111,7 @@ class CustomersTest extends TestCase
 	/** @test */
 	function a_authenticated_user_can_add_a_customer ()
 	{
-		$this->withoutExceptionHandling();
+		//		$this->withoutExceptionHandling();
 		$customer = make(Customer::class);
 
 		$response = $this->post('/klanten', $customer->toArray());
@@ -158,7 +158,7 @@ class CustomersTest extends TestCase
 	/** @test */
 	function view_a_note_on_a_customer_page ()
 	{
-		$this->get(route('notities.show', [
+		$this->get(route('notes.show', [
 				$this->customer,
 				$this->note,
 		]))
@@ -171,17 +171,17 @@ class CustomersTest extends TestCase
 	{
 		create(Note::class, [
 				'body'        => 'foo',
-				'customer_id' => 1,
+				'customer_id' => $this->customer->id,
 		]);
 		create(Note::class, [
 				'body'        => 'bar',
-				'customer_id' => 1,
+				'customer_id' => $this->customer->id,
 		]);
 		create(Note::class, [
 				'body'        => 'baz',
-				'customer_id' => 1,
+				'customer_id' => $this->customer->id,
 		]);
-		$this->get(route('notities.index', $this->customer))
+		$this->get(route('notes.index', $this->customer))
 		     ->assertStatus(200)
 		     ->assertSee('This is a note')
 		     ->assertSee('foo')
