@@ -5,7 +5,7 @@ export default class extends Controller {
 
     create(event) {
         event.preventDefault();
-        axios.post(this.data.get('url'), {
+        axios.post(this.data.get('store'), {
             body: this.body,
         }).then(response => {
             this.body = null;

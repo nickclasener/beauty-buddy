@@ -3,9 +3,9 @@ import {Controller} from "stimulus";
 export default class extends Controller {
     static targets = [
         "body",
-        "content",
         "huidanalyse",
     ];
+
     initialize() {
         if (this.data.get('created') !== null) {
             TweenLite.set(this.huidanalyse, {
@@ -21,9 +21,7 @@ export default class extends Controller {
 
     edit(event) {
         event.preventDefault();
-        axios.patch(this.data.get("update"), {
-            body: this.body
-        }).then(response => {
+        axios.patch(this.data.get("update"), this.form).then(response => {
             this.huidanalyse = response.data;
             Swal.fire({
                 type: 'success',
@@ -62,23 +60,6 @@ export default class extends Controller {
 
     cancel(event) {
         event.preventDefault();
-        // this.body = null;
-    }
-
-    get body() {
-        return this.bodyTarget.value;
-    }
-
-    set body(text) {
-        return this.bodyTarget.value = text;
-    }
-
-    get content() {
-        return this.contentTarget.innerHTML;
-    }
-
-    set content(text) {
-        return this.contentTarget.value = text;
     }
 
     get huidanalyse() {
@@ -89,5 +70,14 @@ export default class extends Controller {
         return this.huidanalyseTarget.outerHTML = text;
     }
 
+    get form() {
+        return {
+            body: this.bodyTarget.value,
+        };
+    }
+
+    set form(text) {
+        this.bodyTarget.value = text;
+    }
 }
 

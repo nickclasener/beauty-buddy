@@ -1,5 +1,5 @@
 <div data-controller="huidanalyses"
-     data-huidanalyses-url="{{ route('huidanalyses.store', $customer, false) }}"
+     data-huidanalyses-store="{{ route('huidanalyses.store', $customer, false) }}"
      data-huidanalyses-index="{{ route('huidanalyses.index', $customer, false) }}"
 >
 	<div class="pb-10">

@@ -7,7 +7,6 @@ use Elasticsearch\Client;
 
 class CustomersElasticsearchRepository implements CustomersRepository
 {
-
 	private $search;
 
 	public function __construct ( Client $client )

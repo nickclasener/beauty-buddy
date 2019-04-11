@@ -2,16 +2,18 @@ import {Controller} from "stimulus";
 
 export default class extends Controller {
     static targets = [
-        "body",
-        "note",
+        "morning",
+        "midday",
+        "evening",
+        "dailyadvice",
     ];
 
     initialize() {
         if (this.data.get('created') !== null) {
-            TweenLite.set(this.note, {
+            TweenLite.set(this.dailyadvice, {
                 height: "auto"
             });
-            TweenLite.from(this.note, 1, {
+            TweenLite.from(this.dailyadvice, 1, {
                 delay: 0.5,
                 opacity: 0,
                 height: 0,
@@ -22,10 +24,10 @@ export default class extends Controller {
     edit(event) {
         event.preventDefault();
         axios.patch(this.data.get("update"), this.form).then(response => {
-            this.note = response.data;
+            this.dailyadvice = response.data;
             Swal.fire({
                 type: 'success',
-                title: 'Notitie is gewijzigd',
+                title: 'Product advies is gewijzigd',
                 showConfirmButton: false,
                 timer: 1000
             });
@@ -33,11 +35,11 @@ export default class extends Controller {
     }
 
     remove() {
-        TweenLite.to(this.note, 1, {
+        TweenLite.to(this.dailyadvice, 1, {
             delay: 0.5,
             autoAlpha: 0,
             height: 0,
-            onCompleteScope: this.note,
+            onCompleteScope: this.dailyadvice,
             onComplete: function () {
                 this.remove();
             }
@@ -60,22 +62,26 @@ export default class extends Controller {
         event.preventDefault();
     }
 
-    get note() {
-        return this.noteTarget;
+    get dailyadvice() {
+        return this.dailyadviceTarget;
     }
 
-    set note(text) {
-        return this.noteTarget.outerHTML = text;
+    set dailyadvice(text) {
+        return this.dailyadviceTarget.outerHTML = text;
     }
 
     get form() {
         return {
-            body: this.bodyTarget.value,
+            morning: this.morningTarget.value,
+            midday: this.middayTarget.value,
+            evening: this.eveningTarget.value,
         };
     }
 
     set form(text) {
-        this.bodyTarget.value = text;
+        this.morningTarget.value = text;
+        this.middayTarget.value = text;
+        this.eveningTarget.value = text;
     }
 }
 

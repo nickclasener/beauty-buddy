@@ -14,13 +14,13 @@ Zijn er veder noemenswaardigheden"
 		          required
 		>{{ old('body') }}</textarea>
 			<hr>
-			<div class="w-full flex">
+			<div class="w-full flex mb-5">
 				<button type="submit"
-				        class="w-1/2  py-5  mb-5 text-buddy-lightest hover:text-buddy-darker"
+				        class="w-1/2 text-buddy-lightest hover:text-buddy-darker"
 				>Voeg huidanalyse
 				</button>
 				<button data-action="huidanalyses#cancel  toggle#toggle"
-				        class="w-1/2 px-5 py-5 rounded mb-5 text-red-lighter hover:text-red-light"
+				        class="w-1/2 px-5 rounded text-red-lighter hover:text-red-light"
 				>
 					Annuleer
 				</button>

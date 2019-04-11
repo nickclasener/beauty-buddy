@@ -1,7 +1,7 @@
 import {ApplicationController} from "../controllers/application-controller";
 
 export default class extends ApplicationController {
-    static targets = ["monthyear", "content"];
+    static targets = ["monthyear"];
 
     initialize() {
         if (this.data.get("created") !== null) {
@@ -29,10 +29,6 @@ export default class extends ApplicationController {
             });
             event.stopImmediatePropagation();
         }
-    }
-
-    get content() {
-        return this.contentTarget;
     }
 
     get monthyear() {

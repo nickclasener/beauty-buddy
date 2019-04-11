@@ -1,5 +1,5 @@
 <div data-controller="notes"
-     data-notes-url="{{ route('notes.store', $customer, false) }}"
+     data-notes-store="{{ route('notes.store', $customer, false) }}"
      data-notes-index="{{ route('notes.index', $customer, false) }}"
 >
 	<div class="pb-10">

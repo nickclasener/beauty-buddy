@@ -1,5 +1,6 @@
 <div class="pt-10">
 	<form action="{{  route('notes.store', $customer, false) }}"
+	      method="POST"
 	      data-action="notes#create"
 	>@method('POST')@csrf
 		<div class="border-b border-dashed focus-within:border-buddy-lightest px-10">
@@ -14,13 +15,13 @@ Zijn er veder noemenswaardigheden"
 		          required
 		>{{ old('body') }}</textarea>
 			<hr>
-			<div class="w-full flex">
+			<div class="w-full flex mb-5">
 				<button type="submit"
-				        class="w-1/2  py-5  mb-5 text-buddy-lightest hover:text-buddy-darker"
+				        class="w-1/2 text-buddy-lightest hover:text-buddy-darker"
 				>Voeg Notitie
 				</button>
-				<button data-action="notes#cancel  toggle#toggle"
-				        class="w-1/2 px-5 py-5 rounded mb-5 text-red-lighter hover:text-red-light"
+				<button data-action="notes#cancel toggle#toggle"
+				        class="w-1/2 px-5 rounded text-red-lighter hover:text-red-light"
 				>
 					Annuleer
 				</button>

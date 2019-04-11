@@ -4,30 +4,79 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\DailyAdvice;
+use Illuminate\Support\Facades\Validator;
 
 class DailyAdviceController extends Controller
 {
 	public function index ( Customer $customer )
 	{
+		$dailyAdvice = $customer
+				->dailyAdvices()
+				->orderByDesc('created_at')
+				->get();
+
+		//				->paginate(15);
 		return view('klanten.dailyadvice.index')
 				->with([
-						'customer' => $customer,
+						'customer'    => $customer,
+						'dailyAdvice' => $dailyAdvice,
 				]);
 	}
 
-	//	public function create ( Customer $customer )
-	//	{
-	//		return view('dailyadvice.create')->with(['customer'));
-	//	}
-
 	public function store ( Customer $customer )
 	{
-		$customer->addDailyAdvice([
+		//		required_without
+		$validator = Validator::make(request()->all(), [
+				'morning' => 'required_without:midday,evening',
+				'midday'  => 'required_without:morning,evening',
+				'evening' => 'required_without:morning,midday',
+		]);
+
+		if ( $validator->fails() ) {
+			//			if ( request()->ajax() ) {
+			//				return response(
+			//						back()
+			//								->withErrors($validator)
+			//								->withInput()
+			//				);
+			//			}
+
+			return back()
+					->withErrors($validator)
+					->withInput();
+		}
+		$dailyAdvice = $customer->addDailyAdvice([
 				'user_id' => auth()->id(),
 				'morning' => request('morning'),
 				'midday'  => request('midday'),
 				'evening' => request('evening'),
 		]);
+
+		if ( request()->ajax() ) {
+			$dailyAdvices = $customer
+					->dailyAdvices()
+					->where('user_id', $dailyAdvice->user_id)
+					->whereYear('created_at', $dailyAdvice->created_at)
+					->whereMonth('created_at', $dailyAdvice->created_at)
+					->get();
+
+			if ( count($dailyAdvices) === 1 ) {
+				return response(
+						$content = view('klanten.dailyadvice._monthyear')->with([
+								'customer'         => $customer,
+								'dailyAdvices'     => $dailyAdvices,
+								'monthYear'        => monthYear($dailyAdvice),
+								'monthyearCreated' => $dailyAdvice->id,
+						]), 200, [ 'monthyear' ]);
+			}
+
+			return response(
+					$content = view('klanten.dailyadvice.show')->with([
+							'customer'           => $customer,
+							'dailyAdvice'        => $dailyAdvice,
+							'dailyAdviceCreated' => $dailyAdvice->id,
+					]), 200, [ 'dailyAdvice' ]);
+		}
 
 		return redirect(route('dailyadvice.index', [
 				'customer' => $customer,

@@ -9037,7 +9037,7 @@ var ApplicationController = function (_Controller) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(30);
-module.exports = __webpack_require__(93);
+module.exports = __webpack_require__(94);
 
 
 /***/ }),
@@ -45275,12 +45275,14 @@ var map = {
 	"./application-controller.js": 28,
 	"./clipboard_controller.js": 85,
 	"./customer_controller.js": 86,
-	"./huidanalyse_controller.js": 87,
-	"./huidanalyses_controller.js": 88,
-	"./monthyear_controller.js": 89,
-	"./note_controller.js": 90,
-	"./notes_controller.js": 91,
-	"./toggle_controller.js": 92
+	"./dailyadvice_controller.js": 100,
+	"./dailyadvices_controller.js": 87,
+	"./huidanalyse_controller.js": 88,
+	"./huidanalyses_controller.js": 89,
+	"./monthyear_controller.js": 90,
+	"./note_controller.js": 91,
+	"./notes_controller.js": 92,
+	"./toggle_controller.js": 93
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -45494,6 +45496,108 @@ var _class = function (_Controller) {
     }
 
     _createClass(_class, [{
+        key: "create",
+        value: function create(event) {
+            var _this2 = this;
+
+            event.preventDefault();
+            axios.post(this.data.get('store'), this.form).then(function (response) {
+                _this2.form = null;
+                console.log(response.headers);
+                if (response.headers[0] === 'dailyAdvice') {
+                    _this2.dailyadvice = response.data;
+                } else if (response.headers[0] === 'monthyear') {
+                    _this2.monthyear = response.data;
+                }
+                Swal.fire({
+                    type: 'success',
+                    title: 'Product advies is toegevoegd',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        }
+    }, {
+        key: "cancel",
+        value: function cancel(event) {
+            event.preventDefault();
+            this.form = '';
+        }
+    }, {
+        key: "list",
+        get: function get() {
+            return this.listTarget;
+        },
+        set: function set(text) {
+            this.list.outerHTML = text;
+        }
+    }, {
+        key: "monthyear",
+        get: function get() {
+            return this.monthyearTarget;
+        },
+        set: function set(text) {
+            return this.monthyearTarget.insertAdjacentHTML('beforebegin', text);
+        }
+    }, {
+        key: "dailyadvice",
+        get: function get() {
+            return this.dailyadviceTarget;
+        },
+        set: function set(text) {
+            return this.dailyadviceTarget.insertAdjacentHTML('beforebegin', text);
+        }
+    }, {
+        key: "form",
+        get: function get() {
+            return {
+                morning: this.morningTarget.value,
+                midday: this.middayTarget.value,
+                evening: this.eveningTarget.value
+            };
+        },
+        set: function set(text) {
+            this.morningTarget.value = text;
+            this.middayTarget.value = text;
+            this.eveningTarget.value = text;
+        }
+    }]);
+
+    return _class;
+}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
+
+_class.targets = ["morning", "midday", "evening", "dailyadvice", "monthyear"];
+/* harmony default export */ __webpack_exports__["default"] = (_class);
+
+/***/ }),
+/* 88 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(2);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var _class = function (_Controller) {
+    _inherits(_class, _Controller);
+
+    function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass(_class, [{
         key: "initialize",
         value: function initialize() {
             if (this.data.get('created') !== null) {
@@ -45513,9 +45617,7 @@ var _class = function (_Controller) {
             var _this2 = this;
 
             event.preventDefault();
-            axios.patch(this.data.get("update"), {
-                body: this.body
-            }).then(function (response) {
+            axios.patch(this.data.get("update"), this.form).then(function (response) {
                 _this2.huidanalyse = response.data;
                 Swal.fire({
                     type: 'success',
@@ -45558,23 +45660,6 @@ var _class = function (_Controller) {
         key: "cancel",
         value: function cancel(event) {
             event.preventDefault();
-            // this.body = null;
-        }
-    }, {
-        key: "body",
-        get: function get() {
-            return this.bodyTarget.value;
-        },
-        set: function set(text) {
-            return this.bodyTarget.value = text;
-        }
-    }, {
-        key: "content",
-        get: function get() {
-            return this.contentTarget.innerHTML;
-        },
-        set: function set(text) {
-            return this.contentTarget.value = text;
         }
     }, {
         key: "huidanalyse",
@@ -45584,16 +45669,26 @@ var _class = function (_Controller) {
         set: function set(text) {
             return this.huidanalyseTarget.outerHTML = text;
         }
+    }, {
+        key: "form",
+        get: function get() {
+            return {
+                body: this.bodyTarget.value
+            };
+        },
+        set: function set(text) {
+            this.bodyTarget.value = text;
+        }
     }]);
 
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ["body", "content", "huidanalyse"];
+_class.targets = ["body", "huidanalyse"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45624,7 +45719,7 @@ var _class = function (_Controller) {
             var _this2 = this;
 
             event.preventDefault();
-            axios.post(this.data.get('url'), {
+            axios.post(this.data.get('store'), {
                 body: this.body
             }).then(function (response) {
                 _this2.body = null;
@@ -45700,7 +45795,7 @@ _class.targets = ["body", "huidanalyse", "monthyear"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45756,11 +45851,6 @@ var _class = function (_ApplicationControlle) {
             }
         }
     }, {
-        key: "content",
-        get: function get() {
-            return this.contentTarget;
-        }
-    }, {
         key: "monthyear",
         get: function get() {
             return this.monthyearTarget;
@@ -45773,11 +45863,11 @@ var _class = function (_ApplicationControlle) {
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0__controllers_application_controller__["ApplicationController"]);
 
-_class.targets = ["monthyear", "content"];
+_class.targets = ["monthyear"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45822,9 +45912,7 @@ var _class = function (_Controller) {
             var _this2 = this;
 
             event.preventDefault();
-            axios.patch(this.data.get("update"), {
-                body: this.body
-            }).then(function (response) {
+            axios.patch(this.data.get("update"), this.form).then(function (response) {
                 _this2.note = response.data;
                 Swal.fire({
                     type: 'success',
@@ -45867,23 +45955,6 @@ var _class = function (_Controller) {
         key: "cancel",
         value: function cancel(event) {
             event.preventDefault();
-            // this.body = null;
-        }
-    }, {
-        key: "body",
-        get: function get() {
-            return this.bodyTarget.value;
-        },
-        set: function set(text) {
-            return this.bodyTarget.value = text;
-        }
-    }, {
-        key: "content",
-        get: function get() {
-            return this.contentTarget.innerHTML;
-        },
-        set: function set(text) {
-            return this.contentTarget.value = text;
         }
     }, {
         key: "note",
@@ -45893,16 +45964,26 @@ var _class = function (_Controller) {
         set: function set(text) {
             return this.noteTarget.outerHTML = text;
         }
+    }, {
+        key: "form",
+        get: function get() {
+            return {
+                body: this.bodyTarget.value
+            };
+        },
+        set: function set(text) {
+            this.bodyTarget.value = text;
+        }
     }]);
 
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ["body", "content", "note"];
+_class.targets = ["body", "note"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45933,10 +46014,8 @@ var _class = function (_Controller) {
             var _this2 = this;
 
             event.preventDefault();
-            axios.post(this.data.get('url'), {
-                body: this.body
-            }).then(function (response) {
-                _this2.body = null;
+            axios.post(this.data.get('store'), this.form).then(function (response) {
+                _this2.form = null;
                 if (response.headers[0] === 'note') {
                     _this2.note = response.data;
                 } else if (response.headers[0] === 'monthyear') {
@@ -45956,20 +46035,7 @@ var _class = function (_Controller) {
         key: "cancel",
         value: function cancel(event) {
             event.preventDefault();
-            this.body = '';
-        }
-    }, {
-        key: "body",
-        get: function get() {
-            return this.bodyTarget.value;
-        },
-        set: function set(text) {
-            this.bodyTarget.value = text;
-        }
-    }, {
-        key: "form",
-        get: function get() {
-            return this.formTarget;
+            this.form = '';
         }
     }, {
         key: "list",
@@ -45996,9 +46062,14 @@ var _class = function (_Controller) {
             return this.noteTarget.insertAdjacentHTML('beforebegin', text);
         }
     }, {
-        key: "notes",
+        key: "form",
         get: function get() {
-            return this.noteTargets;
+            return {
+                body: this.bodyTarget.value
+            };
+        },
+        set: function set(text) {
+            this.bodyTarget.value = text;
         }
     }]);
 
@@ -46009,7 +46080,7 @@ _class.targets = ["body", "note", "monthyear"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46065,10 +46136,135 @@ _class.targets = ["show", "hide"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(2);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var _class = function (_Controller) {
+    _inherits(_class, _Controller);
+
+    function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass(_class, [{
+        key: "initialize",
+        value: function initialize() {
+            if (this.data.get('created') !== null) {
+                TweenLite.set(this.dailyadvice, {
+                    height: "auto"
+                });
+                TweenLite.from(this.dailyadvice, 1, {
+                    delay: 0.5,
+                    opacity: 0,
+                    height: 0
+                });
+            }
+        }
+    }, {
+        key: "edit",
+        value: function edit(event) {
+            var _this2 = this;
+
+            event.preventDefault();
+            axios.patch(this.data.get("update"), this.form).then(function (response) {
+                _this2.dailyadvice = response.data;
+                Swal.fire({
+                    type: 'success',
+                    title: 'Product advies is gewijzigd',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        }
+    }, {
+        key: "remove",
+        value: function remove() {
+            TweenLite.to(this.dailyadvice, 1, {
+                delay: 0.5,
+                autoAlpha: 0,
+                height: 0,
+                onCompleteScope: this.dailyadvice,
+                onComplete: function onComplete() {
+                    this.remove();
+                }
+            });
+        }
+    }, {
+        key: "delete",
+        value: function _delete(event) {
+            event.preventDefault();
+            axios.delete(this.data.get("destroy")).catch(function (error) {
+                return console.log(error);
+            });
+            Swal.fire({
+                type: 'error',
+                title: 'Notitie is verwijderd',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        }
+    }, {
+        key: "cancel",
+        value: function cancel(event) {
+            event.preventDefault();
+        }
+    }, {
+        key: "dailyadvice",
+        get: function get() {
+            return this.dailyadviceTarget;
+        },
+        set: function set(text) {
+            return this.dailyadviceTarget.outerHTML = text;
+        }
+    }, {
+        key: "form",
+        get: function get() {
+            return {
+                morning: this.morningTarget.value,
+                midday: this.middayTarget.value,
+                evening: this.eveningTarget.value
+            };
+        },
+        set: function set(text) {
+            this.morningTarget.value = text;
+            this.middayTarget.value = text;
+            this.eveningTarget.value = text;
+        }
+    }]);
+
+    return _class;
+}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
+
+_class.targets = ["morning", "midday", "evening", "dailyadvice"];
+/* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ })
 /******/ ]);

@@ -1,44 +1,43 @@
 <div class="pt-10">
 	<form action="{{ route('dailyadvice.store', $customer, false) }}"
 	      method="POST"
-			{{--data-action="dailyadvice#create"--}}
-	>
-		@method('POST')@csrf
+	      data-action="dailyadvices#create"
+	>@method('POST')@csrf
 		<div class="border-b border-dashed focus-within:border-buddy-lightest px-10">
 	<textarea type="text"
 	          class="resize-none w-full border-b border-dashed focus-within:border-buddy-lightest"
 	          rows="5"
 	          name="morning"
-	          placeholder="Voor de ochtend adviseer ik u"
-	          {{--data-target="dailyAdvice.ochtend"--}}
-	          required
+	          placeholder="Dit is hoe u het product gebruikt in de ochtend"
+	          data-target="dailyadvices.morning"
+			{{--required--}}
 	>{{ old('morning') }}</textarea>
 			<hr>
 			<textarea type="text"
 			          class="resize-none w-full border-b border-dashed focus-within:border-buddy-lightest"
 			          rows="5"
 			          name="midday"
-			          placeholder="Voor de middag adviseer ik u"
-			          {{--data-target="dailyAdvice.ochtend"--}}
-			          required
+			          placeholder="Dit is hoe u het product gebruikt in de ochtend"
+			          data-target="dailyadvices.midday"
+					{{--required--}}
 			>{{ old('midday') }}</textarea>
 			<hr>
 			<textarea type="text"
 			          class="resize-none w-full border-b border-dashed focus-within:border-buddy-lightest"
 			          rows="5"
 			          name="evening"
-			          placeholder="Voor de avond adviseer ik u"
-		          {{--data-target="dailyAdvice.ochtend"--}}
+			          placeholder="Dit is hoe u het product gebruikt in de ochtend"
+			          data-target="dailyadvices.evening"
 					{{--required--}}
-		>{{ old('evening') }}</textarea>
+			>{{ old('evening') }}</textarea>
 			<hr>
-			<div class="w-full flex">
+			<div class="w-full flex my-5">
 				<button type="submit"
-				        class="w-1/2  py-5  mb-5 text-buddy-lightest hover:text-buddy-darker"
+				        class="w-1/2  text-buddy-lightest hover:text-buddy-darker"
 				>Voeg Notitie
 				</button>
-				<button data-action="notes#cancel  toggle#toggle"
-				        class="w-1/2 px-5 py-5 rounded mb-5 text-red-lighter hover:text-red-light"
+				<button data-action="dailyadvices#cancel  toggle#toggle"
+				        class="w-1/2 rounded text-red-lighter hover:text-red-light"
 				>
 					Annuleer
 				</button>

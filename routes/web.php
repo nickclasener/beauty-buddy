@@ -31,7 +31,7 @@ Route::group([ 'middleware' => 'auth' ], function () {
 		$customer = $repository->search((string)request('q'));
 
 		return compact('customer');
-	});
+	})->name('klanten.search');
 	Route::get('klanten/nieuw', 'CustomerController@create')->name('klanten.create');
 	Route::get('klanten', 'CustomerController@index')->name('klanten.index');
 	Route::post('klanten', 'CustomerController@store')->name('klanten.store');

@@ -11,11 +11,13 @@ class NoteController extends Controller
 {
 	public function index ( Customer $customer )
 	{
-		$notes = $customer->notes()
-				//		                  ->where('user_id', $customer->user_id)
-				              ->orderByDesc('created_at')->get();
-		//				              ->orderByDesc('created_at')
-		//		                  ->paginate(15);
+		$notes = $customer
+				->notes()
+				->orderByDesc('created_at')
+				->get();
+
+		//				->paginate(15);
+
 		return view('klanten.notes.index')->with([
 				'customer' => $customer,
 				'notes'    => $notes,
@@ -33,16 +35,17 @@ class NoteController extends Controller
 					->withErrors($validator)
 					->withInput();
 		}
+		$note = $customer->addNote([
+				'user_id' => auth()->id(),
+				'body'    => request('body'),
+		]);
 		if ( request()->ajax() ) {
-			$note = $customer->addNote([
-					'user_id' => auth()->id(),
-					'body'    => request('body'),
-			]);
-			$notes = $customer->notes()
-			                  ->where('user_id', $note->user_id)
-			                  ->whereYear('created_at', $note->created_at)
-			                  ->whereMonth('created_at', $note->created_at)
-			                  ->get();
+			$notes = $customer
+					->notes()
+					->where('user_id', $note->user_id)
+					->whereYear('created_at', $note->created_at)
+					->whereMonth('created_at', $note->created_at)
+					->get();
 
 			if ( count($notes) === 1 ) {
 				return response(
@@ -51,10 +54,7 @@ class NoteController extends Controller
 								'notes'            => $notes,
 								'monthYear'        => monthYear($note),
 								'monthyearCreated' => $note->id,
-						]),
-						200,
-						[ 'monthyear' ]
-				);
+						]), 200, [ 'monthyear' ]);
 			}
 
 			return response(
@@ -62,22 +62,8 @@ class NoteController extends Controller
 							'customer'    => $customer,
 							'note'        => $note,
 							'noteCreated' => $note->id,
-					]),
-					200,
-					[ 'note' ]
-			);
-
-			//			return view('klanten.notes._list')->with([
-			//					'customer' => $customer,
-			//					//								'customer' => $customer,
-			//					'created'  => $note->id,
-			//			]);
+					]), 200, [ 'note' ]);
 		}
-
-		$customer->addNote([
-				'user_id' => auth()->id(),
-				'body'    => request('body'),
-		]);
 
 		return redirect(route('notes.index', [
 				'customer' => $customer,
