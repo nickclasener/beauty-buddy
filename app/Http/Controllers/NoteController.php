@@ -17,7 +17,6 @@ class NoteController extends Controller
 				->get();
 
 		//				->paginate(15);
-
 		return view('klanten.notes.index')->with([
 				'customer' => $customer,
 				'notes'    => $notes,

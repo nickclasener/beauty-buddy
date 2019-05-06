@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Customer;
 use App\Search\CustomerObserver;
+use Elasticsearch\Client;
+use Elasticsearch\ClientBuilder;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
