@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Note;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Request;
 
 class NoteController extends Controller
 {

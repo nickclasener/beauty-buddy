@@ -23,7 +23,7 @@ class CustomersTest extends TestCase
 	public function setUp ()
 	{
 		parent::setUp();
-//		$this->signIn();
+		$this->signIn();
 		$this->customer = create(Customer::class, [
 				'id'            => 1,
 				'naam'          => 'Jane Doe',
@@ -158,12 +158,12 @@ class CustomersTest extends TestCase
 	/** @test */
 	function view_a_note_on_a_customer_page ()
 	{
-		$this->get(route('notes.show', [
+		$response = $this->get(route('notes.show', [
 				$this->customer,
 				$this->note,
-		]))
-		     ->assertStatus(200)
-		     ->assertSee('This is a note');
+		], false));
+		$response->assertStatus(200)
+		         ->assertSee('This is a note');
 	}
 
 	/** @test */

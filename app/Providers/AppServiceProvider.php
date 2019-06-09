@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Customer;
-use App\Search\CustomerObserver;
 use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
 use Illuminate\Support\ServiceProvider;
@@ -17,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function boot ()
 	{
-		Customer::observe(CustomerObserver::class);
+		//		Customer::observe(CustomerObserver::class);
 		//		Note::observe(NoteObserver::class);
 	}
 

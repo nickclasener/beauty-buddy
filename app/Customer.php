@@ -2,13 +2,12 @@
 
 namespace App;
 
-use App\Search\Searchable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-	use Searchable;
+	//	use Searchable;
 	use Sluggable;
 	protected $guarded = [ 'id' ];
 
