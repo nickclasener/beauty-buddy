@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
 		//		dd($this->bindSearchClient());
 	}
 
-//	private function bindSearchClient ()
+	//	private function bindSearchClient ()
 	//	{
 	//		$this->app->bind(Client::class, static function ( $app ) {
 	//			return ClientBuilder::create()

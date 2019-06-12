@@ -11,9 +11,6 @@
 |
 */
 
-use App\Repository\CustomersRepository;
-use App\Repository\NotesRepository;
-
 Auth::routes();
 
 //Route::get('/', function () {
@@ -27,11 +24,11 @@ Route::group([ 'middleware' => 'auth' ], function () {
 
 	//	Route::get('/home', 'HomeController@index')->name('home');
 	// Klanten Routes
-	Route::get('klanten/search', function ( CustomersRepository $repository ) {
-		$customer = $repository->search((string)request('q'));
-
-		return compact('customer');
-	})->name('klanten.search');
+//	Route::get('klanten/search', function ( CustomersRepository $repository ) {
+//		$customer = $repository->search((string)request('q'));
+//
+//		return compact('customer');
+//	})->name('klanten.search');
 	Route::get('klanten/nieuw', 'CustomerController@create')->name('klanten.create');
 	Route::get('klanten', 'CustomerController@index')->name('klanten.index');
 	Route::post('klanten', 'CustomerController@store')->name('klanten.store');
@@ -44,12 +41,12 @@ Route::group([ 'middleware' => 'auth' ], function () {
 	], 'klanten/{customer}', 'CustomerController@update')->name('klanten.update');
 
 	// Note Routes
-	Route::get('klanten/{customer}/notities/search', function ( NotesRepository $repository ) {
-		//	Route::get('notities/search', function (NotesRepository $repository) {
-		$note = $repository->search((string)request('q'));
-
-		return compact('note');
-	});
+//	Route::get('klanten/{customer}/notities/search', function ( NotesRepository $repository ) {
+	//		//	Route::get('notities/search', function (NotesRepository $repository) {
+	//		$note = $repository->search((string)request('q'));
+	//
+	//		return compact('note');
+	//	});
 	Route::delete('notities/{note}', 'NoteController@destroy')->name('notes.destroy');
 	Route::get('klanten/{customer}/notities/nieuw', 'NoteController@create')->name('notes.create');
 	//	Route::get('klanten/{customer}/notities', 'NoteController@show')->name('notes.show');
