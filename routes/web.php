@@ -11,24 +11,27 @@
 |
 */
 
+use App\Repository\CustomersRepository;
+use App\Repository\NotesRepository;
+
 Auth::routes();
 
 //Route::get('/', function () {
 //	return view('notes.notes');
 //});
 
-Route::group([ 'middleware' => 'auth' ], function () {
-	Route::get('/', function () {
+Route::group([ 'middleware' => 'auth' ], static function () {
+	Route::get('/', static function () {
 		return view('klanten.create');
 	});
 
 	//	Route::get('/home', 'HomeController@index')->name('home');
 	// Klanten Routes
-//	Route::get('klanten/search', function ( CustomersRepository $repository ) {
-//		$customer = $repository->search((string)request('q'));
-//
-//		return compact('customer');
-//	})->name('klanten.search');
+	Route::get('klanten/search', static function ( CustomersRepository $repository ) {
+		$customer = $repository->search((string)request('q'));
+
+		return compact('customer');
+	})->name('klanten.search');
 	Route::get('klanten/nieuw', 'CustomerController@create')->name('klanten.create');
 	Route::get('klanten', 'CustomerController@index')->name('klanten.index');
 	Route::post('klanten', 'CustomerController@store')->name('klanten.store');
@@ -41,12 +44,12 @@ Route::group([ 'middleware' => 'auth' ], function () {
 	], 'klanten/{customer}', 'CustomerController@update')->name('klanten.update');
 
 	// Note Routes
-//	Route::get('klanten/{customer}/notities/search', function ( NotesRepository $repository ) {
-	//		//	Route::get('notities/search', function (NotesRepository $repository) {
-	//		$note = $repository->search((string)request('q'));
-	//
-	//		return compact('note');
-	//	});
+	Route::get('klanten/{customer}/notities/search', static function ( NotesRepository $repository ) {
+		//		Route::get('notities/search', function ( NotesRepository $repository ) {
+		$note = $repository->search((string)request('q'));
+
+		return compact('note');
+	});
 	Route::delete('notities/{note}', 'NoteController@destroy')->name('notes.destroy');
 	Route::get('klanten/{customer}/notities/nieuw', 'NoteController@create')->name('notes.create');
 	//	Route::get('klanten/{customer}/notities', 'NoteController@show')->name('notes.show');
@@ -60,7 +63,8 @@ Route::group([ 'middleware' => 'auth' ], function () {
 	], '/notities/{note}', 'NoteController@update')->name('notes.update');
 
 	// Huidanalyses Routes
-	Route::get('klanten/{customer}/huidanalyses/{huidanalyse}', 'HuidanalyseController@show')->name('huidanalyses.show');
+	Route::get('klanten/{customer}/huidanalyses/{huidanalyse}', 'HuidanalyseController@show')
+	     ->name('huidanalyses.show');
 	Route::get('klanten/{customer}/huidanalyses', 'HuidanalyseController@index')->name('huidanalyses.index');
 	Route::delete('huidanalyses/{huidanalyse}', 'HuidanalyseController@destroy')->name('huidanalyses.destroy');
 	Route::get('klanten/{customer}/huidanalyses/{huidanalyse}/bewerken', 'HuidanalyseController@edit')
