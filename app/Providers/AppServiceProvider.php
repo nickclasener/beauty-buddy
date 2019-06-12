@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use Elasticsearch\Client;
-use Elasticsearch\ClientBuilder;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -32,15 +30,15 @@ class AppServiceProvider extends ServiceProvider
 		//		$this->app->singleton(NotesRepository::class, function ($app) {
 		//			return new NotesElasticsearchRepository($app->make(Client::class));
 		//		});
-		//		$this->bindSearchClient();
+		//		dd($this->bindSearchClient());
 	}
 
-	private function bindSearchClient ()
-	{
-		$this->app->bind(Client::class, static function ( $app ) {
-			return ClientBuilder::create()
-			                    ->setHosts(config('services.search.hosts'))
-			                    ->build();
-		});
-	}
+//	private function bindSearchClient ()
+	//	{
+	//		$this->app->bind(Client::class, static function ( $app ) {
+	//			return ClientBuilder::create()
+	//			                    ->setHosts(config('services.search.hosts'))
+	//			                    ->build();
+	//		});
+	//	}
 }

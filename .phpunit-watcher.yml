@@ -8,4 +8,4 @@ watch:
   fileMask: '*.php'
 phpunit:
   binaryPath: vendor/bin/phpunit
-  arguments: '--stop-on-failure'
+  arguments: '--order-by=defects --stop-on-failure --cache-result'
