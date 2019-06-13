@@ -1,7 +1,7 @@
 let mix = require('laravel-mix');
 let tailwindcss = require('tailwindcss');
 require('laravel-mix-purgecss');
-let LiveReloadPlugin = require('webpack-livereload-plugin');
+// let LiveReloadPlugin = require('webpack-livereload-plugin');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management

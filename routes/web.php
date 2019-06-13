@@ -28,9 +28,12 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 	//	Route::get('/home', 'HomeController@index')->name('home');
 	// Klanten Routes
 	Route::get('klanten/search', static function ( CustomersRepository $repository ) {
-		$customer = $repository->search((string)request('q'));
+		$customers = $repository->search((string)request('q'));
+		//		$customers = $customers->sortBy('naam');
 
-		return compact('customer');
+		//		return compact($customers);
+
+		return view('_search-results')->with([ 'customers' => $customers ]);
 	})->name('klanten.search');
 	Route::get('klanten/nieuw', 'CustomerController@create')->name('klanten.create');
 	Route::get('klanten', 'CustomerController@index')->name('klanten.index');

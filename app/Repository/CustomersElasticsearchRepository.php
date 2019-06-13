@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Customer;
 use Elasticsearch\Client;
+use stdClass;
 
 class CustomersElasticsearchRepository implements CustomersRepository
 {
@@ -24,24 +25,61 @@ class CustomersElasticsearchRepository implements CustomersRepository
 	private function searchOnElasticsearch ( $query )
 	{
 		$instance = new Customer;
-		$items = $this->search->search([
+
+		$params = [
 				'size'  => 100,
 				'index' => $instance->getSearchIndex(),
 				'type'  => '_doc',
 				'body'  => [
-						'query' => [
-								'multi_match' => [
-										'fields'         => [
-												'naam',
-												'email',
-										],
-										'query'          => $query,
-										'fuzziness'      => 'AUTO',
-										'max_expansions' => 100,
+						'sort'      => [
+								new stdClass([ 'naam' => [ 'order' => 'desc' ] ])
+
+								//								//								'_score',
+						],
+						'highlight' => [
+								'fields' => [
+										'naam' => new stdClass(),
 								],
 						],
+						'query'     => [
+								'bool' => [
+										'must'   => [
+												'match_all' => new stdClass(),
+										],
+										//										'filter' => [
+										//												[ 'naam' => $query ],
+										//										],
+										'should' => [
+												[
+														'span_term' => [
+															//																											],
+															//													'match' => [
+															'naam' => [
+																	'query'     => $query,
+																	'boost'     => 3,
+																	'fuzziness' => 'AUTO:1,1',
+															],
+														],
+												],
+										],
+								]
+								//								'multi_match' => [
+								//										'fields'         => [
+								//												'naam',
+								//										],
+								//										'query'          => $query,
+								//										//										'sort'           => 'naam:asc',
+								//										'fuzziness'      => 'AUTO:1,1',
+								//										'max_expansions' => 100,
+								//										//										'sort'           => [
+								//										//												[ 'naam' => [ 'order' => 'desc' ] ],
+								//										//										],
+								//								],
+						],
 				],
-		]);
+		];
+		//		dd($params);
+		$items = $this->search->search($params);
 
 		return $items;
 	}
@@ -49,9 +87,12 @@ class CustomersElasticsearchRepository implements CustomersRepository
 	private function buildCollection ( $items )
 	{
 		$hits = array_pluck($items[ 'hits' ][ 'hits' ], '_source') ?: [];
-		$sources = array_map(static function ( $source ) {
+		$hits2 = array_pluck($items[ 'hits' ][ 'hits' ], 'highlight') ?: [];
+		$sources = array_map(static function ( $source, $source2 ) {
+			$source[ 'naam' ] = $source2[ 'naam' ][ 0 ] ?: $source[ 'naam' ];
+
 			return $source;
-		}, $hits);
+		}, $hits, $hits2);
 
 		return Customer::hydrate($sources);
 	}

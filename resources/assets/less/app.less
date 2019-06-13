@@ -67,6 +67,17 @@ label {
   max-height: 0;
 }
 
+.overlay {
+@apply hidden w-full bg-white mb-5 -mt-5;
+}
+
+.overlay:target {
+@apply block;
+}
+
+table tr {
+  cursor: pointer;
+}
 
 //.accordion-toggle {
 //  padding: 0 15px;

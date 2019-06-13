@@ -1,10 +1,9 @@
-@extends('layouts.app')
-
-@section('content')
-	@foreach ($customers as $customer)
+@foreach ($customers as $customer)
+	<li role="option"
+	    data-autocomplete-value="1"
+	>
 		<a href="{{ route('notes.index', $customer, false) }}">
 			<p>{{ $customer->naam }} | {{ $customer->email }} | {{ $customer->mobiel }} | {{ $customer->telefoon }}</p>
 		</a>
-		<hr class="border-b">
-	@endforeach
-@endsection
+	</li>
+@endforeach

@@ -4220,6 +4220,22 @@ label {
   max-height: 0;
 }
 
+.overlay {
+  display: none;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 1.25rem;
+  margin-top: -1.25rem;
+}
+
+.overlay:target {
+  display: block;
+}
+
+table tr {
+  cursor: pointer;
+}
+
 .grow-end {
   -webkit-animation: grow-end 1s;
           animation: grow-end 1s;
