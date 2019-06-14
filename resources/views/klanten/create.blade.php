@@ -7,6 +7,7 @@
 {{--								      data-controller="customer"--}}
 					{{--					  data-customer-url="{{ route('klanten.store', false) }}"--}}
 					{{--					  data-action="customer#create"--}}
+
 			>@method('POST')@csrf
 				<div class="px-15">
 					<h2 class="font-hairline text-buddy-teal mb-5">Contactinformatie</h2>

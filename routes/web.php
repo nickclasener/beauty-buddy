@@ -11,7 +11,7 @@
 |
 */
 
-use App\Repository\CustomersRepository;
+use App\Customer;
 use App\Repository\NotesRepository;
 
 Auth::routes();
@@ -27,11 +27,38 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 
 	//	Route::get('/home', 'HomeController@index')->name('home');
 	// Klanten Routes
-	Route::get('klanten/search', static function ( CustomersRepository $repository ) {
-		$customers = $repository->search((string)request('q'));
+	Route::get('klanten/search', static function () {
+		$query = (string)request('q');
+		Customer::searchRaw([
+			//				'query' => [
+			'suggest' => [
+					'naam_suggest' => [
+							'prefix'     => $query,
+							'completion' => [
+									'field' => 'naam',
+							],
+					],
+			],
+			//				],
+		])->get();
+		//						Customer::search()->rule(static function ( $builder ) {
+		//
+		//			return [
+		//					'match_phrase' => [
+		//
+		//							'suggest' => [ $builder->query, ],
+		//					]
+		//					//									'completion' => [ 'field' => 'naam' ],
+		//					//									//									'weight'     => 34,
+		//					//							],kk
+		//					//					],
+		//			];
+		//		})->explain();
+		//		dd($customers);
+		//		$customers = $repository->search((string)request('q'));
 		//		$customers = $customers->sortBy('naam');
 
-		//		return compact($customers);
+		return compact($customers);
 
 		return view('_search-results')->with([ 'customers' => $customers ]);
 	})->name('klanten.search');

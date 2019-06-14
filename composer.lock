@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1348c897a3a9f7fbef5678ed6705e2dd",
+    "content-hash": "756f2430b94891926fc35e8392d0802c",
     "packages": [
         {
             "name": "ajthinking/tinx",
@@ -56,6 +56,67 @@
             ],
             "description": "Reload your Laravel Tinker session from inside Tinker, plus magic shortcuts for first(), find(), where(), and more!",
             "time": "2019-03-22T07:43:50+00:00"
+        },
+        {
+            "name": "babenkoivan/scout-elasticsearch-driver",
+            "version": "v3.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/babenkoivan/scout-elasticsearch-driver.git",
+                "reference": "cc1cbb50816c7839b336a109b1b3623bf90816ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/babenkoivan/scout-elasticsearch-driver/zipball/cc1cbb50816c7839b336a109b1b3623bf90816ed",
+                "reference": "cc1cbb50816c7839b336a109b1b3623bf90816ed",
+                "shasum": ""
+            },
+            "require": {
+                "elasticsearch/elasticsearch": "6.*",
+                "laravel/scout": "7.*",
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "1.*",
+                "phpunit/phpunit": "7.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ScoutElastic\\ScoutElasticServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ScoutElastic\\Tests\\": "tests/",
+                    "ScoutElastic\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Babenko Ivan",
+                    "email": "babenko.i.a@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The Elasticsearch Driver for Laravel Scout",
+            "homepage": "https://babenkoivan.github.io/scout-elasticsearch-driver/",
+            "keywords": [
+                "driver",
+                "elastic",
+                "elasticsearch",
+                "engine",
+                "laravel",
+                "scout",
+                "search"
+            ],
+            "time": "2019-02-27T15:40:57+00:00"
         },
         {
             "name": "cocur/slugify",
@@ -1235,6 +1296,71 @@
                 "notifications"
             ],
             "time": "2018-12-04T12:57:08+00:00"
+        },
+        {
+            "name": "laravel/scout",
+            "version": "v7.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/scout.git",
+                "reference": "a643d5d5fd8d1598baa1e4fe4251931b0de58923"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/a643d5d5fd8d1598baa1e4fe4251931b0de58923",
+                "reference": "a643d5d5fd8d1598baa1e4fe4251931b0de58923",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/bus": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|~5.9.0",
+                "illuminate/contracts": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|~5.9.0",
+                "illuminate/database": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|~5.9.0",
+                "illuminate/pagination": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|~5.9.0",
+                "illuminate/queue": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|~5.9.0",
+                "illuminate/support": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|~5.9.0",
+                "php": "^7.1.3"
+            },
+            "require-dev": {
+                "algolia/algoliasearch-client-php": "^2.2",
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~6.0"
+            },
+            "suggest": {
+                "algolia/algoliasearch-client-php": "Required to use the Algolia engine (^2.2)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "7.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Scout\\ScoutServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Scout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Scout provides a driver based solution to searching your Eloquent models.",
+            "keywords": [
+                "algolia",
+                "laravel",
+                "search"
+            ],
+            "time": "2019-04-30T15:43:48+00:00"
         },
         {
             "name": "laravel/slack-notification-channel",
@@ -4179,16 +4305,16 @@
         },
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "5fcba4cc8e92a230b13b99c1083fc22ba8a5c479"
+                "reference": "2d195779ea4f809f69764a795e2ec371dbb76a96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/5fcba4cc8e92a230b13b99c1083fc22ba8a5c479",
-                "reference": "5fcba4cc8e92a230b13b99c1083fc22ba8a5c479",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/2d195779ea4f809f69764a795e2ec371dbb76a96",
+                "reference": "2d195779ea4f809f69764a795e2ec371dbb76a96",
                 "shasum": ""
             },
             "require": {
@@ -4243,7 +4369,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2019-02-26T18:01:54+00:00"
+            "time": "2019-03-25T09:39:08+00:00"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -5502,16 +5628,16 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "9a52b1ac036743c31bc127fd7f2f4710e2bc968a"
+                "reference": "e43de70f3c7166169d0f14a374505392734160e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/9a52b1ac036743c31bc127fd7f2f4710e2bc968a",
-                "reference": "9a52b1ac036743c31bc127fd7f2f4710e2bc968a",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/e43de70f3c7166169d0f14a374505392734160e5",
+                "reference": "e43de70f3c7166169d0f14a374505392734160e5",
                 "shasum": ""
             },
             "require": {
@@ -5558,7 +5684,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2019-06-10T14:32:25+00:00"
+            "time": "2019-06-13T08:02:18+00:00"
         },
         {
             "name": "filp/whoops",
@@ -7636,16 +7762,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "4ba436b55987b4bf311cb7c6ba82aa528aac0a06"
+                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/4ba436b55987b4bf311cb7c6ba82aa528aac0a06",
-                "reference": "4ba436b55987b4bf311cb7c6ba82aa528aac0a06",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
+                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
                 "shasum": ""
             },
             "require": {
@@ -7666,8 +7792,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Prophecy\\": "src/"
+                "psr-4": {
+                    "Prophecy\\": "src/Prophecy"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -7695,7 +7821,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2018-08-05T17:53:17+00:00"
+            "time": "2019-06-13T12:50:23+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
@@ -9566,12 +9692,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client.git",
-                "reference": "2f70556bdc728cd800e089e563e1b3a63380293e"
+                "reference": "e1a79d9694776e2ee55e9ebd3d29bf7a5bb1da87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/2f70556bdc728cd800e089e563e1b3a63380293e",
-                "reference": "2f70556bdc728cd800e089e563e1b3a63380293e",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/e1a79d9694776e2ee55e9ebd3d29bf7a5bb1da87",
+                "reference": "e1a79d9694776e2ee55e9ebd3d29bf7a5bb1da87",
                 "shasum": ""
             },
             "require": {
@@ -9622,7 +9748,7 @@
             ],
             "description": "Symfony HttpClient component",
             "homepage": "https://symfony.com",
-            "time": "2019-06-11T15:49:07+00:00"
+            "time": "2019-06-13T11:05:05+00:00"
         },
         {
             "name": "symfony/http-client-contracts",

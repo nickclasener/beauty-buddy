@@ -32,9 +32,7 @@ class CustomersElasticsearchRepository implements CustomersRepository
 				'type'  => '_doc',
 				'body'  => [
 						'sort'      => [
-								new stdClass([ 'naam' => [ 'order' => 'desc' ] ])
-
-								//								//								'_score',
+								new stdClass([ 'naam' => [ 'order' => 'asc' ] ]),
 						],
 						'highlight' => [
 								'fields' => [
@@ -50,17 +48,15 @@ class CustomersElasticsearchRepository implements CustomersRepository
 										//												[ 'naam' => $query ],
 										//										],
 										'should' => [
-												[
-														'span_term' => [
-															//																											],
-															//													'match' => [
-															'naam' => [
-																	'query'     => $query,
-																	'boost'     => 3,
-																	'fuzziness' => 'AUTO:1,1',
-															],
-														],
-												],
+											//												[
+											'match' => [
+													'naam' => [
+															'query'     => $query,
+															'boost'     => 3,
+															'fuzziness' => 'AUTO:1,1',
+													],
+											],
+											//												],
 										],
 								]
 								//								'multi_match' => [

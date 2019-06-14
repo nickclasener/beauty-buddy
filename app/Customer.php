@@ -2,15 +2,66 @@
 
 namespace App;
 
-use App\Search\Searchable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use ScoutElastic\Searchable;
 
 class Customer extends Model
 {
 	use Searchable;
 	use Sluggable;
 	protected $guarded = [ 'id' ];
+
+	/**
+	 * @var string
+	 */
+	protected $indexConfigurator = CustomerConfigurator::class;
+	/**
+	 * @var array
+	 */
+	protected $mapping = [
+			'properties' => [
+					'naam_suggest' => [
+							'type' => 'completion',
+					]
+					//					'naam' => [
+					//							'type' => 'completion',
+					//					],
+			],
+	];
+	//					'naam' => [
+	//							'type'     => 'text',
+	//							'analyzer' => 'english',
+	//					],
+	//					'slug' => [
+	//							'type'     => 'text',
+	//							'analyzer' => 'english',
+	//					],
+	//			],
+	/**
+	 * @var array
+	 */
+	protected $searchRules = [
+		//
+	];
+	//			'properties' => [
+	//					'title' => [
+	//							'type'   => 'text',
+	//							// Also you can configure multi-fields, more details you can find here https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html
+	//							'fields' => [
+	//									'raw' => [
+	//											'type' => 'keyword',
+	//									],
+	//							],
+	//					],
+	//			],
+
+	// Here you can specify a mapping for model fields
+	//
+	//	public function searchableAs ()
+	//	{
+	//		return 'customers';
+	//	}
 
 	public function getRouteKeyName ()
 	{
@@ -20,7 +71,7 @@ class Customer extends Model
 	protected static function boot ()
 	{
 		parent::boot();
-		static::deleting(function ( $customer ) {
+		static::deleting(static function ( $customer ) {
 			$customer->notes()->delete();
 			$customer->intake()->delete();
 			$customer->huidanalyses()->delete();

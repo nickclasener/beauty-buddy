@@ -46423,7 +46423,7 @@ var _class = function (_Controller) {
     _createClass(_class, [{
         key: "create",
         value: function create(event) {
-            event.preventDefault();
+            // event.preventDefault();
             axios.post(this.data.get('url'), this.form).then(function (response) {
                 console.log(response);
                 Swal.fire({
