@@ -14,7 +14,7 @@ export default class extends Controller {
     ];
 
     create(event) {
-        // event.preventDefault();
+        event.preventDefault();
         axios.post(this.data.get('url'), this.form).then(response => {
             console.log(response);
             Swal.fire({

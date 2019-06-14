@@ -29,18 +29,10 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 	// Klanten Routes
 	Route::get('klanten/search', static function () {
 		$query = (string)request('q');
-		Customer::searchRaw([
-			//				'query' => [
-			'suggest' => [
-					'naam_suggest' => [
-							'prefix'     => $query,
-							'completion' => [
-									'field' => 'naam',
-							],
-					],
-			],
-			//				],
-		])->get();
+		$customers = Customer
+				::search($query)
+				->from(0)->take(100)
+				->get();
 		//						Customer::search()->rule(static function ( $builder ) {
 		//
 		//			return [
@@ -58,7 +50,7 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 		//		$customers = $repository->search((string)request('q'));
 		//		$customers = $customers->sortBy('naam');
 
-		return compact($customers);
+		//		return compact($customers);
 
 		return view('_search-results')->with([ 'customers' => $customers ]);
 	})->name('klanten.search');

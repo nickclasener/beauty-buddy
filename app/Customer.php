@@ -21,47 +21,25 @@ class Customer extends Model
 	 */
 	protected $mapping = [
 			'properties' => [
-					'naam_suggest' => [
-							'type' => 'completion',
-					]
-					//					'naam' => [
-					//							'type' => 'completion',
-					//					],
+					'naam' => [
+							'type'     => 'text',
+							'analyzer' => 'autocomplete',
+					],
 			],
 	];
-	//					'naam' => [
-	//							'type'     => 'text',
-	//							'analyzer' => 'english',
-	//					],
-	//					'slug' => [
-	//							'type'     => 'text',
-	//							'analyzer' => 'english',
-	//					],
-	//			],
 	/**
 	 * @var array
 	 */
 	protected $searchRules = [
-		//
+			CustomerRule::class,
 	];
-	//			'properties' => [
-	//					'title' => [
-	//							'type'   => 'text',
-	//							// Also you can configure multi-fields, more details you can find here https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html
-	//							'fields' => [
-	//									'raw' => [
-	//											'type' => 'keyword',
-	//									],
-	//							],
-	//					],
-	//			],
 
 	// Here you can specify a mapping for model fields
 	//
-	//	public function searchableAs ()
-	//	{
-	//		return 'customers';
-	//	}
+	public function searchableAs ()
+	{
+		return 'customers';
+	}
 
 	public function getRouteKeyName ()
 	{
