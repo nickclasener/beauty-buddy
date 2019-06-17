@@ -1,6 +1,7 @@
 @foreach ($customers as $customer)
-	<li role="option"
-	    data-autocomplete-value="1"
+	<div role="option"
+	     {{--	<li role="option"--}}
+	     data-autocomplete-value="1"
 	>
 		<a href="{{ route('notes.index', $customer, false) }}">
 			<p class="flex justify-between">
@@ -10,5 +11,6 @@
 				<span>{{ $customer->telefoon }}</span>
 			</p>
 		</a>
-	</li>
+	</div>
+	{{--	</li>--}}
 @endforeach

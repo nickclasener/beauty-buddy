@@ -31,6 +31,20 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 		$query = (string)request('q');
 		$customers = Customer
 				::search($query)
+				//				::searchRaw([
+				//						'query' => [
+				//								'match_phrase_prefix' => [
+				//										'naam' => [
+				//												'query'          => $query,
+				//												'max_expansions' => 40,
+				//										],
+				//								],
+				//						],
+				//				]);
+				//		$customers = $customer->buildCollection($customers);
+				//		dd($customers);
+				//				->rule(CustomerRule::class)
+				//				->explain();
 				->from(0)->take(10)
 				->get();
 		//						Customer::search()->rule(static function ( $builder ) {

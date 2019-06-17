@@ -23,21 +23,32 @@ class CustomerConfigurator extends IndexConfigurator
 	 */
 	protected $settings = [
 			'analysis' => [
-					'filter'   => [
-							'autocomplete_filter' => [
-									'type'     => 'edge_ngram',
-									'min_gram' => 1,
-									'max_gram' => 50,
-							],
-					],
-					'analyzer' => [
-							'autocomplete' => [
+					'analyzer'  => [
+							'autocomplete'        => [
 									'type'      => 'custom',
-									'tokenizer' => 'standard',
+									'tokenizer' => 'autocomplete',
 									'filter'    => [
 											'lowercase',
-											'autocomplete_filter',
 									],
+							],
+							'autocomplete_search' => [
+									'tokenizer' => 'lowercase',
+							],
+					],
+					'tokenizer' => [
+							'autocomplete' => [
+									'type'        => 'edge_ngram',
+									'min_gram'    => 1,
+									'max_gram'    => 50,
+									'token_chars' => [ 'letter' ],
+							],
+					],
+					'filter'    => [
+							'autocomplete_filter' => [
+									'type'        => 'edge_ngram',
+									'min_gram'    => 1,
+									'max_gram'    => 50,
+									'token_chars' => [ 'letter' ],
 							],
 					],
 			],
