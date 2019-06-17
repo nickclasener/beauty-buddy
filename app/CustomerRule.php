@@ -25,7 +25,7 @@ class CustomerRule extends SearchRule
 						'match' => [
 								'naam' => [
 										'query'     => $this->builder->query,
-										'analyzer'  => 'standard',
+										'analyzer'  => 'autocomplete',
 										'boost'     => 4,
 										'fuzziness' => 'AUTO',
 								],

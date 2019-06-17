@@ -21,10 +21,14 @@ class Customer extends Model
 	 */
 	protected $mapping = [
 			'properties' => [
-					'naam' => [
-							'type'     => 'text',
-							'analyzer' => 'autocomplete',
+					'suggest' => [
+							'type' => 'completion',
 					],
+					'naam'    => [
+							'type' => 'keyword',
+					]
+					//					'type'     => 'text',
+					//					'analyzer' => 'autocomplete',
 			],
 	];
 	/**

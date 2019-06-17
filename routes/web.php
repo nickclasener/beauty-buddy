@@ -31,7 +31,7 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 		$query = (string)request('q');
 		$customers = Customer
 				::search($query)
-				->from(0)->take(100)
+				->from(0)->take(10)
 				->get();
 		//						Customer::search()->rule(static function ( $builder ) {
 		//
