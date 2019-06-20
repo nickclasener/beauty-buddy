@@ -2,7 +2,7 @@ import {Controller} from 'stimulus';
 import debounce from 'lodash.debounce';
 
 export default class extends Controller {
-    static targets = ['input', 'hidden', 'results'];
+    static targets = ['input', 'hidden', 'results', 'highlight'];
 
     connect() {
         this.resultsTarget.hidden = true;
@@ -56,6 +56,7 @@ export default class extends Controller {
     }
 
     onKeydown(event) {
+        console.log(event);
         switch (event.key) {
             case 'Escape':
                 if (!this.resultsTarget.hidden) {
@@ -77,10 +78,23 @@ export default class extends Controller {
             }
                 break;
             case 'Tab': {
-                const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                if (selected) {
-                    this.commit(selected);
-                }
+                const item = this.sibling(true);
+                if (item) this.select(item);
+                event.preventDefault();
+                // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+                // if (selected) {
+                //     this.commit(selected);
+                // }
+            }
+                break;
+            case 'Shift': {
+                const item = this.sibling(false);
+                if (item) this.select(item);
+                event.preventDefault();
+                // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+                // if (selected) {
+                //     this.commit(selected);
+                // }
             }
                 break;
             case 'Enter': {
@@ -99,8 +113,8 @@ export default class extends Controller {
     }
 
     onInputBlur() {
-        if (this.mouseDown) return;
-        this.resultsTarget.hidden = true;
+        // if (this.mouseDown) return;
+        // this.resultsTarget.hidden = true;
     }
 
     commit(selected) {
@@ -132,9 +146,9 @@ export default class extends Controller {
     }
 
     onResultsClick(event) {
-        if (!(event.target instanceof Element)) return;
-        const selected = event.target.closest('[role="option"]');
-        if (selected) this.commit(selected);
+        // if (!(event.target instanceof Element)) return;
+        // const selected = event.target.closest('[role="option"]');
+        // if (selected) this.commit(selected);
     }
 
     onResultsMouseDown() {
@@ -175,6 +189,7 @@ export default class extends Controller {
         this.element.dispatchEvent(new CustomEvent('loadstart'));
         axios(url.toString())
             .then(response => {
+                // console.log(response.data);
                 this.resultsTarget.innerHTML = response.data;
                 this.identifyOptions();
                 const hasResults = !!this.resultsTarget.querySelector('[role="option"]');

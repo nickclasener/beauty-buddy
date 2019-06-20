@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 	@foreach ($customers as $customer)
 		<a href="{{ route('notes.index', $customer, false) }}">
 			<p>{{ $customer->naam }} | {{ $customer->email }} | {{ $customer->mobiel }} | {{ $customer->telefoon }}</p>

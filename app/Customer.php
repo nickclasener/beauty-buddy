@@ -8,49 +8,46 @@ use ScoutElastic\Searchable;
 
 class Customer extends Model
 {
-	use Searchable;
 	use Sluggable;
-	protected $guarded = [ 'id' ];
+	use Searchable;
 
-	/**
-	 * @var string
-	 */
+	protected $guarded = [ 'id' ];
 	protected $indexConfigurator = CustomerConfigurator::class;
-	/**
-	 * @var array
-	 */
-	protected $mapping = [
+	protected $mapping     = [
 			'properties' => [
-				//					'suggest' => [
-				//							'type' => 'completion',
-				//					],
-				'naam' => [
-						'type'            => 'text',
-						'analyzer'        => 'autocomplete',
-						'search_analyzer' => 'autocomplete_search',
-						'fields'          => [
-								'keyword' => [
-										'type'         => 'keyword',
-										'ignore_above' => 256,
-								],
-						]
-						//						'analyzer' => 'autocomplete',
-				],
+					'naam'  => [
+							'copy_to'         => 'naam2',
+							'type'            => 'text',
+							'analyzer'        => 'autocomplete',
+							'search_analyzer' => 'autocomplete_search',
+							'fields'          => [
+									'keyword' => [
+											'type'         => 'keyword',
+											'ignore_above' => 256,
+									],
+							],
+					],
+					'naam2' => [
+							'type'            => 'text',
+							'analyzer'        => 'autocomplete',
+							'search_analyzer' => 'autocomplete_search',
+							'fields'          => [
+									'keyword' => [
+											'type'         => 'keyword',
+											'ignore_above' => 256,
+									],
+							],
+					],
 			],
 	];
-	/**
-	 * @var array
-	 */
 	protected $searchRules = [
 			CustomerRule::class,
 	];
 
-	// Here you can specify a mapping for model fields
-	//
-	public function searchableAs ()
-	{
-		return 'customers';
-	}
+//	public function searchableAs ()
+	//	{
+	//		return 'customers';
+	//	}
 
 	public function getRouteKeyName ()
 	{

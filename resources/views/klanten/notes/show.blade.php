@@ -4,11 +4,13 @@
      data-note-destroy="{{ route('notes.destroy', $note, false) }}"
      @if ( isset($noteCreated) && $note->id === $noteCreated)
      data-note-created="{{ true }}"
-		@endif
+     @endif
+     role="option"
+     data-autocomplete-value="1"
 >
 	<div class="w-full flex-shrink flex pt-5 pl-5">
 		<div class="mt-0.5 w-2.5 h-2.5 border border-buddy-teal rounded-full flex-no-shrink"></div>
-		<p class="ml-5 font-thin flex-no-shrink">{{ dayMonth($note) }}</p>
+		<p class="ml-5 font-thin w-15 align-baseline flex-no-shrink">{{ dayMonth($note) }}</p>
 		<div class="ml-5 w-full"
 		     data-action="click->toggle#toggle "
 		     data-target="toggle.show"
@@ -16,7 +18,11 @@
 			<div class="flex justify-between">
 				<p data-target="note.content"
 				>
-					{{ $note->body }}
+					@isset(   $note->highlight->body[0])
+						<span>{!! $note->highlight->body[0] !!}</span>
+					@else
+						{{ $note->body }}
+					@endisset
 				</p>
 			</div>
 			<div class="flex justify-between">

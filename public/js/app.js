@@ -45762,6 +45762,7 @@ var _class = function (_Controller) {
     }, {
         key: 'onKeydown',
         value: function onKeydown(event) {
+            console.log(event);
             switch (event.key) {
                 case 'Escape':
                     if (!this.resultsTarget.hidden) {
@@ -45786,17 +45787,31 @@ var _class = function (_Controller) {
                     break;
                 case 'Tab':
                     {
-                        var selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                        if (selected) {
-                            this.commit(selected);
-                        }
+                        var _item2 = this.sibling(true);
+                        if (_item2) this.select(_item2);
+                        event.preventDefault();
+                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+                        // if (selected) {
+                        //     this.commit(selected);
+                        // }
+                    }
+                    break;
+                case 'Shift':
+                    {
+                        var _item3 = this.sibling(false);
+                        if (_item3) this.select(_item3);
+                        event.preventDefault();
+                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+                        // if (selected) {
+                        //     this.commit(selected);
+                        // }
                     }
                     break;
                 case 'Enter':
                     {
-                        var _selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                        if (_selected && !this.resultsTarget.hidden) {
-                            this.commit(_selected);
+                        var selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+                        if (selected && !this.resultsTarget.hidden) {
+                            this.commit(selected);
                             event.preventDefault();
                         }
                     }
@@ -45811,8 +45826,8 @@ var _class = function (_Controller) {
     }, {
         key: 'onInputBlur',
         value: function onInputBlur() {
-            if (this.mouseDown) return;
-            this.resultsTarget.hidden = true;
+            // if (this.mouseDown) return;
+            // this.resultsTarget.hidden = true;
         }
     }, {
         key: 'commit',
@@ -45846,9 +45861,9 @@ var _class = function (_Controller) {
     }, {
         key: 'onResultsClick',
         value: function onResultsClick(event) {
-            if (!(event.target instanceof Element)) return;
-            var selected = event.target.closest('[role="option"]');
-            if (selected) this.commit(selected);
+            // if (!(event.target instanceof Element)) return;
+            // const selected = event.target.closest('[role="option"]');
+            // if (selected) this.commit(selected);
         }
     }, {
         key: 'onResultsMouseDown',
@@ -45919,6 +45934,7 @@ var _class = function (_Controller) {
 
             this.element.dispatchEvent(new CustomEvent('loadstart'));
             axios(url.toString()).then(function (response) {
+                // console.log(response.data);
                 _this3.resultsTarget.innerHTML = response.data;
                 _this3.identifyOptions();
                 var hasResults = !!_this3.resultsTarget.querySelector('[role="option"]');
@@ -45966,7 +45982,7 @@ var _class = function (_Controller) {
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ['input', 'hidden', 'results'];
+_class.targets = ['input', 'hidden', 'results', 'highlight'];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),

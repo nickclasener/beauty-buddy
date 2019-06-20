@@ -97,12 +97,12 @@
 		</div>
 	</div>
 	<div class="container mx-auto h-full flex items-center w-full">
-		{{--				<ul class="list-reset bg-white flex-grow p-6"--}}
-		{{--				    data-target="autocomplete.results"--}}
-		{{--				></ul>--}}
-		<div class="list-reset bg-white flex-grow p-6"
-		     data-target="autocomplete.results"
-		></div>
+						<ul class="list-reset bg-white flex-grow p-6"
+						    data-target="autocomplete.results"
+						></ul>
+{{--		<div class="list-reset bg-white flex-grow p-6"--}}
+		{{--		     data-target="autocomplete.results"--}}
+		{{--		></div>--}}
 	</div>
 </nav>
 

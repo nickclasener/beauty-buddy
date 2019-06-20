@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('main')
+
 	<div class="container mx-auto flex">
 		<div class="bg-white w-1/3 my-15 py-10 h-full">
 

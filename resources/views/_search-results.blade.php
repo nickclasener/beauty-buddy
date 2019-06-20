@@ -1,16 +1,23 @@
 @foreach ($customers as $customer)
-	<div role="option"
-	     {{--	<li role="option"--}}
-	     data-autocomplete-value="1"
+	{{--	<div role="option"--}}
+	<li
 	>
-		<a href="{{ route('notes.index', $customer, false) }}">
+		<a href="{{ route('notes.index', $customer, false) }}"
+		   role="option"
+		   data-autocomplete-value="1"
+		>
+
 			<p class="flex justify-between">
-				<span>{{ $customer->naam }}</span>
+				@isset(   $customer->highlight->naam[0])
+					<span>{!! $customer->highlight->naam[0] !!}</span>
+				@else
+					<span>{{ $customer->naam }}</span>
+				@endisset
 				<span>{{ $customer->email }}</span>
 				<span>{{ $customer->mobiel }}</span>
 				<span>{{ $customer->telefoon }}</span>
 			</p>
 		</a>
-	</div>
-	{{--	</li>--}}
+		{{--		</div>--}}
+	</li>
 @endforeach

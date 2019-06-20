@@ -9,28 +9,17 @@ class CustomerConfigurator extends IndexConfigurator
 {
 	use Migratable;
 
-	//	protected $defaultMapping = [
-	//			'properties' => [
-	//					'suggest' => [
-	//							'type' => 'completion',
-	//					],
-	//					'naam'    => [ 'type' => 'keyword' ],
-	//			],
-	//	];
-	protected $name = 'customers';
-	/**
-	 * @var array
-	 */
+	protected $name     = 'customers';
 	protected $settings = [
 			'analysis' => [
 					'analyzer'  => [
-							'autocomplete'        => [
-									'type'      => 'custom',
+							'autocomplete' => [
 									'tokenizer' => 'autocomplete',
 									'filter'    => [
 											'lowercase',
 									],
 							],
+
 							'autocomplete_search' => [
 									'tokenizer' => 'lowercase',
 							],
@@ -40,7 +29,9 @@ class CustomerConfigurator extends IndexConfigurator
 									'type'        => 'edge_ngram',
 									'min_gram'    => 1,
 									'max_gram'    => 50,
-									'token_chars' => [ 'letter' ],
+									'token_chars' => [
+											'letter',
+									],
 							],
 					],
 					'filter'    => [

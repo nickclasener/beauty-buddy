@@ -12,7 +12,9 @@
 */
 
 use App\Customer;
-use App\Repository\NotesRepository;
+use App\CustomerRule;
+use App\Note;
+use App\NoteRule;
 
 Auth::routes();
 
@@ -31,20 +33,9 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 		$query = (string)request('q');
 		$customers = Customer
 				::search($query)
-				//				::searchRaw([
-				//						'query' => [
-				//								'match_phrase_prefix' => [
-				//										'naam' => [
-				//												'query'          => $query,
-				//												'max_expansions' => 40,
-				//										],
-				//								],
-				//						],
-				//				]);
-				//		$customers = $customer->buildCollection($customers);
-				//		dd($customers);
-				//				->rule(CustomerRule::class)
-				//				->explain();
+				->where('user_id', auth()->id())
+				->rule(CustomerRule::class)
+				//				->take(100)
 				->from(0)->take(10)
 				->get();
 		//						Customer::search()->rule(static function ( $builder ) {
@@ -80,12 +71,18 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 	], 'klanten/{customer}', 'CustomerController@update')->name('klanten.update');
 
 	// Note Routes
-	Route::get('klanten/{customer}/notities/search', static function ( NotesRepository $repository ) {
-		//		Route::get('notities/search', function ( NotesRepository $repository ) {
-		$note = $repository->search((string)request('q'));
+	Route::get('klanten/{customer}/notities/search', static function ( Customer $customer ) {
+		$query = (string)request('q');
+		$notes = Note
+				::search($query)
+				->where('user_id', auth()->id())
+				->where('customer_id', $customer->id)
+				->rule(NoteRule::class)
+				->from(0)->take(10)
+				->get();
 
-		return compact('note');
-	});
+		return view('klanten.notes._list')->with([ 'notes' => $notes ]);
+	})->name('notes.search');
 	Route::delete('notities/{note}', 'NoteController@destroy')->name('notes.destroy');
 	Route::get('klanten/{customer}/notities/nieuw', 'NoteController@create')->name('notes.create');
 	//	Route::get('klanten/{customer}/notities', 'NoteController@show')->name('notes.show');

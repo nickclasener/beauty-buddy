@@ -11,7 +11,33 @@ class CustomerRule extends SearchRule
 	 */
 	public function buildHighlightPayload ()
 	{
-		//
+		return [
+				'order'     => 'score',
+				'pre_tags'  => [ '<strong>' ],
+				'post_tags' => [ '</strong>' ],
+				'fields'    => [
+						[
+								'naam' =>
+										[
+												'require_field_match' => false,
+												'type'                => 'unified',
+										],
+						],
+						//						[
+						//								'naam2' =>
+						//										[
+						//											//								//							'term_vector'         => 'with_positions_offsets',
+						//											//								//								'force_source'        => true,
+						//											//											'matched_fields' => [
+						//											//													'naam',
+						//											//													//										//																					'naam.plain',
+						//											//											],
+						//											'require_field_match' => false,
+						//											'type'                => 'plain',
+						//										],
+						//						],
+				],
+		];
 	}
 
 	/**
@@ -21,38 +47,37 @@ class CustomerRule extends SearchRule
 	public function buildQueryPayload ()
 	{
 		return [
-			//				'query' => [
-			'must'   => [
-					'match' => [
-							'naam' => [
-									'query'     => $this->builder->query,
-									//									'analyzer'  => 'autocomplete',
-									'operator'  => 'AND',
-									'fuzziness' => 'AUTO',
-									//									'zero_terms_query' => 'all',
-							],
-					],
-			],
-			//						'filter' => [
-			//								'term' => [
-			//										'naam' => $this->builder->query,
-			//										//														'analyzer' => 'autocomplete',
-			//										//							'operator'  => 'AND',
-			//										//							'fuzziness' => 'AUTO',
-			//										//														'boost'     => 4,
-			//								],
-			//						],
-			'should' => [
-					'match' => [
-							'naam' => [
-									'query'     => $this->builder->query,
-									//									'analyzer'  => 'autocomplete',
-									//									'boost'     => 4,
-									'fuzziness' => 'AUTO:1,1',
-									'operator'  => 'AND',
-							],
-					],
-			],
+				'should' => [
+						[
+								'match' => [
+										'naam2' => [
+												'query'     => $this->builder->query,
+												'fuzziness' => 2,
+												'operator'  => 'AND',
+										],
+								],
+						],
+						[
+								'match' => [
+										'naam2' => [
+												'query'     => $this->builder->query,
+												'fuzziness' => 1,
+												'boost'     => 2,
+												'operator'  => 'AND',
+										],
+								],
+						],
+						[
+								'match' => [
+										'naam' => [
+												'query'     => $this->builder->query,
+												'boost'     => 4,
+												'fuzziness' => 0,
+												'operator'  => 'AND',
+										],
+								],
+						],
+				],
 		];
 	}
 }
