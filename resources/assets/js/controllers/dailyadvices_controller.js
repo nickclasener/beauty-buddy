@@ -3,6 +3,7 @@ import {Controller} from "stimulus";
 export default class extends Controller {
     static targets = ["morning", "midday", "evening", "dailyadvice", "monthyear"];
 
+
     create(event) {
         event.preventDefault();
         axios.post(this.data.get('store'), this.form).then(response => {

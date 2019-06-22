@@ -11,7 +11,8 @@ class CustomerController extends Controller
 {
 	public function index ()
 	{
-		$customers = Customer::all();
+		$customers = Customer::where([ 'user_id' => auth()->id() ])->get()->sortBy('naam', SORT_NATURAL | SORT_FLAG_CASE);
+
 		return view('klanten.index')->with([
 				'customers' => $customers,
 		]);

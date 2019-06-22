@@ -37,7 +37,7 @@
 
 </head>
 <body class="bg-bg font-sans text-base-font">
-@include('layouts._navbar')
+@include('layouts._navbar2')
 @yield('main')
 @if (count($errors))
 	@foreach ($errors->all() as $error)
