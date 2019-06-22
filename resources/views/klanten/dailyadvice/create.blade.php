@@ -1,7 +1,7 @@
 <div class="pt-10">
 	<form action="{{ route('dailyadvice.store', $customer, false) }}"
 	      method="POST"
-	      data-action="dailyadvices#create"
+	      data-action="autocomplete2#removeResults dailyadvices#create"
 	>@method('POST')@csrf
 		<div class="border-b border-dashed focus-within:border-buddy-lightest px-10">
 	<textarea type="text"

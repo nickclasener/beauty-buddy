@@ -3,11 +3,44 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use ScoutElastic\Searchable;
 
 class Huidanalyse extends Model
 {
-	protected $guarded = [];
-	protected $with    = [ 'creator' ];
+	use Searchable;
+	protected $guarded           = [];
+	protected $indexConfigurator = HuidanalyseConfigurator::class;
+	protected $mapping           = [
+			'properties' => [
+					'body'  => [
+							'copy_to'         => 'body2',
+							'type'            => 'text',
+							'analyzer'        => 'autocomplete',
+							'search_analyzer' => 'autocomplete_search',
+							'fields'          => [
+									'keyword' => [
+											'type'         => 'keyword',
+											'ignore_above' => 256,
+									],
+							],
+					],
+					'body2' => [
+							'type'            => 'text',
+							'analyzer'        => 'autocomplete',
+							'search_analyzer' => 'autocomplete_search',
+							'fields'          => [
+									'keyword' => [
+											'type'         => 'keyword',
+											'ignore_above' => 256,
+									],
+							],
+					],
+			],
+	];
+	protected $searchRules       = [
+			HuidanalyseRule::class,
+	];
+	protected $with              = [ 'creator' ];
 
 	public function creator ()
 	{

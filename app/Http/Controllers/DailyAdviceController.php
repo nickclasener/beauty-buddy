@@ -10,7 +10,7 @@ class DailyAdviceController extends Controller
 {
 	public function index ( Customer $customer )
 	{
-		$dailyAdvice = $customer
+		$dailyAdvices = $customer
 				->dailyAdvices()
 				->orderByDesc('created_at')
 				->get();
@@ -18,8 +18,8 @@ class DailyAdviceController extends Controller
 		//				->paginate(15);
 		return view('klanten.dailyadvice.index')
 				->with([
-						'customer'    => $customer,
-						'dailyAdvice' => $dailyAdvice,
+						'customer'     => $customer,
+						'dailyAdvices' => $dailyAdvices,
 				]);
 	}
 

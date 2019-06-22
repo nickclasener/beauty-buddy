@@ -11,9 +11,9 @@ class Customer extends Model
 	use Sluggable;
 	use Searchable;
 
-	protected $guarded = [ 'id' ];
+	protected $guarded           = [ 'id' ];
 	protected $indexConfigurator = CustomerConfigurator::class;
-	protected $mapping     = [
+	protected $mapping           = [
 			'properties' => [
 					'naam'  => [
 							'copy_to'         => 'naam2',
@@ -40,14 +40,9 @@ class Customer extends Model
 					],
 			],
 	];
-	protected $searchRules = [
+	protected $searchRules       = [
 			CustomerRule::class,
 	];
-
-//	public function searchableAs ()
-	//	{
-	//		return 'customers';
-	//	}
 
 	public function getRouteKeyName ()
 	{

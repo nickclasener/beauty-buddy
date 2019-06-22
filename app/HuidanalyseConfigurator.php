@@ -5,11 +5,10 @@ namespace App;
 use ScoutElastic\IndexConfigurator;
 use ScoutElastic\Migratable;
 
-class NoteConfigurator extends IndexConfigurator
+class HuidanalyseConfigurator extends IndexConfigurator
 {
 	use Migratable;
-
-	protected $name     = 'notes';
+	protected $name     = 'huidanalyses';
 	protected $settings = [
 			'analysis' => [
 					'analyzer'  => [

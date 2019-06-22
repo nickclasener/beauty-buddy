@@ -13,6 +13,10 @@
 
 use App\Customer;
 use App\CustomerRule;
+use App\DailyAdvice;
+use App\DailyAdviceRule;
+use App\Huidanalyse;
+use App\HuidanalyseRule;
 use App\Note;
 use App\NoteRule;
 
@@ -79,7 +83,11 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 				->where('customer_id', $customer->id)
 				->rule(NoteRule::class)
 				->from(0)->take(10)
+				//				->explain();
 				->get();
+		if ( count($notes) === 0 ) {
+			return null;
+		}
 
 		return view('klanten.notes._list')->with([ 'notes' => $notes ]);
 	})->name('notes.search');
@@ -96,6 +104,22 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 	], '/notities/{note}', 'NoteController@update')->name('notes.update');
 
 	// Huidanalyses Routes
+	Route::get('klanten/{customer}/huidanalyses/search', static function ( Customer $customer ) {
+		$query = (string)request('q');
+		$huidanalyses = Huidanalyse
+				::search($query)
+				->where('user_id', auth()->id())
+				->where('customer_id', $customer->id)
+				->rule(HuidanalyseRule::class)
+				->from(0)->take(10)
+				//				->explain();
+				->get();
+		if ( count($huidanalyses) === 0 ) {
+			return null;
+		}
+
+		return view('klanten.huidanalyses._list')->with([ 'huidanalyses' => $huidanalyses ]);
+	})->name('huidanalyses.search');
 	Route::get('klanten/{customer}/huidanalyses/{huidanalyse}', 'HuidanalyseController@show')
 	     ->name('huidanalyses.show');
 	Route::get('klanten/{customer}/huidanalyses', 'HuidanalyseController@index')->name('huidanalyses.index');
@@ -109,6 +133,25 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 	], '/huidanalyses/{huidanalyse}', 'HuidanalyseController@update')->name('huidanalyses.update');
 
 	// DailyAdvice Routes
+	Route::get('klanten/{customer}/dagelijks-advies/search', static function ( Customer $customer ) {
+		$query = (string)request('q');
+		$dailyAdvices = DailyAdvice
+				::search($query)
+				->where('user_id', auth()->id())
+				->where('customer_id', $customer->id)
+				->rule(DailyAdviceRule::class)
+				->from(0)->take(10)
+				//				->explain();
+				->get();
+		//		dd($dailyAdvices);
+		if ( count($dailyAdvices) === 0 ) {
+			return null;
+		}
+
+		//		return compact('dailyAdvices');
+
+		return view('klanten.dailyadvice._list')->with([ 'dailyAdvices' => $dailyAdvices ]);
+	})->name('dailyadvice.search');
 	//	Route::get('klanten/{customer}/dagelijks-advies/nieuw', 'DailyAdviceController@create')->name('dailyadvice.create');
 	Route::get('klanten/{customer}/dagelijks-advies/{dailyAdvice}', 'DailyAdviceController@show')
 	     ->name('dailyadvice.show');

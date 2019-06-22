@@ -4,7 +4,7 @@ namespace App;
 
 use ScoutElastic\SearchRule;
 
-class NoteRule extends SearchRule
+class HuidanalyseRule extends SearchRule
 {
 	public function buildHighlightPayload ()
 	{

@@ -5,11 +5,11 @@ namespace App;
 use ScoutElastic\IndexConfigurator;
 use ScoutElastic\Migratable;
 
-class NoteConfigurator extends IndexConfigurator
+class DailyAdviceConfigurator extends IndexConfigurator
 {
 	use Migratable;
 
-	protected $name     = 'notes';
+	protected $name     = 'daily_advices';
 	protected $settings = [
 			'analysis' => [
 					'analyzer'  => [

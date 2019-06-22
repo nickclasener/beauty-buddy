@@ -4186,6 +4186,11 @@ table {
  * @import "components/forms";
  */
 
+.goto {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
 input,
 textarea,
 button {

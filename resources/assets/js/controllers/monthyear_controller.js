@@ -24,6 +24,7 @@ export default class extends ApplicationController {
                 height: 0,
                 onCompleteScope: this.monthyear,
                 onComplete: function () {
+                    console.log(this);
                     this.remove();
                 }
             });

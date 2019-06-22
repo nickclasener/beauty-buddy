@@ -27,13 +27,14 @@
 	      href="https://fonts.gstatic.com"
 
 	>
-{{--	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"--}}
-{{--	      rel="stylesheet"--}}
-{{--	>--}}
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+	      rel="stylesheet"
+	>
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}"
 	      rel="stylesheet"
 	>
+
 </head>
 <body class="bg-bg font-sans text-base-font">
 @include('layouts._navbar')

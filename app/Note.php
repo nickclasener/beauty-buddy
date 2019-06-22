@@ -12,17 +12,30 @@ class Note extends Model
 	protected $indexConfigurator = NoteConfigurator::class;
 	protected $mapping           = [
 			'properties' => [
-				//					'body' => [
-				//							'type'            => 'text',
-				//							'analyzer'        => 'autocomplete',
-				//							'search_analyzer' => 'autocomplete_search',
-				//							'fields'          => [
-				//									'keyword' => [
-				//											'type'         => 'keyword',
-				//											'ignore_above' => 256,
-				//									],
-				//							],
-				//					],
+					'body'  => [
+							'copy_to'         => 'body2',
+							'type'            => 'text',
+							'analyzer'        => 'autocomplete',
+							'search_analyzer' => 'autocomplete_search',
+							'fields'          => [
+									'keyword' => [
+											'type'         => 'keyword',
+											'ignore_above' => 256,
+									],
+							],
+					],
+					'body2' => [
+							'type'            => 'text',
+							'analyzer'        => 'autocomplete',
+							'search_analyzer' => 'autocomplete_search',
+							'fields'          => [
+									'keyword' => [
+											'type'         => 'keyword',
+											'ignore_above' => 256,
+									],
+							],
+					],
+
 			],
 	];
 	protected $searchRules       = [

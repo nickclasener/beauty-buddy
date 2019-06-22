@@ -1,7 +1,7 @@
 <div class="pt-10">
 	<form action="{{  route('notes.store', $customer, false) }}"
 	      method="POST"
-	      data-action="notes#create"
+	      data-action="autocomplete2#removeResults notes#create"
 	>@method('POST')@csrf
 		<div class="border-b border-dashed focus-within:border-buddy-lightest px-10">
 		<textarea contenteditable="true"
@@ -15,7 +15,7 @@ Zijn er veder noemenswaardigheden"
 		          required
 		>{{ old('body') }}</textarea>
 			<hr>
-			<div class="w-full flex mb-5">
+			<div class="w-full flex mb-5 ">
 				<button type="submit"
 				        class="w-1/2 text-buddy-lightest hover:text-buddy-darker"
 				>Voeg Notitie

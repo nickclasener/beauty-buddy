@@ -1,8 +1,10 @@
 import {Controller} from 'stimulus';
 import debounce from 'lodash.debounce';
 
+
 export default class extends Controller {
     static targets = ['input', 'hidden', 'results', 'highlight'];
+
 
     connect() {
         this.resultsTarget.hidden = true;
@@ -117,6 +119,7 @@ export default class extends Controller {
     }
 
     commit(selected) {
+
         if (selected.getAttribute('aria-disabled') === 'true') return;
 
         if (selected instanceof HTMLAnchorElement) {
@@ -126,9 +129,8 @@ export default class extends Controller {
         }
 
         const textValue = selected.textContent.trim();
-        const value = selected.getAttribute('data-autocomplete-value') || textValue;
+        const value = selected.getAttribute('data-autocomplete2-value') || textValue;
         this.inputTarget.value = textValue;
-
         if (this.hiddenTarget) {
             this.hiddenTarget.value = value;
         } else {
@@ -148,6 +150,20 @@ export default class extends Controller {
         // if (!(event.target instanceof Element)) return;
         // const selected = event.target.closest('[role="option"]');
         // if (selected) this.commit(selected);
+    }
+
+    goto(event) {
+        const selected = event.target.closest('[role="option"]');
+        const goto = selected.getAttribute('data-autocomplete2-goto');
+        // console.log(goto);
+        this.removeResults();
+        // console.log(document.getElementById(goto));
+        document.getElementById(goto).scrollIntoView({block: "center"});
+        document.getElementById(goto).classList.add('animated', 'bounceIn', 'goto');
+        setTimeout(function () {
+            document.getElementById(goto).classList.remove('animated', 'bounceIn', 'goto');
+        }, 2000);
+
     }
 
     onResultsMouseDown() {
@@ -219,6 +235,7 @@ export default class extends Controller {
 
     removeResults() {
         this.resultsTarget.innerHTML = '';
+        this.resultsTarget.hidden = true;
     }
 
     get src() {

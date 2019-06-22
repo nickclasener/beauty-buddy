@@ -1,6 +1,6 @@
 <div class="pt-10">
 	<form action="{{  route('huidanalyses.store', $customer, false) }}"
-	      data-action="huidanalyses#create"
+	      data-action="autocomplete2#removeResults huidanalyses#create"
 	>@method('POST')@csrf
 		<div class="border-b border-dashed focus-within:border-buddy-lightest px-10 ">
 		<textarea contenteditable="true"
