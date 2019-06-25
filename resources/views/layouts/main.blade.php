@@ -38,7 +38,9 @@
 </head>
 <body class="bg-bg font-sans text-base-font">
 @include('layouts._navbar2')
-@yield('main')
+<div class="pt-16 md:pt-0">
+	@yield('main')
+</div>
 @if (count($errors))
 	@foreach ($errors->all() as $error)
 		<ul class="alert alert-danger">

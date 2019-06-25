@@ -1,5 +1,6 @@
 @extends('klanten.show')
 @section('content')
-	@include('klanten.huidanalyses._index')
-
+	<div class="min-h-screen">
+		@include('klanten.huidanalyses._index')
+	</div>
 @stop

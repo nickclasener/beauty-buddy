@@ -1,9 +1,13 @@
 @extends('layouts.main')
 @section('main')
 
-	<div class="container mx-auto flex">
-		<div class="bg-white w-1/3 my-15 py-10 h-full">
-
+	<div class="flex flex-col md:flex-row"
+	     data-controller="toggle"
+	>
+		<div class="bg-white w-full md:w-1/3 md:my-15 md:pb-10 md:pt-0 h-full hidden md:block"
+		     data-target="toggle.klantHide"
+		     id="{{ $customer->slug }}"
+		>
 			<div data-controller="toggle customer"
 			     data-customer-update="{{ route('klanten.update', $customer, false) }}"
 			     data-customer-destroy="{{ route('klanten.destroy', $customer, false) }}"
@@ -18,9 +22,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="ml-5 w-2/3 mb-15">
+		<div class="md:ml-5 w-full md:w-2/3 mb-15 md:block"
+		>
 			@include('layouts._submenu',['customer'=>$customer])
-			<div class="w-full bg-white mb-10">
+			<div class="w-full bg-white mb-10 md:block"
+			     data-target="toggle.klantShow"
+			>
 				<div class="px-10">
 					@yield('content')
 				</div>

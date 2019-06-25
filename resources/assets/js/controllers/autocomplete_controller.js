@@ -117,37 +117,13 @@ export default class extends Controller {
     }
 
     commit(selected) {
-        if (selected.getAttribute('aria-disabled') === 'true') return;
-
-        if (selected instanceof HTMLAnchorElement) {
-            selected.click();
-            this.resultsTarget.hidden = true;
-            return;
-        }
-
-        const textValue = selected.textContent.trim();
-        const value = selected.getAttribute('data-autocomplete-value') || textValue;
-        this.inputTarget.value = textValue;
-
-        if (this.hiddenTarget) {
-            this.hiddenTarget.value = value;
-        } else {
-            this.inputTarget.value = value;
-        }
-
-        this.element.dispatchEvent(new CustomEvent('autocomplete.change', {
-            bubbles: true,
-            detail: {value: value, textValue: textValue}
-        }));
-
-        this.inputTarget.focus();
-        this.resultsTarget.hidden = true;
+        Turbolinks.visit(selected.getAttribute('data-autocomplete-href'));
     }
 
     onResultsClick(event) {
-        // if (!(event.target instanceof Element)) return;
-        // const selected = event.target.closest('[role="option"]');
-        // if (selected) this.commit(selected);
+        if (!(event.target instanceof Element)) return;
+        const selected = event.target.closest('[role="option"]');
+        if (selected) this.commit(selected);
     }
 
     onResultsMouseDown() {

@@ -17,7 +17,7 @@
 				{{--class="self-end bg-buddy-lightest rounded-full w-15 h-15 flex justify-center mr-9"--}}
 
 		>
-			@svg('icon-136-document-edit',['class'=>'mt-2 -mr-2 fill-current self-center text-buddy-lightest
+			@svg('icon-136-document-edit',['class'=>'mt-2 md:-mr-2 fill-current self-center text-buddy-lightest
 			hover:text-buddy-darker'])
 		</button>
 	</div>
@@ -32,7 +32,7 @@
 	<h2 class="font-light">{{ $customer->naam }}</h2>
 	<h2 class="font-hairline">{{ $customer->geboortedatum }}</h2>
 </div>
-<hr class="border-b border-dashed mb-5 mx-10">
+<hr class="border-b border-dashed mb-5 md:mx-10">
 <div class="px-14">
 	<h2 class="font-hairline text-buddy-teal  mb-5">Contactinformatie</h2>
 
@@ -49,7 +49,7 @@
 		       class="bg-transparent appearance-none focus:outline-none"
 		       readonly
 		>
-		<button class="h-5 w-5"
+		<button class="h-5 md:w-5"
 		        data-action="clipboard#copy"
 		>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
 		</button>
@@ -68,7 +68,7 @@
 		       class="bg-transparent appearance-none focus:outline-none"
 		       readonly
 		>
-		<button class="h-5 w-5"
+		<button class="h-5 md:w-5"
 		        data-action="clipboard#copy"
 		>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
 		</button>
@@ -87,14 +87,14 @@
 		       class="bg-transparent appearance-none focus:outline-none"
 		       readonly
 		>
-		<button class="h-5 w-5"
+		<button class="h-5 md:w-5"
 		        data-action="clipboard#copy"
 		>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
 		</button>
 	</div>
 </div>
 
-<hr class="border-b border-dashed mb-5 mx-10">
+<hr class="border-b border-dashed mb-5 md:mx-10">
 <div class="mx-14">
 	<h2 class="font-hairline text-buddy-teal  mb-5">Adresinformatie</h2>
 
@@ -111,7 +111,7 @@
 		       class="bg-transparent appearance-none focus:outline-none"
 		       readonly
 		>
-		<button class="h-5 w-5"
+		<button class="h-5 md:w-5"
 		        data-action="clipboard#copy"
 		>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
 		</button>
@@ -130,7 +130,7 @@
 		       class="bg-transparent appearance-none focus:outline-none"
 		       readonly
 		>
-		<button class="h-5 w-5"
+		<button class="h-5 md:w-5"
 		        data-action="clipboard#copy"
 		>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
 		</button>
@@ -149,7 +149,7 @@
 		       class="bg-transparent appearance-none focus:outline-none"
 		       readonly
 		>
-		<button class="h-5 w-5"
+		<button class="h-5 md:w-5"
 		        data-action="clipboard#copy"
 		>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
 		</button>

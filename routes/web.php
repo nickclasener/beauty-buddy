@@ -40,7 +40,7 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 				->where('user_id', auth()->id())
 				->rule(CustomerRule::class)
 				//				->take(100)
-				->from(0)->take(10)
+				->from(0)->take(100)
 				->get();
 		//						Customer::search()->rule(static function ( $builder ) {
 		//

@@ -1,6 +1,6 @@
-import {ApplicationController} from "../controllers/application-controller";
+import {Application_controller} from "./application_controller";
 
-export default class extends ApplicationController {
+export default class extends Application_controller {
     static targets = ["monthyear"];
 
     initialize() {

@@ -38,6 +38,9 @@
 </head>
 <body>
 @include('layouts._navbar2')
-@yield('content')
+
+<div class="pt-16 md:pt-0">
+	@yield('content')
+</div>
 </body>
 </html>

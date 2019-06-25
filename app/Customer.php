@@ -16,7 +16,10 @@ class Customer extends Model
 	protected $mapping           = [
 			'properties' => [
 					'naam'  => [
-							'copy_to'         => 'naam2',
+							'copy_to'         => [
+									'naam2',
+									'naam3',
+							],
 							'type'            => 'text',
 							'analyzer'        => 'autocomplete',
 							'search_analyzer' => 'autocomplete_search',
@@ -28,6 +31,17 @@ class Customer extends Model
 							],
 					],
 					'naam2' => [
+							'type'            => 'text',
+							'analyzer'        => 'autocomplete',
+							'search_analyzer' => 'autocomplete_search',
+							'fields'          => [
+									'keyword' => [
+											'type'         => 'keyword',
+											'ignore_above' => 256,
+									],
+							],
+					],
+					'naam3' => [
 							'type'            => 'text',
 							'analyzer'        => 'autocomplete',
 							'search_analyzer' => 'autocomplete_search',

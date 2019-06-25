@@ -2,12 +2,12 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Customer::class, function ( Faker $faker ) {
+$factory->define(App\Customer::class, static function ( Faker $faker ) {
 	return [
-			'user_id'       => function () {
+			'user_id'       => static function () {
 				return factory('App\User')->create()->id;
 			},
-			'naam'          => $faker->name,
+			'naam'          => $faker->firstName . ' ' . $faker->lastName,
 			'email'         => $faker->email,
 			'telefoon'      => $faker->phoneNumber,
 			'mobiel'        => $faker->phoneNumber,

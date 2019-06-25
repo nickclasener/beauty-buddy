@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function boot ()
 	{
-//		Customer::observe(CustomerObserver::class);
+		//		Customer::observe(CustomerObserver::class);
 		//		Note::observe(NoteObserver::class);
 	}
 
@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function register ()
 	{
-//		$this->app->singleton(CustomersRepository::class, static function ( $app ) {
+		//		$this->app->singleton(CustomersRepository::class, static function ( $app ) {
 		//			return new CustomersElasticsearchRepository($app->make(Client::class));
 		//		});
 		//		$this->app->singleton(NotesRepository::class, static function ( $app ) {

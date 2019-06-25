@@ -47,10 +47,21 @@ class CustomerRule extends SearchRule
 	public function buildQueryPayload ()
 	{
 		return [
+				'must'   => [
+						[
+								'match' => [
+										'naam3' => [
+												'query'     => $this->builder->query,
+												'fuzziness' => 2,
+												'operator'  => 'AND',
+										],
+								],
+						],
+				],
 				'should' => [
 						[
 								'match' => [
-										'naam2' => [
+										'naam3' => [
 												'query'     => $this->builder->query,
 												'fuzziness' => 2,
 												'operator'  => 'AND',
@@ -63,16 +74,6 @@ class CustomerRule extends SearchRule
 												'query'     => $this->builder->query,
 												'fuzziness' => 1,
 												'boost'     => 2,
-												'operator'  => 'AND',
-										],
-								],
-						],
-						[
-								'match' => [
-										'naam' => [
-												'query'     => $this->builder->query,
-												'boost'     => 4,
-												'fuzziness' => 0,
 												'operator'  => 'AND',
 										],
 								],

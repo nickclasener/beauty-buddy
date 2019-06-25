@@ -8927,95 +8927,7 @@ var defaultSchema = {
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2NoZW1hLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL3NjaGVtYS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFNQSxNQUFNLENBQUMsSUFBTSxhQUFhLEdBQVc7SUFDbkMsbUJBQW1CLEVBQUUsaUJBQWlCO0lBQ3RDLGVBQWUsRUFBRSxhQUFhO0lBQzlCLGVBQWUsRUFBRSxhQUFhO0NBQy9CLENBQUEifQ==
 
 /***/ }),
-/* 28 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApplicationController", function() { return ApplicationController; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var ApplicationController = function (_Controller) {
-    _inherits(ApplicationController, _Controller);
-
-    function ApplicationController() {
-        _classCallCheck(this, ApplicationController);
-
-        return _possibleConstructorReturn(this, (ApplicationController.__proto__ || Object.getPrototypeOf(ApplicationController)).apply(this, arguments));
-    }
-
-    _createClass(ApplicationController, [{
-        key: "getControllerByIdentifier",
-        value: function getControllerByIdentifier(identifier) {
-            return this.application.controllers.find(function (controller) {
-                return controller.context.identifier === identifier;
-            });
-        }
-    }, {
-        key: "laravelCreate",
-        value: function laravelCreate(url, data) {
-            return new Promise(function (resolve, reject) {
-                axios({
-                    url: url,
-                    type: "POST",
-                    data: data,
-                    success: function success(data) {
-                        resolve(data);
-                    },
-                    error: function error(_jqXHR, _textStatus, errorThrown) {
-                        reject(errorThrown);
-                    }
-                });
-            });
-        }
-    }, {
-        key: "laravelUpdate",
-        value: function laravelUpdate(url, data) {
-            return new Promise(function (resolve, reject) {
-                axios({
-                    url: url,
-                    type: "PUT",
-                    data: data,
-                    success: function success(data) {
-                        resolve(data);
-                    },
-                    error: function error(_jqXHR, _textStatus, errorThrown) {
-                        reject(errorThrown);
-                    }
-                });
-            });
-        }
-    }, {
-        key: "laravelDelete",
-        value: function laravelDelete(url) {
-            return new Promise(function (resolve, reject) {
-                axios({
-                    url: url,
-                    type: "DELETE",
-                    success: function success(response) {
-                        resolve(response);
-                    },
-                    catch: function _catch(error) {
-                        reject(error);
-                    }
-                });
-            });
-        }
-    }]);
-
-    return ApplicationController;
-}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
-
-/***/ }),
+/* 28 */,
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9415,8 +9327,6 @@ module.exports = __webpack_require__(99);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_stimulus_webpack_helpers__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_smooth_scroll_dist_smooth_scroll_polyfills_min__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_smooth_scroll_dist_smooth_scroll_polyfills_min___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_smooth_scroll_dist_smooth_scroll_polyfills_min__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -9432,23 +9342,17 @@ __webpack_require__(32);
 
 
 
-
-var scroll = new __WEBPACK_IMPORTED_MODULE_2_smooth_scroll_dist_smooth_scroll_polyfills_min___default.a('a[href*="#"]', {
-    speed: 300,
-    speedAsDuration: true
-});
-
 var application = __WEBPACK_IMPORTED_MODULE_0_stimulus__["a" /* Application */].start();
 var context = __webpack_require__(85);
 application.load(Object(__WEBPACK_IMPORTED_MODULE_1_stimulus_webpack_helpers__["a" /* definitionsFromContext */])(context));
 
-// Turbolinks.start();
+Turbolinks.start();
 
 window.Toast = Swal.mixin({
-    toast: true,
-    position: 'bottom-end',
-    showConfirmButton: false,
-    timer: 3000
+  toast: true,
+  position: 'bottom-end',
+  showConfirmButton: false,
+  timer: 3000
 });
 
 /***/ }),
@@ -46014,27 +45918,20 @@ function identifierForContextKey(key) {
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFPQSxNQUFNLGlDQUFpQyxPQUEwQztJQUMvRSxPQUFPLE9BQU8sQ0FBQyxJQUFJLEVBQUU7U0FDbEIsR0FBRyxDQUFDLFVBQUEsR0FBRyxJQUFJLE9BQUEsb0NBQW9DLENBQUMsT0FBTyxFQUFFLEdBQUcsQ0FBQyxFQUFsRCxDQUFrRCxDQUFDO1NBQzlELE1BQU0sQ0FBQyxVQUFBLEtBQUssSUFBSSxPQUFBLEtBQUssRUFBTCxDQUFLLENBQWlCLENBQUE7QUFDM0MsQ0FBQztBQUVELDhDQUE4QyxPQUEwQyxFQUFFLEdBQVc7SUFDbkcsSUFBTSxVQUFVLEdBQUcsdUJBQXVCLENBQUMsR0FBRyxDQUFDLENBQUE7SUFDL0MsSUFBSSxVQUFVLEVBQUU7UUFDZCxPQUFPLGdDQUFnQyxDQUFDLE9BQU8sQ0FBQyxHQUFHLENBQUMsRUFBRSxVQUFVLENBQUMsQ0FBQTtLQUNsRTtBQUNILENBQUM7QUFFRCwwQ0FBMEMsTUFBd0IsRUFBRSxVQUFrQjtJQUNwRixJQUFNLHFCQUFxQixHQUFHLE1BQU0sQ0FBQyxPQUFPLENBQUE7SUFDNUMsSUFBSSxPQUFPLHFCQUFxQixJQUFJLFVBQVUsRUFBRTtRQUM5QyxPQUFPLEVBQUUsVUFBVSxZQUFBLEVBQUUscUJBQXFCLHVCQUFBLEVBQUUsQ0FBQTtLQUM3QztBQUNILENBQUM7QUFFRCxNQUFNLGtDQUFrQyxHQUFXO0lBQ2pELElBQU0sV0FBVyxHQUFHLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyx3Q0FBd0MsQ0FBQyxJQUFJLEVBQUUsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFBO0lBQ2xGLElBQUksV0FBVyxFQUFFO1FBQ2YsT0FBTyxXQUFXLENBQUMsT0FBTyxDQUFDLElBQUksRUFBRSxHQUFHLENBQUMsQ0FBQyxPQUFPLENBQUMsS0FBSyxFQUFFLElBQUksQ0FBQyxDQUFBO0tBQzNEO0FBQ0gsQ0FBQyJ9
 
 /***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! smooth-scroll v16.1.0 | (c) 2019 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/smooth-scroll */
-window.Element&&!Element.prototype.closest&&(Element.prototype.closest=function(e){var t,n=(this.document||this.ownerDocument).querySelectorAll(e),o=this;do{for(t=n.length;0<=--t&&n.item(t)!==o;);}while(t<0&&(o=o.parentElement));return o}),(function(){if("function"==typeof window.CustomEvent)return;function e(e,t){t=t||{bubbles:!1,cancelable:!1,detail:void 0};var n=document.createEvent("CustomEvent");return n.initCustomEvent(e,t.bubbles,t.cancelable,t.detail),n}e.prototype=window.Event.prototype,window.CustomEvent=e})(),(function(){for(var r=0,e=["ms","moz","webkit","o"],t=0;t<e.length&&!window.requestAnimationFrame;++t)window.requestAnimationFrame=window[e[t]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[e[t]+"CancelAnimationFrame"]||window[e[t]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(e,t){var n=(new Date).getTime(),o=Math.max(0,16-(n-r)),a=window.setTimeout((function(){e(n+o)}),o);return r=n+o,a}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(e){clearTimeout(e)})})(),(function(e,t){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function(){return t(e)}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):"object"==typeof exports?module.exports=t(e):e.SmoothScroll=t(e)})("undefined"!=typeof global?global:"undefined"!=typeof window?window:this,(function(q){"use strict";var I={ignore:"[data-scroll-ignore]",header:null,topOnEmptyHash:!0,speed:500,speedAsDuration:!1,durationMax:null,durationMin:null,clip:!0,offset:0,easing:"easeInOutCubic",customEasing:null,updateURL:!0,popstate:!0,emitEvents:!0},F=function(){var n={};return Array.prototype.forEach.call(arguments,(function(e){for(var t in e){if(!e.hasOwnProperty(t))return;n[t]=e[t]}})),n},r=function(e){"#"===e.charAt(0)&&(e=e.substr(1));for(var t,n=String(e),o=n.length,a=-1,r="",i=n.charCodeAt(0);++a<o;){if(0===(t=n.charCodeAt(a)))throw new InvalidCharacterError("Invalid character: the input contains U+0000.");1<=t&&t<=31||127==t||0===a&&48<=t&&t<=57||1===a&&48<=t&&t<=57&&45===i?r+="\\"+t.toString(16)+" ":r+=128<=t||45===t||95===t||48<=t&&t<=57||65<=t&&t<=90||97<=t&&t<=122?n.charAt(a):"\\"+n.charAt(a)}return"#"+r},L=function(){return Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight,document.body.clientHeight,document.documentElement.clientHeight)},x=function(e){return e?(t=e,parseInt(q.getComputedStyle(t).height,10)+e.offsetTop):0;var t},H=function(e,t,n,o){if(t.emitEvents&&"function"==typeof q.CustomEvent){var a=new CustomEvent(e,{bubbles:!0,detail:{anchor:n,toggle:o}});document.dispatchEvent(a)}};return function(o,e){var A,a,O,C,M={};M.cancelScroll=function(e){cancelAnimationFrame(C),C=null,e||H("scrollCancel",A)},M.animateScroll=function(i,c,e){M.cancelScroll();var s=F(A||I,e||{}),u="[object Number]"===Object.prototype.toString.call(i),t=u||!i.tagName?null:i;if(u||t){var l=q.pageYOffset;s.header&&!O&&(O=document.querySelector(s.header));var n,o,a,m,r,d,f,h,p=x(O),g=u?i:(function(e,t,n,o){var a=0;if(e.offsetParent)for(;a+=e.offsetTop,e=e.offsetParent;);return a=Math.max(a-t-n,0),o&&(a=Math.min(a,L()-q.innerHeight)),a})(t,p,parseInt("function"==typeof s.offset?s.offset(i,c):s.offset,10),s.clip),y=g-l,v=L(),w=0,S=(n=y,a=(o=s).speedAsDuration?o.speed:Math.abs(n/1e3*o.speed),o.durationMax&&a>o.durationMax?o.durationMax:o.durationMin&&a<o.durationMin?o.durationMin:parseInt(a,10)),E=function(e,t){var n,o,a,r=q.pageYOffset;if(e==t||r==t||(l<t&&q.innerHeight+r)>=v)return M.cancelScroll(!0),o=t,a=u,0===(n=i)&&document.body.focus(),a||(n.focus(),document.activeElement!==n&&(n.setAttribute("tabindex","-1"),n.focus(),n.style.outline="none"),q.scrollTo(0,o)),H("scrollStop",s,i,c),!(C=m=null)},b=function(e){var t,n,o;m||(m=e),w+=e-m,d=l+y*(n=r=1<(r=0===S?0:w/S)?1:r,"easeInQuad"===(t=s).easing&&(o=n*n),"easeOutQuad"===t.easing&&(o=n*(2-n)),"easeInOutQuad"===t.easing&&(o=n<.5?2*n*n:(4-2*n)*n-1),"easeInCubic"===t.easing&&(o=n*n*n),"easeOutCubic"===t.easing&&(o=--n*n*n+1),"easeInOutCubic"===t.easing&&(o=n<.5?4*n*n*n:(n-1)*(2*n-2)*(2*n-2)+1),"easeInQuart"===t.easing&&(o=n*n*n*n),"easeOutQuart"===t.easing&&(o=1- --n*n*n*n),"easeInOutQuart"===t.easing&&(o=n<.5?8*n*n*n*n:1-8*--n*n*n*n),"easeInQuint"===t.easing&&(o=n*n*n*n*n),"easeOutQuint"===t.easing&&(o=1+--n*n*n*n*n),"easeInOutQuint"===t.easing&&(o=n<.5?16*n*n*n*n*n:1+16*--n*n*n*n*n),t.customEasing&&(o=t.customEasing(n)),o||n),q.scrollTo(0,Math.floor(d)),E(d,g)||(C=q.requestAnimationFrame(b),m=e)};0===q.pageYOffset&&q.scrollTo(0,0),f=i,h=s,u||history.pushState&&h.updateURL&&history.pushState({smoothScroll:JSON.stringify(h),anchor:f.id},document.title,f===document.documentElement?"#top":"#"+f.id),"matchMedia"in q&&q.matchMedia("(prefers-reduced-motion)").matches?q.scrollTo(0,Math.floor(g)):(H("scrollStart",s,i,c),M.cancelScroll(!0),q.requestAnimationFrame(b))}};var t=function(e){if(!e.defaultPrevented&&!(0!==e.button||e.metaKey||e.ctrlKey||e.shiftKey)&&"closest"in e.target&&(a=e.target.closest(o))&&"a"===a.tagName.toLowerCase()&&!e.target.closest(A.ignore)&&a.hostname===q.location.hostname&&a.pathname===q.location.pathname&&/#/.test(a.href)){var t,n=r(a.hash);if("#"===n){if(!A.topOnEmptyHash)return;t=document.documentElement}else t=document.querySelector(n);(t=t||"#top"!==n?t:document.documentElement)&&(e.preventDefault(),(function(e){if(history.replaceState&&e.updateURL&&!history.state){var t=q.location.hash;t=t||"",history.replaceState({smoothScroll:JSON.stringify(e),anchor:t||q.pageYOffset},document.title,t||q.location.href)}})(A),M.animateScroll(t,a))}},n=function(e){if(null!==history.state&&history.state.smoothScroll&&history.state.smoothScroll===JSON.stringify(A)){var t=history.state.anchor;"string"==typeof t&&t&&!(t=document.querySelector(r(history.state.anchor)))||M.animateScroll(t,null,{updateURL:!1})}};M.destroy=function(){A&&(document.removeEventListener("click",t,!1),q.removeEventListener("popstate",n,!1),M.cancelScroll(),C=O=a=A=null)};return (function(){if(!("querySelector"in document&&"addEventListener"in q&&"requestAnimationFrame"in q&&"closest"in q.Element.prototype))throw"Smooth Scroll: This browser does not support the required JavaScript methods and browser APIs.";M.destroy(),A=F(I,e||{}),O=A.header?document.querySelector(A.header):null,document.addEventListener("click",t,!1),A.updateURL&&A.popstate&&q.addEventListener("popstate",n,!1)})(),M}}));
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ }),
+/* 84 */,
 /* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./application-controller.js": 28,
-	"./autocomplete-controller.js": 86,
-	"./autocomplete2-controller.js": 87,
+	"./application_controller.js": 108,
+	"./autocomplete2_controller.js": 106,
+	"./autocomplete_controller.js": 107,
 	"./clipboard_controller.js": 88,
 	"./customer_controller.js": 89,
 	"./dailyadvice_controller.js": 90,
 	"./dailyadvices_controller.js": 91,
 	"./dropdown-controller.js": 92,
+	"./goto_controller.js": 105,
 	"./huidanalyse_controller.js": 93,
 	"./huidanalyses_controller.js": 94,
 	"./monthyear_controller.js": 95,
@@ -46059,691 +45956,8 @@ module.exports = webpackContext;
 webpackContext.id = 85;
 
 /***/ }),
-/* 86 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_debounce__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_debounce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_debounce__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-var _class = function (_Controller) {
-    _inherits(_class, _Controller);
-
-    function _class() {
-        _classCallCheck(this, _class);
-
-        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-    }
-
-    _createClass(_class, [{
-        key: 'connect',
-        value: function connect() {
-            this.resultsTarget.hidden = true;
-
-            this.inputTarget.setAttribute('autocomplete', 'off');
-            this.inputTarget.setAttribute('spellcheck', 'false');
-
-            this.mouseDown = false;
-
-            this.onInputChange = __WEBPACK_IMPORTED_MODULE_1_lodash_debounce___default()(this.onInputChange.bind(this), 300);
-            this.onResultsClick = this.onResultsClick.bind(this);
-            this.onResultsMouseDown = this.onResultsMouseDown.bind(this);
-            this.onInputBlur = this.onInputBlur.bind(this);
-            this.onInputFocus = this.onInputFocus.bind(this);
-            this.onKeydown = this.onKeydown.bind(this);
-
-            this.inputTarget.addEventListener('keydown', this.onKeydown);
-            this.inputTarget.addEventListener('focus', this.onInputFocus);
-            this.inputTarget.addEventListener('blur', this.onInputBlur);
-            this.inputTarget.addEventListener('input', this.onInputChange);
-            this.resultsTarget.addEventListener('mousedown', this.onResultsMouseDown);
-            this.resultsTarget.addEventListener('click', this.onResultsClick);
-        }
-    }, {
-        key: 'disconnect',
-        value: function disconnect() {
-            this.inputTarget.removeEventListener('keydown', this.onKeydown);
-            this.inputTarget.removeEventListener('focus', this.onInputFocus);
-            this.inputTarget.removeEventListener('blur', this.onInputBlur);
-            this.inputTarget.removeEventListener('input', this.onInputChange);
-            this.resultsTarget.removeEventListener('mousedown', this.onResultsMouseDown);
-            this.resultsTarget.removeEventListener('click', this.onResultsClick);
-        }
-    }, {
-        key: 'sibling',
-        value: function sibling(next) {
-            var options = Array.from(this.resultsTarget.querySelectorAll('[role="option"]'));
-            var selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-            var index = options.indexOf(selected);
-            var sibling = next ? options[index + 1] : options[index - 1];
-            var def = next ? options[0] : options[options.length - 1];
-            return sibling || def;
-        }
-    }, {
-        key: 'select',
-        value: function select(target) {
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = this.resultsTarget.querySelectorAll('[aria-selected="true"]')[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var el = _step.value;
-
-                    el.removeAttribute('aria-selected');
-                    el.classList.remove('active');
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-
-            target.setAttribute('aria-selected', 'true');
-            target.classList.add('active');
-            this.inputTarget.setAttribute('aria-activedescendant', target.id);
-        }
-    }, {
-        key: 'onKeydown',
-        value: function onKeydown(event) {
-            switch (event.key) {
-                case 'Escape':
-                    if (!this.resultsTarget.hidden) {
-                        this.resultsTarget.hidden = true;
-                        event.stopPropagation();
-                        event.preventDefault();
-                    }
-                    break;
-                case 'ArrowDown':
-                    {
-                        var item = this.sibling(true);
-                        if (item) this.select(item);
-                        event.preventDefault();
-                    }
-                    break;
-                case 'ArrowUp':
-                    {
-                        var _item = this.sibling(false);
-                        if (_item) this.select(_item);
-                        event.preventDefault();
-                    }
-                    break;
-                case 'Tab':
-                    {
-                        var _item2 = this.sibling(true);
-                        if (_item2) this.select(_item2);
-                        event.preventDefault();
-                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                        // if (selected) {
-                        //     this.commit(selected);
-                        // }
-                    }
-                    break;
-                case 'Shift':
-                    {
-                        var _item3 = this.sibling(false);
-                        if (_item3) this.select(_item3);
-                        event.preventDefault();
-                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                        // if (selected) {
-                        //     this.commit(selected);
-                        // }
-                    }
-                    break;
-                case 'Enter':
-                    {
-                        var selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                        if (selected && !this.resultsTarget.hidden) {
-                            this.commit(selected);
-                            event.preventDefault();
-                        }
-                    }
-                    break;
-            }
-        }
-    }, {
-        key: 'onInputFocus',
-        value: function onInputFocus() {
-            this.fetchResults();
-        }
-    }, {
-        key: 'onInputBlur',
-        value: function onInputBlur() {
-            if (this.mouseDown) return;
-            this.resultsTarget.hidden = true;
-        }
-    }, {
-        key: 'commit',
-        value: function commit(selected) {
-            if (selected.getAttribute('aria-disabled') === 'true') return;
-
-            if (selected instanceof HTMLAnchorElement) {
-                selected.click();
-                this.resultsTarget.hidden = true;
-                return;
-            }
-
-            var textValue = selected.textContent.trim();
-            var value = selected.getAttribute('data-autocomplete-value') || textValue;
-            this.inputTarget.value = textValue;
-
-            if (this.hiddenTarget) {
-                this.hiddenTarget.value = value;
-            } else {
-                this.inputTarget.value = value;
-            }
-
-            this.element.dispatchEvent(new CustomEvent('autocomplete.change', {
-                bubbles: true,
-                detail: { value: value, textValue: textValue }
-            }));
-
-            this.inputTarget.focus();
-            this.resultsTarget.hidden = true;
-        }
-    }, {
-        key: 'onResultsClick',
-        value: function onResultsClick(event) {
-            // if (!(event.target instanceof Element)) return;
-            // const selected = event.target.closest('[role="option"]');
-            // if (selected) this.commit(selected);
-        }
-    }, {
-        key: 'onResultsMouseDown',
-        value: function onResultsMouseDown() {
-            var _this2 = this;
-
-            this.mouseDown = true;
-            this.resultsTarget.addEventListener('mouseup', function () {
-                return _this2.mouseDown = false;
-            }, { once: true });
-        }
-    }, {
-        key: 'onInputChange',
-        value: function onInputChange() {
-            this.element.removeAttribute('value');
-            this.fetchResults();
-        }
-    }, {
-        key: 'identifyOptions',
-        value: function identifyOptions() {
-            var id = 0;
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
-
-            try {
-                for (var _iterator2 = this.resultsTarget.querySelectorAll('[role="option"]:not([id])')[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var el = _step2.value;
-
-                    el.id = this.resultsTarget.id + '-option-' + id++;
-                }
-            } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
-                    }
-                } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
-                    }
-                }
-            }
-        }
-    }, {
-        key: 'fetchResults',
-        value: function fetchResults() {
-            var _this3 = this;
-
-            var query = this.inputTarget.value.trim();
-            if (!query) {
-                this.resultsTarget.hidden = true;
-                return;
-            }
-            if (query.length < this.minLength) {
-                this.resultsTarget.hidden = true;
-                return;
-            }
-
-            if (!this.src) return;
-
-            var url = new URL(this.src, window.location.href);
-            var params = new URLSearchParams(url.search.slice(1));
-            params.append('q', query);
-            url.search = params.toString();
-
-            this.element.dispatchEvent(new CustomEvent('loadstart'));
-            axios(url.toString()).then(function (response) {
-                _this3.resultsTarget.innerHTML = response.data;
-                _this3.identifyOptions();
-                var hasResults = !!_this3.resultsTarget.querySelector('[role="option"]');
-                _this3.resultsTarget.hidden = !hasResults;
-                _this3.element.dispatchEvent(new CustomEvent('load'));
-                _this3.element.dispatchEvent(new CustomEvent('loadend'));
-            }).catch(function () {
-                _this3.element.dispatchEvent(new CustomEvent('error'));
-                _this3.element.dispatchEvent(new CustomEvent('loadend'));
-            });
-        }
-    }, {
-        key: 'open',
-        value: function open() {
-            if (!this.resultsTarget.hidden) return;
-            this.resultsTarget.hidden = false;
-            this.element.setAttribute('aria-expanded', 'true');
-            this.element.dispatchEvent(new CustomEvent('toggle', { detail: { input: this.input, results: this.results } }));
-        }
-    }, {
-        key: 'close',
-        value: function close() {
-            if (this.resultsTarget.hidden) return;
-            this.resultsTarget.hidden = true;
-            this.inputTarget.removeAttribute('aria-activedescendant');
-            this.element.setAttribute('aria-expanded', 'false');
-            this.element.dispatchEvent(new CustomEvent('toggle', { detail: { input: this.input, results: this.results } }));
-        }
-    }, {
-        key: 'removeResults',
-        value: function removeResults() {
-            this.resultsTarget.innerHTML = '';
-        }
-    }, {
-        key: 'src',
-        get: function get() {
-            return this.data.get("url");
-        }
-    }, {
-        key: 'minLength',
-        get: function get() {
-            var minLength = this.data.get("min-length");
-            if (!minLength) {
-                return 0;
-            }
-            return parseInt(minLength, 10);
-        }
-    }]);
-
-    return _class;
-}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
-
-_class.targets = ['input', 'hidden', 'results', 'highlight'];
-/* harmony default export */ __webpack_exports__["default"] = (_class);
-
-/***/ }),
-/* 87 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_debounce__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_debounce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_debounce__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-var _class = function (_Controller) {
-    _inherits(_class, _Controller);
-
-    function _class() {
-        _classCallCheck(this, _class);
-
-        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-    }
-
-    _createClass(_class, [{
-        key: 'connect',
-        value: function connect() {
-            this.resultsTarget.hidden = true;
-
-            this.inputTarget.setAttribute('autocomplete', 'off');
-            this.inputTarget.setAttribute('spellcheck', 'false');
-
-            this.mouseDown = false;
-
-            this.onInputChange = __WEBPACK_IMPORTED_MODULE_1_lodash_debounce___default()(this.onInputChange.bind(this), 300);
-            this.onResultsClick = this.onResultsClick.bind(this);
-            this.onResultsMouseDown = this.onResultsMouseDown.bind(this);
-            this.onInputBlur = this.onInputBlur.bind(this);
-            this.onInputFocus = this.onInputFocus.bind(this);
-            this.onKeydown = this.onKeydown.bind(this);
-
-            this.inputTarget.addEventListener('keydown', this.onKeydown);
-            this.inputTarget.addEventListener('focus', this.onInputFocus);
-            this.inputTarget.addEventListener('blur', this.onInputBlur);
-            this.inputTarget.addEventListener('input', this.onInputChange);
-            this.resultsTarget.addEventListener('mousedown', this.onResultsMouseDown);
-            this.resultsTarget.addEventListener('click', this.onResultsClick);
-        }
-    }, {
-        key: 'disconnect',
-        value: function disconnect() {
-            this.inputTarget.removeEventListener('keydown', this.onKeydown);
-            this.inputTarget.removeEventListener('focus', this.onInputFocus);
-            this.inputTarget.removeEventListener('blur', this.onInputBlur);
-            this.inputTarget.removeEventListener('input', this.onInputChange);
-            this.resultsTarget.removeEventListener('mousedown', this.onResultsMouseDown);
-            this.resultsTarget.removeEventListener('click', this.onResultsClick);
-        }
-    }, {
-        key: 'sibling',
-        value: function sibling(next) {
-            var options = Array.from(this.resultsTarget.querySelectorAll('[role="option"]'));
-            var selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-            var index = options.indexOf(selected);
-            var sibling = next ? options[index + 1] : options[index - 1];
-            var def = next ? options[0] : options[options.length - 1];
-            return sibling || def;
-        }
-    }, {
-        key: 'select',
-        value: function select(target) {
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = this.resultsTarget.querySelectorAll('[aria-selected="true"]')[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var el = _step.value;
-
-                    el.removeAttribute('aria-selected');
-                    el.classList.remove('active');
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-
-            target.setAttribute('aria-selected', 'true');
-            target.classList.add('active');
-            this.inputTarget.setAttribute('aria-activedescendant', target.id);
-        }
-    }, {
-        key: 'onKeydown',
-        value: function onKeydown(event) {
-            switch (event.key) {
-                case 'Escape':
-                    if (!this.resultsTarget.hidden) {
-                        this.resultsTarget.hidden = true;
-                        event.stopPropagation();
-                        event.preventDefault();
-                    }
-                    break;
-                case 'ArrowDown':
-                    {
-                        var item = this.sibling(true);
-                        if (item) this.select(item);
-                        event.preventDefault();
-                    }
-                    break;
-                case 'ArrowUp':
-                    {
-                        var _item = this.sibling(false);
-                        if (_item) this.select(_item);
-                        event.preventDefault();
-                    }
-                    break;
-                case 'Tab':
-                    {
-                        var _item2 = this.sibling(true);
-                        if (_item2) this.select(_item2);
-                        event.preventDefault();
-                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                        // if (selected) {
-                        //     this.commit(selected);
-                        // }
-                    }
-                    break;
-                case 'Shift':
-                    {
-                        var _item3 = this.sibling(false);
-                        if (_item3) this.select(_item3);
-                        event.preventDefault();
-                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                        // if (selected) {
-                        //     this.commit(selected);
-                        // }
-                    }
-                    break;
-                case 'Enter':
-                    {
-                        var selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                        if (selected && !this.resultsTarget.hidden) {
-                            this.commit(selected);
-                            event.preventDefault();
-                        }
-                    }
-                    break;
-            }
-        }
-    }, {
-        key: 'onInputFocus',
-        value: function onInputFocus() {
-            this.fetchResults();
-        }
-    }, {
-        key: 'onInputBlur',
-        value: function onInputBlur() {
-            if (this.mouseDown) return;
-            this.resultsTarget.hidden = true;
-        }
-    }, {
-        key: 'commit',
-        value: function commit(selected) {
-
-            if (selected.getAttribute('aria-disabled') === 'true') return;
-
-            if (selected instanceof HTMLAnchorElement) {
-                selected.click();
-                this.resultsTarget.hidden = true;
-                return;
-            }
-
-            var textValue = selected.textContent.trim();
-            var value = selected.getAttribute('data-autocomplete2-value') || textValue;
-            this.inputTarget.value = textValue;
-            if (this.hiddenTarget) {
-                this.hiddenTarget.value = value;
-            } else {
-                this.inputTarget.value = value;
-            }
-
-            this.element.dispatchEvent(new CustomEvent('autocomplete.change', {
-                bubbles: true,
-                detail: { value: value, textValue: textValue }
-            }));
-
-            this.inputTarget.focus();
-            this.resultsTarget.hidden = true;
-        }
-    }, {
-        key: 'onResultsClick',
-        value: function onResultsClick(event) {
-            // if (!(event.target instanceof Element)) return;
-            // const selected = event.target.closest('[role="option"]');
-            // if (selected) this.commit(selected);
-        }
-    }, {
-        key: 'goto',
-        value: function goto(event) {
-            var selected = event.target.closest('[role="option"]');
-            var goto = selected.getAttribute('data-autocomplete2-goto');
-            // console.log(goto);
-            this.removeResults();
-            // console.log(document.getElementById(goto));
-            document.getElementById(goto).scrollIntoView({ block: "center" });
-            document.getElementById(goto).classList.add('animated', 'bounceIn', 'goto');
-            setTimeout(function () {
-                document.getElementById(goto).classList.remove('animated', 'bounceIn', 'goto');
-            }, 2000);
-        }
-    }, {
-        key: 'onResultsMouseDown',
-        value: function onResultsMouseDown() {
-            var _this2 = this;
-
-            this.mouseDown = true;
-            this.resultsTarget.addEventListener('mouseup', function () {
-                return _this2.mouseDown = false;
-            }, { once: true });
-        }
-    }, {
-        key: 'onInputChange',
-        value: function onInputChange() {
-            this.element.removeAttribute('value');
-            this.fetchResults();
-        }
-    }, {
-        key: 'identifyOptions',
-        value: function identifyOptions() {
-            var id = 0;
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
-
-            try {
-                for (var _iterator2 = this.resultsTarget.querySelectorAll('[role="option"]:not([id])')[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var el = _step2.value;
-
-                    el.id = this.resultsTarget.id + '-option-' + id++;
-                }
-            } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
-                    }
-                } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
-                    }
-                }
-            }
-        }
-    }, {
-        key: 'fetchResults',
-        value: function fetchResults() {
-            var _this3 = this;
-
-            var query = this.inputTarget.value.trim();
-            if (!query) {
-                this.resultsTarget.hidden = true;
-                return;
-            }
-            if (query.length < this.minLength) {
-                this.resultsTarget.hidden = true;
-                return;
-            }
-
-            if (!this.src) return;
-
-            var url = new URL(this.src, window.location.href);
-            var params = new URLSearchParams(url.search.slice(1));
-            params.append('q', query);
-            url.search = params.toString();
-
-            this.element.dispatchEvent(new CustomEvent('loadstart'));
-            axios(url.toString()).then(function (response) {
-                _this3.resultsTarget.innerHTML = response.data;
-                _this3.identifyOptions();
-                var hasResults = !!_this3.resultsTarget.querySelector('[role="option"]');
-                _this3.resultsTarget.hidden = !hasResults;
-                _this3.element.dispatchEvent(new CustomEvent('load'));
-                _this3.element.dispatchEvent(new CustomEvent('loadend'));
-            }).catch(function () {
-                _this3.element.dispatchEvent(new CustomEvent('error'));
-                _this3.element.dispatchEvent(new CustomEvent('loadend'));
-            });
-        }
-    }, {
-        key: 'open',
-        value: function open() {
-            if (!this.resultsTarget.hidden) return;
-            this.resultsTarget.hidden = false;
-            this.element.setAttribute('aria-expanded', 'true');
-            this.element.dispatchEvent(new CustomEvent('toggle', { detail: { input: this.input, results: this.results } }));
-        }
-    }, {
-        key: 'close',
-        value: function close() {
-            if (this.resultsTarget.hidden) return;
-            this.resultsTarget.hidden = true;
-            this.inputTarget.removeAttribute('aria-activedescendant');
-            this.element.setAttribute('aria-expanded', 'false');
-            this.element.dispatchEvent(new CustomEvent('toggle', { detail: { input: this.input, results: this.results } }));
-        }
-    }, {
-        key: 'removeResults',
-        value: function removeResults() {
-            this.resultsTarget.innerHTML = '';
-            this.resultsTarget.hidden = true;
-        }
-    }, {
-        key: 'src',
-        get: function get() {
-            return this.data.get("url");
-        }
-    }, {
-        key: 'minLength',
-        get: function get() {
-            var minLength = this.data.get("min-length");
-            if (!minLength) {
-                return 0;
-            }
-            return parseInt(minLength, 10);
-        }
-    }]);
-
-    return _class;
-}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
-
-_class.targets = ['input', 'hidden', 'results', 'highlight'];
-/* harmony default export */ __webpack_exports__["default"] = (_class);
-
-/***/ }),
+/* 86 */,
+/* 87 */,
 /* 88 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -46815,7 +46029,6 @@ var _class = function (_Controller) {
         value: function create(event) {
             event.preventDefault();
             axios.post(this.data.get('url'), this.form).then(function (response) {
-                console.log(response);
                 Swal.fire({
                     type: 'success',
                     title: 'Nieuwe klant is toegevoegd',
@@ -47414,7 +46627,7 @@ _class.targets = ["body", "huidanalyse", "monthyear"];
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__controllers_application_controller__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__application_controller__ = __webpack_require__(108);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47425,8 +46638,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var _class = function (_ApplicationControlle) {
-    _inherits(_class, _ApplicationControlle);
+var _class = function (_Application_controll) {
+    _inherits(_class, _Application_controll);
 
     function _class() {
         _classCallCheck(this, _class);
@@ -47476,7 +46689,7 @@ var _class = function (_ApplicationControlle) {
     }]);
 
     return _class;
-}(__WEBPACK_IMPORTED_MODULE_0__controllers_application_controller__["ApplicationController"]);
+}(__WEBPACK_IMPORTED_MODULE_0__application_controller__["Application_controller"]);
 
 _class.targets = ["monthyear"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
@@ -47727,6 +46940,17 @@ var _class = function (_Controller) {
             this.hide.classList.toggle('hidden');
         }
     }, {
+        key: "toggleKlant",
+        value: function toggleKlant(event) {
+            event.preventDefault();
+            this.klantShowTarget.classList.add('hidden');
+            this.klantHideTarget.classList.remove('hidden');
+            this.activeTarget.classList.add('active');
+            this.deactivateTargets[0].classList.remove('active');
+            this.deactivateTargets[1].classList.remove('active');
+            this.deactivateTargets[2].classList.remove('active');
+        }
+    }, {
         key: "hide",
         get: function get() {
             return this.hideTarget;
@@ -47741,7 +46965,7 @@ var _class = function (_Controller) {
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ["show", "hide"];
+_class.targets = ["show", "hide", "klantShow", "klantHide", "active", "deactivate"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
@@ -47749,6 +46973,820 @@ _class.targets = ["show", "hide"];
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var _class = function (_Controller) {
+    _inherits(_class, _Controller);
+
+    function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass(_class, [{
+        key: 'goto',
+        value: function goto(event) {
+            event.preventDefault();
+            var href = this.gotoTarget.getAttribute('href');
+            var hash = this.gotoTarget.getAttribute('data-goto-hash');
+            console.log(hash);
+            if (href === location.pathname) {
+                document.getElementById(hash).scrollIntoView({ block: "top" });
+            } else {
+                Turbolinks.visit(href + '#' + hash);
+            }
+            // if
+            // console.log(href);
+            // console.log(href);
+            // // const goto = selected.getAttribute('href');
+            // // console.log(goto);
+            // // this.removeResults();
+            // // console.log(document.getElementById(goto));
+            // document.getElementById(goto).scrollIntoView({block: "center"});
+            // document.getElementById(goto).classList.add('animated', 'bounceIn', 'goto');
+            // setTimeout(function () {
+            //     document.getElementById(goto).classList.remove('animated', 'bounceIn', 'goto');
+            // }, 2000);
+        }
+    }]);
+
+    return _class;
+}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
+
+_class.targets = ['goto'];
+/* harmony default export */ __webpack_exports__["default"] = (_class);
+
+/***/ }),
+/* 106 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_debounce__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_debounce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_debounce__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var _class = function (_Controller) {
+    _inherits(_class, _Controller);
+
+    function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass(_class, [{
+        key: 'connect',
+        value: function connect() {
+            this.resultsTarget.hidden = true;
+
+            this.inputTarget.setAttribute('autocomplete', 'off');
+            this.inputTarget.setAttribute('spellcheck', 'false');
+
+            this.mouseDown = false;
+
+            this.onInputChange = __WEBPACK_IMPORTED_MODULE_1_lodash_debounce___default()(this.onInputChange.bind(this), 300);
+            this.onResultsClick = this.onResultsClick.bind(this);
+            this.onResultsMouseDown = this.onResultsMouseDown.bind(this);
+            this.onInputBlur = this.onInputBlur.bind(this);
+            this.onInputFocus = this.onInputFocus.bind(this);
+            this.onKeydown = this.onKeydown.bind(this);
+
+            this.inputTarget.addEventListener('keydown', this.onKeydown);
+            this.inputTarget.addEventListener('focus', this.onInputFocus);
+            this.inputTarget.addEventListener('blur', this.onInputBlur);
+            this.inputTarget.addEventListener('input', this.onInputChange);
+            this.resultsTarget.addEventListener('mousedown', this.onResultsMouseDown);
+            this.resultsTarget.addEventListener('click', this.onResultsClick);
+        }
+    }, {
+        key: 'disconnect',
+        value: function disconnect() {
+            this.inputTarget.removeEventListener('keydown', this.onKeydown);
+            this.inputTarget.removeEventListener('focus', this.onInputFocus);
+            this.inputTarget.removeEventListener('blur', this.onInputBlur);
+            this.inputTarget.removeEventListener('input', this.onInputChange);
+            this.resultsTarget.removeEventListener('mousedown', this.onResultsMouseDown);
+            this.resultsTarget.removeEventListener('click', this.onResultsClick);
+        }
+    }, {
+        key: 'sibling',
+        value: function sibling(next) {
+            var options = Array.from(this.resultsTarget.querySelectorAll('[role="option"]'));
+            var selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+            var index = options.indexOf(selected);
+            var sibling = next ? options[index + 1] : options[index - 1];
+            var def = next ? options[0] : options[options.length - 1];
+            return sibling || def;
+        }
+    }, {
+        key: 'select',
+        value: function select(target) {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = this.resultsTarget.querySelectorAll('[aria-selected="true"]')[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var el = _step.value;
+
+                    el.removeAttribute('aria-selected');
+                    el.classList.remove('active');
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            target.setAttribute('aria-selected', 'true');
+            target.classList.add('active');
+            this.inputTarget.setAttribute('aria-activedescendant', target.id);
+        }
+    }, {
+        key: 'onKeydown',
+        value: function onKeydown(event) {
+            switch (event.key) {
+                case 'Escape':
+                    if (!this.resultsTarget.hidden) {
+                        this.resultsTarget.hidden = true;
+                        event.stopPropagation();
+                        event.preventDefault();
+                    }
+                    break;
+                case 'ArrowDown':
+                    {
+                        var item = this.sibling(true);
+                        if (item) this.select(item);
+                        event.preventDefault();
+                    }
+                    break;
+                case 'ArrowUp':
+                    {
+                        var _item = this.sibling(false);
+                        if (_item) this.select(_item);
+                        event.preventDefault();
+                    }
+                    break;
+                case 'Tab':
+                    {
+                        var _item2 = this.sibling(true);
+                        if (_item2) this.select(_item2);
+                        event.preventDefault();
+                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+                        // if (selected) {
+                        //     this.commit(selected);
+                        // }
+                    }
+                    break;
+                case 'Shift':
+                    {
+                        var _item3 = this.sibling(false);
+                        if (_item3) this.select(_item3);
+                        event.preventDefault();
+                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+                        // if (selected) {
+                        //     this.commit(selected);
+                        // }
+                    }
+                    break;
+                case 'Enter':
+                    {
+                        var selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+                        if (selected && !this.resultsTarget.hidden) {
+                            this.commit(selected);
+                            event.preventDefault();
+                        }
+                    }
+                    break;
+            }
+        }
+    }, {
+        key: 'onInputFocus',
+        value: function onInputFocus() {
+            this.fetchResults();
+        }
+    }, {
+        key: 'onInputBlur',
+        value: function onInputBlur() {
+            if (this.mouseDown) return;
+            this.resultsTarget.hidden = true;
+        }
+    }, {
+        key: 'commit',
+        value: function commit(selected) {
+
+            if (selected.getAttribute('aria-disabled') === 'true') return;
+
+            if (selected instanceof HTMLAnchorElement) {
+                selected.click();
+                this.resultsTarget.hidden = true;
+                return;
+            }
+
+            var textValue = selected.textContent.trim();
+            var value = selected.getAttribute('data-autocomplete2-value') || textValue;
+            this.inputTarget.value = textValue;
+            if (this.hiddenTarget) {
+                this.hiddenTarget.value = value;
+            } else {
+                this.inputTarget.value = value;
+            }
+
+            this.element.dispatchEvent(new CustomEvent('autocomplete.change', {
+                bubbles: true,
+                detail: { value: value, textValue: textValue }
+            }));
+
+            this.inputTarget.focus();
+            this.resultsTarget.hidden = true;
+        }
+    }, {
+        key: 'onResultsClick',
+        value: function onResultsClick(event) {
+            // if (!(event.target instanceof Element)) return;
+            // const selected = event.target.closest('[role="option"]');
+            // if (selected) this.commit(selected);
+        }
+    }, {
+        key: 'goto',
+        value: function goto(event) {
+            var selected = event.target.closest('[role="option"]');
+            var goto = selected.getAttribute('data-autocomplete2-goto');
+            // console.log(goto);
+            this.removeResults();
+            // console.log(document.getElementById(goto));
+            document.getElementById(goto).scrollIntoView({ block: "center" });
+            document.getElementById(goto).classList.add('animated', 'bounceIn', 'goto');
+            setTimeout(function () {
+                document.getElementById(goto).classList.remove('animated', 'bounceIn', 'goto');
+            }, 2000);
+        }
+    }, {
+        key: 'onResultsMouseDown',
+        value: function onResultsMouseDown() {
+            var _this2 = this;
+
+            this.mouseDown = true;
+            this.resultsTarget.addEventListener('mouseup', function () {
+                return _this2.mouseDown = false;
+            }, { once: true });
+        }
+    }, {
+        key: 'onInputChange',
+        value: function onInputChange() {
+            this.element.removeAttribute('value');
+            this.fetchResults();
+        }
+    }, {
+        key: 'identifyOptions',
+        value: function identifyOptions() {
+            var id = 0;
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+                for (var _iterator2 = this.resultsTarget.querySelectorAll('[role="option"]:not([id])')[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var el = _step2.value;
+
+                    el.id = this.resultsTarget.id + '-option-' + id++;
+                }
+            } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
+                    }
+                } finally {
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'fetchResults',
+        value: function fetchResults() {
+            var _this3 = this;
+
+            var query = this.inputTarget.value.trim();
+            if (!query) {
+                this.resultsTarget.hidden = true;
+                return;
+            }
+            if (query.length < this.minLength) {
+                this.resultsTarget.hidden = true;
+                return;
+            }
+
+            if (!this.src) return;
+
+            var url = new URL(this.src, window.location.href);
+            var params = new URLSearchParams(url.search.slice(1));
+            params.append('q', query);
+            url.search = params.toString();
+
+            this.element.dispatchEvent(new CustomEvent('loadstart'));
+            axios(url.toString()).then(function (response) {
+                _this3.resultsTarget.innerHTML = response.data;
+                _this3.identifyOptions();
+                var hasResults = !!_this3.resultsTarget.querySelector('[role="option"]');
+                _this3.resultsTarget.hidden = !hasResults;
+                _this3.element.dispatchEvent(new CustomEvent('load'));
+                _this3.element.dispatchEvent(new CustomEvent('loadend'));
+            }).catch(function () {
+                _this3.element.dispatchEvent(new CustomEvent('error'));
+                _this3.element.dispatchEvent(new CustomEvent('loadend'));
+            });
+        }
+    }, {
+        key: 'open',
+        value: function open() {
+            if (!this.resultsTarget.hidden) return;
+            this.resultsTarget.hidden = false;
+            this.element.setAttribute('aria-expanded', 'true');
+            this.element.dispatchEvent(new CustomEvent('toggle', { detail: { input: this.input, results: this.results } }));
+        }
+    }, {
+        key: 'close',
+        value: function close() {
+            if (this.resultsTarget.hidden) return;
+            this.resultsTarget.hidden = true;
+            this.inputTarget.removeAttribute('aria-activedescendant');
+            this.element.setAttribute('aria-expanded', 'false');
+            this.element.dispatchEvent(new CustomEvent('toggle', { detail: { input: this.input, results: this.results } }));
+        }
+    }, {
+        key: 'removeResults',
+        value: function removeResults() {
+            this.resultsTarget.innerHTML = '';
+            this.resultsTarget.hidden = true;
+        }
+    }, {
+        key: 'src',
+        get: function get() {
+            return this.data.get("url");
+        }
+    }, {
+        key: 'minLength',
+        get: function get() {
+            var minLength = this.data.get("min-length");
+            if (!minLength) {
+                return 0;
+            }
+            return parseInt(minLength, 10);
+        }
+    }]);
+
+    return _class;
+}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
+
+_class.targets = ['input', 'hidden', 'results', 'highlight'];
+/* harmony default export */ __webpack_exports__["default"] = (_class);
+
+/***/ }),
+/* 107 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_debounce__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_debounce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_debounce__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var _class = function (_Controller) {
+    _inherits(_class, _Controller);
+
+    function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass(_class, [{
+        key: 'connect',
+        value: function connect() {
+            this.resultsTarget.hidden = true;
+
+            this.inputTarget.setAttribute('autocomplete', 'off');
+            this.inputTarget.setAttribute('spellcheck', 'false');
+
+            this.mouseDown = false;
+
+            this.onInputChange = __WEBPACK_IMPORTED_MODULE_1_lodash_debounce___default()(this.onInputChange.bind(this), 300);
+            this.onResultsClick = this.onResultsClick.bind(this);
+            this.onResultsMouseDown = this.onResultsMouseDown.bind(this);
+            this.onInputBlur = this.onInputBlur.bind(this);
+            this.onInputFocus = this.onInputFocus.bind(this);
+            this.onKeydown = this.onKeydown.bind(this);
+
+            this.inputTarget.addEventListener('keydown', this.onKeydown);
+            this.inputTarget.addEventListener('focus', this.onInputFocus);
+            this.inputTarget.addEventListener('blur', this.onInputBlur);
+            this.inputTarget.addEventListener('input', this.onInputChange);
+            this.resultsTarget.addEventListener('mousedown', this.onResultsMouseDown);
+            this.resultsTarget.addEventListener('click', this.onResultsClick);
+        }
+    }, {
+        key: 'disconnect',
+        value: function disconnect() {
+            this.inputTarget.removeEventListener('keydown', this.onKeydown);
+            this.inputTarget.removeEventListener('focus', this.onInputFocus);
+            this.inputTarget.removeEventListener('blur', this.onInputBlur);
+            this.inputTarget.removeEventListener('input', this.onInputChange);
+            this.resultsTarget.removeEventListener('mousedown', this.onResultsMouseDown);
+            this.resultsTarget.removeEventListener('click', this.onResultsClick);
+        }
+    }, {
+        key: 'sibling',
+        value: function sibling(next) {
+            var options = Array.from(this.resultsTarget.querySelectorAll('[role="option"]'));
+            var selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+            var index = options.indexOf(selected);
+            var sibling = next ? options[index + 1] : options[index - 1];
+            var def = next ? options[0] : options[options.length - 1];
+            return sibling || def;
+        }
+    }, {
+        key: 'select',
+        value: function select(target) {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = this.resultsTarget.querySelectorAll('[aria-selected="true"]')[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var el = _step.value;
+
+                    el.removeAttribute('aria-selected');
+                    el.classList.remove('active');
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            target.setAttribute('aria-selected', 'true');
+            target.classList.add('active');
+            this.inputTarget.setAttribute('aria-activedescendant', target.id);
+        }
+    }, {
+        key: 'onKeydown',
+        value: function onKeydown(event) {
+            switch (event.key) {
+                case 'Escape':
+                    if (!this.resultsTarget.hidden) {
+                        this.resultsTarget.hidden = true;
+                        event.stopPropagation();
+                        event.preventDefault();
+                    }
+                    break;
+                case 'ArrowDown':
+                    {
+                        var item = this.sibling(true);
+                        if (item) this.select(item);
+                        event.preventDefault();
+                    }
+                    break;
+                case 'ArrowUp':
+                    {
+                        var _item = this.sibling(false);
+                        if (_item) this.select(_item);
+                        event.preventDefault();
+                    }
+                    break;
+                case 'Tab':
+                    {
+                        var _item2 = this.sibling(true);
+                        if (_item2) this.select(_item2);
+                        event.preventDefault();
+                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+                        // if (selected) {
+                        //     this.commit(selected);
+                        // }
+                    }
+                    break;
+                case 'Shift':
+                    {
+                        var _item3 = this.sibling(false);
+                        if (_item3) this.select(_item3);
+                        event.preventDefault();
+                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+                        // if (selected) {
+                        //     this.commit(selected);
+                        // }
+                    }
+                    break;
+                case 'Enter':
+                    {
+                        var selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+                        if (selected && !this.resultsTarget.hidden) {
+                            this.commit(selected);
+                            event.preventDefault();
+                        }
+                    }
+                    break;
+            }
+        }
+    }, {
+        key: 'onInputFocus',
+        value: function onInputFocus() {
+            this.fetchResults();
+        }
+    }, {
+        key: 'onInputBlur',
+        value: function onInputBlur() {
+            if (this.mouseDown) return;
+            this.resultsTarget.hidden = true;
+        }
+    }, {
+        key: 'commit',
+        value: function commit(selected) {
+            Turbolinks.visit(selected.getAttribute('data-autocomplete-href'));
+        }
+    }, {
+        key: 'onResultsClick',
+        value: function onResultsClick(event) {
+            if (!(event.target instanceof Element)) return;
+            var selected = event.target.closest('[role="option"]');
+            if (selected) this.commit(selected);
+        }
+    }, {
+        key: 'onResultsMouseDown',
+        value: function onResultsMouseDown() {
+            var _this2 = this;
+
+            this.mouseDown = true;
+            this.resultsTarget.addEventListener('mouseup', function () {
+                return _this2.mouseDown = false;
+            }, { once: true });
+        }
+    }, {
+        key: 'onInputChange',
+        value: function onInputChange() {
+            this.element.removeAttribute('value');
+            this.fetchResults();
+        }
+    }, {
+        key: 'identifyOptions',
+        value: function identifyOptions() {
+            var id = 0;
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+                for (var _iterator2 = this.resultsTarget.querySelectorAll('[role="option"]:not([id])')[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var el = _step2.value;
+
+                    el.id = this.resultsTarget.id + '-option-' + id++;
+                }
+            } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
+                    }
+                } finally {
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'fetchResults',
+        value: function fetchResults() {
+            var _this3 = this;
+
+            var query = this.inputTarget.value.trim();
+            if (!query) {
+                this.resultsTarget.hidden = true;
+                return;
+            }
+            if (query.length < this.minLength) {
+                this.resultsTarget.hidden = true;
+                return;
+            }
+
+            if (!this.src) return;
+
+            var url = new URL(this.src, window.location.href);
+            var params = new URLSearchParams(url.search.slice(1));
+            params.append('q', query);
+            url.search = params.toString();
+
+            this.element.dispatchEvent(new CustomEvent('loadstart'));
+            axios(url.toString()).then(function (response) {
+                _this3.resultsTarget.innerHTML = response.data;
+                _this3.identifyOptions();
+                var hasResults = !!_this3.resultsTarget.querySelector('[role="option"]');
+                _this3.resultsTarget.hidden = !hasResults;
+                _this3.element.dispatchEvent(new CustomEvent('load'));
+                _this3.element.dispatchEvent(new CustomEvent('loadend'));
+            }).catch(function () {
+                _this3.element.dispatchEvent(new CustomEvent('error'));
+                _this3.element.dispatchEvent(new CustomEvent('loadend'));
+            });
+        }
+    }, {
+        key: 'open',
+        value: function open() {
+            if (!this.resultsTarget.hidden) return;
+            this.resultsTarget.hidden = false;
+            this.element.setAttribute('aria-expanded', 'true');
+            this.element.dispatchEvent(new CustomEvent('toggle', { detail: { input: this.input, results: this.results } }));
+        }
+    }, {
+        key: 'close',
+        value: function close() {
+            if (this.resultsTarget.hidden) return;
+            this.resultsTarget.hidden = true;
+            this.inputTarget.removeAttribute('aria-activedescendant');
+            this.element.setAttribute('aria-expanded', 'false');
+            this.element.dispatchEvent(new CustomEvent('toggle', { detail: { input: this.input, results: this.results } }));
+        }
+    }, {
+        key: 'removeResults',
+        value: function removeResults() {
+            this.resultsTarget.innerHTML = '';
+        }
+    }, {
+        key: 'src',
+        get: function get() {
+            return this.data.get("url");
+        }
+    }, {
+        key: 'minLength',
+        get: function get() {
+            var minLength = this.data.get("min-length");
+            if (!minLength) {
+                return 0;
+            }
+            return parseInt(minLength, 10);
+        }
+    }]);
+
+    return _class;
+}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
+
+_class.targets = ['input', 'hidden', 'results', 'highlight'];
+/* harmony default export */ __webpack_exports__["default"] = (_class);
+
+/***/ }),
+/* 108 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Application_controller", function() { return Application_controller; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var Application_controller = function (_Controller) {
+    _inherits(Application_controller, _Controller);
+
+    function Application_controller() {
+        _classCallCheck(this, Application_controller);
+
+        return _possibleConstructorReturn(this, (Application_controller.__proto__ || Object.getPrototypeOf(Application_controller)).apply(this, arguments));
+    }
+
+    _createClass(Application_controller, [{
+        key: "getControllerByIdentifier",
+        value: function getControllerByIdentifier(identifier) {
+            return this.application.controllers.find(function (controller) {
+                return controller.context.identifier === identifier;
+            });
+        }
+    }, {
+        key: "laravelCreate",
+        value: function laravelCreate(url, data) {
+            return new Promise(function (resolve, reject) {
+                axios({
+                    url: url,
+                    type: "POST",
+                    data: data,
+                    success: function success(data) {
+                        resolve(data);
+                    },
+                    error: function error(_jqXHR, _textStatus, errorThrown) {
+                        reject(errorThrown);
+                    }
+                });
+            });
+        }
+    }, {
+        key: "laravelUpdate",
+        value: function laravelUpdate(url, data) {
+            return new Promise(function (resolve, reject) {
+                axios({
+                    url: url,
+                    type: "PUT",
+                    data: data,
+                    success: function success(data) {
+                        resolve(data);
+                    },
+                    error: function error(_jqXHR, _textStatus, errorThrown) {
+                        reject(errorThrown);
+                    }
+                });
+            });
+        }
+    }, {
+        key: "laravelDelete",
+        value: function laravelDelete(url) {
+            return new Promise(function (resolve, reject) {
+                axios({
+                    url: url,
+                    type: "DELETE",
+                    success: function success(response) {
+                        resolve(response);
+                    },
+                    catch: function _catch(error) {
+                        reject(error);
+                    }
+                });
+            });
+        }
+    }]);
+
+    return Application_controller;
+}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
 /***/ })
 /******/ ]);

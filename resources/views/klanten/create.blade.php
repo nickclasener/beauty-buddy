@@ -3,10 +3,10 @@
 	<div class="container mx-auto flex">
 		<div class="bg-white mx-auto w-1/2 my-15 py-10 h-full">
 			<form action="{{ route('klanten.store', false) }}"
-					{{--			      method="POST"--}}
+{{--			      method="POST"--}}
 								      data-controller="customer"
-					  data-customer-url="{{ route('klanten.store', false) }}"
-					  data-action="customer#create"
+										  data-customer-url="{{ route('klanten.store', false) }}"
+										  data-action="customer#create"
 
 			>@method('POST')@csrf
 				<div class="px-15">

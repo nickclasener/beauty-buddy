@@ -1,6 +1,6 @@
 import {Controller} from "stimulus";
 
-export class ApplicationController extends Controller {
+export class Application_controller extends Controller {
     getControllerByIdentifier(identifier) {
         return this.application.controllers.find(controller => {
             return controller.context.identifier === identifier;

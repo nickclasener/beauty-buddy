@@ -11,12 +11,12 @@ class NoteController extends Controller
 {
 	public function index ( Customer $customer )
 	{
+
 		$notes = $customer
 				->notes()
 				->orderByDesc('created_at')
 				->get();
 
-		//				->paginate(15);
 		return view('klanten.notes.index')->with([
 				'customer' => $customer,
 				'notes'    => $notes,
