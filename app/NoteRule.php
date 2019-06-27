@@ -16,7 +16,7 @@ class NoteRule extends SearchRule
 						[
 								'body' => [
 										'type'                => 'unified',
-										'require_field_match' => false,
+										'require_field_match' => true,
 								],
 						],
 				],
@@ -26,16 +26,18 @@ class NoteRule extends SearchRule
 	public function buildQueryPayload ()
 	{
 		return [
-				'must' => [
+				'must'   => [
 						[
 								'match' => [
 										'body' => [
 												'query'    => $this->builder->query,
-												'boost'    => 10,
+												//												'boost'    => 10,
 												'operator' => 'AND',
 										],
 								],
 						],
+				],
+				'should' => [
 						[
 								'match' => [
 										'body2' => [

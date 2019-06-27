@@ -38,14 +38,23 @@ if ( ! function_exists('checkbox') ) {
 if ( ! function_exists('monthYearDesc') ) {
 	function monthYearDesc ( $array )
 	{
-		return $array->sortByDesc('created_at')->groupBy(function ( $array ) {
+		return $array->sortByDesc('created_at')->groupBy(static function ( $array ) {
 			return $array->created_at->format('F, Y');
 		});
 	}
 }
 
 if ( ! function_exists('monthYear') ) {
-	function monthYear ( $model )
+	function monthYear ( $array )
+	{
+		return $array->groupBy(static function ( $array ) {
+			return $array->created_at->format('F, Y');
+		});
+	}
+}
+
+if ( ! function_exists('monthYearFormat') ) {
+	function monthYearFormat ( $model )
 	{
 		return $model->created_at->format('F, Y');
 	}

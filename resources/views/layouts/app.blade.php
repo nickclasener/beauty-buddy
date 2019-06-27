@@ -39,8 +39,8 @@
 <body>
 @include('layouts._navbar2')
 
-<div class="pt-16 md:pt-0">
-	@yield('content')
-</div>
+{{--<div class="pt-16 md:pt-0">--}}
+@yield('content')
+{{--</div>--}}
 </body>
 </html>

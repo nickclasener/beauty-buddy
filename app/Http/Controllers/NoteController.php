@@ -12,9 +12,17 @@ class NoteController extends Controller
 	public function index ( Customer $customer )
 	{
 
+		//		$notes = Cache::remember('notes.' . $customer->id . 'all', 3600, static function () use ( $customer ) {
+		//			return $customer
+		//					->notes()
+		//					->orderByDesc('created_at')
+		//					->get();
+		//		});
+		//
 		$notes = $customer
 				->notes()
 				->orderByDesc('created_at')
+				//				->paginate(10);
 				->get();
 
 		return view('klanten.notes.index')->with([
@@ -51,7 +59,7 @@ class NoteController extends Controller
 						$content = view('klanten.notes._monthyear')->with([
 								'customer'         => $customer,
 								'notes'            => $notes,
-								'monthYear'        => monthYear($note),
+								'monthYear'        => monthYearFormat($note),
 								'monthyearCreated' => $note->id,
 						]), 200, [ 'monthyear' ]);
 			}

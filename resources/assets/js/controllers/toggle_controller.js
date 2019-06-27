@@ -26,6 +26,16 @@ export default class extends Controller {
         this.deactivateTargets[2].classList.remove('active');
     }
 
+    hidden(event) {
+        if (
+            this.element.contains(event.target) === false &&
+            !this.hide.classList.contains('hidden')
+        ) {
+            this.show.classList.remove('hidden');
+            this.hide.classList.add('hidden');
+        }
+    }
+
     get hide() {
         return this.hideTarget;
     }

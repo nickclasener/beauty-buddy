@@ -35,6 +35,8 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 	// Klanten Routes
 	Route::get('klanten/search', static function () {
 		$query = (string)request('q');
+		$query = str_replace(' ', '', $query);
+		//		$fuzzySearch = '%' . $fuzzySearch . '%';
 		$customers = Customer
 				::search($query)
 				->where('user_id', auth()->id())
@@ -77,6 +79,14 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 	// Note Routes
 	Route::get('klanten/{customer}/notities/search', static function ( Customer $customer ) {
 		$query = (string)request('q');
+		//		$query = str_replace(' ', '', $query);
+		//		$notes = $customer
+		//				->notes()
+		//				->where('body', 'like', '%' . $query . '%')
+		//				//				->orderByDesc('created_at')
+		//				//				->paginate(10);
+		//				->get();
+
 		$notes = Note
 				::search($query)
 				->where('user_id', auth()->id())

@@ -1,22 +1,37 @@
 import {Controller} from 'stimulus';
 
 export default class extends Controller {
-    static targets = ['menu'];
+    static targets = ['responsiveMenu', 'accountMenu'];
 
     connect() {
-        this.toggleClass = this.data.get('class') || 'hidden';
+        this.responsiveMenuClass = this.data.get('class') || 'hidden';
+        this.accountMenuClass = this.data.get('class') || 'hidden';
     }
 
-    toggle() {
-        this.menuTarget.classList.toggle(this.toggleClass);
+    toggleResponsiveMenu() {
+        this.responsiveMenuTarget.classList.toggle(this.responsiveMenuClass);
     }
 
-    hide(event) {
+    hideResponsiveMenu(event) {
         if (
             this.element.contains(event.target) === false &&
-            !this.menuTarget.classList.contains(this.toggleClass)
+            !this.responsiveMenuTarget.classList.contains(this.responsiveMenuClass)
         ) {
-            this.menuTarget.classList.add(this.toggleClass);
+            this.responsiveMenuTarget.classList.add(this.responsiveMenuClass);
+        }
+    }
+
+    toggleAccountMenu() {
+        this.accountMenuTarget.classList.toggle(this.accountMenuClass);
+    }
+
+
+    hideAccountMenu(event) {
+        if (
+            this.element.contains(event.target) === false &&
+            !this.accountMenuTarget.classList.contains(this.accountMenuClass)
+        ) {
+            this.accountMenuTarget.classList.add(this.accountMenuClass);
         }
     }
 }

@@ -48,7 +48,7 @@ class HuidanalyseController extends Controller
 						$content = view('klanten.huidanalyses._monthyear')->with([
 								'customer'         => $customer,
 								'huidanalyses'     => $huidanalyses,
-								'monthYear'        => monthYear($huidanalyse),
+								'monthYear'        => monthYearFormat($huidanalyse),
 								'monthyearCreated' => $huidanalyse->id,
 						]),
 						200,

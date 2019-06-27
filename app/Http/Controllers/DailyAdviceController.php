@@ -65,7 +65,7 @@ class DailyAdviceController extends Controller
 						$content = view('klanten.dailyadvice._monthyear')->with([
 								'customer'         => $customer,
 								'dailyAdvices'     => $dailyAdvices,
-								'monthYear'        => monthYear($dailyAdvice),
+								'monthYear'        => monthYearFormat($dailyAdvice),
 								'monthyearCreated' => $dailyAdvice->id,
 						]), 200, [ 'monthyear' ]);
 			}

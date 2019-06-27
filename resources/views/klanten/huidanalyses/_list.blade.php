@@ -2,7 +2,7 @@
 	<div data-controller="monthyear"
 	     data-target="huidanalyses.monthyear monthyear.monthyear"
 	></div>
-	@foreach ( monthYearDesc($huidanalyses) as $monthYear => $huidanalyses )
+	@foreach ( monthYear($huidanalyses) as $monthYear => $huidanalyses )
 		<div
 				data-controller="monthyear"
 				data-target="huidanalyses.monthyear monthyear.monthyear"
