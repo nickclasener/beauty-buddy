@@ -11,19 +11,20 @@ class NoteController extends Controller
 {
 	public function index ( Customer $customer )
 	{
-
-		//		$notes = Cache::remember('notes.' . $customer->id . 'all', 3600, static function () use ( $customer ) {
-		//			return $customer
-		//					->notes()
-		//					->orderByDesc('created_at')
-		//					->get();
-		//		});
+//
+//		$notes = Cache::remember('notes.' . $customer->id . '.all', 3600, static function () use ( $customer ) {
+//			return Note::where([ 'customer_id' => $customer->id ])->orderByDesc('created_at')->get();
+//			//			return $customer
+//			//					->notes()
+//			//					->orderByDesc('created_at')
+//			//					->get();
+//		});
 		//
-		$notes = $customer
-				->notes()
-				->orderByDesc('created_at')
-				//				->paginate(10);
-				->get();
+				$notes = $customer
+						->notes()
+						->orderByDesc('created_at')
+						//				->paginate(10);
+						->get();
 
 		return view('klanten.notes.index')->with([
 				'customer' => $customer,

@@ -6,10 +6,13 @@
      @if ( isset($noteCreated) && $note->id === $noteCreated)
      data-note-created="{{ true }}"
      @endif
+     @isset($searched)
      role="option"
      data-autocomplete2-value="{{ $note->id }}"
      data-action="click->autocomplete2#goto"
      data-autocomplete2-goto="{{ $note->id }}"
+		@endisset
+
 >
 	<div class="w-full flex-shrink flex pt-5 pl-5">
 		<div class="mt-0.5 w-2.5 h-2.5 border border-buddy-teal rounded-full flex-no-shrink"></div>

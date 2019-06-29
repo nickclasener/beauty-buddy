@@ -20,9 +20,9 @@
 	        defer
 	></script>
 	<title>{{ config('app.name', 'Laravel') }}</title>
-	@routes
+{{--	@routes--}}
 
-	<!-- Fonts -->
+<!-- Fonts -->
 	<link rel="dns-prefetch"
 	      href="https://fonts.gstatic.com"
 
@@ -39,7 +39,7 @@
 <body>
 @include('layouts._navbar2')
 
-{{--<div class="pt-16 md:pt-0">--}}
+{{--<div class="pt-16 lg:pt-0">--}}
 @yield('content')
 {{--</div>--}}
 </body>

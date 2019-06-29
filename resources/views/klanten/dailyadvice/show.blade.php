@@ -6,10 +6,12 @@
      @if ( isset($dailyAdviceCreated) && $dailyAdvice->id === $dailyAdviceCreated)
      data-dailyadvice-created="{{ true }}"
      @endif
+     @isset($searched)
      role="option"
      data-autocomplete2-value="{{ $dailyAdvice->id }}"
      data-action="click->autocomplete2#goto"
      data-autocomplete2-goto="{{ $dailyAdvice->id }}"
+		@endisset
 >
 	<div class="w-full flex-shrink flex pt-5 pl-5">
 		<div class="mt-0.5 w-2.5 h-2.5 border border-buddy-teal rounded-full flex-no-shrink"></div>

@@ -1,54 +1,35 @@
-<div class="h-15 w-full bg-buddy-lightest flex justify-between items-stretch fixed
-bg-teal-500  md:static
- bottom-0
-md:bottom-auto z-10 md:z-0"
-     data-controller="submenu"
->
-	<a class="md:hidden block no-underline md:px-12 md:py-5 h-full flex items-center  justify-center flex-grow text-center"
-	   href="#{{ $customer->slug }}"
-	   data-action="click->toggle#toggleKlant"
-	   data-target="toggle.active"
-			{{--	   href="{{ route('notes.index', $customer, false) }}"--}}
-			{{--	   data-goto-hash="{{ $customer->slug }}"--}}
-			{{--	   data-controller="goto"--}}
-			{{--	   data-target="goto.goto"--}}
-			{{--	   data-action="click->goto#goto"--}}
+<div class="lg:sticky lg:top-0 lg:z-10 lg:pt-16 -mx-4 lg:mx-0">
+	<div class="w-full bg-buddy-lightest flex justify-between items-stretch fixed bg-teal-500 bottom-0 lg:bottom-auto	z-10 lg:mx-auto text-white lg:relative h-12 rounded-lg shadow-md"
+	     data-controller="submenu"
 	>
-		{{--		{{ $customer->naam }}--}}
-		@svg('dripicons/user-id',['class'=>'p-6'])
-	</a>
-	<a class="no-underline md:px-12 md:py-5 {{ active_route_set_class('notes.index','active') }} flex items-center
-	justify-center flex-grow text-center"
-	   href="{{ route('notes.index', $customer, false) }}"
-	   data-target="toggle.deactivate"
-	>
-		{{--		Notes--}}
-		@svg('dripicons/document',['class'=>'p-6'])
-	</a>
-	<a class="no-underline md:px-12 md:py-5 {{ active_route_set_class('huidanalyses.index','active') }} flex
-	justify-center flex-grow text-center
-	items-center"
-	   href="{{ route('huidanalyses.index', $customer, false) }}"
-	   data-target="toggle.deactivate"
-	>
-		{{--		Huidanalyse--}}
-		@svg('dripicons/preview',['class'=>'p-6'])
-	</a>
-	<a class="no-underline md:px-12 md:py-5 {{ active_route_set_class('dailyadvice.index','active') }} flex flex-grow text-center
-	items-center justify-center"
-	   href="{{ route('dailyadvice.index', $customer, false) }}"
-	   data-target="toggle.deactivate"
-	>
-		{{--		Product Advies--}}
+		<a class="no-underline lg:py-2 {{ active_route_set_class('klanten.show') }} flex items-center justify-center flex-grow text-center py-1 lg:hidden block"
+		   href="{{ route('klanten.show',$customer,false) }}"
+		>{{ svg_image('lineicons/user', 'h-8'. active_icon_route_set_class('klanten.show')) }}
+		</a>
 
-		@svg('dripicons/information',['class'=>'p-6'])
-	</a>
-	<a class="no-underline md:px-12 md:py-5 {{ active_route_set_class('active') }} flex items-center justify-center
-	 text-center flex-grow"
-	   href=""
-	>
-		{{--		Intake--}}
-		@svg('dripicons/checklist',['class'=>'p-6'])
-	</a>
+		<a class="no-underline lg:py-2 {{ active_route_set_class('notes.index') }} flex items-center justify-center flex-grow text-center lg:rounded-bl-lg lg:rounded-tl-lg"
+		   href="{{ route('notes.index', $customer, false) }}"
+		   data-target="toggle.deactivate"
+		>{{ svg_image('lineicons/thought', 'h-8'. active_icon_route_set_class('notes.index')) }}
+		</a>
+
+		<a class="no-underline {{ active_route_set_class('huidanalyses.index') }} flex justify-center flex-grow text-center items-center"
+		   href="{{ route('huidanalyses.index', $customer, false) }}"
+		   data-target="toggle.deactivate"
+		>{{ svg_image('lineicons/heart', 'h-8'. active_icon_route_set_class('huidanalyses.index')) }}
+		</a>
+
+		<a class="no-underline lg:py-2 {{ active_route_set_class('dailyadvice.index') }} flex flex-grow text-center items-center justify-center"
+		   href="{{ route('dailyadvice.index', $customer, false) }}"
+		   data-target="toggle.deactivate"
+		>
+			{{ svg_image('lineicons/list', 'h-8'. active_icon_route_set_class('dailyadvice.index')) }}
+		</a>
+
+		<a class="no-underline lg:py-2 {{ active_route_set_class('intake.show') }} flex items-center justify-center text-center flex-grow lg:rounded-br-lg lg:rounded-tr-lg"
+		   href="#"
+		>
+			{{ svg_image('lineicons/support', 'h-8'. active_icon_route_set_class('intake.show')) }}
+		</a>
+	</div>
 </div>
-

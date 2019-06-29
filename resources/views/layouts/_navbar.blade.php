@@ -7,19 +7,19 @@
 			<div class="container mx-auto h-full flex items-center">
 				<div class="flex items-center w-full justify-between">
 					{{-- FIXME: DELETE--}}
-					{{--					<form action="{{ route('klanten.search',false) }}">--}}
-					{{--						@method('get')@csrf--}}
-					{{--						<div class="form-group">--}}
-					{{--							<input--}}
-					{{--									type="text"--}}
-					{{--									name="q"--}}
-					{{--									class="form-control"--}}
-					{{--									placeholder="Search..."--}}
-					{{--									value="{{ request('q') }}"--}}
-					{{--							/>--}}
-					{{--							<button type="submit">send</button>--}}
-					{{--						</div>--}}
-					{{--					</form>--}}
+{{--										<form action="{{ route('klanten.search',false) }}">--}}
+					{{--											@method('get')@csrf--}}
+					{{--											<div class="form-group">--}}
+					{{--												<input--}}
+					{{--														type="text"--}}
+					{{--														name="q"--}}
+					{{--														class="form-control"--}}
+					{{--														placeholder="Search..."--}}
+					{{--														value="{{ request('q') }}"--}}
+					{{--												/>--}}
+					{{--												<button type="submit">send</button>--}}
+					{{--											</div>--}}
+					{{--										</form>--}}
 					<div class="flex items-center flex-grow ">
 						@svg('icon-111-search', ['class'=>'fill-current inline-block w-8 h-8'])
 						<input type="text"

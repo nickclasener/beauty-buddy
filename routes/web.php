@@ -12,13 +12,8 @@
 */
 
 use App\Customer;
-use App\CustomerRule;
 use App\DailyAdvice;
 use App\DailyAdviceRule;
-use App\Huidanalyse;
-use App\HuidanalyseRule;
-use App\Note;
-use App\NoteRule;
 
 Auth::routes();
 
@@ -26,45 +21,47 @@ Auth::routes();
 //	return view('notes.notes');
 //});
 
-Route::group([ 'middleware' => 'auth' ], static function () {
-	Route::get('/', static function () {
-		return view('klanten.create');
-	});
+Route::group([ 'middleware' => 'auth' ], function () {
+	//	Route::get('/', function () {
+	//		return view('klanten.create');
+	//	});
 
 	//	Route::get('/home', 'HomeController@index')->name('home');
 	// Klanten Routes
-	Route::get('klanten/search', static function () {
-		$query = (string)request('q');
-		$query = str_replace(' ', '', $query);
-		//		$fuzzySearch = '%' . $fuzzySearch . '%';
-		$customers = Customer
-				::search($query)
-				->where('user_id', auth()->id())
-				->rule(CustomerRule::class)
-				//				->take(100)
-				->from(0)->take(100)
-				->get();
-		//						Customer::search()->rule(static function ( $builder ) {
-		//
-		//			return [
-		//					'match_phrase' => [
-		//
-		//							'suggest' => [ $builder->query, ],
-		//					]
-		//					//									'completion' => [ 'field' => 'naam' ],
-		//					//									//									'weight'     => 34,
-		//					//							],kk
-		//					//					],
-		//			];
-		//		})->explain();
-		//		dd($customers);
-		//		$customers = $repository->search((string)request('q'));
-		//		$customers = $customers->sortBy('naam');
 
-		//		return compact($customers);
-
-		return view('_search-results')->with([ 'customers' => $customers ]);
-	})->name('klanten.search');
+	Route::get('klanten/search', 'CustomerSearchController@index')->name('klanten.search');
+	//	Route::get('klanten/search', function () {
+	//		$query = (string)request('q');
+	//		$query = str_replace(' ', '', $query);
+	//		//		$fuzzySearch = '%' . $fuzzySearch . '%';
+	//		$customers = Customer
+	//				::search($query)
+	//				->where('user_id', auth()->id())
+	//				->rule(CustomerRule::class)
+	//				//				->take(100)
+	//				->from(0)->take(100)
+	//				->get();
+	//		//						Customer::search()->rule(static function ( $builder ) {
+	//		//
+	//		//			return [
+	//		//					'match_phrase' => [
+	//		//
+	//		//							'suggest' => [ $builder->query, ],
+	//		//					]
+	//		//					//									'completion' => [ 'field' => 'naam' ],
+	//		//					//									//									'weight'     => 34,
+	//		//					//							],kk
+	//		//					//					],
+	//		//			];
+	//		//		})->explain();
+	//		//		dd($customers);
+	//		//		$customers = $repository->search((string)request('q'));
+	//		//		$customers = $customers->sortBy('naam');
+	//
+	//		//		return compact($customers);
+	//
+	//		return view('_search-results')->with([ 'customers' => $customers ]);
+	//	})->name('klanten.search');
 	Route::get('klanten/nieuw', 'CustomerController@create')->name('klanten.create');
 	Route::get('klanten', 'CustomerController@index')->name('klanten.index');
 	Route::post('klanten', 'CustomerController@store')->name('klanten.store');
@@ -77,30 +74,7 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 	], 'klanten/{customer}', 'CustomerController@update')->name('klanten.update');
 
 	// Note Routes
-	Route::get('klanten/{customer}/notities/search', static function ( Customer $customer ) {
-		$query = (string)request('q');
-		//		$query = str_replace(' ', '', $query);
-		//		$notes = $customer
-		//				->notes()
-		//				->where('body', 'like', '%' . $query . '%')
-		//				//				->orderByDesc('created_at')
-		//				//				->paginate(10);
-		//				->get();
-
-		$notes = Note
-				::search($query)
-				->where('user_id', auth()->id())
-				->where('customer_id', $customer->id)
-				->rule(NoteRule::class)
-				->from(0)->take(10)
-				//				->explain();
-				->get();
-		if ( count($notes) === 0 ) {
-			return null;
-		}
-
-		return view('klanten.notes._list')->with([ 'notes' => $notes ]);
-	})->name('notes.search');
+	Route::get('klanten/{customer}/notities/search', 'NoteSearchController@index')->name('notes.search');
 	Route::delete('notities/{note}', 'NoteController@destroy')->name('notes.destroy');
 	Route::get('klanten/{customer}/notities/nieuw', 'NoteController@create')->name('notes.create');
 	//	Route::get('klanten/{customer}/notities', 'NoteController@show')->name('notes.show');
@@ -114,22 +88,8 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 	], '/notities/{note}', 'NoteController@update')->name('notes.update');
 
 	// Huidanalyses Routes
-	Route::get('klanten/{customer}/huidanalyses/search', static function ( Customer $customer ) {
-		$query = (string)request('q');
-		$huidanalyses = Huidanalyse
-				::search($query)
-				->where('user_id', auth()->id())
-				->where('customer_id', $customer->id)
-				->rule(HuidanalyseRule::class)
-				->from(0)->take(10)
-				//				->explain();
-				->get();
-		if ( count($huidanalyses) === 0 ) {
-			return null;
-		}
-
-		return view('klanten.huidanalyses._list')->with([ 'huidanalyses' => $huidanalyses ]);
-	})->name('huidanalyses.search');
+	Route::get('klanten/{customer}/huidanalyses/search', 'HuidanalyseSearchController@index')
+	     ->name('huidanalyses.search');
 	Route::get('klanten/{customer}/huidanalyses/{huidanalyse}', 'HuidanalyseController@show')
 	     ->name('huidanalyses.show');
 	Route::get('klanten/{customer}/huidanalyses', 'HuidanalyseController@index')->name('huidanalyses.index');
@@ -143,25 +103,7 @@ Route::group([ 'middleware' => 'auth' ], static function () {
 	], '/huidanalyses/{huidanalyse}', 'HuidanalyseController@update')->name('huidanalyses.update');
 
 	// DailyAdvice Routes
-	Route::get('klanten/{customer}/dagelijks-advies/search', static function ( Customer $customer ) {
-		$query = (string)request('q');
-		$dailyAdvices = DailyAdvice
-				::search($query)
-				->where('user_id', auth()->id())
-				->where('customer_id', $customer->id)
-				->rule(DailyAdviceRule::class)
-				->from(0)->take(10)
-				//				->explain();
-				->get();
-		//		dd($dailyAdvices);
-		if ( count($dailyAdvices) === 0 ) {
-			return null;
-		}
-
-		//		return compact('dailyAdvices');
-
-		return view('klanten.dailyadvice._list')->with([ 'dailyAdvices' => $dailyAdvices ]);
-	})->name('dailyadvice.search');
+	Route::get('klanten/{customer}/dagelijks-advies/search', 'DailyAdviceSearchController@index')->name('dailyadvice.search');
 	//	Route::get('klanten/{customer}/dagelijks-advies/nieuw', 'DailyAdviceController@create')->name('dailyadvice.create');
 	Route::get('klanten/{customer}/dagelijks-advies/{dailyAdvice}', 'DailyAdviceController@show')
 	     ->name('dailyadvice.show');

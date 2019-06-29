@@ -6,25 +6,22 @@
 		>
 			@method('DELETE')@csrf
 			<button type="submit"
-					{{--class="self-end bg-buddy-lightest rounded-full w-15 h-15 flex justify-center ml-9"--}}
+			        class="p-4"
 			>
-				{{--@svg('icon-27-trash-can',['class'=>'fill-current text-white self-center'])--}}
-				@svg('icon-27-trash-can',['class'=>'mt-2 fill-current self-center text-red-lighter hover:text-red-light'])
+				{{ svg_image('lineicons/trash', 'fill-current self-center text-red-300 hover:text-red-600 h-8') }}
 			</button>
 		</form>
 
 		<button data-action="toggle#toggle"
-				{{--class="self-end bg-buddy-lightest rounded-full w-15 h-15 flex justify-center mr-9"--}}
-
+		        class="p-4"
 		>
-			@svg('icon-136-document-edit',['class'=>'mt-2 md:-mr-2 fill-current self-center text-buddy-lightest
-			hover:text-buddy-darker'])
+			{{ svg_image('lineicons/pencil-alt', 'fill-current self-center text-red-300 hover:text-red-600 h-8') }}
 		</button>
 	</div>
-	<div class="h-50 w-50 mb-5">
+	<div class="h-50 w-50 mb-4 -mt-8">
 		<img src="{{ asset('img/logan-browning.jpg') }}"
 		     class="rounded-full w-50 h-50 object-cover object-center overflow-hidden"
-		     alt="name"
+		     alt="{{ $customer->naam }}"
 		>
 	</div>
 
@@ -32,14 +29,14 @@
 	<h2 class="font-light">{{ $customer->naam }}</h2>
 	<h2 class="font-hairline">{{ $customer->geboortedatum }}</h2>
 </div>
-<hr class="border-b border-dashed mb-5 md:mx-10">
-<div class="px-14">
-	<h2 class="font-hairline text-buddy-teal  mb-5">Contactinformatie</h2>
+<hr class="border-b border-dashed mb-4 lg:mx-8">
+<div class="px-12">
+	<h2 class="font-hairline text-buddy-teal mb-4">Contactinformatie</h2>
 
 	<label for="email"
 	       class="font-hairline"
 	>Email</label>
-	<div class="flex justify-between items-center mb-5"
+	<div class="flex justify-between items-center mb-4"
 	     data-controller="clipboard"
 	>
 		<input data-target="clipboard.source"
@@ -49,16 +46,15 @@
 		       class="bg-transparent appearance-none focus:outline-none"
 		       readonly
 		>
-		<button class="h-5 md:w-5"
-		        data-action="clipboard#copy"
-		>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
+		<button data-action="clipboard#copy">
+			{{ svg_image('lineicons/clipboard', 'fill-current text-gray-800 h-8 -mt-2') }}
 		</button>
 	</div>
 
 	<label for="mobiel"
 	       class="font-hairline"
 	>Mobiel</label>
-	<div class="flex justify-between mb-5"
+	<div class="flex justify-between mb-4"
 	     data-controller="clipboard"
 	>
 		<input data-target="clipboard.source"
@@ -68,9 +64,8 @@
 		       class="bg-transparent appearance-none focus:outline-none"
 		       readonly
 		>
-		<button class="h-5 md:w-5"
-		        data-action="clipboard#copy"
-		>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
+		<button data-action="clipboard#copy">
+			{{ svg_image('lineicons/clipboard', 'fill-current text-gray-800 h-8 -mt-2') }}
 		</button>
 	</div>
 
@@ -87,16 +82,15 @@
 		       class="bg-transparent appearance-none focus:outline-none"
 		       readonly
 		>
-		<button class="h-5 md:w-5"
-		        data-action="clipboard#copy"
-		>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
+		<button data-action="clipboard#copy">
+			{{ svg_image('lineicons/clipboard', 'fill-current text-gray-800 h-8 -mt-2') }}
 		</button>
 	</div>
 </div>
 
-<hr class="border-b border-dashed mb-5 md:mx-10">
+<hr class="border-b border-dashed mb-5 lg:mx-10">
 <div class="mx-14">
-	<h2 class="font-hairline text-buddy-teal  mb-5">Adresinformatie</h2>
+	<h2 class="font-hairline text-buddy-teal mb-5">Adresinformatie</h2>
 
 	<label for="straatnaam + huisnummer"
 	       class="font-hairline"
@@ -111,9 +105,8 @@
 		       class="bg-transparent appearance-none focus:outline-none"
 		       readonly
 		>
-		<button class="h-5 md:w-5"
-		        data-action="clipboard#copy"
-		>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
+		<button data-action="clipboard#copy">
+			{{ svg_image('lineicons/clipboard', 'fill-current text-gray-800 h-8 -mt-2') }}
 		</button>
 	</div>
 
@@ -130,9 +123,8 @@
 		       class="bg-transparent appearance-none focus:outline-none"
 		       readonly
 		>
-		<button class="h-5 md:w-5"
-		        data-action="clipboard#copy"
-		>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
+		<button data-action="clipboard#copy">
+			{{ svg_image('lineicons/clipboard', 'fill-current text-gray-800 h-8 -mt-2') }}
 		</button>
 	</div>
 
@@ -149,9 +141,8 @@
 		       class="bg-transparent appearance-none focus:outline-none"
 		       readonly
 		>
-		<button class="h-5 md:w-5"
-		        data-action="clipboard#copy"
-		>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
+		<button data-action="clipboard#copy">
+			{{ svg_image('lineicons/clipboard', 'fill-current text-gray-800 h-8 -mt-2') }}
 		</button>
 	</div>
 </div>

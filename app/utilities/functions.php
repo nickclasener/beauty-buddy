@@ -15,16 +15,21 @@ if ( ! function_exists('timeAmPm') ) {
 }
 
 if ( ! function_exists('active_route_set_class') ) {
-	function active_route_set_class ( $uri, $class = null )
+	function active_route_set_class ( $uri )
 	{
-		//		$uri = ltrim($uri, '/');
-		//		dd($uri);
-		//		dd(Route::currentRouteName());
-		//		dd(request()->path());
-		//		dd(ltrim($uri, '/'));
 
-		return Route::is($uri) ? $class : 'inactive';
-		//		return Route::is($uri) ? $class : 'inactive';
+		$css = Route::is($uri) ? ' bg-teal-200 ' : ' bg-teal-500 ';
+
+		return ' group hover:bg-teal-300 ' . $css;
+	}
+}
+
+if ( ! function_exists('active_icon_route_set_class') ) {
+	function active_icon_route_set_class ( $uri )
+	{
+		$css = Route::is($uri) ? ' text-teal-500 ' : ' text-teal-200 ';
+
+		return ' fill-current group-hover:text-teal-400' . $css;
 	}
 }
 

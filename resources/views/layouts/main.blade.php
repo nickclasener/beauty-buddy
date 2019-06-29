@@ -20,12 +20,11 @@
 	        defer
 	></script>
 	<title>{{ config('app.name', 'Laravel') }}</title>
-	@routes
+{{-- @routes--}}
 
-	<!-- Fonts -->
+<!-- Fonts -->
 	<link rel="dns-prefetch"
 	      href="https://fonts.gstatic.com"
-
 	>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
 	      rel="stylesheet"
@@ -38,11 +37,11 @@
 	      content="no-cache"
 	>
 </head>
-<body class="bg-bg font-sans text-base-font">
+<body class="bg-gray-200 font-sans text-base-font">
 @include('layouts._navbar2')
-{{--<div class="pt-16 md:pt-0">--}}
-@yield('main')
-{{--</div>--}}
+<div class="mx-4 my-4">
+	@yield('main')
+</div>
 @if (count($errors))
 	@foreach ($errors->all() as $error)
 		<ul class="alert alert-danger">
@@ -52,7 +51,7 @@
 @endif
 
 {{--@if(config('app.env') === 'local')--}}
-{{--	<script src="http://localhost:35729/livereload.js"></script>--}}
+{{-- <script src="http://localhost:35729/livereload.js"></script>--}}
 {{--@endif--}}
 </body>
 </html>

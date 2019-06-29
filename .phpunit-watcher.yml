@@ -6,6 +6,8 @@ watch:
     - resources
     - routes
   fileMask: '*.php'
+  notifications:
+    passingTests: false
 phpunit:
   binaryPath: vendor/bin/phpunit
   arguments: '--order-by=defects --stop-on-failure --cache-result'

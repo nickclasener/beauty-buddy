@@ -6,10 +6,12 @@
      @if ( isset($huidanalyseCreated) && $huidanalyse->id === $huidanalyseCreated)
      data-huidanalyse-created="{{ true }}"
      @endif
+     @isset($searched)
      role="option"
      data-autocomplete2-value="{{ $huidanalyse->id }}"
      data-action="click->autocomplete2#goto"
      data-autocomplete2-goto="{{ $huidanalyse->id }}"
+		@endisset
 >
 	<div class="w-full flex-shrink flex pt-5 pl-5">
 		<div class="mt-0.5 w-2.5 h-2.5 border border-buddy-teal rounded-full flex-no-shrink"></div>

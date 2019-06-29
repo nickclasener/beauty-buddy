@@ -60,26 +60,37 @@
   display: block;
 }
 
-
-.active {
-@apply bg-teal-100;
+.calender {
+  fill: white;
+  stroke: none;
 }
 
-//input, textarea, button {
-//@apply text-base-font;
-//}
-//
-//label {
-//@apply font-hairline;
-//}
-//
-//.active {
-//@apply text-buddy-darkest border-b border-buddy-darkest;
-//}
-//
-//.inactive {
-//@apply text-buddy-lighter;
-//}
+.active {
+@apply bg-teal-200;
+}
+
+// Fixme: without css
+
+.inactive-icon {
+@apply text-teal-200;
+}
+
+.active-icon {
+@apply text-teal-500;
+}
+
+.inactive {
+@apply bg-teal-500;
+}
+
+.hover-route {
+@apply bg-teal-300;
+}
+
+.hover-route-icon {
+@apply text-teal-300;
+}
+
 
 .section {
   overflow: hidden;

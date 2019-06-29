@@ -1,5 +1,5 @@
 <div class="absolute flex text-left w-full">
-	<div class="relative h-full mt-6  px-2 pb-2 bg-white border rounded w-full z-10 shadow-md">
+	<div class="relative h-full mt-6  px-2 pb-2 bg-white border rounded-lg w-full z-10 shadow-lg">
 		<div class="flex flex-col h-full">
 			@foreach ( $customers as $customer )
 				<div data-autocomplete-href="{{ route('notes.index', $customer, false) }}"
@@ -19,8 +19,6 @@
 						<span class="flex-1 flex-no-wrap">{{ $customer->naam }}</span>
 					@endisset
 				</div>
-
-
 			@endforeach
 		</div>
 	</div>

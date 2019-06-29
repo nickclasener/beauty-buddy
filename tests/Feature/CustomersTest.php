@@ -7,6 +7,7 @@ use App\DailyAdvice;
 use App\Huidanalyse;
 use App\Intake;
 use App\Note;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -23,9 +24,10 @@ class CustomersTest extends TestCase
 	public function setUp ()
 	{
 		parent::setUp();
-		$this->signIn();
+		$this->signIn(create(User::class, [ 'id' => 1 ]));
 		$this->customer = create(Customer::class, [
 				'id'            => 1,
+				'user_id'       => 1,
 				'naam'          => 'Jane Doe',
 				'email'         => 'jane@doe.com',
 				'telefoon'      => '0564894576',
@@ -114,7 +116,7 @@ class CustomersTest extends TestCase
 		//		$this->withoutExceptionHandling();
 		$customer = make(Customer::class);
 
-		$response = $this->post('/klanten', $customer->toArray());
+		$response = $this->post(route('klanten.store', $customer->toArray(), false));
 		$this->get($response->headers->get('Location'))
 		     ->assertSee(e($customer->naam))
 		     ->assertSee($customer->straatnaam)

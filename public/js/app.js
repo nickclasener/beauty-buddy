@@ -47754,26 +47754,27 @@ var _class = function (_Controller) {
     _createClass(_class, [{
         key: "toggle",
         value: function toggle() {
-            this.show.classList.toggle('hidden');
-            this.hide.classList.toggle('hidden');
+            this.show.classList.toggle("hidden");
+            this.hide.classList.toggle("hidden");
         }
     }, {
         key: "toggleKlant",
         value: function toggleKlant(event) {
             event.preventDefault();
-            this.klantShowTarget.classList.add('hidden');
-            this.klantHideTarget.classList.remove('hidden');
-            this.activeTarget.classList.add('active');
-            this.deactivateTargets[0].classList.remove('active');
-            this.deactivateTargets[1].classList.remove('active');
-            this.deactivateTargets[2].classList.remove('active');
+            this.klantShowTarget.classList.add("hidden");
+            this.klantHideTarget.classList.remove("hidden");
+            this.activeTarget.classList.add("active");
+            this.deactivateTargets[0].classList.remove("active");
+            this.deactivateTargets[1].classList.remove("active");
+            this.deactivateTargets[2].classList.remove("active");
+            // console.log(this.activeTarget.getAttribute('href'));
         }
     }, {
         key: "hidden",
         value: function hidden(event) {
-            if (this.element.contains(event.target) === false && !this.hide.classList.contains('hidden')) {
-                this.show.classList.remove('hidden');
-                this.hide.classList.add('hidden');
+            if (this.element.contains(event.target) === false && !this.hide.classList.contains("hidden")) {
+                this.show.classList.remove("hidden");
+                this.hide.classList.add("hidden");
             }
         }
     }, {

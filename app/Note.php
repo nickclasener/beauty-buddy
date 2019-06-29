@@ -7,10 +7,10 @@ use ScoutElastic\Searchable;
 
 class Note extends Model
 {
-		use Searchable;
-	protected $guarded = [];
-		protected $indexConfigurator = NoteConfigurator::class;
-	protected   $mapping           = [
+	use Searchable;
+	protected $guarded           = [];
+	protected $indexConfigurator = NoteConfigurator::class;
+	protected $mapping           = [
 			'properties' => [
 					'body'  => [
 							'copy_to'         => 'body2',
@@ -38,10 +38,10 @@ class Note extends Model
 
 			],
 	];
-	protected   $searchRules       = [
+	protected $searchRules       = [
 			NoteRule::class,
 	];
-	protected $with = [ 'creator' ];
+	protected $with              = [ 'creator' ];
 
 	public function creator ()
 	{
