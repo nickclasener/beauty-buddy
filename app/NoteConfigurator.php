@@ -9,7 +9,7 @@ class NoteConfigurator extends IndexConfigurator
 {
 	use Migratable;
 
-	protected $name     = 'notes';
+	protected $name     = 'note';
 	protected $settings = [
 			'analysis' => [
 					'analyzer'  => [

@@ -38,7 +38,7 @@ class CustomerTest extends TestCase
 				$this->customer->path()
 		);
 	}
-	
+
 	/** @test */
 	function a_customer_automatically_sets_the_slug_on_create ()
 	{
@@ -69,11 +69,11 @@ class CustomerTest extends TestCase
 		);
 	}
 
-//	/** @test */
+	//	/** @test */
 	//	function count_the_notes_a_customer_has ()
 	//	{
 	//		create(Note::class, [ 'customer_id' => $this->customer->id ], 5);
-	//		$this->assertEquals(count($this->customer->notes), $this->customer->countNotes);
+	//		$this->assertEquals(count($this->customer->note), $this->customer->countNotes);
 	//	}
 
 	/** @test */

@@ -1,13 +1,13 @@
 <nav class="mb-5"
      data-controller="autocomplete"
-     data-autocomplete-url="{{ route('klanten.search',false) }}"
+     data-autocomplete-url="{{ route('customer.search',false) }}"
 >
 	<div class="w-full bg-white">
 		<div class="h-15">
 			<div class="container mx-auto h-full flex items-center">
 				<div class="flex items-center w-full justify-between">
 					{{-- FIXME: DELETE--}}
-{{--										<form action="{{ route('klanten.search',false) }}">--}}
+{{--										<form action="{{ route('customer.search',false) }}">--}}
 					{{--											@method('get')@csrf--}}
 					{{--											<div class="form-group">--}}
 					{{--												<input--}}
@@ -84,10 +84,10 @@
 									</div>
 								</li>
 								<li>
-									<a href="{{ route('klanten.index', false) }}">Klanten</a>
+									<a href="{{ route('customer.index', false) }}">Klanten</a>
 								</li>
 								<li>
-									<a href="{{ route('klanten.create', false) }}">Nieuwe Klant</a>
+									<a href="{{ route('customer.create', false) }}">Nieuwe Klant</a>
 								</li>
 							@endguest
 						</ul>

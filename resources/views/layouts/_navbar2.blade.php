@@ -18,7 +18,7 @@
 			<div class="flex flex-grow text-black pr-3 lg:w-auto">
 				<div class="w-full"
 				     data-controller="autocomplete"
-				     data-autocomplete-url="{{ route('klanten.search',false) }}"
+				     data-autocomplete-url="{{ route('customer.search',false) }}"
 				>
 					<div class="relative w-full">
 						<input class="h-8 lg:h-auto transition bg-white shadow-md focus:outline-none border border-gray-200 placeholder-gray-700 rounded  py-1 lg:py-2 pr-4 pl-10 block w-full appearance-none leading-normal"
@@ -60,12 +60,12 @@
 		>
 			@auth
 				<div class="px-2 pt-2 pb-4 border-b border-gray-800 lg:flex lg:border-b-0 lg:py-0 lg:px-0">
-					<a href="{{ route('klanten.index', false) }}"
+					<a href="{{ route('customer.index', false) }}"
 					   class="block px-3 font-semibold text-white hover:bg-gray-800 lg:text-sm lg:px-4 xl:text-gray-900
 					   	xl:hover:bg-gray-200 lg:flex lg:items-center"
 					>Klanten
 					</a>
-					<a href="{{ route('klanten.create', false) }}"
+					<a href="{{ route('customer.create', false) }}"
 					   class="lg:flex lg:items-center block px-3 font-semibold  lg:mt-0 lg:text-sm lg:px-4 {{
 					   active_route_set_class('klanten.create') }}"
 					>

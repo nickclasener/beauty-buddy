@@ -2,7 +2,7 @@
 	<div class="relative h-full mt-6  px-2 pb-2 bg-white border rounded-lg w-full z-10 shadow-lg">
 		<div class="flex flex-col h-full">
 			@foreach ( $customers as $customer )
-				<div data-autocomplete-href="{{ route('notes.index', $customer, false) }}"
+				<div data-autocomplete-href="{{ route('note.index', $customer, false) }}"
 				     data-autocomplete-value="{{ $customer->id }}"
 				     role="option"
 				     @if ($loop->first)

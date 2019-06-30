@@ -9,8 +9,8 @@
 		     id="{{ $customer->slug }}"
 		>
 			<div data-controller="toggle customer"
-			     data-customer-update="{{ route('klanten.update', $customer, false) }}"
-			     data-customer-destroy="{{ route('klanten.destroy', $customer, false) }}"
+			     data-customer-update="{{ route('customer.update', $customer, false) }}"
+			     data-customer-destroy="{{ route('customer.destroy', $customer, false) }}"
 			>
 				<div data-target="toggle.show">
 					@include('klanten._show')

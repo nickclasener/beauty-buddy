@@ -52,20 +52,20 @@ class UnauthenticatedUserCantTest extends TestCase
 	/** @test */
 	function an_unauthenticated_user_cannot_update_a_note_of_a_customer ()
 	{
-		$this->get(route('notes.edit', [
+		$this->get(route('note.edit', [
 				$this->customer,
 				$this->note,
 		]))
 		     ->assertRedirect('/login');
 
-		$this->patch(route('notes.update', $this->note), $this->note->toArray())
+		$this->patch(route('note.update', $this->note), $this->note->toArray())
 		     ->assertRedirect('/login');
 	}
 
 	/** @test */
 	function an_unauthenticated_user_cannot_delete_a_note_from_a_customer ()
 	{
-		$this->delete(route('notes.destroy', $this->note))
+		$this->delete(route('note.destroy', $this->note))
 		     ->assertRedirect('/login');
 	}
 

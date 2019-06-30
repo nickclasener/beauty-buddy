@@ -8,7 +8,7 @@
 		<div class="pb-10">
 			@include('klanten.dailyadvice.create')
 			@include('layouts._search-bar-submenu',[
-			'route'=>'notes.search',
+			'route'=>'note',
 			'placeholder'=>'Zoek Product Advies...'
 			])
 			@include('klanten.dailyadvice._list')

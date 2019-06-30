@@ -52,8 +52,8 @@ class HuidanalysesOfCustomerTest extends TestCase
 		]);
 		// Act
 		//		TODO: create the ajax stimulus js tests
-		//		$this->json('post', route('huidanalyses.store', $this->customer), $huidanalyse->toArray())->assertExactJson($huidanalyse);
-		$this->json('post', route('huidanalyses.store', $this->customer), $huidanalyse->toArray());
+		//		$this->json('post', route('huidanalyse.store', $this->customer), $huidanalyse->toArray())->assertExactJson($huidanalyse);
+		$this->json('post', route('huidanalyse.store', $this->customer), $huidanalyse->toArray());
 
 		$this->assertDatabaseHas('huidanalyses', [ 'body' => 'I exist ajax :D' ]);
 	}
@@ -68,7 +68,7 @@ class HuidanalysesOfCustomerTest extends TestCase
 				'body'        => 'I exist :D',
 		]);
 		// Act
-		$this->post(route('huidanalyses.store', $this->customer), $huidanalyse->toArray());
+		$this->post(route('huidanalyse.store', $this->customer), $huidanalyse->toArray());
 
 		$this->assertDatabaseHas('huidanalyses', [ 'body' => 'I exist :D' ]);
 
@@ -87,7 +87,7 @@ class HuidanalysesOfCustomerTest extends TestCase
 	/** @test */
 	public function authenticated_can_delete_a_huidanalyse_from_a_customer ()
 	{
-		$this->delete(route('huidanalyses.destroy',$this->huidanalyse));
+		$this->delete(route('huidanalyse.destroy',$this->huidanalyse));
 
 		$this->assertDatabaseMissing('huidanalyses', [ 'id' => 1 ]);
 		$this->assertDatabaseHas('huidanalyses', [ 'id' => 2 ]);
@@ -101,7 +101,7 @@ class HuidanalysesOfCustomerTest extends TestCase
 				'id'   => $this->huidanalyse->id,
 				'body' => 'Cur historia congregabo?',
 		]);
-		$response = $this->put(route('huidanalyses.update', $this->huidanalyse), $huidanalyse->toArray());
+		$response = $this->put(route('huidanalyse.update', $this->huidanalyse), $huidanalyse->toArray());
 
 		$this->get($response->headers->get('Location'))
 		     ->assertSee('Cur historia congregabo?');
@@ -111,7 +111,7 @@ class HuidanalysesOfCustomerTest extends TestCase
 	/** @test */
 	function an_authenticated_user_can_edit_a_huidanalyse ()
 	{
-		$response = $this->get(route('huidanalyses.edit', [
+		$response = $this->get(route('huidanalyse.edit', [
 				$this->customer,
 				$this->huidanalyse->id,
 		]));

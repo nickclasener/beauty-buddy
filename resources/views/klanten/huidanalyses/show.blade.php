@@ -1,8 +1,8 @@
 <div id="{{ $huidanalyse->id }}"
      data-controller="huidanalyse toggle"
      data-target="huidanalyses.huidanalyse huidanalyse.huidanalyse"
-     data-huidanalyse-update="{{ route('huidanalyses.update', $huidanalyse, false) }}"
-     data-huidanalyse-destroy="{{ route('huidanalyses.destroy', $huidanalyse, false) }}"
+     data-huidanalyse-update="{{ route('huidanalyse.update', $huidanalyse, false) }}"
+     data-huidanalyse-destroy="{{ route('huidanalyse.destroy', $huidanalyse, false) }}"
      @if ( isset($huidanalyseCreated) && $huidanalyse->id === $huidanalyseCreated)
      data-huidanalyse-created="{{ true }}"
      @endif

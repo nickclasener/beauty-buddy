@@ -130,7 +130,7 @@ class UpdateCustomerTest extends TestCase
 				'id'   => $this->note->id,
 				'body' => 'Cur historia congregabo?',
 		]);
-		$response = $this->put(route('notes.update', $this->note), $note->toArray());
+		$response = $this->put(route('note.update', $this->note), $note->toArray());
 
 		$this->get($response->headers->get('Location'))
 		     ->assertSee('Cur historia congregabo?');
@@ -140,7 +140,7 @@ class UpdateCustomerTest extends TestCase
 	/** @test */
 	function an_authenticated_user_can_edit_a_note ()
 	{
-		$response = $this->get(route('notes.edit', [
+		$response = $this->get(route('note.edit', [
 				$this->customer,
 				$this->note->id,
 		]));
@@ -155,7 +155,7 @@ class UpdateCustomerTest extends TestCase
 				'body' => 'Updated Huidanalyse',
 		]);
 
-		$response = $this->put(route('huidanalyses.update', $this->huidanalyse), $huidanalyse->toArray());
+		$response = $this->put(route('huidanalyse.update', $this->huidanalyse), $huidanalyse->toArray());
 		$this->get($response->headers->get('Location'))
 		     ->assertSee('Updated Huidanalyse');
 
@@ -164,7 +164,7 @@ class UpdateCustomerTest extends TestCase
 	/** @test */
 	function an_authenticated_user_can_edit_a_huidanalyse ()
 	{
-		$response = $this->get(route('huidanalyses.edit', [
+		$response = $this->get(route('huidanalyse.edit', [
 				$this->customer,
 				$this->huidanalyse->id,
 		]));

@@ -86,7 +86,7 @@ class CustomersTest extends TestCase
 	/** @test */
 	function a_user_can_view_a_customer ()
 	{
-		$this->get(route('klanten.show', $this->customer))
+		$this->get(route('customer.show', $this->customer))
 		     ->assertStatus(200)
 		     ->assertSee('Jane Doe')
 		     ->assertSee('jane@doe.com')
@@ -102,7 +102,7 @@ class CustomersTest extends TestCase
 	/** @test */
 	function a_user_can_view_multiple_customers ()
 	{
-		$this->get(route('klanten.index'))
+		$this->get(route('customer.index'))
 		     ->assertStatus(200)
 		     ->assertSee($this->customer->naam)
 		     ->assertSee($this->customer->email)
@@ -115,8 +115,7 @@ class CustomersTest extends TestCase
 	{
 		//		$this->withoutExceptionHandling();
 		$customer = make(Customer::class);
-
-		$response = $this->post(route('klanten.store', $customer->toArray(), false));
+		$response = $this->post(route('customer.store', $customer->toArray(), false));
 		$this->get($response->headers->get('Location'))
 		     ->assertSee(e($customer->naam))
 		     ->assertSee($customer->straatnaam)
@@ -160,7 +159,7 @@ class CustomersTest extends TestCase
 	/** @test */
 	function view_a_note_on_a_customer_page ()
 	{
-		$response = $this->get(route('notes.show', [
+		$response = $this->get(route('note.show', [
 				$this->customer,
 				$this->note,
 		], false));
@@ -183,7 +182,7 @@ class CustomersTest extends TestCase
 				'body'        => 'baz',
 				'customer_id' => $this->customer->id,
 		]);
-		$this->get(route('notes.index', $this->customer))
+		$this->get(route('note.index', $this->customer))
 		     ->assertStatus(200)
 		     ->assertSee('This is a note')
 		     ->assertSee('foo')
@@ -194,7 +193,7 @@ class CustomersTest extends TestCase
 	/** @test */
 	function view_the_huidanalyse_on_a_customer_page ()
 	{
-		$this->get(route('huidanalyses.show', [
+		$this->get(route('huidanalyse.show', [
 				$this->customer,
 				$this->huidanalyse,
 		]))
@@ -217,7 +216,7 @@ class CustomersTest extends TestCase
 				'body'        => 'baz',
 				'customer_id' => 1,
 		]);
-		$this->get(route('huidanalyses.index', $this->customer))
+		$this->get(route('huidanalyse.index', $this->customer))
 		     ->assertStatus(200)
 		     ->assertSee('This is a huidanalyse')
 		     ->assertSee('foo')

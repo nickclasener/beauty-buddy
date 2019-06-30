@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center mb-4">
 	<div class="flex justify-between w-full">
-		<form action="{{ route('klanten.destroy', $customer, false) }}"
+		<form action="{{ route('customer.destroy', $customer, false) }}"
 		      method="POST"
 		      data-action="customer#delete"
 		>

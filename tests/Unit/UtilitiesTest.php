@@ -45,9 +45,17 @@ class UtilitiesTest extends TestCase
 	/** @test */
 	function active_route_set_class ()
 	{
-		$this->get(route('klanten.show', $this->customer));
-		$this->assertEquals('active', active_route_set_class('klanten.show', 'active'));
-		$this->assertEquals('inactive', active_route_set_class('klanten', 'active'));
+		$this->get(route('customer.show', $this->customer));
+		$this->assertEquals(' group hover:bg-teal-300  bg-teal-200 ', active_route_set_class('customer.show'));
+		$this->assertEquals(' group hover:bg-teal-300  bg-teal-500 ', active_route_set_class('customer'));
+	}
+
+	/** @test */
+	function active_icon_route_set_class ()
+	{
+		$this->get(route('customer.show', $this->customer));
+		$this->assertEquals(' fill-current group-hover:text-teal-400 text-teal-500 ', active_icon_route_set_class('customer.show'));
+		$this->assertEquals(' fill-current group-hover:text-teal-400 text-teal-200 ', active_icon_route_set_class('customer'));
 	}
 
 	/** @test */

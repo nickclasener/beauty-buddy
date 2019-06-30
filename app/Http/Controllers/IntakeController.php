@@ -68,7 +68,7 @@ class IntakeController extends Controller
 
 	public function edit ( Intake $intake )
 	{
-		return view('notes.edit')->with([
+		return view('note.edit')->with([
 				'intake' => $intake,
 		]);
 	}
@@ -115,6 +115,6 @@ class IntakeController extends Controller
 	{
 		$customer->deleteIntake();
 
-		return redirect(route('klanten.show', $customer));
+		return redirect(route('customer.show', $customer));
 	}
 }

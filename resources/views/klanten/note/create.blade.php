@@ -1,6 +1,6 @@
-<form action="{{  route('notes.store', $customer) }}"
+<form action="{{  route($route.'.store', $customer) }}"
       method="POST"
-      data-action="autocomplete2#removeResults notes#create"
+      data-action="autocomplete2#removeResults {{ $route }}s#create"
 >@method('POST')@csrf
 	<div class="border-b border-dashed focus-within:border-buddy-lightest px-4">
 		<textarea contenteditable="true"
@@ -10,7 +10,7 @@
 		          name="body"
 		          placeholder="Hoe is de behandeling gegaan?
 Zijn er veder noemenswaardigheden"
-		          data-target="notes.body"
+		          data-target="{{ $route }}s.body"
 		          required
 		>{{ old('body') }}</textarea>
 		<div class="w-full flex h-12 my-4">
@@ -18,7 +18,7 @@ Zijn er veder noemenswaardigheden"
 			        class="w-1/2 text-buddy-lightest hover:text-buddy-darker"
 			>Voeg Notitie
 			</button>
-			<button data-action="notes#cancel toggle#toggle"
+			<button data-action="{{ $route }}s#cancel toggle#toggle"
 			        class="w-1/2 px-4 rounded text-red-lighter hover:text-red-light"
 			>
 				Annuleer

@@ -1,4 +1,4 @@
-<form action="{{ route('huidanalyses.update', $huidanalyse, false) }}"
+<form action="{{ route('huidanalyse.update', $huidanalyse, false) }}"
       method="POST"
       data-action="huidanalyse#edit toggle#toggle"
       class="w-full"

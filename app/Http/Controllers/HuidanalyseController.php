@@ -78,7 +78,7 @@ class HuidanalyseController extends Controller
 				'body'    => request('body'),
 		]);
 
-		return redirect(route('huidanalyses.index', [
+		return redirect(route('huidanalyse.index', [
 				'customer' => $customer,
 		]));
 	}
@@ -125,7 +125,7 @@ class HuidanalyseController extends Controller
 		}
 		$huidanalyse->update(request()->all());
 
-		return redirect(route('huidanalyses.index', [
+		return redirect(route('huidanalyse.index', [
 				'customer' => $huidanalyse->customer,
 		]));
 	}

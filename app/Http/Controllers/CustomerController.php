@@ -43,7 +43,6 @@ class CustomerController extends Controller
 					->withInput();
 
 		}
-
 		$customer = Customer::create([
 				'user_id'       => auth()->id(),
 				'naam'          => request('naam'),
@@ -56,13 +55,15 @@ class CustomerController extends Controller
 				'email'         => request('email'),
 				'geboortedatum' => request('geboortedatum'),
 		]);
-
 		if ( request()->ajax() ) {
 
-			return redirect(route('notes.index', $customer));
+			return redirect(route('note.index', [
+					$customer,
+					//					'model' => $customer->notes(),
+			]));
 		}
 
-		return redirect(route('notes.index', $customer));
+		return redirect(route('note.index', $customer));
 	}
 
 	public function show ( Customer $customer )
@@ -96,12 +97,12 @@ class CustomerController extends Controller
 		$customer->update($request->all());
 
 		if ( request()->ajax() ) {
-			return route('notes.index', [
+			return route('note.index', [
 					'customer' => $customer,
 			]);
 		}
 
-		return redirect(route('notes.index', [
+		return redirect(route('note.index', [
 				'customer' => $customer,
 		]));
 	}
@@ -110,9 +111,9 @@ class CustomerController extends Controller
 	{
 		$customer->delete();
 		if ( request()->ajax() ) {
-			return route('klanten.create');
+			return route('customer.create');
 		}
 
-		return redirect(route('klanten.create'));
+		return redirect(route('customer.create'));
 	}
 }

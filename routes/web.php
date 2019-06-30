@@ -14,50 +14,50 @@
 Auth::routes();
 
 //Route::get('/', function () {
-//	return view('notes.notes');
+//	return view('note.note');
 //});
 
 Route::group([ 'middleware' => 'auth' ], function () {
-	Route::get('klanten/search', 'CustomerSearchController@index')->name('klanten.search');
-	Route::get('klanten/nieuw', 'CustomerController@create')->name('klanten.create');
-	Route::get('klanten', 'CustomerController@index')->name('klanten.index');
-	Route::post('klanten', 'CustomerController@store')->name('klanten.store');
-	Route::delete('klanten/{customer}', 'CustomerController@destroy')->name('klanten.destroy');
-	Route::get('klanten/{customer}', 'CustomerController@show')->name('klanten.show');
-	Route::get('klanten/{customer}/bewerken', 'CustomerController@edit')->name('klanten.edit');
+	Route::get('klanten/search', 'CustomerSearchController@index')->name('customer.search');
+	Route::get('klanten/nieuw', 'CustomerController@create')->name('customer.create');
+	Route::get('klanten', 'CustomerController@index')->name('customer.index');
+	Route::post('klanten', 'CustomerController@store')->name('customer.store');
+	Route::delete('klanten/{customer}', 'CustomerController@destroy')->name('customer.destroy');
+	Route::get('klanten/{customer}', 'CustomerController@show')->name('customer.show');
+	Route::get('klanten/{customer}/bewerken', 'CustomerController@edit')->name('customer.edit');
 	Route::match([
 			'PATCH',
 			'PUT',
-	], 'klanten/{customer}', 'CustomerController@update')->name('klanten.update');
+	], 'klanten/{customer}', 'CustomerController@update')->name('customer.update');
 
 	// Note Routes
-	Route::get('klanten/{customer}/notities/search', 'NoteSearchController@index')->name('notes.search');
-	Route::delete('notities/{note}', 'NoteController@destroy')->name('notes.destroy');
-	Route::get('klanten/{customer}/notities/nieuw', 'NoteController@create')->name('notes.create');
-	//	Route::get('klanten/{customer}/notities', 'NoteController@show')->name('notes.show');
-	Route::get('klanten/{customer}/notities', 'NoteController@index')->name('notes.index');
-	Route::get('klanten/{customer}/notities/{notes}', 'NoteController@show')->name('notes.show');
-	Route::get('klanten/{customer}/notities/{notes}/bewerken', 'NoteController@edit')->name('notes.edit');
-	Route::post('klanten/{customer}/notities', 'NoteController@store')->name('notes.store');
+	Route::get('klanten/{customer}/notities/search', 'NoteSearchController@index')->name('note.search');
+	Route::delete('notities/{note}', 'NoteController@destroy')->name('note.destroy');
+	Route::get('klanten/{customer}/notities/nieuw', 'NoteController@create')->name('note.create');
+	//	Route::get('klanten/{customer}/notities', 'NoteController@show')->name('note.show');
+	Route::get('klanten/{customer}/notities', 'NoteController@index')->name('note.index');
+	Route::get('klanten/{customer}/notities/{note}', 'NoteController@show')->name('note.show');
+	Route::get('klanten/{customer}/notities/{note}/bewerken', 'NoteController@edit')->name('note.edit');
+	Route::post('klanten/{customer}/notities', 'NoteController@store')->name('note.store');
 	Route::match([
 			'put',
 			'patch',
-	], '/notities/{note}', 'NoteController@update')->name('notes.update');
+	], '/notities/{note}', 'NoteController@update')->name('note.update');
 
 	// Huidanalyses Routes
 	Route::get('klanten/{customer}/huidanalyses/search', 'HuidanalyseSearchController@index')
-	     ->name('huidanalyses.search');
+	     ->name('huidanalyse.search');
 	Route::get('klanten/{customer}/huidanalyses/{huidanalyse}', 'HuidanalyseController@show')
-	     ->name('huidanalyses.show');
-	Route::get('klanten/{customer}/huidanalyses', 'HuidanalyseController@index')->name('huidanalyses.index');
-	Route::delete('huidanalyses/{huidanalyse}', 'HuidanalyseController@destroy')->name('huidanalyses.destroy');
+	     ->name('huidanalyse.show');
+	Route::get('klanten/{customer}/huidanalyses', 'HuidanalyseController@index')->name('huidanalyse.index');
+	Route::delete('huidanalyses/{huidanalyse}', 'HuidanalyseController@destroy')->name('huidanalyse.destroy');
 	Route::get('klanten/{customer}/huidanalyses/{huidanalyse}/bewerken', 'HuidanalyseController@edit')
-	     ->name('huidanalyses.edit');
-	Route::post('klanten/{customer}/huidanalyses', 'HuidanalyseController@store')->name('huidanalyses.store');
+	     ->name('huidanalyse.edit');
+	Route::post('klanten/{customer}/huidanalyses', 'HuidanalyseController@store')->name('huidanalyse.store');
 	Route::match([
 			'put',
 			'patch',
-	], '/huidanalyses/{huidanalyse}', 'HuidanalyseController@update')->name('huidanalyses.update');
+	], '/huidanalyses/{huidanalyse}', 'HuidanalyseController@update')->name('huidanalyse.update');
 
 	// DailyAdvice Routes
 	Route::get('klanten/{customer}/dagelijks-advies/search', 'DailyAdviceSearchController@index')->name('dailyadvice.search');
@@ -72,7 +72,7 @@ Route::group([ 'middleware' => 'auth' ], function () {
 	Route::match([
 			'put',
 			'patch',
-	], '/dagelijks-advies/{dailyAdvice}', 'DailyAdviceController@update')->name('dailyadvice.update');
+	], 'dagelijks-advies/{dailyAdvice}', 'DailyAdviceController@update')->name('dailyadvice.update');
 
 	// Intake Routes
 	Route::get('klanten/{customer}/intake/nieuw', 'IntakeController@create')->name('intake.create');

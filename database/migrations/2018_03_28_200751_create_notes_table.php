@@ -11,9 +11,9 @@ class CreateNotesTable extends Migration
 	 *
 	 * @return void
 	 */
-	public function up()
+	public function up ()
 	{
-		Schema::create('notes', function (Blueprint $table) {
+		Schema::create('notes', function ( Blueprint $table ) {
 			$table->increments('id');
 			$table->integer('customer_id');
 			$table->integer('user_id');
@@ -21,13 +21,13 @@ class CreateNotesTable extends Migration
 			$table->timestamps();
 		});
 	}
-	
+
 	/**
 	 * Reverse the migrations.
 	 *
 	 * @return void
 	 */
-	public function down()
+	public function down ()
 	{
 		Schema::dropIfExists('notes');
 	}

@@ -48,7 +48,7 @@ class DeletingTest extends TestCase
 		create(Note::class, [ 'customer_id' => $this->customer->id ]);
 		create(Huidanalyse::class, [ 'customer_id' => $this->customer->id ]);
 
-		$this->delete(route('klanten.destroy', $this->customer));
+		$this->delete(route('customer.destroy', $this->customer));
 
 		$this->assertDatabaseMissing('customers', [ 'id' => 1 ]);
 		$this->assertDatabaseMissing('notes', [ 'id' => 1 ]);
@@ -63,7 +63,7 @@ class DeletingTest extends TestCase
 	public function authenticated_user_can_delete_a_note_from_a_customer ()
 	{
 		create(Note::class);
-		$this->delete(route('notes.destroy', $this->note));
+		$this->delete(route('note.destroy', $this->note));
 
 		$this->assertDatabaseMissing('notes', [ 'id' => 1 ]);
 		$this->assertDatabaseHas('notes', [ 'id' => 2 ]);
@@ -73,7 +73,7 @@ class DeletingTest extends TestCase
 	public function authenticated_user_can_delete_a_huidanalyse_from_a_customer ()
 	{
 		create(Huidanalyse::class);
-		$this->delete(route('huidanalyses.destroy', $this->huidanalyse));
+		$this->delete(route('huidanalyse.destroy', $this->huidanalyse));
 
 		$this->assertDatabaseMissing('huidanalyses', [ 'id' => 1 ]);
 		$this->assertDatabaseHas('huidanalyses', [ 'id' => 2 ]);

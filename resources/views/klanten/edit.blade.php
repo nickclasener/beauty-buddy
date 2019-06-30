@@ -8,7 +8,7 @@
 	>
 		@svg('cross-circle',['class'=>'h-7 w-7 fill-current text-white self-center'])
 	</div>
-	<form action="{{ route('klanten.update', $customer, false) }}"
+	<form action="{{ route('customer.update', $customer, false) }}"
 	      method="post"
 	      data-action="customer#update"
 	>@method('PATCH')@csrf

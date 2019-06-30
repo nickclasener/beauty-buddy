@@ -1,6 +1,6 @@
-@if (count($notes) === 0)
+@if (count($models) === 0)
 	<div data-controller="monthyear"
-	     data-target="notes.monthyear monthyear.monthyear"
+	     data-target="{{ $route }}s.monthyear monthyear.monthyear"
 	></div>
 @endif
 <div id="monthyear"
@@ -11,7 +11,7 @@
 	<h2 class="font-hairline text-buddy-teal pt-10 ">
 		{{ $monthYear }}
 	</h2>
-	@foreach ($notes as $note)
-		@include('klanten.notes.show',[$note])
+	@foreach ($models as $model)
+		@include('klanten.'.$route.'.show')
 	@endforeach
 </div>
