@@ -20,9 +20,9 @@
 	        defer
 	></script>
 	<title>{{ config('app.name', 'Laravel') }}</title>
-{{--	@routes--}}
+	@routes
 
-<!-- Fonts -->
+	<!-- Fonts -->
 	<link rel="dns-prefetch"
 	      href="https://fonts.gstatic.com"
 

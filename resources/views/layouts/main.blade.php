@@ -15,14 +15,14 @@
 	<meta name="csrf-param"
 	      content="_token"
 	/>
+	@routes
 	<!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}"
 	        defer
 	></script>
 	<title>{{ config('app.name', 'Laravel') }}</title>
-{{-- @routes--}}
 
-<!-- Fonts -->
+	<!-- Fonts -->
 	<link rel="dns-prefetch"
 	      href="https://fonts.gstatic.com"
 	>

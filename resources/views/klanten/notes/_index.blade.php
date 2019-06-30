@@ -5,7 +5,7 @@
 	     data-notes-store="{{ route('notes.store', $customer, false) }}"
 	     data-notes-index="{{ route('notes.index', $customer, false) }}"
 	>
-		<div class="pb-10">
+		<div class="pb-4 pt-8">
 			@include('klanten.notes.create')
 			@include('layouts._search-bar-submenu',['route'=>'notes.search','placeholder'=>'Zoek in Notities...'])
 			@include('klanten.notes._list')

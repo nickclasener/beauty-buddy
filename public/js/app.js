@@ -9429,7 +9429,6 @@ __webpack_require__(32);
 
 
 
-
 var application = __WEBPACK_IMPORTED_MODULE_0_stimulus__["a" /* Application */].start();
 var context = __webpack_require__(84);
 application.load(Object(__WEBPACK_IMPORTED_MODULE_1_stimulus_webpack_helpers__["a" /* definitionsFromContext */])(context));

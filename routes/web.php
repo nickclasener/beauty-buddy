@@ -11,10 +11,6 @@
 |
 */
 
-use App\Customer;
-use App\DailyAdvice;
-use App\DailyAdviceRule;
-
 Auth::routes();
 
 //Route::get('/', function () {
@@ -22,46 +18,7 @@ Auth::routes();
 //});
 
 Route::group([ 'middleware' => 'auth' ], function () {
-	//	Route::get('/', function () {
-	//		return view('klanten.create');
-	//	});
-
-	//	Route::get('/home', 'HomeController@index')->name('home');
-	// Klanten Routes
-
 	Route::get('klanten/search', 'CustomerSearchController@index')->name('klanten.search');
-	//	Route::get('klanten/search', function () {
-	//		$query = (string)request('q');
-	//		$query = str_replace(' ', '', $query);
-	//		//		$fuzzySearch = '%' . $fuzzySearch . '%';
-	//		$customers = Customer
-	//				::search($query)
-	//				->where('user_id', auth()->id())
-	//				->rule(CustomerRule::class)
-	//				//				->take(100)
-	//				->from(0)->take(100)
-	//				->get();
-	//		//						Customer::search()->rule(static function ( $builder ) {
-	//		//
-	//		//			return [
-	//		//					'match_phrase' => [
-	//		//
-	//		//							'suggest' => [ $builder->query, ],
-	//		//					]
-	//		//					//									'completion' => [ 'field' => 'naam' ],
-	//		//					//									//									'weight'     => 34,
-	//		//					//							],kk
-	//		//					//					],
-	//		//			];
-	//		//		})->explain();
-	//		//		dd($customers);
-	//		//		$customers = $repository->search((string)request('q'));
-	//		//		$customers = $customers->sortBy('naam');
-	//
-	//		//		return compact($customers);
-	//
-	//		return view('_search-results')->with([ 'customers' => $customers ]);
-	//	})->name('klanten.search');
 	Route::get('klanten/nieuw', 'CustomerController@create')->name('klanten.create');
 	Route::get('klanten', 'CustomerController@index')->name('klanten.index');
 	Route::post('klanten', 'CustomerController@store')->name('klanten.store');
