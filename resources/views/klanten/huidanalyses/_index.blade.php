@@ -4,7 +4,7 @@
 	<div data-controller="huidanalyses"
 	     data-huidanalyses-store="{{ route('huidanalyse.store', $customer, false) }}"
 	     data-huidanalyses-index="{{ route('huidanalyse.index', $customer, false) }}"
-	>
+	> Who are you. Mijn naam is nick ik kom uit de achterhoek geleden in Gelderland.
 		<div class="pb-10">
 			@include('klanten.huidanalyses.create')
 			@include('layouts._search-bar-submenu',[

@@ -8,7 +8,7 @@
 		<div class="pb-4 pt-8">
 			@include('klanten.'.$route.'.create')
 			@include('layouts._search-bar-submenu',['route'=>$route,'placeholder'=>'Zoek in Notities...'])
-			@include('klanten.note._list')
+			@include('klanten.'.$route.'._list')
 		</div>
 	</div>
 </div>

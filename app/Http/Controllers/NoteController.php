@@ -52,6 +52,7 @@ class NoteController extends Controller
 								'monthyearCreated' => $note->id,
 								'route'            => 'note',
 						]), 200, [ 'monthyear' ]);
+
 			}
 
 			return response(
@@ -126,9 +127,7 @@ class NoteController extends Controller
 			$customer = $note->customer;
 			$note->delete();
 
-			//			return response(count($customer->note));
 			return response(null, array_first($customer->notes) ? 200 : 205);
-			//			return response(array_first($customer->note) ? 200 : 205);
 		}
 		$note->delete();
 
