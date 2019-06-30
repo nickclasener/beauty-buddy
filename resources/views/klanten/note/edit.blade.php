@@ -1,6 +1,6 @@
-<form action="{{ route($route.'.update', $model, false) }}"
+<form action="{{ route($stimulusJs.'.update', $model, false) }}"
       method="POST"
-      data-action="{{ $route }}#edit toggle#toggle"
+      data-action="{{ $stimulusJs }}#edit toggle#toggle"
       class="w-full"
 >@method('PATCH') @csrf
 	<div class="border-b border-dashed focus-within:border-buddy-lightest pl-10 pr-10">
@@ -10,7 +10,7 @@
 	          name="body"
 	          placeholder="Hoe is de behandeling gegaan?
 Zijn er veder noemenswaardigheden"
-	          data-target="{{ $route }}.body"
+	          data-target="{{ $stimulusJs }}.body"
 	          required
 	>{{ old('body') ?: $model->body }}</textarea>
 		<hr>
@@ -19,7 +19,7 @@ Zijn er veder noemenswaardigheden"
 			        class="w-1/2 text-buddy-lightest hover:text-buddy-darker"
 			>Wijzig Notitie
 			</button>
-			<button data-action="{{ $route }}#cancel toggle#toggle"
+			<button data-action="{{ $stimulusJs }}#cancel toggle#toggle"
 			        class="w-1/2 rounded text-red-lighter hover:text-red-light"
 			>Cancel
 			</button>

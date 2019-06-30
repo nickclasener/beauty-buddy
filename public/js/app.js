@@ -47363,10 +47363,8 @@ var _class = function (_Controller) {
             var _this2 = this;
 
             event.preventDefault();
-            axios.post(this.data.get('store'), {
-                body: this.body
-            }).then(function (response) {
-                _this2.body = null;
+            axios.post(this.data.get('store'), this.form).then(function (response) {
+                _this2.form = null;
                 if (response.headers[0] === 'huidanalyse') {
                     _this2.huidanalyse = response.data;
                 } else if (response.headers[0] === 'monthyear') {
@@ -47386,20 +47384,7 @@ var _class = function (_Controller) {
         key: "cancel",
         value: function cancel(event) {
             event.preventDefault();
-            this.body = '';
-        }
-    }, {
-        key: "body",
-        get: function get() {
-            return this.bodyTarget.value;
-        },
-        set: function set(text) {
-            this.bodyTarget.value = text;
-        }
-    }, {
-        key: "form",
-        get: function get() {
-            return this.formTarget;
+            this.form = '';
         }
     }, {
         key: "list",
@@ -47426,9 +47411,14 @@ var _class = function (_Controller) {
             return this.huidanalyseTarget.insertAdjacentHTML('beforebegin', text);
         }
     }, {
-        key: "huidanalyses",
+        key: "form",
         get: function get() {
-            return this.huidanalyseTargets;
+            return {
+                body: this.bodyTarget.value
+            };
+        },
+        set: function set(text) {
+            this.bodyTarget.value = text;
         }
     }]);
 
@@ -47661,6 +47651,7 @@ var _class = function (_Controller) {
             event.preventDefault();
             axios.post(this.data.get('store'), this.form).then(function (response) {
                 _this2.form = null;
+                console.log(response.headers);
                 if (response.headers[0] === 'note') {
                     _this2.note = response.data;
                 } else if (response.headers[0] === 'monthyear') {

@@ -11,13 +11,14 @@ class HuidanalyseController extends Controller
 {
 	public function index ( Customer $customer )
 	{
-		$huidanalyses = $customer->huidanalyses()
-		                         ->orderByDesc('created_at')->get();
+		$huidanalyses = Huidanalyse::where([ 'customer_id' => $customer->id ])->orderByDesc('created_at')->get();
 		//				              ->orderByDesc('created_at')
 		//		                  ->paginate(15);
-		return view('klanten.huidanalyses.index')->with([
-				'customer'     => $customer,
-				'huidanalyses' => $huidanalyses,
+		return view('klanten.note.index')->with([
+				'customer'    => $customer,
+				'models'      => $huidanalyses,
+				'placeholder' => 'Zoek in Huidanalyses...',
+				'stimulusJs'  => 'huidanalyse',
 		]);
 	}
 
@@ -32,24 +33,27 @@ class HuidanalyseController extends Controller
 					->withErrors($validator)
 					->withInput();
 		}
+		$huidanalyse = $customer->addHuidanalyse([
+				'user_id' => auth()->id(),
+				'body'    => request('body'),
+		]);
 		if ( request()->ajax() ) {
-			$huidanalyse = $customer->addHuidanalyse([
-					'user_id' => auth()->id(),
-					'body'    => request('body'),
-			]);
-			$huidanalyses = $customer->huidanalyses()
-			                         ->where('user_id', $huidanalyse->user_id)
-			                         ->whereYear('created_at', $huidanalyse->created_at)
-			                         ->whereMonth('created_at', $huidanalyse->created_at)
-			                         ->get();
+
+			$huidanalyses = $customer
+					->huidanalyses()
+					->where('user_id', $huidanalyse->user_id)
+					->whereYear('created_at', $huidanalyse->created_at)
+					->whereMonth('created_at', $huidanalyse->created_at)
+					->get();
 
 			if ( count($huidanalyses) === 1 ) {
 				return response(
-						$content = view('klanten.huidanalyses._monthyear')->with([
+						$content = view('klanten.note._monthyear')->with([
 								'customer'         => $customer,
-								'huidanalyses'     => $huidanalyses,
+								'models'           => $huidanalyses,
 								'monthYear'        => monthYearFormat($huidanalyse),
 								'monthyearCreated' => $huidanalyse->id,
+								'stimulusJs'       => 'huidanalyse',
 						]),
 						200,
 						[ 'monthyear' ]
@@ -57,39 +61,39 @@ class HuidanalyseController extends Controller
 			}
 
 			return response(
-					$content = view('klanten.huidanalyses.show')->with([
-							'customer'           => $customer,
-							'huidanalyse'        => $huidanalyse,
-							'huidanalyseCreated' => $huidanalyse->id,
+					$content = view('klanten.note.show')->with([
+							'customer'     => $customer,
+							'model'        => $huidanalyse,
+							'modelCreated' => $huidanalyse->id,
+							'stimulusJs'   => 'huidanalyse',
 					]),
 					200,
-					[ 'huidanalyse' ]
-			);
-
-			//			return view('klanten.huidanalyses._list')->with([
-			//					'customer' => $customer,
-			//					//								'customer' => $customer,
-			//					'created'  => $huidanalyse->id,
-			//			]);
+					[ 'huidanalyse' ]);
 		}
 
-		$customer->addHuidanalyse([
-				'user_id' => auth()->id(),
-				'body'    => request('body'),
-		]);
-
 		return redirect(route('huidanalyse.index', [
-				'customer' => $customer,
+				'customer'   => $customer,
+				'stimulusJs' => 'huidanalyse',
 		]));
+		//			return view('klanten.huidanalyses._list')->with([
+		//					'customer' => $customer,
+		//					//								'customer' => $customer,
+		//					'created'  => $huidanalyse->id,
+		//			]);
+
+		//		return redirect(route('huidanalyse.index', [
+		//				'customer' => $customer,
+		//		]));
 	}
 
 	public function show ( Customer $customer, $id )
 	{
 		$huidanalyse = Huidanalyse::findOrFail($id);
 
-		return view('klanten.huidanalyses.show')->with([
-				'customer'    => $customer,
-				'huidanalyse' => $huidanalyse,
+		return view('klanten.note.show')->with([
+				'customer'   => $customer,
+				'model'      => $huidanalyse,
+				'stimulusJs' => 'huidanalyse',
 		]);
 	}
 
@@ -97,9 +101,10 @@ class HuidanalyseController extends Controller
 	{
 		$huidanalyse = Huidanalyse::findOrFail($id);
 
-		return view('klanten.huidanalyses.edit')->with([
-				'customer'    => $customer,
-				'huidanalyse' => $huidanalyse,
+		return view('klanten.note.edit')->with([
+				'customer'   => $customer,
+				'model'      => $huidanalyse,
+				'stimulusJs' => 'huidanalyse',
 		]);
 	}
 
@@ -118,15 +123,17 @@ class HuidanalyseController extends Controller
 		if ( request()->ajax() ) {
 			$huidanalyse->update(request()->all());
 
-			return view('klanten.huidanalyses.show')->with([
+			return view('klanten.note.show')->with([
 					'customer'    => $huidanalyse->customer,
 					'huidanalyse' => $huidanalyse,
+					'stimulusJs'  => 'huidanalyse',
 			]);
 		}
 		$huidanalyse->update(request()->all());
 
 		return redirect(route('huidanalyse.index', [
-				'customer' => $huidanalyse->customer,
+				'customer'   => $huidanalyse->customer,
+				'stimulusJs' => 'huidanalyse',
 		]));
 	}
 

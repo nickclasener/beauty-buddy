@@ -10,7 +10,7 @@
 			<h2 class="font-hairline text-buddy-teal pt-10"
 			>{{ $monthYear }}</h2>
 			@foreach ($huidanalyses as $huidanalyse)
-				@include('klanten.huidanalyses.show',[$huidanalyse])
+				@include('klanten.huidanalyse.show',[$huidanalyse])
 			@endforeach
 		</div>
 	@endforeach

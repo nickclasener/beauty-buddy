@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04e5a63d1e27fa9e5d30bf92ffa2d3a0",
+    "content-hash": "cf309e00a5f6374e10f7900f9e900a15",
     "packages": [
         {
             "name": "ajthinking/tinx",

@@ -14,10 +14,10 @@
 		>{{ svg_image('lineicons/thought', 'h-8'. active_icon_route_set_class('note.index')) }}
 		</a>
 
-		<a class="no-underline {{ active_route_set_class('huidanalyses.index') }} flex justify-center flex-grow text-center items-center"
+		<a class="no-underline {{ active_route_set_class('huidanalyse.index') }} flex justify-center flex-grow text-center items-center"
 		   href="{{ route('huidanalyse.index', $customer, false) }}"
 		   data-target="toggle.deactivate"
-		>{{ svg_image('lineicons/heart', 'h-8'. active_icon_route_set_class('huidanalyses.index')) }}
+		>{{ svg_image('lineicons/heart', 'h-8'. active_icon_route_set_class('huidanalyse.index')) }}
 		</a>
 
 		<a class="no-underline lg:py-2 {{ active_route_set_class('dailyadvice.index') }} flex flex-grow text-center items-center justify-center"

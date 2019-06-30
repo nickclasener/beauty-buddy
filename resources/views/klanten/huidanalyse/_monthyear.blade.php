@@ -12,6 +12,6 @@
 		{{ $monthYear }}
 	</h2>
 	@foreach ($huidanalyses as $huidanalyse)
-		@include('klanten.huidanalyses.show',[$huidanalyse])
+		@include('klanten.huidanalyse.show',[$huidanalyse])
 	@endforeach
 </div>

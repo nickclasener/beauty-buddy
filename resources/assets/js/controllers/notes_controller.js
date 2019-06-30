@@ -3,10 +3,12 @@ import {Controller} from "stimulus";
 export default class extends Controller {
     static targets = ["body", "note", "monthyear"];
 
+
     create(event) {
         event.preventDefault();
         axios.post(this.data.get('store'), this.form).then(response => {
             this.form = null;
+            console.log(response.headers);
             if (response.headers[0] === 'note') {
                 this.note = response.data;
             } else if (response.headers[0] === 'monthyear') {

@@ -5,10 +5,8 @@ export default class extends Controller {
 
     create(event) {
         event.preventDefault();
-        axios.post(this.data.get('store'), {
-            body: this.body,
-        }).then(response => {
-            this.body = null;
+        axios.post(this.data.get('store'), this.form).then(response => {
+            this.form = null;
             if (response.headers[0] === 'huidanalyse') {
                 this.huidanalyse = response.data;
             } else if (response.headers[0] === 'monthyear') {
@@ -25,19 +23,7 @@ export default class extends Controller {
 
     cancel(event) {
         event.preventDefault();
-        this.body = '';
-    }
-
-    get body() {
-        return this.bodyTarget.value;
-    }
-
-    set body(text) {
-        this.bodyTarget.value = text;
-    }
-
-    get form() {
-        return this.formTarget;
+        this.form = '';
     }
 
     get list() {
@@ -65,9 +51,14 @@ export default class extends Controller {
     }
 
 
-    get huidanalyses() {
-        return this.huidanalyseTargets;
+    get form() {
+        return {
+            body: this.bodyTarget.value,
+        };
     }
 
+    set form(text) {
+        this.bodyTarget.value = text;
+    }
 
 }

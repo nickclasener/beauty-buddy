@@ -1,10 +1,10 @@
 <div id="{{ $model->id }}"
-     data-controller="{{ $route }} toggle"
-     data-target="{{ $route }}s.{{ $route }} {{ $route }}.{{ $route }}"
-     data-{{ $route }}-update="{{ route($route.'.update', $model, false) }}"
-     data-{{ $route }}-destroy="{{ route($route.'.destroy', $model, false) }}"
+     data-controller="{{ $stimulusJs }} toggle"
+     data-target="{{ $stimulusJs }}s.{{ $stimulusJs }} {{ $stimulusJs }}.{{ $stimulusJs }}"
+     data-{{ $stimulusJs }}-update="{{ route($stimulusJs.'.update', $model, false) }}"
+     data-{{ $stimulusJs }}-destroy="{{ route($stimulusJs.'.destroy', $model, false) }}"
      @if ( isset($modelCreated) && $model->id === $modelCreated)
-     data-{{ $route }}-created="{{ true }}"
+     data-{{ $stimulusJs }}-created="{{ true }}"
      @endif
      @isset($searched)
      role="option"
@@ -36,11 +36,11 @@
 		</div>
 		<div class="hidden w-full"
 		     data-target="toggle.hide"
-		>@include('klanten.' .$route .'.edit',[$model])
+		>@include('klanten.note.edit',[$model])
 		</div>
 		<a href="#"
 		   class="h-8"
-		   data-action="{{ $route }}#delete monthyear#remove {{ $route }}#remove"
+		   data-action="{{ $stimulusJs }}#delete monthyear#remove {{ $stimulusJs }}#remove"
 		>{{ svg_image('lineicons/trash', 'fill-current text-red-300 hover:text-red-600 h-8 float-right') }}
 		</a>
 	</div>

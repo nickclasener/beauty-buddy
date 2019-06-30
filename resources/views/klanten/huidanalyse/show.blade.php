@@ -41,7 +41,7 @@
 		<div class="hidden w-full"
 		     data-target="toggle.hide"
 		>
-			@include('klanten.huidanalyses.edit',[$huidanalyse])
+			@include('klanten.huidanalyse.edit',[$huidanalyse])
 		</div>
 		<a href=""
 		   data-action="huidanalyse#delete monthyear#remove huidanalyse#remove"

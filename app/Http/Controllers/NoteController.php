@@ -14,9 +14,10 @@ class NoteController extends Controller
 		$notes = Note::where([ 'customer_id' => $customer->id ])->orderByDesc('created_at')->get();
 
 		return view('klanten.note.index')->with([
-				'customer' => $customer,
-				'models'   => $notes,
-				'route'    => 'note',
+				'customer'    => $customer,
+				'models'      => $notes,
+				'placeholder' => 'Zoek in Notities...',
+				'stimulusJs'  => 'note',
 		]);
 	}
 
@@ -50,7 +51,7 @@ class NoteController extends Controller
 								'model'            => $notes,
 								'monthYear'        => monthYearFormat($note),
 								'monthyearCreated' => $note->id,
-								'route'            => 'note',
+								'stimulusJs'       => 'note',
 						]), 200, [ 'monthyear' ]);
 
 			}
@@ -60,13 +61,13 @@ class NoteController extends Controller
 							'customer'     => $customer,
 							'model'        => $note,
 							'modelCreated' => $note->id,
-							'route'        => 'note',
+							'stimulusJs'   => 'note',
 					]), 200, [ 'note' ]);
 		}
 
 		return redirect(route('note.index', [
-				'customer' => $customer,
-				'route'    => 'note',
+				'customer'   => $customer,
+				'stimulusJs' => 'note',
 		]));
 	}
 
@@ -75,9 +76,9 @@ class NoteController extends Controller
 		$note = Note::findOrFail($id);
 
 		return view('klanten.note.show')->with([
-				'customer' => $customer,
-				'model'    => $note,
-				'route'    => 'note',
+				'customer'   => $customer,
+				'model'      => $note,
+				'stimulusJs' => 'note',
 		]);
 	}
 
@@ -86,9 +87,9 @@ class NoteController extends Controller
 		$note = Note::findOrFail($id);
 
 		return view('klanten.note.edit')->with([
-				'customer' => $customer,
-				'model'    => $note,
-				'route'    => 'note',
+				'customer'   => $customer,
+				'model'      => $note,
+				'stimulusJs' => 'note',
 		]);
 	}
 
@@ -108,16 +109,16 @@ class NoteController extends Controller
 			$note->update(request()->all());
 
 			return view('klanten.note.show')->with([
-					'customer' => $note->customer,
-					'model'    => $note,
-					'route'    => 'note',
+					'customer'   => $note->customer,
+					'model'      => $note,
+					'stimulusJs' => 'note',
 			]);
 		}
 		$note->update(request()->all());
 
 		return redirect(route('note.index', [
-				'customer' => $note->customer,
-				'route'    => 'note',
+				'customer'   => $note->customer,
+				'stimulusJs' => 'note',
 		]));
 	}
 
