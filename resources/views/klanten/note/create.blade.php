@@ -2,10 +2,10 @@
       method="POST"
       data-action="autocomplete2#removeResults {{ $stimulusJs }}s#create"
 >@method('POST')@csrf
-	<div class="border-b border-dashed focus-within:border-buddy-lightest p-4">
+	<div class="border-b border-dashed focus-within:border-teal-900 p-4">
 		<textarea contenteditable="true"
 		          type="text"
-		          class="resize-none w-full  shadow-md border border-gray-200 p-4 focus:outline-none"
+		          class="resize-none w-full  shadow border border-gray-200 p-4 focus:shadow-inner focus:outline-none"
 		          rows="4"
 		          name="body"
 		          placeholder="Hoe is de behandeling gegaan?

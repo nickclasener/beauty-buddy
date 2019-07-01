@@ -3,6 +3,63 @@ module.exports = {
     important: false,
     separator: ':',
     theme: {
+        transform: { // defaults to this value
+            'none': 'none',
+        },
+        transformOrigin: { // defaults to these values
+            't': 'top',
+            'tr': 'top right',
+            'r': 'right',
+            'br': 'bottom right',
+            'b': 'bottom',
+            'bl': 'bottom left',
+            'l': 'left',
+            'tl': 'top left',
+        },
+        translate: { // defaults to {}
+            '6': '1.5rem',
+            '3': '0.75rem',
+            '1/2': '50%',
+            'full': '100%',
+            'right-up': ['100%', '-100%'],
+            '3d': ['40px', '-60px', '-130px'],
+        },
+        scale: { // defaults to {}
+            '90': '0.9',
+            '100': '1',
+            '110': '1.1',
+            '-100': '-1',
+            'stretched-x': ['2', '0.5'],
+            'stretched-y': ['0.5', '2'],
+            '3d': ['0.5', '1', '2'],
+        },
+        rotate: { // defaults to {}
+            '90': '90deg',
+            '180': '180deg',
+            '270': '270deg',
+            '3d': ['0', '1', '0.5', '45deg'],
+        },
+        skew: { // defaults to {}
+            '-5': '-5deg',
+            '5': '5deg',
+        },
+        perspective: { // defaults to {}
+            'none': 'none',
+            '250': '250px',
+            '500': '500px',
+            '750': '750px',
+            '1000': '1000px',
+        },
+        perspectiveOrigin: { // defaults to these values
+            't': 'top',
+            'tr': 'top right',
+            'r': 'right',
+            'br': 'bottom right',
+            'b': 'bottom',
+            'bl': 'bottom left',
+            'l': 'left',
+            'tl': 'top left',
+        },
         filter: { // defaults to {}
             'none': 'none',
             'grayscale': 'grayscale(1)',
@@ -207,6 +264,7 @@ module.exports = {
             xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
             '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
             inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+            innerteal: 'inset 0 2px 4px 0 rgba(56, 178, 172, 0.06)',
             outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
             none: 'none',
         },
@@ -299,6 +357,10 @@ module.exports = {
         }),
         inset: {
             '0': '0',
+            '1': '1px',
+            '2': '2px',
+            '3': '3px',
+            '4': '4px',
             auto: 'auto',
         },
         letterSpacing: {
@@ -349,10 +411,12 @@ module.exports = {
             full: '100%',
             screen: '100vh',
         },
-        minWidth: {
-            '0': '0',
+        minWidth: theme => ({
+            auto: 'auto',
+            ...theme('spacing'),
             full: '100%',
-        },
+            screen: '100vh',
+        }),
         objectPosition: {
             bottom: 'bottom',
             center: 'center',
@@ -436,6 +500,16 @@ module.exports = {
         },
     },
     variants: {
+        transform: ['responsive'],
+        transformOrigin: ['responsive'],
+        translate: ['responsive'],
+        scale: ['responsive'],
+        rotate: ['responsive'],
+        skew: ['responsive'],
+        perspective: ['responsive'],
+        perspectiveOrigin: ['responsive'],
+        transformStyle: ['responsive'],
+        backfaceVisibility: ['responsive'],
         filter: ['responsive'], // defaults to ['responsive']
         backdropFilter: ['responsive'], // defaults to ['responsive']
         alignContent: ['responsive'],
@@ -454,7 +528,7 @@ module.exports = {
         borderWidth: ['responsive'],
         boxShadow: ['responsive', 'hover', 'focus'],
         cursor: ['responsive'],
-        display: ['responsive'],
+        display: ['responsive', 'hover', 'group-hover'],
         fill: ['responsive'],
         flex: ['responsive'],
         flexDirection: ['responsive'],
@@ -507,5 +581,9 @@ module.exports = {
     plugins: [
         require('tailwindcss-filters'),
         require('@tailwindcss/custom-forms'),
+        require('glhd-tailwindcss-transitions')(),
+        require('tailwindcss-transforms')({
+            '3d': false, // defaults to false
+        }),
     ],
 };

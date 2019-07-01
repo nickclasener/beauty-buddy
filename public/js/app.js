@@ -47651,7 +47651,6 @@ var _class = function (_Controller) {
             event.preventDefault();
             axios.post(this.data.get('store'), this.form).then(function (response) {
                 _this2.form = null;
-                console.log(response.headers);
                 if (response.headers[0] === 'note') {
                     _this2.note = response.data;
                 } else if (response.headers[0] === 'monthyear') {
@@ -47748,6 +47747,23 @@ var _class = function (_Controller) {
             this.hide.classList.toggle("hidden");
         }
     }, {
+        key: "active",
+        value: function active(event) {
+            // this.activeTarget.classList.toggle("bg-teal-200");
+            // this.activeTarget.classList.toggle("bg-teal-500");
+            this.activeiconTarget.classList.toggle("text-teal-500");
+            this.activeiconTarget.classList.toggle("text-teal-200");
+            event.stopImmediatePropagation();
+        }
+    }, {
+        key: "inactive",
+        value: function inactive() {
+            // this.activeTarget.classList.add("bg-teal-200");
+            // this.activeTarget.classList.remove("bg-teal-500");
+            this.activeiconTarget.classList.add("text-teal-500");
+            this.activeiconTarget.classList.remove("text-teal-200");
+        }
+    }, {
         key: "toggleKlant",
         value: function toggleKlant(event) {
             event.preventDefault();
@@ -47782,7 +47798,7 @@ var _class = function (_Controller) {
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ["show", "hide", "klantShow", "klantHide", "active", "deactivate"];
+_class.targets = ["show", "hide", "klantShow", "klantHide", "active", "activeicon", "deactivate"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),

@@ -1,6 +1,6 @@
 @if (count($models) === 0)
 	<div data-controller="monthyear"
-	     data-target="{{ $route }}s.monthyear monthyear.monthyear"
+	     data-target="{{ $stimulusJs }}s.monthyear monthyear.monthyear"
 	></div>
 @endif
 <div id="monthyear"
@@ -12,6 +12,6 @@
 		{{ $monthYear }}
 	</h2>
 	@foreach ($models as $model)
-		@include('klanten.'.$route.'.show')
+		@include('klanten.'.$stimulusJs.'.show')
 	@endforeach
 </div>

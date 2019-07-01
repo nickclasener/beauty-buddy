@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class NoteController extends Controller
 {
-	public function index ( Customer $customer )
+	public function index ( Customer $customer, Note $note )
 	{
 
 		$notes = Note::where([ 'customer_id' => $customer->id ])->orderByDesc('created_at')->get();
@@ -49,7 +49,7 @@ class NoteController extends Controller
 				return response(
 						$content = view('klanten.note._monthyear')->with([
 								'customer'         => $customer,
-								'model'            => $notes,
+								'models'           => $notes,
 								'monthYear'        => monthYearFormat($note),
 								'monthyearCreated' => $note->id,
 								'stimulusJs'       => 'note',

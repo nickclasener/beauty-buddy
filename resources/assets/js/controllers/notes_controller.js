@@ -8,7 +8,6 @@ export default class extends Controller {
         event.preventDefault();
         axios.post(this.data.get('store'), this.form).then(response => {
             this.form = null;
-            console.log(response.headers);
             if (response.headers[0] === 'note') {
                 this.note = response.data;
             } else if (response.headers[0] === 'monthyear') {

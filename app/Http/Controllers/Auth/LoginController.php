@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Spatie\Image\Image;
 
 class LoginController extends Controller
 {
@@ -37,13 +38,13 @@ class LoginController extends Controller
 		$this->middleware('guest')->except('logout');
 	}
 
-//	public function showLoginForm ()
-	//	{
-	//		if ( ! asset('img/login5.jpg') ) {
-	//			Image::load('img/login.jpg')->width(1024)->blur(50)->optimize()->save('img/login5.jpg');
-	//		}
-	//		$image = true;
-	//
-	//		return view('auth.login')->with([ 'image' => $image ]);
-	//	}
+	public function showLoginForm ()
+	{
+		if ( ! asset('img/login5.jpg') ) {
+			Image::load('img/login.jpg')->width(1024)->blur(30)->optimize()->save('img/login5.jpg');
+		}
+		$image = true;
+
+		return view('auth.login')->with([ 'image' => $image ]);
+	}
 }

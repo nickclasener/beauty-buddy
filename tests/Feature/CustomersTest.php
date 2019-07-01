@@ -113,7 +113,7 @@ class CustomersTest extends TestCase
 	/** @test */
 	function a_authenticated_user_can_add_a_customer ()
 	{
-		//		$this->withoutExceptionHandling();
+		$this->withoutExceptionHandling();
 		$customer = make(Customer::class);
 		$response = $this->post(route('customer.store', $customer->toArray(), false));
 		$this->get($response->headers->get('Location'))

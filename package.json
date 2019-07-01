@@ -25,11 +25,14 @@
     "resolve-url-loader": "^2.3.1",
     "tailwindcss": "^1.0.4",
     "tailwindcss-filters": "^2.0.0",
+    "tailwindcss-transforms": "^2.1.0",
+    "tailwindcss-transitions": "^2.0.1",
     "webpack-livereload-plugin": "^1.2.0"
   },
   "dependencies": {
     "animate.css": "^3.7.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "glhd-tailwindcss-transitions": "^0.3.0",
     "gsap": "^2.1.2",
     "jquery": "^3.3.1",
     "lodash.debounce": "^4.0.8",

@@ -12,10 +12,10 @@
 */
 
 Auth::routes();
-
-Route::get('/', static function () {
-	return view('welcome');
-});
+Route::get('/', 'Auth\LoginController@showLoginForm');
+//Route::get('/', static function () {
+//	return view('welcome');
+//});
 
 Route::group([ 'middleware' => 'auth' ], function () {
 	Route::get('klanten/search', 'CustomerSearchController@index')->name('customer.search');

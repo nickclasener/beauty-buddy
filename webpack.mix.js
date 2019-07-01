@@ -20,7 +20,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
             tailwindcss('./tailwind.js'),
         ]
     })
-    .purgeCss()
+    // .purgeCss()
     .copyDirectory('resources/assets/img', 'public/img')
     .browserSync({
         proxy: 'beauty-buddy.test',

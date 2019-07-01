@@ -14,7 +14,7 @@
 {{--</form>--}}
 <div class="mx-4">
 	<div class="relative w-full mt-8">
-		<input class="h-8 lg:h-auto transition bg-white shadow-md focus:outline-none border border-gray-200 placeholder-gray-700 py-1 lg:py-2 pr-4 pl-10 block w-full appearance-none leading-normal z-30"
+		<input class="h-8 lg:h-auto transition bg-white shadow focus:shadow-inner focus:outline-none border border-gray-200 placeholder-gray-700 py-1 lg:py-2 pr-4 pl-10 block w-full appearance-none leading-normal z-30"
 		       type="text"
 		       placeholder="{{ $placeholder }}"
 		       data-target="autocomplete2.input"
