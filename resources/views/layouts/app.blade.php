@@ -36,11 +36,15 @@
 	>
 
 </head>
-<body>
-@include('layouts._navbar2')
+@isset( $image)
+	@yield('background-image')
+@else
+	<body class="bg-gray-200 font-sans text-base-font text-gray-700">
+	@endif
+	@include('layouts._navbar2')
 
-{{--<div class="pt-16 lg:pt-0">--}}
-@yield('content')
-{{--</div>--}}
-</body>
+	{{--<div class="pt-16 lg:pt-0">--}}
+	@yield('main')
+	{{--</div>--}}
+	</body>
 </html>

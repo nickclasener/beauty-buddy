@@ -11,6 +11,7 @@ class NoteController extends Controller
 {
 	public function index ( Customer $customer )
 	{
+
 		$notes = Note::where([ 'customer_id' => $customer->id ])->orderByDesc('created_at')->get();
 
 		return view('klanten.note.index')->with([

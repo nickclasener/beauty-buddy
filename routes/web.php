@@ -13,9 +13,9 @@
 
 Auth::routes();
 
-//Route::get('/', function () {
-//	return view('note.note');
-//});
+Route::get('/', static function () {
+	return view('welcome');
+});
 
 Route::group([ 'middleware' => 'auth' ], function () {
 	Route::get('klanten/search', 'CustomerSearchController@index')->name('customer.search');

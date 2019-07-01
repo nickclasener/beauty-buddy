@@ -3,6 +3,16 @@ module.exports = {
     important: false,
     separator: ':',
     theme: {
+        filter: { // defaults to {}
+            'none': 'none',
+            'grayscale': 'grayscale(1)',
+            'invert': 'invert(1)',
+            'sepia': 'sepia(1)',
+        },
+        backdropFilter: { // defaults to {}
+            'none': 'none',
+            'blur': 'blur(20px)',
+        },
         screens: {
             sm: '640px',
             md: '768px',
@@ -426,6 +436,8 @@ module.exports = {
         },
     },
     variants: {
+        filter: ['responsive'], // defaults to ['responsive']
+        backdropFilter: ['responsive'], // defaults to ['responsive']
         alignContent: ['responsive'],
         alignItems: ['responsive'],
         alignSelf: ['responsive'],
@@ -492,5 +504,8 @@ module.exports = {
         zIndex: ['responsive'],
     },
     corePlugins: {},
-    plugins: [],
+    plugins: [
+        require('tailwindcss-filters'),
+        require('@tailwindcss/custom-forms'),
+    ],
 };

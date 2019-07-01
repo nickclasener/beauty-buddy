@@ -37,21 +37,25 @@
 	      content="no-cache"
 	>
 </head>
-<body class="bg-gray-200 font-sans text-base-font">
-@include('layouts._navbar2')
-<div class="mx-4 my-4">
-	@yield('main')
-</div>
-@if (count($errors))
-	@foreach ($errors->all() as $error)
-		<ul class="alert alert-danger">
-			<li>{{ $error }}</li>
-		</ul>
-	@endforeach
-@endif
+@isset( $image)
+	@yield('background-image')
+@else
+	<body class="bg-gray-200 font-sans text-base-font text-gray-700">
+	@endif
+	@include('layouts._navbar2')
+	<div class="mx-4 my-4">
+		@yield('main')
+	</div>
+	@if (count($errors))
+		@foreach ($errors->all() as $error)
+			<ul class="alert alert-danger">
+				<li>{{ $error }}</li>
+			</ul>
+		@endforeach
+	@endif
 
-{{--@if(config('app.env') === 'local')--}}
-{{-- <script src="http://localhost:35729/livereload.js"></script>--}}
-{{--@endif--}}
-</body>
+	{{--@if(config('app.env') === 'local')--}}
+	{{-- <script src="http://localhost:35729/livereload.js"></script>--}}
+	{{--@endif--}}
+	</body>
 </html>

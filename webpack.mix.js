@@ -21,6 +21,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
         ]
     })
     .purgeCss()
+    .copyDirectory('resources/assets/img', 'public/img')
     .browserSync({
         proxy: 'beauty-buddy.test',
         open: false,

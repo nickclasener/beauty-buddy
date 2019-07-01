@@ -24,10 +24,11 @@ class HuidanalyseSearchController extends Controller
 			return null;
 		}
 
-		return view('klanten.huidanalyses._list')
+		return view('klanten.note._list')
 				->with([
-						'huidanalyses' => $huidanalyses,
-						'searched'     => true,
+						'models'     => $huidanalyses,
+						'searched'   => true,
+						'stimulusJs' => 'huidanalyse',
 				]);
 	}
 }

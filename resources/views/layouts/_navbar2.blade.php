@@ -32,7 +32,7 @@
 						          data-target="autocomplete.hidden"
 						/>
 						<div class="pointer-events-none absolute inset-y-0 left-0 pl-2.5 flex items-center">
-							{{ svg_image('lineicons/search', 'fill-current pointer-events-none text-gray-600 h-6') }}
+							{{ svg_image('lineicons/magnifier', 'fill-current pointer-events-none text-gray-600 h-6') }}
 						</div>
 					</div>
 					<div data-target="autocomplete.results"
@@ -55,7 +55,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="w-full hidden lg:block flex-grow lg:flex-grow-0 lg:flex lg:items-stretch lg:w-auto lg:py-0 lg:justify-between -mr-4"
+		<div class="w-full hidden lg:block flex-grow lg:flex-grow-0 lg:flex lg:items-stretch lg:w-auto lg:py-0 lg:justify-between -mx-4 lg:ml-0 "
 		     data-target="dropdown.responsiveMenu"
 		>
 			@auth
@@ -66,8 +66,7 @@
 					>Klanten
 					</a>
 					<a href="{{ route('customer.create', false) }}"
-					   class="lg:flex lg:items-center block px-3 font-semibold  lg:mt-0 lg:text-sm lg:px-4 {{
-					   active_route_set_class('klanten.create') }}"
+					   class="lg:flex lg:items-center block px-3 font-semibold  lg:mt-0 lg:text-sm lg:px-4 {{ active_route_set_class('klanten.create') }}"
 					>
 						{{ svg_image('lineicons/user-add', 'py-1 h-8'. active_icon_route_set_class('klanten.create')) }}
 					</a>
@@ -76,16 +75,25 @@
 			<div class="hidden lg:block lg:flex"
 			     data-action="click->dropdown#toggleAccountMenu click@window->dropdown#hideAccountMenu"
 			>
+
 				<div class="relative px-4 py-4 lg:px-4 lg:py-0 lg:static lg:flex lg:items-stretch">
+					@empty($customer)
+						<div class="{{ active_route_set_class() }} lg:flex lg:items-center block px-3 font-semibold  lg:mt-0 lg:text-sm lg:px-6 "
+						>
+							{{ svg_image('lineicons/unlock', 'h-8'. active_icon_route_set_class()) }}
+						</div>
+					@endempty
 					@auth
 						<div class="relative hidden lg:block lg:flex ">
 							<button type="button"
 							        class="focus:outline-none lg:flex lg:items-center"
 							>
-								<img src="{{ asset('img/logan-browning.jpg') }}"
-								     alt="{{ $customer->naam }}"
-								     class="object-cover block h-8 w-8 overflow-hidden rounded-full border-2 border-gray-600 xl:border-gray-300"
-								>
+								@isset($customer)
+									<img src="{{ asset('img/logan-browning.jpg') }}"
+									     alt="{{ $customer->naam }}"
+									     class="object-cover block h-8 w-8 overflow-hidden rounded-full border-2 border-gray-600 xl:border-gray-300"
+									>
+								@endisset
 							</button>
 						</div>
 					@endauth
@@ -106,10 +114,12 @@
 				<div class="relative px-4 py-4 lg:py-0 lg:ml-4 lg:px-0">
 					<div class="mt-4 lg:hidden">
 						<div class="flex items-center lg:hidden">
-							<img src="{{ asset('img/logan-browning.jpg') }}"
-							     alt="{{ $customer->naam }}"
-							     class="h-10 w-10 object-cover rounded-full border-2 border-gray-600"
-							>
+							@isset($customer)
+								<img src="{{ asset('img/logan-browning.jpg') }}"
+								     alt="{{ $customer->naam }}"
+								     class="h-10 w-10 object-cover rounded-full border-2 border-gray-600"
+								>
+							@endisset
 							<span class="ml-4 font-semibold text-gray-200 lg:hidden">{{ auth()->user()->name }}</span>
 						</div>
 						<a href="{{ route('logout', false) }}"
@@ -131,7 +141,7 @@
 			     data-target="dropdown.accountMenu"
 			>
 				<div class="absolute mt-12 z-40 right-0">
-					<div class="mt-3 bg-white xl:border rounded-lg w-48 py-2 shadow-xl">
+					<div class="mt-3 bg-white xl:border  w-48 py-2 shadow-xl">
 						@guest
 							<a href="{{ route('login', false) }}"
 							   class="block hover:text-white text-gray-800 mt-0 px-4 py-2 hover:bg-indigo-500"

@@ -15,7 +15,7 @@ if ( ! function_exists('timeAmPm') ) {
 }
 
 if ( ! function_exists('active_route_set_class') ) {
-	function active_route_set_class ( $uri )
+	function active_route_set_class ( $uri = null )
 	{
 
 		$css = Route::is($uri) ? ' bg-teal-200 ' : ' bg-teal-500 ';
@@ -25,7 +25,7 @@ if ( ! function_exists('active_route_set_class') ) {
 }
 
 if ( ! function_exists('active_icon_route_set_class') ) {
-	function active_icon_route_set_class ( $uri )
+	function active_icon_route_set_class ( $uri = null )
 	{
 		$css = Route::is($uri) ? ' text-teal-500 ' : ' text-teal-200 ';
 

@@ -43,9 +43,7 @@
 		       class="bg-transparent appearance-none focus:outline-none w-full"
 		       readonly
 		>
-		<button data-action="clipboard#copy">
-			{{ svg_image('lineicons/clipboard', 'fill-current text-gray-800 h-8 -mt-2') }}
-		</button>
+		@include('layouts._clipboard')
 	</div>
 
 	<label for="mobiel"
@@ -61,9 +59,7 @@
 		       class="bg-transparent appearance-none focus:outline-none w-full"
 		       readonly
 		>
-		<button data-action="clipboard#copy">
-			{{ svg_image('lineicons/clipboard', 'fill-current text-gray-800 h-8 -mt-2') }}
-		</button>
+		@include('layouts._clipboard')
 	</div>
 
 	<label for="telefoon"
@@ -79,9 +75,7 @@
 		       class="bg-transparent appearance-none focus:outline-none w-full"
 		       readonly
 		>
-		<button data-action="clipboard#copy">
-			{{ svg_image('lineicons/clipboard', 'fill-current text-gray-800 h-8 -mt-2') }}
-		</button>
+		@include('layouts._clipboard')
 	</div>
 </div>
 
@@ -102,9 +96,7 @@
 		       class="bg-transparent appearance-none focus:outline-none w-full"
 		       readonly
 		>
-		<button data-action="clipboard#copy">
-			{{ svg_image('lineicons/clipboard', 'fill-current text-gray-800 h-8 -mt-2') }}
-		</button>
+		@include('layouts._clipboard')
 	</div>
 
 	<label for="plaats"
@@ -120,9 +112,7 @@
 		       class="bg-transparent appearance-none focus:outline-none w-full"
 		       readonly
 		>
-		<button data-action="clipboard#copy">
-			{{ svg_image('lineicons/clipboard', 'fill-current text-gray-800 h-8 -mt-2') }}
-		</button>
+		@include('layouts._clipboard')
 	</div>
 
 	<label for="postcode"
@@ -138,8 +128,6 @@
 		       class="bg-transparent appearance-none focus:outline-none w-full"
 		       readonly
 		>
-		<button data-action="clipboard#copy">
-			{{ svg_image('lineicons/clipboard', 'fill-current text-gray-800 h-8 -mt-2') }}
-		</button>
+		@include('layouts._clipboard')
 	</div>
 </div>

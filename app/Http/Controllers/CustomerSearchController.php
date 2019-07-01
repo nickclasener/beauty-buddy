@@ -10,6 +10,7 @@ class CustomerSearchController extends Controller
 {
 	public function index ( Request $request )
 	{
+
 		$query = (string)request('q');
 
 		$customers = Customer

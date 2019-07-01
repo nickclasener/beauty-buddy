@@ -14,7 +14,7 @@
 {{--</form>--}}
 <div class="mx-4">
 	<div class="relative w-full mt-8">
-		<input class="h-8 lg:h-auto transition bg-white shadow-md focus:outline-none border border-gray-200 placeholder-gray-700 rounded-lg py-1 lg:py-2 pr-4 pl-10 block w-full appearance-none leading-normal"
+		<input class="h-8 lg:h-auto transition bg-white shadow-md focus:outline-none border border-gray-200 placeholder-gray-700 py-1 lg:py-2 pr-4 pl-10 block w-full appearance-none leading-normal z-30"
 		       type="text"
 		       placeholder="{{ $placeholder }}"
 		       data-target="autocomplete2.input"
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<div data-target="autocomplete2.results"
-	     class="shadow-md p-4 rounded-lg mt-4 border border-gray-200"
+	     class="shadow-md p-4  mt-4 border border-gray-200"
 	     hidden
 	>
 	</div>
