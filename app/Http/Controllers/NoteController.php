@@ -11,15 +11,16 @@ class NoteController extends Controller
 {
 	public function index ( Customer $customer, Note $note )
 	{
-
 		$notes = Note::where([ 'customer_id' => $customer->id ])->orderByDesc('created_at')->get();
 
-		$view= view('klanten.note.index')->with([
+		$view = view('klanten.note.index')->with([
 				'customer'    => $customer,
 				'models'      => $notes,
 				'placeholder' => 'Zoek in Notities...',
 				'stimulusJs'  => 'note',
 		]);
+
+		return $view;
 	}
 
 	public function store ( Customer $customer )
