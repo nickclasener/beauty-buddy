@@ -149,6 +149,7 @@ return [
 		/*
 		 * Package Service Providers...
 		 */
+		Techo\CompileBlades\CompileBladesServiceProvider::class,
 
 		/*
 		 * Application Service Providers...
