@@ -34,7 +34,6 @@
   "dependencies": {
     "animate.css": "^3.7.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "glhd-tailwindcss-transitions": "^0.3.0",
     "gsap": "^2.1.2",
     "jquery": "^3.3.1",
     "lodash.debounce": "^4.0.8",

@@ -46,16 +46,22 @@ class UtilitiesTest extends TestCase
 	function active_route_set_class ()
 	{
 		$this->get(route('customer.show', $this->customer));
-		$this->assertEquals(' group hover:bg-teal-300  bg-teal-200 ', active_route_set_class('customer.show'));
-		$this->assertEquals(' group hover:bg-teal-300  bg-teal-500 ', active_route_set_class('customer'));
+		$this->assertEquals(' group hover:bg-teal-300 bg-teal-500 ', active_route_set_class('customer.show', true));
+		$this->assertEquals(' group hover:bg-teal-300 bg-teal-200 ', active_route_set_class('customer', true));
+
+		$this->assertEquals(' group hover:bg-teal-300 bg-teal-200 ', active_route_set_class('customer.show'));
+		$this->assertEquals(' group hover:bg-teal-300 bg-teal-500 ', active_route_set_class('customer'));
 	}
 
 	/** @test */
 	function active_icon_route_set_class ()
 	{
 		$this->get(route('customer.show', $this->customer));
-		$this->assertEquals(' fill-current group-hover:text-teal-400 text-teal-500 ', active_icon_route_set_class('customer.show'));
-		$this->assertEquals(' fill-current group-hover:text-teal-400 text-teal-200 ', active_icon_route_set_class('customer'));
+		$this->assertEquals(' fill-current group-hover:text-teal-200 text-white ', active_icon_route_set_class('customer.show', true));
+		$this->assertEquals(' fill-current group-hover:text-teal-200 text-teal-500 ', active_icon_route_set_class('customer', true));
+
+		$this->assertEquals(' fill-current group-hover:text-teal-200 text-teal-500 ', active_icon_route_set_class('customer.show'));
+		$this->assertEquals(' fill-current group-hover:text-teal-200 text-white ', active_icon_route_set_class('customer'));
 	}
 
 	/** @test */

@@ -599,7 +599,7 @@ module.exports = {
     plugins: [
         require('tailwindcss-filters')(),
         require('@tailwindcss/custom-forms'),
-        require('glhd-tailwindcss-transitions')(),
+        // require('glhd-tailwindcss-transitions')(),
         require('tailwindcss-interaction-variants')(),
         require('tailwindcss-gap')(),
         require('tailwindcss-transforms')({

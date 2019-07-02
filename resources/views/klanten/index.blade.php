@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('main')
-	<div class="flex p-4 bg-white gap gap-x-8">
+	<div class=" bg-white gap gap-y-2 p-4">
 		@foreach ($customers as $customer)
 			<div>
 				<a href="{{ route('note.index', $customer, false) }}"
