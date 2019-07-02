@@ -14,7 +14,7 @@ class NoteController extends Controller
 
 		$notes = Note::where([ 'customer_id' => $customer->id ])->orderByDesc('created_at')->get();
 
-		return view('klanten.note.index')->with([
+		$view= view('klanten.note.index')->with([
 				'customer'    => $customer,
 				'models'      => $notes,
 				'placeholder' => 'Zoek in Notities...',

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7dae17ec5ae94fe269296295bf88b1ef",
+    "content-hash": "29bee0a86ae8d8690d174958ca9c3864",
     "packages": [
         {
             "name": "ajthinking/tinx",
@@ -3828,6 +3828,66 @@
                 "dump"
             ],
             "time": "2019-06-17T17:37:00+00:00"
+        },
+        {
+            "name": "te-cho/compile-blades",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nickclasener/compile-blades.git",
+                "reference": "7559593cd1d38769cd41fabf5d8596113e4aa1fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nickclasener/compile-blades/zipball/7559593cd1d38769cd41fabf5d8596113e4aa1fc",
+                "reference": "7559593cd1d38769cd41fabf5d8596113e4aa1fc",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*",
+                "illuminate/contracts": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|5.9.*",
+                "illuminate/support": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*",
+                "illuminate/view": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*",
+                "php": ">=5.5.9",
+                "symfony/process": "^2.6|^3.1.0|4.1.*|4.2.*|4.3.*|4.4.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*|^1.0",
+                "phpunit/phpunit": "~4.8|~5.0|~6.0|~7.0|~7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Techo\\CompileBlades\\": "./src/"
+                }
+            },
+            "autoload-dev": {
+                "classmap": [
+                    "tests/TestCase.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abidul Wahab Ramadan",
+                    "email": "abidul.rdmdn@gmail.com"
+                }
+            ],
+            "description": "A Laravel package for compiling blades nested in 1 file into 1 flattened file.",
+            "keywords": [
+                "blades",
+                "compile",
+                "flatten",
+                "laravel",
+                "performance",
+                "views"
+            ],
+            "support": {
+                "source": "https://github.com/nickclasener/compile-blades/tree/master"
+            },
+            "time": "2019-07-02T23:35:06+00:00"
         },
         {
             "name": "tightenco/ziggy",
@@ -10161,7 +10221,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "te-cho/compile-blades": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
