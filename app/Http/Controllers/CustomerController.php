@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Spatie\Image\Image;
 use function route;
 
 class CustomerController extends Controller
@@ -13,10 +12,6 @@ class CustomerController extends Controller
 	public function index ()
 	{
 		$customers = Customer::where([ 'user_id' => auth()->id() ])->get()->sortBy('naam', SORT_NATURAL | SORT_FLAG_CASE);
-		if ( ! asset('img/background-pattern.png') ) {
-			Image::load('img/symphony.png')->width(1024)->blur(30)->optimize()->save('img/background-pattern.png');
-		}
-		$image = true;
 
 		return view('klanten.index')->with([
 				'customers' => $customers,
@@ -73,6 +68,7 @@ class CustomerController extends Controller
 
 	public function show ( Customer $customer )
 	{
+
 		return view('klanten._show_small')->with([
 				'customer' => $customer,
 		]);

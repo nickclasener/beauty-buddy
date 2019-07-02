@@ -3,8 +3,9 @@
 @include('layouts._head')
 
 <body class="bg-gray-200 font-sans text-base-font text-gray-700"
-      style="background-image: url('{{ asset('img/background-pattern.png') }}');"
+      style="background-image: url('{{ asset('img/symphony.png') }}');"
 >
+
 @include('layouts._navbar2')
 <div class="mx-4 my-4">
 	@yield('main')

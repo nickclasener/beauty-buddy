@@ -40,9 +40,9 @@ class LoginController extends Controller
 
 	public function showLoginForm ()
 	{
-		if ( ! asset('img/login5.jpg') ) {
-			Image::load('img/login.jpg')->width(1024)->blur(30)->optimize()->save('img/login5.jpg');
-		}
+				if ( ! asset('img/login5.jpg') ) {
+		Image::load('img/login.jpg')->width(1024)->blur(30)->optimize()->save('img/login5.jpg');
+				}
 		$image = true;
 
 		return view('auth.login')->with([ 'image' => $image ]);

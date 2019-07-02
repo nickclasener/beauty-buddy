@@ -1,5 +1,5 @@
 <nav class="bg-teal-500 relative sticky top-0 z-20 ">
-	<div class="flex items-center lg:items-stretch justify-between flex-wrap lg:h-16 py-2 lg:py-0 mx-4"
+	<div class="flex items-center lg:items-stretch justify-between flex-wrap lg:h-16 py-2 lg:py-0 px-4 lg:px-4"
 	     data-controller="dropdown toggle"
 	>
 		<div class="flex items-center justify-between flex-row w-full lg:w-auto lg:flex-grow">
@@ -14,13 +14,13 @@
 				</svg>
 				<span class="font-semibold text-xl tracking-tight hidden lg:block">Tailwind CSS</span>
 			</div>
-			<div class="flex flex-grow text-black pr-3 lg:w-auto">
+			<div class="flex flex-grow text-black pr-4 lg:w-auto">
 				<div class="w-full"
 				     data-controller="autocomplete"
 				     data-autocomplete-url="{{ route('customer.search',false) }}"
 				>
-					<div class="relative w-full ">
-						<input class="h-8 lg:h-auto transition bg-white shadow focus:shadow-inner focus:outline-none border border-gray-200 placeholder-gray-700 rounded py-1 lg:py-2 pr-4 pl-10 block w-full appearance-none leading-normal"
+					<div class="relative w-full">
+						<input class="h-8 lg:h-auto transition bg-white border main-search focus:border-gray-600 focus:outline-none  placeholder-gray-700 rounded py-1 lg:py-2 pr-4 pl-10 block w-full appearance-none leading-normal"
 						       type="text"
 						       placeholder="Search the docs (Press &quot;/&quot; to focus)"
 						       data-action="focus->dropdown#hideAccountMenu focus->dropdown#hideResponsiveMenu"
@@ -58,15 +58,15 @@
 		     data-target="dropdown.responsiveMenu"
 		>
 			@auth
-				<div class="px-2 pt-2 pb-4 border-b border-gray-800 lg:flex lg:border-b-0 lg:py-0 lg:px-0">
+				<div class="px-2 pt-2 pb-4 border-b border-gray-800 lg:flex lg:border-b-0 lg:py-0 lg:px-0 gap gap-2">
 					<a href="{{ route('customer.index', false) }}"
-					   class="block px-3 font-semibold text-white hover:bg-gray-800 lg:text-sm lg:px-4 xl:text-gray-900 xl:hover:bg-gray-200 lg:flex lg:items-center"
-					>Klanten
+					   class="lg:flex lg:items-center block px-3 font-semibold lg:mt-0 lg:text-sm lg:px-4 {{ active_route_set_class('customer.index') }} lg:min-w-32 lg:justify-center"
+					>{{ svg_image('lineicons/network', 'py-1 h-8'. active_icon_route_set_class('customer.index')) }}
 					</a>
 					<a href="{{ route('customer.create', false) }}"
-					   class="lg:flex lg:items-center block px-3 font-semibold lg:mt-0 lg:text-sm lg:px-4 {{ active_route_set_class('klanten.create') }}"
+					   class="lg:flex lg:items-center block px-3 font-semibold lg:mt-0 lg:text-sm lg:px-4 {{ active_route_set_class('customer.create') }} lg:min-w-32 lg:justify-center"
 					>
-						{{ svg_image('lineicons/user-add', 'py-1 h-8'. active_icon_route_set_class('klanten.create')) }}
+						{{ svg_image('lineicons/user-add', 'py-1 h-8'. active_icon_route_set_class('customer.create')) }}
 					</a>
 				</div>
 			@endauth
@@ -74,7 +74,7 @@
 			     data-action="click->dropdown#toggleAccountMenu click@window->dropdown#hideAccountMenu"
 			>
 
-				<div class="relative px-4 py-4 lg:px-4 lg:py-0 lg:static lg:flex lg:items-stretch">
+				<div class="relative px-4 py-4 lg:px-0 lg:py-0 lg:static lg:flex lg:items-stretch gap gap-2">
 					@guest
 						<div class="{{ active_route_set_class() }} lg:flex lg:items-center block px-3 font-semibold lg:mt-0 lg:text-sm lg:px-6 "
 						>
@@ -82,7 +82,7 @@
 						</div>
 					@endguest
 					@auth
-						<div class="relative hidden lg:block lg:flex ">
+						<div class="relative hidden lg:block lg:flex lg:min-w-32 justify-center  {{ active_route_set_class('customer.show') }} ">
 							<button type="button"
 							        class="focus:outline-none lg:flex lg:items-center"
 							>

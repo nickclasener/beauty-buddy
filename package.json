@@ -27,6 +27,8 @@
     "tailwindcss-filters": "^2.0.0",
     "tailwindcss-transforms": "^2.1.0",
     "tailwindcss-transitions": "^2.0.1",
+    "tailwindcss-gap": "^3.0.0",
+    "tailwindcss-interaction-variants": "^2.0.0",
     "webpack-livereload-plugin": "^1.2.0"
   },
   "dependencies": {

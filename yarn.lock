@@ -2377,9 +2377,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.164, electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.47:
-  version "1.3.181"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.181.tgz#1c538401af8f3eb285db893b66e43f4bea72fd83"
-  integrity sha512-xf1dCoc6FSCVcNQu8VGiMSH55rOT/ov6U7UpMgw4Erg5KfD1LHTXqm34/IGp55TLX4WqwuT4IIeJWhdGhO8mYw==
+  version "1.3.182"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.182.tgz#1711122c0c035f1568aea0d1b6b93c04b5f9fdf2"
+  integrity sha512-uqKh3J1/s4LkmtbrVi2cPpd5g2u7efYJdnRXApQLVhZlLjzaJZakafp+JFSUZNYrBDJNIqQChcJTCDZXqQOBYg==
 
 elliptic@^6.0.0:
   version "6.5.0"
@@ -5874,9 +5874,9 @@ pseudomap@^1.0.2:
   integrity sha1-8FKijacOYYkX7wqKw0wa5aaChrM=
 
 psl@^1.1.24:
-  version "1.1.33"
-  resolved "https://registry.yarnpkg.com/psl/-/psl-1.1.33.tgz#5533d9384ca7aab86425198e10e8053ebfeab661"
-  integrity sha512-LTDP2uSrsc7XCb5lO7A8BI1qYxRe/8EqlRvMeEl6rsnYAqDOl8xHR+8lSAIVfrNaSAlTPTNOCgNjWcoUL3AZsw==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/psl/-/psl-1.2.0.tgz#df12b5b1b3a30f51c329eacbdef98f3a6e136dc6"
+  integrity sha512-GEn74ZffufCmkDDLNcl3uuyF/aSD6exEyh1v/ZSdAomB82t6G9hzJVRx0jBmLDW+VfZqks3aScmMw9DszwUalA==
 
 public-encrypt@^4.0.0:
   version "4.0.3"
@@ -7171,6 +7171,20 @@ tailwindcss-filters@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/tailwindcss-filters/-/tailwindcss-filters-2.0.0.tgz#1a72c6c879fd95df403fb3e2d2eaf6b354ca7263"
   integrity sha512-D1uXaYamiQAJxAlZOH48rpIGZapC1+kDGvbpGuUlDNce2XkiIHNo1VFytpG+ioqLKsP5wDD0xVK9qZboxos9RA==
+  dependencies:
+    lodash "^4.17.11"
+
+tailwindcss-gap@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-gap/-/tailwindcss-gap-3.0.0.tgz#38dd6beabb5d686b1b10531d99f9b42f2a8f9b3f"
+  integrity sha512-5hnQVvhsTQ/AA4gm4E4tp8m55qxZmprIAuLve5ky+2Z2prX6cROrzYwIBMOH9sFMngLEFqR/A3ZoaV9onbYuPQ==
+  dependencies:
+    lodash "^4.17.11"
+
+tailwindcss-interaction-variants@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-interaction-variants/-/tailwindcss-interaction-variants-2.0.0.tgz#3dc967fbc7cab6ac7d05c9fb75264a97111c9bdb"
+  integrity sha512-GoOojKktbtnzumT7Ip9zPbyKn5yZf3Ig0If1NWvCQGWJbphCLowdRFj/kM1FEVuN4Tc9V6hJRwxZ6o4ps+VYnQ==
   dependencies:
     lodash "^4.17.11"
 

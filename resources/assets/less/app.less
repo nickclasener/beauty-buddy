@@ -37,12 +37,27 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
+.form-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  &:hover {
+    box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.3), 0px 5px 5px -2px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.main-search {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  &:focus {
+    box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.3), 0px 5px 5px -2px rgba(0, 0, 0, 0.15);
+  }
+}
 
 @var1: #A0AEC0;
 @var2: #38b2ac;
 
 .switch {
-@apply h-4 w-7 relative inline-block;
+@apply h-4 w-8 relative inline-block;
 
   input {
   @apply opacity-0 w-0 h-0;
@@ -55,7 +70,7 @@
   transition: 500ms;
 
   &:before {
-  @apply h-3 w-3 left-2 bottom-2 bg-white absolute;
+  @apply h-3 w-3 left-0-5 bottom-0-5 bg-white absolute;
     content: "";
     -webkit-transition: 500ms;
     transition: 500ms;
@@ -63,13 +78,13 @@
   }
 }
 
+
 input:checked + .slider {
 @apply bg-teal-500;
-  //box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.3), 0px 5px 5px -2px rgba(0, 0, 0, 0.15);
 
   &:before {
-  @apply translate-x-3;
+  @apply translate-x-4;
   }
 }
 
@@ -78,7 +93,6 @@ input:focus + .slider {
   //@apply shadow;
   //box-shadow: 0 0 1px @var2;
 }
-
 
 .calender {
   fill: white;
