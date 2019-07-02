@@ -20,8 +20,8 @@ class DeletingTest extends TestCase
 	private $intake;
 	private $note;
 
-	public function setUp ()
-	{
+	public function setUp ():void
+{
 		parent::setUp();
 		$this->signIn();
 

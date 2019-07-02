@@ -14,8 +14,8 @@ class DailyAdviceTest extends TestCase
 
 	private $dailyAdvice;
 
-	public function setUp ()
-	{
+	public function setUp ():void
+{
 		parent::setUp();
 
 		create(Customer::class, [ 'id' => 1 ]);

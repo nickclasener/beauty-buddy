@@ -15,8 +15,8 @@ class HuidanalyseTest extends TestCase
 	private $customer;
 	private $huidanalyse;
 
-	public function setUp ()
-	{
+	public function setUp ():void
+{
 		parent::setUp();
 
 		$this->customer = create(Customer::class);

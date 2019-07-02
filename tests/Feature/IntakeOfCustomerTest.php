@@ -15,8 +15,8 @@ class IntakeOfCustomerTest extends TestCase
 	private $customer2;
 	private $intake;
 
-	public function setUp ()
-	{
+	public function setUp ():void
+{
 		parent::setUp();
 		$this->signIn();
 		$this->customer = create(Customer::class);

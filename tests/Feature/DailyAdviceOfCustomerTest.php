@@ -15,8 +15,8 @@ class DailyAdviceOfCustomerTest extends TestCase
 	private $customer2;
 	private $dailyAdvice;
 
-	public function setUp ()
-	{
+	public function setUp ():void
+{
 		parent::setUp();
 		$this->signIn();
 		$this->customer = create(Customer::class);

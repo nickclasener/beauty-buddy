@@ -15,8 +15,8 @@ class UnauthenticatedUserCantTest extends TestCase
 	private $intake;
 	private $note;
 
-	public function setUp ()
-	{
+	public function setUp ():void
+{
 		parent::setUp();
 		$this->customer = create(Customer::class);
 		$this->note = create(Note::class);
