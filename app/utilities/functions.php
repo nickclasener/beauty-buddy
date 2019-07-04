@@ -73,3 +73,21 @@ if ( ! function_exists('monthYearFormat') ) {
 		return $model->created_at->format('F, Y');
 	}
 }
+if ( ! function_exists('getModelKeys') ) {
+	function getModelKeys ( $model, $guarded = null )
+	{
+		if ( empty($guarded) ) {
+			$guarded = [
+					'id',
+					'user_id',
+					'customer_id',
+					'created_at',
+					'updated_at',
+					'intake_id',
+			];
+		}
+		$modelKeys = $model->getConnection()->getSchemaBuilder()->getColumnListing($model->getTable());
+
+		return array_diff($modelKeys, $guarded);
+	}
+}

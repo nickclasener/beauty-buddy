@@ -8,8 +8,10 @@
 	          class="resize-none w-full border-b border-dashed focus-within:border-buddy-lightest"
 	          rows="5"
 	          name="morning"
+	          data-controller="textarea"
+	          data-action="input->textarea#grow"
 	          placeholder="Dit is hoe u het product gebruikt in de ochtend"
-	          data-target="dailyadvices.morning"
+	          data-target="dailyadvices.morning textarea.textarea"
 			{{--required--}}
 	>{{ old('morning') }}</textarea>
 			<hr>

@@ -59,7 +59,6 @@ class CustomerController extends Controller
 
 			return redirect(route('note.index', [
 					$customer,
-					//					'model' => $customer->notes(),
 			]));
 		}
 
@@ -68,7 +67,6 @@ class CustomerController extends Controller
 
 	public function show ( Customer $customer )
 	{
-
 		return view('klanten._show_small')->with([
 				'customer' => $customer,
 		]);

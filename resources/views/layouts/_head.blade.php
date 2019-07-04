@@ -14,7 +14,7 @@
 	      content="_token"
 	/>
 	@routes
-	<!-- Scripts -->
+	{{--	<!-- Scripts -->--}}
 	<script src="{{ asset('js/app.js') }}"
 	        defer
 	></script>

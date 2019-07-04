@@ -1,10 +1,4 @@
 {
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/nickclasener/compile-blades"
-    }
-  ],
   "name": "laravel/laravel",
   "description": "The Laravel Framework.",
   "keywords": [
@@ -24,7 +18,6 @@
     "nothingworks/blade-svg": "^0.3.1",
     "predis/predis": "^1.1",
     "spatie/image": "^1.7",
-    "te-cho/compile-blades": "dev-master",
     "tightenco/ziggy": "^0.7.1"
   },
   "require-dev": {

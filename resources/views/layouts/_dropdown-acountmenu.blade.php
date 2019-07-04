@@ -1,8 +1,8 @@
-<div class="hidden"
+<div class="hidden "
      data-target="dropdown.accountMenu"
 >
 	<div class="absolute mt-12 z-40 right-0">
-		<div class="mt-3 bg-white xl:border  w-48 py-2 shadow-xl">
+		<div class="mt-3 bg-white xl:border  w-48 py-2 menu-shadow">
 			@guest
 				<a href="{{ route('login', false) }}"
 				   class="block hover:text-white text-gray-700 mt-0 px-4 py-2 hover:bg-teal-500 mx-2 rounded"

@@ -29,12 +29,12 @@
 		</div>
 	</div>
 	<div data-target="autocomplete2.results"
-	     class="shadow-md p-4  mt-4 border border-gray-200"
+	     class="shadow-md px-4 pb-4  mt-4  border border-gray-200"
 	     hidden
 	>
 	</div>
 </div>
-<hr class="py-2">
+<hr>
 {{--<div class="flex items-center flex-grow pt-4">--}}
 {{--	--}}{{--	@svg('lineicons/search', ['class'=>'fill-current inline-block h-8'])--}}
 {{--	{{ svg_image('lineicons/search', 'fill-current pointer-events-none text-gray-600 h-6') }}--}}

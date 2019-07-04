@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\DailyAdvice;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
 
 class DailyAdviceController extends Controller
 {
+	public function __construct ()
+	{
+		App::setLocale('dynamic-filler');
+	}
+
 	public function index ( Customer $customer )
 	{
 		$dailyAdvices = $customer
@@ -15,7 +21,6 @@ class DailyAdviceController extends Controller
 				->orderByDesc('created_at')
 				->get();
 
-		//				->paginate(15);
 		return view('klanten.dailyadvice.index')
 				->with([
 						'customer'     => $customer,

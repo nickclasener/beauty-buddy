@@ -1,5 +1,7 @@
 <?php
 
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
 use Faker\Generator as Faker;
 
 /*
@@ -12,12 +14,11 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-
-$factory->define(App\User::class, function ( Faker $faker ) {
+$factory->define(App\User::class, static function ( Faker $faker ) {
 	return [
-		'name'           => $faker->name,
-		'email'          => $faker->unique()->safeEmail,
-		'password'       => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-		'remember_token' => str_random(10),
+			'name'           => $faker->name,
+			'email'          => $faker->unique()->safeEmail,
+			'password'       => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',
+			'remember_token' => str_random(10),
 	];
 });

@@ -1,11 +1,9 @@
 @extends('layouts.auth')
 
 @section('main')
-
 	<div class="flex items-center justify-center flex-wrap h-screen fixed top-0 w-full">
 		<div class="flex items-center justify-center bg-white p-4 sm:p-8 md:p-12 lg:p-16 flex-col shadow-2xl border border-gray-200 fixed">
 			<div class="mb-4">{{ __('auth.Login') }}</div>
-
 			<form method="POST"
 			      action="{{ route('login', false) }}"
 			>@csrf
@@ -24,19 +22,17 @@
 							{{ svg_image('lineicons/user', 'fill-current pointer-events-none text-gray-600 h-6') }}
 						</div>
 					</div>
-
 					@if ($errors->has('email'))
 						<span class="invalid-feedback"
 						      role="alert"
 						><strong>{{ $errors->first('email') }}</strong></span>
 					@endif
 				</div>
-
 				<div class="mb-6 text-center">
 					<div class="relative w-full mb-1">
-						<input class="h-8 lg:h-auto transition bg-white shadow-md focus:border-gray-500 focus:shadow-inner focus:outline-none border border-gray-200 placeholder-gray-700 rounded py-1 lg:py-2 pr-4 pl-10 block w-full appearance-none leading-normal"
-						       id="password"
+						<input id="password"
 						       type="password"
+						       class="h-8 lg:h-auto transition bg-white shadow-md focus:border-gray-500 focus:shadow-inner focus:outline-none border border-gray-200 placeholder-gray-700 rounded py-1 lg:py-2 pr-4 pl-10 block w-full appearance-none leading-normal"
 						       name="password"
 						       placeholder="Password"
 						       required
@@ -59,7 +55,6 @@
 							       id="remember" {{ old('remember') ? 'checked' : '' }}>
 							<span class="slider"></span>
 						</label>
-
 						<label for="remember"
 						       class="ml-2"
 						>{{ __('Remember Me') }}

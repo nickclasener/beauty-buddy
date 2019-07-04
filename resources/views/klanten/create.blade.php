@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('main')
 	<div class="container mx-auto flex">
-		<div class="bg-white mx-auto w-1/2 my-15 py-10 h-full">
+		<div class="bg-white mx-auto w-1/2 my-12 py-12 h-full shadow-2xl">
 			<form action="{{ route('customer.store', false) }}"
 {{--			      method="POST"--}}
 								      data-controller="customer"
@@ -9,7 +9,7 @@
 										  data-action="customer#create"
 
 			>@method('POST')@csrf
-				<div class="px-15">
+				<div class="px-16">
 					<h2 class="font-hairline text-buddy-teal mb-5">Contactinformatie</h2>
 					<label for="naam"
 					       class="font-hairline"

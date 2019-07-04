@@ -1,26 +1,22 @@
 @extends('layouts.app')
-
 @section('content')
-
 	<div class="flex flex-col items-center mb-5">
 		<a class="self-end bg-buddy-teal-light rounded-full w-15 h-15 flex justify-center mr-9 "
 		   href="{{ route('customer.edit', $customer, false) }}"
-		>@svg('icon-136-document-edit',['class'=>'ml-2 fill-current text-white self-center'])</a>
+		>@svg('icon-136-document-edit',['class'=>'ml-2 fill-current text-white self-center'])
+		</a>
 		<div class="h-50 w-50 mb-5">
 			<img src="{{ asset('img/logan-browning.jpg') }}"
 			     class="rounded-full w-50 h-50 object-cover object-center overflow-hidden"
 			     alt="name"
 			>
 		</div>
-
-
 		<h2 class="font-light">{{ $customer->naam }}</h2>
 		<h2 class="font-hairline">{{ $customer->geboortedatum }}</h2>
 	</div>
 	<hr class="border-b border-dashed mb-5 mx-10">
 	<div class="px-15">
 		<h2 class="font-hairline text-buddy-teal  mb-5">Contactinformatie</h2>
-
 		<label for="email"
 		       class="font-hairline"
 		>Email</label>
@@ -39,7 +35,6 @@
 			>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
 			</button>
 		</div>
-
 		<label for="mobiel"
 		       class="font-hairline"
 		>Mobiel</label>
@@ -58,7 +53,6 @@
 			>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
 			</button>
 		</div>
-
 		<label for="telefoon"
 		       class="font-hairline"
 		>Telefoon</label>
@@ -74,15 +68,13 @@
 			>
 			<button class="h-5 w-5"
 			        data-action="clipboard#copy"
-			>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
+			>@svg('icon-33-clipboard-add',['class'=>'-mt-2'])
 			</button>
 		</div>
 	</div>
-
 	<hr class="border-b border-dashed mb-5 mx-10">
 	<div class="mx-15">
 		<h2 class="font-hairline text-buddy-teal  mb-5">Adresinformatie</h2>
-
 		<label for="straatnaam + huisnummer"
 		       class="font-hairline"
 		>Straatnaam + Huisnummer</label>
@@ -101,7 +93,6 @@
 			>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
 			</button>
 		</div>
-
 		<label for="plaats"
 		       class="font-hairline"
 		>Plaats</label>
@@ -120,7 +111,6 @@
 			>@svg('icon-33-clipboard-add',['class'=>' -mt-2'])
 			</button>
 		</div>
-
 		<label for="postcode"
 		       class="font-hairline"
 		>Postcode</label>

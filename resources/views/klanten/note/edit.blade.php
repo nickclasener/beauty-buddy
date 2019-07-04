@@ -3,14 +3,14 @@
       data-action="{{ $stimulusJs }}#edit toggle#toggle"
       class="w-full"
 >@method('PATCH') @csrf
-	<div class="border-b border-dashed focus-within:border-buddy-lightest pl-10 pr-10">
+	<div class="border-b border-dashed focus-within:border-teal-300 ">
 	<textarea type="text"
-	          class="overflow-visible resize-none block w-full"
-	          rows="5"
+	          class="resize-none  shadow border border-gray-200 p-4 focus:shadow-inner focus:outline-none overflow-hidden w-full"
 	          name="body"
 	          placeholder="Hoe is de behandeling gegaan?
 Zijn er veder noemenswaardigheden"
-	          data-target="{{ $stimulusJs }}.body"
+	          data-target="{{ $stimulusJs }}s.body textarea.textarea"
+	          data-action="click->textarea#grow input->textarea#grow"
 	          required
 	>{{ old('body') ?: $model->body }}</textarea>
 		<hr>

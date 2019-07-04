@@ -4,6 +4,7 @@
 
 <body class="bg-gray-200 font-sans text-base-font text-gray-700"
       style="background-image: url('{{ asset('img/symphony.png') }}');"
+      data-controller="toggle"
 >
 
 @include('layouts._navbar2')

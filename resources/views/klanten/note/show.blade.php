@@ -1,11 +1,11 @@
 <div id="{{ $model->id }}"
-     data-controller="{{ $stimulusJs }} toggle"
+     data-controller="{{ $stimulusJs }} textarea"
      data-target="{{ $stimulusJs }}s.{{ $stimulusJs }} {{ $stimulusJs }}.{{ $stimulusJs }}"
      data-{{ $stimulusJs }}-update="{{ route($stimulusJs.'.update', $model, false) }}"
      data-{{ $stimulusJs }}-destroy="{{ route($stimulusJs.'.destroy', $model, false) }}"
-     @if ( isset($modelCreated) && $model->id === $modelCreated)
+     @isset( $modelCreated )
      data-{{ $stimulusJs }}-created="{{ true }}"
-     @endif
+     @endisset
      @isset($searched)
      role="option"
      data-autocomplete2-value="{{ $model->id }}"
@@ -13,13 +13,17 @@
      data-autocomplete2-goto="{{ $model->id }}"
 		@endisset
 >
+	@foreach( getModelKeys($model) as $field)
+		{{ $field }}
+	@endforeach
 	<div class="w-full flex-shrink flex pt-4 pl-4">
 		<div class="mt-1.5 w-2.5 h-2.5 border border-teal-400 rounded-full flex-shrink-0"></div>
 		<p class="ml-4 font-thin w-16 align-baseline flex-no-shrink">{{ dayMonth($model) }}</p>
 		<div class="ml-4 w-full"
-		     data-action="click->toggle#toggle"
+		     data-action="click->toggle#toggle click->textarea#initiate "
 		     data-target="toggle.show"
-		>@isset( $model->highlight->body[0] )
+		>
+			@isset( $model->highlight->body[0] )
 				<div class="pb-2 border-b">
 					<span>{!! $model->highlight->body[0] !!}</span>
 				</div>
@@ -36,12 +40,16 @@
 		</div>
 		<div class="hidden w-full"
 		     data-target="toggle.hide"
+		     data-action="click@window->toggle#hidden"
 		>@include('klanten.note.edit',[$model])
 		</div>
-		<a href="#"
-		   class="h-8"
-		   data-action="{{ $stimulusJs }}#delete monthyear#remove {{ $stimulusJs }}#remove"
-		>{{ svg_image('lineicons/trash', 'fill-current text-red-300 hover:text-red-600 h-8 float-right') }}
-		</a>
+		@isset( $unsetDelete)
+		@else
+			<a href="#"
+			   class="h-8"
+			   data-action="{{ $stimulusJs }}#delete monthyear#remove {{ $stimulusJs }}#remove"
+			>{{ svg_image('lineicons/trash', 'fill-current text-red-300 hover:text-red-600 h-8 float-right') }}
+			</a>
+		@endisset
 	</div>
 </div>

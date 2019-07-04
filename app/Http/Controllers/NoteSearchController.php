@@ -26,9 +26,10 @@ class NoteSearchController extends Controller
 
 		return view('klanten.note._list')
 				->with([
-						'models'    => $notes,
-						'searched' => true,
-						'stimulusJs' => 'note',
+						'models'      => $notes,
+						'searched'    => true,
+						'stimulusJs'  => 'note',
+						'unsetDelete' => false,
 				]);
 	}
 }

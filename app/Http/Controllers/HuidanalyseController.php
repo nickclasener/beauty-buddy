@@ -75,15 +75,7 @@ class HuidanalyseController extends Controller
 				'customer'   => $customer,
 				'stimulusJs' => 'huidanalyse',
 		]));
-		//			return view('klanten.huidanalyses._list')->with([
-		//					'customer' => $customer,
-		//					//								'customer' => $customer,
-		//					'created'  => $huidanalyse->id,
-		//			]);
 
-		//		return redirect(route('huidanalyse.index', [
-		//				'customer' => $customer,
-		//		]));
 	}
 
 	public function show ( Customer $customer, $id )

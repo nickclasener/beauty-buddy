@@ -17,7 +17,6 @@ const context = require.context("./controllers", true, /\.js$/);
 application.load(definitionsFromContext(context));
 
 Turbolinks.start();
-
 window.Toast = Swal.mixin({
     toast: true,
     position: 'bottom-end',
