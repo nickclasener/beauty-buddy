@@ -1,28 +1,30 @@
-<form action="{{ route($stimulusJs.'.update', $model, false) }}"
+<form {{--		action="{{ route($stimulusJs.'.update', $model, false) }}"--}}
       method="POST"
       data-action="{{ $stimulusJs }}#edit toggle#toggle"
       class="w-full"
 >@method('PATCH') @csrf
-	<div class="border-b border-dashed focus-within:border-teal-300 ">
+	<div class="group relative w-full shadow  border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none">
 	<textarea type="text"
-	          class="resize-none  shadow border border-gray-200 p-4 focus:shadow-inner focus:outline-none overflow-hidden w-full"
+	          class="w-full p-4 overflow-hidden outline-none resize-none bg-transparent  border-b border-dashed"
 	          name="body"
 	          placeholder="Hoe is de behandeling gegaan?
 Zijn er veder noemenswaardigheden"
-	          data-target="{{ $stimulusJs }}s.body textarea.textarea"
+	          data-target="{{ $stimulusJs }}.body textarea.textarea "
 	          data-action="click->textarea#grow input->textarea#grow"
 	          required
 	>{{ old('body') ?: $model->body }}</textarea>
-		<hr>
-		<div class="w-full flex mb-5">
-			<button type="submit"
-			        class="w-1/2 text-buddy-lightest hover:text-buddy-darker"
-			>Wijzig Notitie
-			</button>
-			<button data-action="{{ $stimulusJs }}#cancel toggle#toggle"
-			        class="w-1/2 rounded text-red-lighter hover:text-red-light"
-			>Cancel
+		<div class="flex justify-between">
+			<a href="#"
+			   class="cursor-pointer  py-2 px-8 bg-transparent text-red-200 hover:text-red-500"
+			   data-action="{{ $stimulusJs }}#delete monthyear#remove {{ $stimulusJs }}#remove"
+			>{{ svg_image('lineicons/trash', 'fill-current  h-6') }}
+			</a>
+			<button class="cursor-pointer py-2 px-8 bg-transparent text-teal-200 hover:text-teal-500"
+			        type="submit"
+			>
+				{{ svg_image('lineicons/save', 'fill-current  h-6') }}
 			</button>
 		</div>
 	</div>
 </form>
+

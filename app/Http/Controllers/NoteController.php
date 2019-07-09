@@ -5,22 +5,32 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Note;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Validator;
 
 class NoteController extends Controller
 {
 	public function index ( Customer $customer, Note $note )
 	{
-		$notes = Note::where([ 'customer_id' => $customer->id ])->orderByDesc('created_at')->get();
+		$notes = Note
+				::where([ 'customer_id' => $customer->id ])
+				->orderByDesc('created_at')
+				->simplePaginate(20);
+		//		LengthAwarePaginator::class
+		//Paginator::class
+		//		return route('note.index', $customer, false);
+		//
+		//						return $notes->nextPageUrl() ;
+		//				return $notes;
 
-		$view = view('klanten.note.index')->with([
+		return view('klanten.note.index')->with([
 				'customer'    => $customer,
 				'models'      => $notes,
 				'placeholder' => 'Zoek in Notities...',
 				'stimulusJs'  => 'note',
 		]);
 
-		return $view;
 	}
 
 	public function store ( Customer $customer )

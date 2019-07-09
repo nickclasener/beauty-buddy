@@ -31,7 +31,7 @@
 	<link href="{{ asset('css/app.css') }}"
 	      rel="stylesheet"
 	>
-	<meta name="turbolinks-cache-control"
-	      content="no-cache"
-	>
+{{--	<meta name="turbolinks-cache-control"--}}
+	{{--	      content="no-cache"--}}
+	{{--	>--}}
 </head>

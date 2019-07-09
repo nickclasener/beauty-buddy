@@ -24,7 +24,7 @@ class NoteSearchController extends Controller
 			return null;
 		}
 
-		return view('klanten.note._list')
+		return view('klanten.note._search-results')
 				->with([
 						'models'      => $notes,
 						'searched'    => true,

@@ -4,6 +4,7 @@ import {Controller} from 'stimulus';
 export default class extends Controller {
     static targets = ['goto'];
 
+
     goto(event) {
         event.preventDefault();
         const href = this.gotoTarget.getAttribute('href');

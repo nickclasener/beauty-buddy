@@ -1,5 +1,5 @@
 <div data-controller="monthyear"
-     class="pt-4"
+     class="pt-4 append-list"
      @isset( $monthyearCreated )
      data-monthyear-created="{{ true }}"
      @endisset

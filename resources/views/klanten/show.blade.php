@@ -1,8 +1,7 @@
 @extends('layouts.main')
 @section('main')
 
-	<div class="flex flex-col lg:flex-row"
-	     data-controller="toggle"
+	<div class="flex flex-col lg:flex-row "
 	>
 		<div class="bg-white w-full lg:w-1/3 lg:my-16 lg:pb-4 lg:pt-0 h-full hidden lg:block  shadow-lg"
 		     data-target="toggle.klantHide"
@@ -22,7 +21,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="lg:ml-4 w-full lg:w-2/3 mb-12 lg:block lg:-mt-16">
+		<div class="lg:ml-4 w-full lg:w-2/3 mb-12 lg:block lg:-mt-16 min-h-screen">
 			@include('layouts._submenu',['customer'=>$customer])
 			<div class="w-full bg-white mb-12  lg:block  lg:mt-4 shadow-lg pb-4"
 			     data-target="toggle.klantShow"
@@ -33,11 +32,4 @@
 			</div>
 		</div>
 	</div>
-	@if (count($errors))
-		@foreach ($errors->all() as $error)
-			<ul class="alert alert-danger">
-				<li>{{ $error }}</li>
-			</ul>
-		@endforeach
-	@endif
 @stop

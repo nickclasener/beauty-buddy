@@ -1,4 +1,3 @@
-
 <div class="flex flex-col items-center mb-4">
 	<div class="flex justify-between w-full">
 		<form action="{{ route('customer.destroy', $customer, false) }}"
@@ -29,8 +28,8 @@
 	<h2 class="font-hairline">{{ $customer->geboortedatum }}</h2>
 </div>
 <hr class="border-b border-dashed mb-4 lg:mx-4">
-<div class="mx-4 lg:mx-8">
-	<h2 class="font-hairline text-buddy-teal mb-4">Contactinformatie</h2>
+<div class="mx-4 lg:mx-8 customer">
+	<h2 class="font-hairline mb-4">Contactinformatie</h2>
 	<label for="email"
 	       class="font-hairline"
 	>Email</label>
@@ -81,8 +80,8 @@
 </div>
 
 <hr class="border-b border-dashed mb-4 lg:mx-4">
-<div class="mx-4 lg:mx-8">
-	<h2 class="font-hairline text-buddy-teal mb-8">Adresinformatie</h2>
+<div class="mx-4 lg:mx-8 customer">
+	<h2 class="font-hairline mb-8">Adresinformatie</h2>
 
 	<label for="straatnaam + huisnummer"
 	       class="font-hairline"

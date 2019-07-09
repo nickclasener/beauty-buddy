@@ -1,7 +1,7 @@
 import {Application_controller} from "./application_controller";
 
 export default class extends Application_controller {
-    static targets = ["monthyear"];
+    static targets = ["monthyear", "list"];
 
     initialize() {
         if (this.data.get("created") !== null) {
@@ -24,7 +24,6 @@ export default class extends Application_controller {
                 height: 0,
                 onCompleteScope: this.monthyear,
                 onComplete: function () {
-                    console.log(this);
                     this.remove();
                 }
             });

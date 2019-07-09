@@ -41,6 +41,7 @@
 			</div>
 			<div class="flex lg:hidden">
 				<div class=" text-teal-200 hover:text-white focus:outline-none focus:text-white cursor-pointer"
+				     data-controller="toggle"
 				     data-action="click->dropdown#toggleResponsiveMenu click@window->dropdown#hideResponsiveMenu click->toggle#toggle click@window->toggle#hidden"
 				>
 					<div data-target="toggle.show">

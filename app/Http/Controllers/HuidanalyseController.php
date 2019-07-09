@@ -11,15 +11,18 @@ class HuidanalyseController extends Controller
 {
 	public function index ( Customer $customer )
 	{
-				$huidanalyses = Huidanalyse::where([ 'customer_id' => $customer->id ])->orderByDesc('created_at')->get();
-				//				              ->orderByDesc('created_at')
-				//		                  ->paginate(15);
-				return view('klanten.note.index')->with([
-						'customer'    => $customer,
-						'models'      => $huidanalyses,
-						'placeholder' => 'Zoek in Huidanalyses...',
-						'stimulusJs'  => 'huidanalyse',
-				]);
+		$huidanalyses = Huidanalyse
+				::where([ 'customer_id' => $customer->id ])
+				->orderByDesc('created_at')
+				->simplePaginate(5);
+		//				              ->orderByDesc('created_at')
+		//		                  ->paginate(15);
+		return view('klanten.note.index')->with([
+				'customer'    => $customer,
+				'models'      => $huidanalyses,
+				'placeholder' => 'Zoek in Huidanalyses...',
+				'stimulusJs'  => 'huidanalyse',
+		]);
 	}
 
 	public function store ( Customer $customer )
