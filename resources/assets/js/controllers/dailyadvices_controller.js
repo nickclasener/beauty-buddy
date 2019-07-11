@@ -8,7 +8,7 @@ export default class extends Controller {
         event.preventDefault();
         axios.post(this.data.get('store'), this.form).then(response => {
             this.form = null;
-            console.log(response.headers);
+            console.log(response.data);
             if (response.headers[0] === 'dailyAdvice') {
                 this.dailyadvice = response.data;
             } else if (response.headers[0] === 'monthyear') {
@@ -53,10 +53,11 @@ export default class extends Controller {
     }
 
     get form() {
+        console.log(this.morningTarget.value === '' ? 'hi' : 'ho');
         return {
-            morning: this.morningTarget.value,
-            midday: this.middayTarget.value,
-            evening: this.eveningTarget.value,
+            morning: this.morningTarget.value === '' ? ' ' : this.morningTarget.value,
+            midday: this.middayTarget.value === '' ? ' ' : this.middayTarget.value,
+            evening: this.eveningTarget.value === '' ? ' ' : this.eveningTarget.value,
         };
     }
 

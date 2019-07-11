@@ -32,7 +32,7 @@ export default class extends Controller {
         }).catch(error => console.log(error));
     }
 
-    remove() {
+    removeNote() {
         TweenLite.to(this.note, 1, {
             delay: 0.5,
             autoAlpha: 0,
@@ -46,13 +46,45 @@ export default class extends Controller {
 
     delete(event) {
         event.preventDefault();
-        axios.delete(this.data.get("destroy"))
-            .catch(error => console.log(error));
+        // const options = Array.from(this.element.closest('[data-controller="monthyear"]'));
+        const monthyear = this.element.closest('[data-target="monthyear.monthyear"]');
+        let newEvent = document.createEvent('Event');
+        newEvent.initEvent('removeMonthyear', true, true);
+        //
+        // if (monthyear.children.length <= 2) {
+        //     monthyear.dispatchEvent(newEvent);
+        // }
+        // this.removeNote();
+        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+        // const index = options.indexOf(selected);
+        // console.log(monthyear..dispatchEvent('monthyear#remove'));
+        // axios.delete(this.data.get("destroy"))
+        //     .catch(error => console.log(error));
+        //
         Swal.fire({
+            title: 'Wilt u de klant permanent verwijderen?',
+            // text: "Deze handeling kan niet terug gedraaid worden",
             type: 'error',
-            title: 'Notitie is verwijderd',
-            showConfirmButton: false,
-            timer: 2000
+            showCancelButton: true,
+            confirmButtonText: 'Ja, verwijder klant',
+            cancelButtonText: 'Annuleer deze actie'
+        }).then(result => {
+            if (result.value) {
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'Your file has been deleted.',
+                    type: 'success',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    onClose: () => {
+
+                        if (monthyear.children.length <= 2) {
+                            monthyear.dispatchEvent(newEvent);
+                        }
+                        this.removeNote();
+                    }
+                });
+            }
         });
     }
 

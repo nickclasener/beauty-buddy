@@ -3,6 +3,7 @@
 namespace App;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use ScoutElastic\Searchable;
@@ -101,6 +102,7 @@ class Customer extends Model
 
 	public function monthYearNotes ()
 	{
+		//				return Note::hydrate(monthYear($this->notes));
 		return monthYearDesc($this->notes);
 	}
 
@@ -116,6 +118,7 @@ class Customer extends Model
 
 	public function monthYearHuidanalyses ()
 	{
+
 		return monthYearDesc($this->huidanalyses);
 	}
 

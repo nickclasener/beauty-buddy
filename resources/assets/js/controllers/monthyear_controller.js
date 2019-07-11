@@ -1,9 +1,10 @@
 import {Application_controller} from "./application_controller";
 
 export default class extends Application_controller {
-    static targets = ["monthyear", "list"];
+    static targets = ["monthyear"];
 
     initialize() {
+        this.removeMonthYear();
         if (this.data.get("created") !== null) {
             TweenLite.set(this.monthyear, {
                 height: "auto"
@@ -16,19 +17,18 @@ export default class extends Application_controller {
         }
     }
 
-    remove(event) {
-        if (this.monthyear.children.length <= 2) {
-            TweenLite.to(this.monthyear, 1, {
+    removeMonthYear() {
+        this.monthyear.addEventListener('removeMonthyear', function () {
+            TweenLite.to(this, 1, {
                 delay: 0.5,
                 opacity: 0,
                 height: 0,
-                onCompleteScope: this.monthyear,
+                onCompleteScope: this,
                 onComplete: function () {
                     this.remove();
                 }
             });
-            event.stopImmediatePropagation();
-        }
+        }, false);
     }
 
     get monthyear() {

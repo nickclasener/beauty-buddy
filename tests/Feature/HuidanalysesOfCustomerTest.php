@@ -15,8 +15,9 @@ class HuidanalysesOfCustomerTest extends TestCase
 	private $customer;
 	private $huidanalyse;
 
-	public function setUp ():void
-{
+	public function setUp ()
+	:void
+	{
 		parent::setUp();
 		$this->signIn();
 		$this->customer = create(Customer::class, [
@@ -87,7 +88,7 @@ class HuidanalysesOfCustomerTest extends TestCase
 	/** @test */
 	public function authenticated_can_delete_a_huidanalyse_from_a_customer ()
 	{
-		$this->delete(route('huidanalyse.destroy',$this->huidanalyse));
+		$this->delete(route('huidanalyse.destroy', $this->huidanalyse));
 
 		$this->assertDatabaseMissing('huidanalyses', [ 'id' => 1 ]);
 		$this->assertDatabaseHas('huidanalyses', [ 'id' => 2 ]);

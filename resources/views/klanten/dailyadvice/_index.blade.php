@@ -5,7 +5,7 @@
 	     data-dailyadvices-store="{{ route('dailyadvice.store', $customer, false) }}"
 	     data-dailyadvices-index="{{ route('dailyadvice.store', $customer, false) }}"
 	>
-		<div class="pb-10">
+		<div class="pb-4 pt-4">
 			@include('klanten.dailyadvice.create')
 			@include('layouts._search-bar-submenu',[
 			'route'=>'note',

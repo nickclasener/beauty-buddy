@@ -1,5 +1,7 @@
 <?php
 
+use mysql_xdevapi\Collection;
+
 if ( ! function_exists('dayMonth') ) {
 	function dayMonth ( $model )
 	{

@@ -1,4 +1,4 @@
-<form {{--		action="{{ route($stimulusJs.'.update', $model, false) }}"--}}
+<form action="{{ route($stimulusJs.'.update', $model, false) }}"
       method="POST"
       data-action="{{ $stimulusJs }}#edit toggle#toggle"
       class="w-full"
@@ -16,7 +16,8 @@ Zijn er veder noemenswaardigheden"
 		<div class="flex justify-between">
 			<a href="#"
 			   class="cursor-pointer  py-2 px-8 bg-transparent text-red-200 hover:text-red-500"
-			   data-action="{{ $stimulusJs }}#delete monthyear#remove {{ $stimulusJs }}#remove"
+			   {{--			   data-action="{{ $stimulusJs }}#delete monthyear#remove {{ $stimulusJs }}#remove"--}}
+			   data-action="toggle#toggle {{ $stimulusJs }}#delete "
 			>{{ svg_image('lineicons/trash', 'fill-current  h-6') }}
 			</a>
 			<button class="cursor-pointer py-2 px-8 bg-transparent text-teal-200 hover:text-teal-500"

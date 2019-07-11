@@ -46988,16 +46988,17 @@ var _class = function (_Controller) {
     }, {
         key: 'goto',
         value: function goto(event) {
-            var selected = event.target.closest('[role="option"]');
-            var goto = selected.getAttribute('data-autocomplete2-goto');
-            // console.log(goto);
-            this.removeResults();
-            // console.log(document.getElementById(goto));
-            document.getElementById(goto).scrollIntoView({ block: "center" });
-            document.getElementById(goto).classList.add('animated', 'bounceIn', 'goto');
-            setTimeout(function () {
-                document.getElementById(goto).classList.remove('animated', 'bounceIn', 'goto');
-            }, 2000);
+            // const selected = event.target.closest('[role="option"]');
+            // const goto = selected.getAttribute('data-autocomplete2-goto');
+            // // console.log(goto);
+            // this.removeResults();
+            // // console.log(document.getElementById(goto));
+            // document.getElementById(goto).scrollIntoView({block: "center"});
+            // document.getElementById(goto).classList.add('animated', 'bounceIn', 'goto');
+            // setTimeout(function () {
+            //     document.getElementById(goto).classList.remove('animated', 'bounceIn', 'goto');
+            // }, 2000);
+
         }
     }, {
         key: 'onResultsMouseDown',
@@ -47757,7 +47758,7 @@ var _class = function (_Controller) {
             event.preventDefault();
             axios.post(this.data.get('store'), this.form).then(function (response) {
                 _this2.form = null;
-                console.log(response.headers);
+                console.log(response.data);
                 if (response.headers[0] === 'dailyAdvice') {
                     _this2.dailyadvice = response.data;
                 } else if (response.headers[0] === 'monthyear') {
@@ -47806,10 +47807,11 @@ var _class = function (_Controller) {
     }, {
         key: "form",
         get: function get() {
+            console.log(this.morningTarget.value === '' ? 'hi' : 'ho');
             return {
-                morning: this.morningTarget.value,
-                midday: this.middayTarget.value,
-                evening: this.eveningTarget.value
+                morning: this.morningTarget.value === '' ? ' ' : this.morningTarget.value,
+                midday: this.middayTarget.value === '' ? ' ' : this.middayTarget.value,
+                evening: this.eveningTarget.value === '' ? ' ' : this.eveningTarget.value
             };
         },
         set: function set(text) {
@@ -49341,6 +49343,7 @@ var _class = function (_Application_controll) {
     _createClass(_class, [{
         key: "initialize",
         value: function initialize() {
+            this.removeMonthYear();
             if (this.data.get("created") !== null) {
                 TweenLite.set(this.monthyear, {
                     height: "auto"
@@ -49353,20 +49356,19 @@ var _class = function (_Application_controll) {
             }
         }
     }, {
-        key: "remove",
-        value: function remove(event) {
-            if (this.monthyear.children.length <= 2) {
-                TweenLite.to(this.monthyear, 1, {
+        key: "removeMonthYear",
+        value: function removeMonthYear() {
+            this.monthyear.addEventListener('removeMonthyear', function () {
+                TweenLite.to(this, 1, {
                     delay: 0.5,
                     opacity: 0,
                     height: 0,
-                    onCompleteScope: this.monthyear,
+                    onCompleteScope: this,
                     onComplete: function onComplete() {
                         this.remove();
                     }
                 });
-                event.stopImmediatePropagation();
-            }
+            }, false);
         }
     }, {
         key: "monthyear",
@@ -49381,7 +49383,7 @@ var _class = function (_Application_controll) {
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0__application_controller__["Application_controller"]);
 
-_class.targets = ["monthyear", "list"];
+_class.targets = ["monthyear"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
@@ -49443,8 +49445,8 @@ var _class = function (_Controller) {
             });
         }
     }, {
-        key: "remove",
-        value: function remove() {
+        key: "removeNote",
+        value: function removeNote() {
             TweenLite.to(this.note, 1, {
                 delay: 0.5,
                 autoAlpha: 0,
@@ -49458,15 +49460,48 @@ var _class = function (_Controller) {
     }, {
         key: "delete",
         value: function _delete(event) {
+            var _this3 = this;
+
             event.preventDefault();
-            axios.delete(this.data.get("destroy")).catch(function (error) {
-                return console.log(error);
-            });
+            // const options = Array.from(this.element.closest('[data-controller="monthyear"]'));
+            var monthyear = this.element.closest('[data-target="monthyear.monthyear"]');
+            var newEvent = document.createEvent('Event');
+            newEvent.initEvent('removeMonthyear', true, true);
+            //
+            // if (monthyear.children.length <= 2) {
+            //     monthyear.dispatchEvent(newEvent);
+            // }
+            // this.removeNote();
+            // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
+            // const index = options.indexOf(selected);
+            // console.log(monthyear..dispatchEvent('monthyear#remove'));
+            // axios.delete(this.data.get("destroy"))
+            //     .catch(error => console.log(error));
+            //
             Swal.fire({
+                title: 'Wilt u de klant permanent verwijderen?',
+                // text: "Deze handeling kan niet terug gedraaid worden",
                 type: 'error',
-                title: 'Notitie is verwijderd',
-                showConfirmButton: false,
-                timer: 2000
+                showCancelButton: true,
+                confirmButtonText: 'Ja, verwijder klant',
+                cancelButtonText: 'Annuleer deze actie'
+            }).then(function (result) {
+                if (result.value) {
+                    Swal.fire({
+                        title: 'Deleted!',
+                        text: 'Your file has been deleted.',
+                        type: 'success',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        onClose: function onClose() {
+
+                            if (monthyear.children.length <= 2) {
+                                monthyear.dispatchEvent(newEvent);
+                            }
+                            _this3.removeNote();
+                        }
+                    });
+                }
             });
         }
     }, {
@@ -49678,8 +49713,6 @@ var _class = function (_Controller) {
     }, {
         key: "active",
         value: function active(event) {
-            // this.activeTarget.classList.toggle("bg-teal-200");
-            // this.activeTarget.classList.toggle("bg-teal-500");
             this.activeiconTarget.classList.toggle("text-teal-500");
             this.activeiconTarget.classList.toggle("text-teal-200");
             event.stopImmediatePropagation();
@@ -49687,8 +49720,6 @@ var _class = function (_Controller) {
     }, {
         key: "inactive",
         value: function inactive() {
-            // this.activeTarget.classList.add("bg-teal-200");
-            // this.activeTarget.classList.remove("bg-teal-500");
             this.activeiconTarget.classList.add("text-teal-500");
             this.activeiconTarget.classList.remove("text-teal-200");
         }

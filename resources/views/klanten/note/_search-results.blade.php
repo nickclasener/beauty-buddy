@@ -1,6 +1,4 @@
-<div data-target="{{ $stimulusJs }}s.list"
->
-
+<div data-target="{{ $stimulusJs }}s.list">
 	<div data-controller="monthyear"
 	     data-target="{{ $stimulusJs }}s.monthyear monthyear.monthyear"
 	></div>

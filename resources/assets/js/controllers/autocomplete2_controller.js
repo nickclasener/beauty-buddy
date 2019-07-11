@@ -153,16 +153,16 @@ export default class extends Controller {
     }
 
     goto(event) {
-        const selected = event.target.closest('[role="option"]');
-        const goto = selected.getAttribute('data-autocomplete2-goto');
-        // console.log(goto);
-        this.removeResults();
-        // console.log(document.getElementById(goto));
-        document.getElementById(goto).scrollIntoView({block: "center"});
-        document.getElementById(goto).classList.add('animated', 'bounceIn', 'goto');
-        setTimeout(function () {
-            document.getElementById(goto).classList.remove('animated', 'bounceIn', 'goto');
-        }, 2000);
+        // const selected = event.target.closest('[role="option"]');
+        // const goto = selected.getAttribute('data-autocomplete2-goto');
+        // // console.log(goto);
+        // this.removeResults();
+        // // console.log(document.getElementById(goto));
+        // document.getElementById(goto).scrollIntoView({block: "center"});
+        // document.getElementById(goto).classList.add('animated', 'bounceIn', 'goto');
+        // setTimeout(function () {
+        //     document.getElementById(goto).classList.remove('animated', 'bounceIn', 'goto');
+        // }, 2000);
 
     }
 

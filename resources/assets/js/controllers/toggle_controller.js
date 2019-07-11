@@ -17,16 +17,12 @@ export default class extends Controller {
     }
 
     active(event) {
-        // this.activeTarget.classList.toggle("bg-teal-200");
-        // this.activeTarget.classList.toggle("bg-teal-500");
         this.activeiconTarget.classList.toggle("text-teal-500");
         this.activeiconTarget.classList.toggle("text-teal-200");
         event.stopImmediatePropagation();
     }
 
     inactive() {
-        // this.activeTarget.classList.add("bg-teal-200");
-        // this.activeTarget.classList.remove("bg-teal-500");
         this.activeiconTarget.classList.add("text-teal-500");
         this.activeiconTarget.classList.remove("text-teal-200");
     }

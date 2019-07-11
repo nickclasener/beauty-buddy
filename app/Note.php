@@ -42,15 +42,19 @@ class Note extends Model
 	protected $searchRules       = [
 			NoteRule::class,
 	];
+	protected $touches           = [
+			'customer',
+			'creator',
+	];
 	protected $with              = [ 'creator' ];
+
+	public function customer ()
+	{
+		return $this->belongsTo(Customer::class, 'customer_id');
+	}
 
 	public function creator ()
 	{
 		return $this->belongsTo(User::class, 'user_id');
-	}
-
-	public function customer ()
-	{
-		return $this->belongsTo(Customer::class);
 	}
 }
