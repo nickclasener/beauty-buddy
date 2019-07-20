@@ -20,7 +20,7 @@ class NoteController extends Controller
 				->orderByDesc('created_at')
 				->simplePaginate(20);
 
-		return view('klanten.note.index')->with([
+		return view('klanten.noteAndHuidanalyse.index')->with([
 				'customer'    => $customer,
 				'models'      => $notes,
 				'placeholder' => 'Zoek in Notities...',
@@ -53,7 +53,7 @@ class NoteController extends Controller
 
 			if ( count($notes) === 1 ) {
 				return response(
-						$content = view('klanten.note._monthyear')->with([
+						$content = view('klanten.noteAndHuidanalyse._monthyear')->with([
 								'customer'         => $customer,
 								'models'           => $notes,
 								'monthYear'        => monthYearFormat($note),
@@ -64,7 +64,7 @@ class NoteController extends Controller
 			}
 
 			return response(
-					$content = view('klanten.note.show')->with([
+					$content = view('klanten.noteAndHuidanalyse.show')->with([
 							'customer'     => $customer,
 							'model'        => $note,
 							'modelCreated' => $note->id,
@@ -72,7 +72,7 @@ class NoteController extends Controller
 					]), 200, [ 'note' ]);
 		}
 
-		return redirect(route('note.index', [
+		return redirect(route('noteAndHuidanalyse.index', [
 				'customer'   => $customer,
 				'stimulusJs' => 'note',
 		]));
@@ -82,7 +82,7 @@ class NoteController extends Controller
 	{
 		$note = Note::findOrFail($id);
 
-		return view('klanten.note.show')->with([
+		return view('klanten.noteAndHuidanalyse.show')->with([
 				'customer'   => $customer,
 				'model'      => $note,
 				'stimulusJs' => 'note',
@@ -93,7 +93,7 @@ class NoteController extends Controller
 	{
 		$note = Note::findOrFail($id);
 
-		return view('klanten.note.edit')->with([
+		return view('klanten.noteAndHuidanalyse.edit')->with([
 				'customer'   => $customer,
 				'model'      => $note,
 				'stimulusJs' => 'note',
@@ -115,7 +115,7 @@ class NoteController extends Controller
 		if ( request()->ajax() ) {
 			$note->update(request()->all());
 
-			return view('klanten.note.show')->with([
+			return view('klanten.noteAndHuidanalyse.show')->with([
 					'customer'   => $note->customer,
 					'model'      => $note,
 					'stimulusJs' => 'note',
@@ -123,7 +123,7 @@ class NoteController extends Controller
 		}
 		$note->update(request()->all());
 
-		return redirect(route('note.index', [
+		return redirect(route('noteAndHuidanalyse.index', [
 				'customer'   => $note->customer,
 				'stimulusJs' => 'note',
 		]));

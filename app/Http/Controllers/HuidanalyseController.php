@@ -17,7 +17,7 @@ class HuidanalyseController extends Controller
 				->simplePaginate(5);
 		//				              ->orderByDesc('created_at')
 		//		                  ->paginate(15);
-		return view('klanten.note.index')->with([
+		return view('klanten.noteAndHuidanalyse.index')->with([
 				'customer'    => $customer,
 				'models'      => $huidanalyses,
 				'placeholder' => 'Zoek in Huidanalyses...',
@@ -51,7 +51,7 @@ class HuidanalyseController extends Controller
 
 			if ( count($huidanalyses) === 1 ) {
 				return response(
-						$content = view('klanten.note._monthyear')->with([
+						$content = view('klanten.noteAndHuidanalyse._monthyear')->with([
 								'customer'         => $customer,
 								'models'           => $huidanalyses,
 								'monthYear'        => monthYearFormat($huidanalyse),
@@ -64,7 +64,7 @@ class HuidanalyseController extends Controller
 			}
 
 			return response(
-					$content = view('klanten.note.show')->with([
+					$content = view('klanten.noteAndHuidanalyse.show')->with([
 							'customer'     => $customer,
 							'model'        => $huidanalyse,
 							'modelCreated' => $huidanalyse->id,
@@ -85,7 +85,7 @@ class HuidanalyseController extends Controller
 	{
 		$huidanalyse = Huidanalyse::findOrFail($id);
 
-		return view('klanten.note.show')->with([
+		return view('klanten.noteAndHuidanalyse.show')->with([
 				'customer'   => $customer,
 				'model'      => $huidanalyse,
 				'stimulusJs' => 'huidanalyse',
@@ -96,7 +96,7 @@ class HuidanalyseController extends Controller
 	{
 		$huidanalyse = Huidanalyse::findOrFail($id);
 
-		return view('klanten.note.edit')->with([
+		return view('klanten.noteAndHuidanalyse.edit')->with([
 				'customer'   => $customer,
 				'model'      => $huidanalyse,
 				'stimulusJs' => 'huidanalyse',
@@ -118,7 +118,7 @@ class HuidanalyseController extends Controller
 		if ( request()->ajax() ) {
 			$huidanalyse->update(request()->all());
 
-			return view('klanten.note.show')->with([
+			return view('klanten.noteAndHuidanalyse.show')->with([
 					'customer'    => $huidanalyse->customer,
 					'huidanalyse' => $huidanalyse,
 					'stimulusJs'  => 'huidanalyse',

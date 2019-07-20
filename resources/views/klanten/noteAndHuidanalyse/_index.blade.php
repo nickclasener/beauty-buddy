@@ -6,9 +6,9 @@
 	     data-{{ $stimulusJs }}s-index="{{ route($stimulusJs.'.index', $customer, false) }}"
 	>
 		<div class="pb-4 pt-4">
-			@include('klanten.note.create')
+			@include('klanten.noteAndHuidanalyse.create')
 			@include('layouts._search-bar-submenu')
-			@include('klanten.note._list')
+			@include('klanten.noteAndHuidanalyse._list')
 		</div>
 	</div>
 </div>

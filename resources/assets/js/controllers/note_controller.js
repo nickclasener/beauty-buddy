@@ -77,7 +77,8 @@ export default class extends Controller {
                     showConfirmButton: false,
                     timer: 2000,
                     onClose: () => {
-
+                        axios.delete(this.data.get("destroy"))
+                            .catch(error => console.log(error));
                         if (monthyear.children.length <= 2) {
                             monthyear.dispatchEvent(newEvent);
                         }

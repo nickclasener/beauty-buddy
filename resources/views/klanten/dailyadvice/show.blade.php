@@ -76,6 +76,4 @@
 		   data-action="dailyadvice#delete monthyear#remove dailyadvice#remove"
 		>{{ svg_image('lineicons/trash', 'fill-current text-red-300 hover:text-red-600 h-8 float-right') }}</a>
 	</div>
-
-
 </div>

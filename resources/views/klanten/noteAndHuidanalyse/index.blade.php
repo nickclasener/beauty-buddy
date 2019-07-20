@@ -1,4 +1,4 @@
 @extends('klanten.show')
 @section('content')
-	@include('klanten.note._index')
+	@include('klanten.noteAndHuidanalyse._index')
 @stop

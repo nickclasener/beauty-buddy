@@ -46910,10 +46910,6 @@ var _class = function (_Controller) {
                         var _item2 = this.sibling(true);
                         if (_item2) this.select(_item2);
                         event.preventDefault();
-                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                        // if (selected) {
-                        //     this.commit(selected);
-                        // }
                     }
                     break;
                 case 'Shift':
@@ -46921,10 +46917,6 @@ var _class = function (_Controller) {
                         var _item3 = this.sibling(false);
                         if (_item3) this.select(_item3);
                         event.preventDefault();
-                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                        // if (selected) {
-                        //     this.commit(selected);
-                        // }
                     }
                     break;
                 case 'Enter':
@@ -47261,10 +47253,6 @@ var _class = function (_Controller) {
                         var _item2 = this.sibling(true);
                         if (_item2) this.select(_item2);
                         event.preventDefault();
-                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                        // if (selected) {
-                        //     this.commit(selected);
-                        // }
                     }
                     break;
                 case 'Shift':
@@ -47272,10 +47260,6 @@ var _class = function (_Controller) {
                         var _item3 = this.sibling(false);
                         if (_item3) this.select(_item3);
                         event.preventDefault();
-                        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                        // if (selected) {
-                        //     this.commit(selected);
-                        // }
                     }
                     break;
                 case 'Enter':
@@ -48196,16 +48180,10 @@ var _class = function (_Application_controll) {
         key: "next",
         value: function next(event) {
             event.preventDefault();
-            // console.log(window.screenY);
-            // console.log(window.innerHeight / 2);
 
-            var infScroll = new __WEBPACK_IMPORTED_MODULE_1_infinite_scroll___default.a(this.element, {
-                path: ".pagination__next", append: ".append-list", history: "", historyTitle: true
+            new __WEBPACK_IMPORTED_MODULE_1_infinite_scroll___default.a(this.element, {
+                path: ".pagination__next", append: ".append-list", history: "", historyTitle: true, prefill: true
             });
-
-            // infScroll.loadNextPage();
-            // // this.element
-            // console.log(event);
         }
     }]);
 
@@ -49494,7 +49472,9 @@ var _class = function (_Controller) {
                         showConfirmButton: false,
                         timer: 2000,
                         onClose: function onClose() {
-
+                            axios.delete(_this3.data.get("destroy")).catch(function (error) {
+                                return console.log(error);
+                            });
                             if (monthyear.children.length <= 2) {
                                 monthyear.dispatchEvent(newEvent);
                             }
@@ -49570,7 +49550,9 @@ var _class = function (_Controller) {
             axios.post(this.data.get('store'), this.form).then(function (response) {
                 _this2.form = null;
                 if (response.headers[0] === 'note') {
+                    debugger;
                     _this2.note = response.data;
+                    debugger;
                 } else if (response.headers[0] === 'monthyear') {
                     _this2.monthyear = response.data;
                 }

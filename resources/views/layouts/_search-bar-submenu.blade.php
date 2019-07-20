@@ -34,7 +34,7 @@
 	>
 	</div>
 </div>
-<hr>
+<hr class="w-full pb-4 my-4 border-b border-dashed">
 {{--<div class="flex items-center flex-grow pt-4">--}}
 {{--	--}}{{--	@svg('lineicons/search', ['class'=>'fill-current inline-block h-8'])--}}
 {{--	{{ svg_image('lineicons/search', 'fill-current pointer-events-none text-gray-600 h-6') }}--}}

@@ -80,20 +80,12 @@ export default class extends Controller {
                 const item = this.sibling(true);
                 if (item) this.select(item);
                 event.preventDefault();
-                // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                // if (selected) {
-                //     this.commit(selected);
-                // }
             }
                 break;
             case 'Shift': {
                 const item = this.sibling(false);
                 if (item) this.select(item);
                 event.preventDefault();
-                // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-                // if (selected) {
-                //     this.commit(selected);
-                // }
             }
                 break;
             case 'Enter': {

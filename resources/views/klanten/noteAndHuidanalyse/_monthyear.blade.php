@@ -7,6 +7,6 @@
 >
 	<h2 class="font-hairline text-teal-500">{{ $monthYear }}</h2>
 	@foreach ($models as $model)
-		@include('klanten.note.show')
+		@include('klanten.noteAndHuidanalyse.show')
 	@endforeach
 </div>

@@ -1,5 +1,5 @@
 <div data-target="{{ $stimulusJs }}s.list"
-     class="list"
+     class="list px-4"
      data-controller="infinitescroll"
      data-action="scroll@window->infinitescroll#next"
 >
@@ -10,7 +10,6 @@
 		></a>
 	</p>
 	<div data-controller="monthyear"
-	     class="pt-4"
 	     @isset( $monthyearCreated )
 	     data-monthyear-created="{{ true }}"
 	     @endisset
@@ -18,12 +17,11 @@
 	>
 	</div>
 	@foreach ( monthYear($models) as $monthYear => $models )
-		@include('klanten.note._monthyear')
+		@include('klanten.noteAndHuidanalyse._monthyear')
 	@endforeach
 </div>
 {{--<!-- status elements -->--}}
-<div class="flex justify-center"
->
+<div class="flex justify-center">
 	<p>
 		...
 	</p>

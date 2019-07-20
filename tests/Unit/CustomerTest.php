@@ -73,7 +73,7 @@ class CustomerTest extends TestCase
 	//	function count_the_notes_a_customer_has ()
 	//	{
 	//		create(Note::class, [ 'customer_id' => $this->customer->id ], 5);
-	//		$this->assertEquals(count($this->customer->note), $this->customer->countNotes);
+	//		$this->assertEquals(count($this->customer->noteAndHuidanalyse), $this->customer->countNotes);
 	//	}
 
 	/** @test */
