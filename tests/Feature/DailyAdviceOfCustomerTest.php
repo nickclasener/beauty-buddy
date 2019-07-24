@@ -15,8 +15,9 @@ class DailyAdviceOfCustomerTest extends TestCase
 	private $customer2;
 	private $dailyAdvice;
 
-	public function setUp ():void
-{
+	public function setUp ()
+	:void
+	{
 		parent::setUp();
 		$this->signIn();
 		$this->customer = create(Customer::class);
@@ -114,8 +115,8 @@ class DailyAdviceOfCustomerTest extends TestCase
 
 		$response = $this->put(route('dailyadvice.update', $this->dailyAdvice), $dailyAdvice->toArray());
 		$this->get($response->headers->get('Location'))
-				//		     ->assertStatus(200)
-				 ->assertSee('Updated Ochtend')
+		     ->assertStatus(200)
+		     ->assertSee('Updated Ochtend')
 		     ->assertSee('Updated Middag')
 		     ->assertSee('Updated Avond');
 	}

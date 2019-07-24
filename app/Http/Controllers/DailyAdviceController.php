@@ -16,10 +16,10 @@ class DailyAdviceController extends Controller
 
 	public function index ( Customer $customer )
 	{
-		$dailyAdvices = $customer
-				->dailyAdvices()
+		$dailyAdvices = DailyAdvice
+				::where([ 'customer_id' => $customer->id ])
 				->orderByDesc('created_at')
-				->get();
+				->simplePaginate(5);
 
 		return view('klanten.dailyadvice.index')
 				->with([
@@ -30,22 +30,13 @@ class DailyAdviceController extends Controller
 
 	public function store ( Customer $customer )
 	{
-		//		required_without
 		$validator = Validator::make(request()->all(), [
-				'morning' => 'required_without:midday,evening',
-				'midday'  => 'required_without:morning,evening',
-				'evening' => 'required_without:morning,midday',
+				'morning' => 'required_without_all:midday,evening',
+				'midday'  => 'required_without_all:morning,evening',
+				'evening' => 'required_without_all:morning,midday',
 		]);
 
 		if ( $validator->fails() ) {
-			//			if ( request()->ajax() ) {
-			//				return response(
-			//						back()
-			//								->withErrors($validator)
-			//								->withInput()
-			//				);
-			//			}
-
 			return back()
 					->withErrors($validator)
 					->withInput();
@@ -56,7 +47,6 @@ class DailyAdviceController extends Controller
 				'midday'  => request('midday'),
 				'evening' => request('evening'),
 		]);
-
 		if ( request()->ajax() ) {
 			$dailyAdvices = $customer
 					->dailyAdvices()
@@ -64,7 +54,6 @@ class DailyAdviceController extends Controller
 					->whereYear('created_at', $dailyAdvice->created_at)
 					->whereMonth('created_at', $dailyAdvice->created_at)
 					->get();
-
 			if ( count($dailyAdvices) === 1 ) {
 				return response(
 						$content = view('klanten.dailyadvice._monthyear')->with([
@@ -79,6 +68,7 @@ class DailyAdviceController extends Controller
 					$content = view('klanten.dailyadvice.show')->with([
 							'customer'           => $customer,
 							'dailyAdvice'        => $dailyAdvice,
+							'monthYear'          => monthYearFormat($dailyAdvice),
 							'dailyAdviceCreated' => $dailyAdvice->id,
 					]), 200, [ 'dailyAdvice' ]);
 		}
@@ -98,8 +88,10 @@ class DailyAdviceController extends Controller
 		]);
 	}
 
-	public function edit ( Customer $customer, DailyAdvice $dailyAdvice )
+	public function edit ( Customer $customer, $id )
 	{
+		$dailyAdvice = DailyAdvice::findOrFail($id);
+
 		return view('klanten.dailyadvice.edit')->with([
 				'customer'    => $customer,
 				'dailyAdvice' => $dailyAdvice,

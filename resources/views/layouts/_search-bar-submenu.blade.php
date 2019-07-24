@@ -1,5 +1,5 @@
 {{-- FIXME: DELETE--}}
-{{--<form action="{{ route($route,$customer,false) }}">--}}
+{{--<form action="{{ route('note.search',$customer,false) }}">--}}
 {{--	@method('get')@csrf--}}
 {{--	<div class="form-group">--}}
 {{--		<input--}}

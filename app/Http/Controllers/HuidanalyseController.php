@@ -41,14 +41,12 @@ class HuidanalyseController extends Controller
 				'body'    => request('body'),
 		]);
 		if ( request()->ajax() ) {
-
 			$huidanalyses = $customer
 					->huidanalyses()
 					->where('user_id', $huidanalyse->user_id)
 					->whereYear('created_at', $huidanalyse->created_at)
 					->whereMonth('created_at', $huidanalyse->created_at)
 					->get();
-
 			if ( count($huidanalyses) === 1 ) {
 				return response(
 						$content = view('klanten.noteAndHuidanalyse._monthyear')->with([
@@ -57,9 +55,7 @@ class HuidanalyseController extends Controller
 								'monthYear'        => monthYearFormat($huidanalyse),
 								'monthyearCreated' => $huidanalyse->id,
 								'stimulusJs'       => 'huidanalyse',
-						]),
-						200,
-						[ 'monthyear' ]
+						]), 200, [ 'monthyear' ]
 				);
 			}
 

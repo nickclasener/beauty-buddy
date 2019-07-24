@@ -1,5 +1,4 @@
-<div id="{{ $model->id }}"
-     data-controller="{{ $stimulusJs }} toggle textarea"
+<div data-controller="{{ $stimulusJs }} toggle textarea"
      data-target="{{ $stimulusJs }}s.{{ $stimulusJs }} {{ $stimulusJs }}.{{ $stimulusJs }}"
      data-{{ $stimulusJs }}-update="{{ route($stimulusJs.'.update', $model, false) }}"
      data-{{ $stimulusJs }}-destroy="{{ route($stimulusJs.'.destroy', $model, false) }}"

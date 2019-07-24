@@ -12,7 +12,6 @@ class NoteSearchController extends Controller
 	public function index ( Customer $customer, Request $request )
 	{
 		$query = (string)request('q');
-
 		$notes = Note
 				::search($query)
 				->where('user_id', auth()->id())
@@ -20,11 +19,13 @@ class NoteSearchController extends Controller
 				->rule(NoteRule::class)
 				->from(0)->take(10)
 				->get();
+		//		dd($notes);
+
 		if ( count($notes) === 0 ) {
 			return null;
 		}
 
-		return view('klanten.note._search-results')
+		return view('klanten.noteAndHuidanalyse._search-results')
 				->with([
 						'models'      => $notes,
 						'searched'    => true,

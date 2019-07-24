@@ -27,11 +27,5 @@ Zijn er veder noemenswaardigheden"
 				</button>
 			</div>
 		</div>
-		{{-- </button>--}}
-		{{-- <button data-action="{{ $stimulusJs }}s#cancel toggle#toggle"--}}
-		{{-- class="w-1/4 text-red-200 hover:text-red-500 bg-red-500 hover:bg-red-200 shadow-md flex justify-center flex-shrink"--}}
-		{{-- >{{ svg_image('lineicons/close', 'h-8 fill-current') }}--}}
-		{{-- </button>--}}
-		{{-- </div>--}}
 	</div>
 </form>

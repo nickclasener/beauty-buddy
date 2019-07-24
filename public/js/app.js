@@ -49550,9 +49550,7 @@ var _class = function (_Controller) {
             axios.post(this.data.get('store'), this.form).then(function (response) {
                 _this2.form = null;
                 if (response.headers[0] === 'note') {
-                    debugger;
                     _this2.note = response.data;
-                    debugger;
                 } else if (response.headers[0] === 'monthyear') {
                     _this2.monthyear = response.data;
                 }
