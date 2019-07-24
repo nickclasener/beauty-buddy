@@ -69,7 +69,7 @@ class NoteController extends Controller
 					]), 200, [ 'note' ]);
 		}
 
-		return redirect(route('noteAndHuidanalyse.index', [
+		return redirect(route('note.index', [
 				'customer'   => $customer,
 				'stimulusJs' => 'note',
 		]));
@@ -102,15 +102,13 @@ class NoteController extends Controller
 		$validator = Validator::make(request()->all(), [
 				'body' => 'required',
 		]);
-
 		if ( $validator->fails() ) {
 			return back()
 					->withErrors($validator)
 					->withInput();
 		}
-
 		$note->update(request()->all());
-		if ( request()->json() ) {
+		if ( request()->ajax() ) {
 
 			return view('klanten.noteAndHuidanalyse.show')->with([
 					'customer'   => $note->customer,
@@ -119,9 +117,11 @@ class NoteController extends Controller
 			]);
 		}
 
-		return redirect(route('noteAndHuidanalyse.index', [
-				'customer'   => $note->customer,
-				'stimulusJs' => 'note',
+		//		return redirect(route('note.index', [
+
+		return redirect(route('note.index', [
+				'customer' => $note->customer,
+				//				'stimulusJs' => 'note',
 		]));
 	}
 

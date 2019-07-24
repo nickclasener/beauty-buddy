@@ -100,12 +100,12 @@ class NotesOfCustomerTest extends TestCase
 	{
 		$note = make(Note::class, [
 				'id'   => $this->note->id,
-				'body' => 'Cur historia congregabo?',
+				'body' => 'Updated Note',
 		]);
 		$response = $this->put(route('note.update', $this->note), $note->toArray());
 
 		$this->get($response->headers->get('Location'))
-		     ->assertSee('Cur historia congregabo?');
+		     ->assertSee('Updated Note');
 
 	}
 

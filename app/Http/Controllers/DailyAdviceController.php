@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\DailyAdvice;
-use Illuminate\Support\Facades\App;
+//use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
 
 class DailyAdviceController extends Controller
 {
-	public function __construct ()
-	{
-		App::setLocale('dynamic-filler');
-	}
+	//	public function __construct ()
+	//	{
+	//		App::setLocale('dynamic-filler');
+	//	}
 
 	public function index ( Customer $customer )
 	{
@@ -74,7 +74,8 @@ class DailyAdviceController extends Controller
 		}
 
 		return redirect(route('dailyadvice.index', [
-				'customer' => $customer,
+				'customer'  => $customer,
+				'monthYear' => monthYearFormat($dailyAdvice),
 		]));
 	}
 
@@ -84,6 +85,7 @@ class DailyAdviceController extends Controller
 
 		return view('klanten.dailyadvice.show')->with([
 				'customer'    => $customer,
+				'monthYear'   => monthYearFormat($dailyAdvice),
 				'dailyAdvice' => $dailyAdvice,
 		]);
 	}
@@ -94,6 +96,7 @@ class DailyAdviceController extends Controller
 
 		return view('klanten.dailyadvice.edit')->with([
 				'customer'    => $customer,
+				'monthYear'   => monthYearFormat($dailyAdvice),
 				'dailyAdvice' => $dailyAdvice,
 		]);
 	}
