@@ -4,17 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Note;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 
 class NoteController extends Controller
 {
 	public function index ( Customer $customer )
 	{
+		//		$notes = Note::where([ 'customer_id' => $customer->id ])->orderByDesc('created_at')->get();
 		$notes = Note
 				::where([ 'customer_id' => $customer->id ])
 				->orderByDesc('created_at')
@@ -112,8 +109,8 @@ class NoteController extends Controller
 					->withInput();
 		}
 
-		if ( request()->ajax() ) {
-			$note->update(request()->all());
+		$note->update(request()->all());
+		if ( request()->json() ) {
 
 			return view('klanten.noteAndHuidanalyse.show')->with([
 					'customer'   => $note->customer,
@@ -121,7 +118,6 @@ class NoteController extends Controller
 					'stimulusJs' => 'note',
 			]);
 		}
-		$note->update(request()->all());
 
 		return redirect(route('noteAndHuidanalyse.index', [
 				'customer'   => $note->customer,

@@ -15,8 +15,9 @@ class NotesOfCustomerTest extends TestCase
 	private $customer;
 	private $note;
 
-	public function setUp ():void
-{
+	public function setUp ()
+	:void
+	{
 		parent::setUp();
 		$this->signIn();
 		$this->customer = create(Customer::class, [
