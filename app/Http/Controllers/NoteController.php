@@ -11,7 +11,6 @@ class NoteController extends Controller
 {
 	public function index ( Customer $customer )
 	{
-		//		$notes = Note::where([ 'customer_id' => $customer->id ])->orderByDesc('created_at')->get();
 		$notes = Note
 				::where([ 'customer_id' => $customer->id ])
 				->orderByDesc('created_at')
@@ -117,11 +116,9 @@ class NoteController extends Controller
 			]);
 		}
 
-		//		return redirect(route('note.index', [
-
 		return redirect(route('note.index', [
-				'customer' => $note->customer,
-				//				'stimulusJs' => 'note',
+				'customer'   => $note->customer,
+				'stimulusJs' => 'note',
 		]));
 	}
 

@@ -1,6 +1,6 @@
-{{-- FIXME: DELETE--}}
-{{--<form action="{{ route('note.search',$customer,false) }}">--}}
-{{--	@method('get')@csrf--}}
+{{-- FIXME: If search breaks --}}
+{{--<form action="{{ route('dailyadvice.search',$customer,false) }}">--}}
+{{--	@method('get')@csrf --}}
 {{--	<div class="form-group">--}}
 {{--		<input--}}
 {{--				type="text"--}}

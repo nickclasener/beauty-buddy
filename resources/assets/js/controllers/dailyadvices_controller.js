@@ -53,11 +53,10 @@ export default class extends Controller {
     }
 
     get form() {
-        console.log(this.morningTarget.value === '' ? 'hi' : 'ho');
         return {
-            morning: this.morningTarget.value === '' ? ' ' : this.morningTarget.value,
-            midday: this.middayTarget.value === '' ? ' ' : this.middayTarget.value,
-            evening: this.eveningTarget.value === '' ? ' ' : this.eveningTarget.value,
+            morning: this.morningTarget.value,
+            midday: this.middayTarget.value,
+            evening: this.eveningTarget.value
         };
     }
 

@@ -7,7 +7,6 @@
 			Ochtend:
 		</h3>
 		<textarea type="text"
-		          {{--class="overflow-visible resize-none block w-full"--}}
 		          class="resize-none w-full border-b border-dashed focus-within:border-buddy-lightest"
 		          rows="5"
 		          name="morning"
@@ -42,15 +41,16 @@ Zijn er veder noemenswaardigheden"
 		          data-target="dailyadvice.evening"
 		          required
 		>{{ old('evening') ?: $dailyAdvice->evening }}</textarea>
-		<hr>
-		<div class="w-full flex mb-5">
-			<button type="submit"
-			        class="w-1/2  text-buddy-lightest hover:text-buddy-darker"
-			>Wijzig Notitie
-			</button>
-			<button data-action="dailyadvice#cancel toggle#toggle"
-			        class="w-1/2 rounded text-red-lighter hover:text-red-light"
-			>Cancel
+		<div class="flex justify-between">
+			<a href="#"
+			   class="cursor-pointer  py-2 px-8 bg-transparent text-red-200 hover:text-red-500"
+			   data-action="toggle#toggle dailyadvice#delete "
+			>{{ svg_image('lineicons/trash', 'fill-current  h-6') }}
+			</a>
+			<button class="cursor-pointer py-2 px-8 bg-transparent text-teal-200 hover:text-teal-500"
+			        type="submit"
+			>
+				{{ svg_image('lineicons/save', 'fill-current  h-6') }}
 			</button>
 		</div>
 	</div>

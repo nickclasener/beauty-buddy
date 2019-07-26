@@ -39,6 +39,5 @@
 		     data-action="click@window->toggle#hidden"
 		>@include('klanten.noteAndHuidanalyse.edit',[$model])
 		</div>
-
 	</div>
 </div>

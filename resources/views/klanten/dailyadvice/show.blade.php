@@ -19,22 +19,40 @@
 		   data-action="click->toggle#toggle click->textarea#grow click->textarea#focus"
 		   data-target="toggle.show"
 		>
-{{--			@isset( $dailyAdvice->highlight )--}}
-			{{--				@isset( $model->highlight->body[0] )--}}
-			{{--					<div class="pb-2 border-b">--}}
-			{{--						<span>{!! $model->highlight->body[0] !!}</span>--}}
-			{{--					</div>--}}
-			{{--				@endisset--}}
-			{{--				<p @isset( $model->highlight->body[0] )--}}
-			{{--				   class="pt-2"--}}
-			{{--						@endisset--}}
-			{{--				>{{ $model->body }}</p>--}}
-			{{--				<div class="flex justify-between">--}}
-			{{--					<small class="font-hairline">--}}
-			{{--						{{ timeAmPm($model) }}--}}
-			{{--					</small>--}}
-			{{--				</div>--}}
-			{{--			@endisset--}}
+			@isset( $dailyAdvice->highlight )
+				@isset( $dailyAdvice->highlight->morning[0] )
+					<div class="pb-2 border-b">
+						<span>{!! $dailyAdvice->highlight->morning[0] !!}</span>
+					</div>
+				@endisset
+				<p @isset( $dailyAdvice->highlight->morning[0] )
+				   class="pt-2"
+						@endisset
+				>{{ $dailyAdvice->morning }}</p>
+				@isset( $dailyAdvice->highlight->midday[0] )
+					<div class="pb-2 border-b">
+						<span>{!! $dailyAdvice->highlight->midday[0] !!}</span>
+					</div>
+				@endisset
+				<p @isset( $dailyAdvice->highlight->midday[0] )
+				   class="pt-2"
+						@endisset
+				>{{ $dailyAdvice->midday }}</p>
+				@isset( $dailyAdvice->highlight->evening[0] )
+					<div class="pb-2 border-b">
+						<span>{!! $dailyAdvice->highlight->evening[0] !!}</span>
+					</div>
+				@endisset
+				<p @isset( $dailyAdvice->highlight->evening[0] )
+				   class="pt-2"
+						@endisset
+				>{{ $dailyAdvice->evening }}</p>
+				<div class="flex justify-between">
+					<small class="font-hairline">
+						{{ timeAmPm($dailyAdvice) }}
+					</small>
+				</div>
+			@endisset
 			<div
 					@isset( $dailyAdvice->highlight)
 					class="pt-2.5"
@@ -62,10 +80,8 @@
 		</a>
 		<div class="hidden w-full"
 		     data-target="toggle.hide"
-		>@include('klanten.dailyadvice.edit', [ $dailyAdvice ])</div>
-		<a href=""
-		   class="h-8"
-		   data-action="dailyadvice#delete monthyear#remove dailyadvice#remove"
-		>{{ svg_image('lineicons/trash', 'fill-current text-red-300 hover:text-red-600 h-8 float-right') }}</a>
+		     data-action="click@window->toggle#hidden"
+		>@include('klanten.dailyadvice.edit', [ $dailyAdvice ])
+		</div>
 	</div>
 </div>

@@ -24,10 +24,11 @@ class DailyAdviceSearchController extends Controller
 			return null;
 		}
 
-		return view('klanten.dailyadvice._list')
+		return view('klanten.dailyadvice._search-results')
 				->with([
 						'dailyAdvices' => $dailyAdvices,
 						'searched'     => true,
+						'unsetDelete'  => false,
 				]);
 	}
 }

@@ -47791,11 +47791,10 @@ var _class = function (_Controller) {
     }, {
         key: "form",
         get: function get() {
-            console.log(this.morningTarget.value === '' ? 'hi' : 'ho');
             return {
-                morning: this.morningTarget.value === '' ? ' ' : this.morningTarget.value,
-                midday: this.middayTarget.value === '' ? ' ' : this.middayTarget.value,
-                evening: this.eveningTarget.value === '' ? ' ' : this.eveningTarget.value
+                morning: this.morningTarget.value,
+                midday: this.middayTarget.value,
+                evening: this.eveningTarget.value
             };
         },
         set: function set(text) {

@@ -68,7 +68,6 @@ class DailyAdviceController extends Controller
 					$content = view('klanten.dailyadvice.show')->with([
 							'customer'           => $customer,
 							'dailyAdvice'        => $dailyAdvice,
-							'monthYear'          => monthYearFormat($dailyAdvice),
 							'dailyAdviceCreated' => $dailyAdvice->id,
 					]), 200, [ 'dailyAdvice' ]);
 		}
@@ -85,7 +84,6 @@ class DailyAdviceController extends Controller
 
 		return view('klanten.dailyadvice.show')->with([
 				'customer'    => $customer,
-				'monthYear'   => monthYearFormat($dailyAdvice),
 				'dailyAdvice' => $dailyAdvice,
 		]);
 	}
@@ -96,7 +94,6 @@ class DailyAdviceController extends Controller
 
 		return view('klanten.dailyadvice.edit')->with([
 				'customer'    => $customer,
-				'monthYear'   => monthYearFormat($dailyAdvice),
 				'dailyAdvice' => $dailyAdvice,
 		]);
 	}
