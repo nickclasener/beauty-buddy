@@ -13,6 +13,8 @@
 
 Auth::routes();
 Route::get('/', 'Auth\LoginController@showLoginForm');
+Route::get('/dashboard', 'DashboardController@show');
+
 //Route::get('/', static function () {
 //	return view('welcome');
 //});

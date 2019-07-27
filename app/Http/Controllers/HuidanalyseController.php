@@ -127,9 +127,7 @@ class HuidanalyseController extends Controller
 			$customer = $huidanalyse->customer;
 			$huidanalyse->delete();
 
-			//			return response(count($customer->huidanalyses));
 			return response(null, array_first($customer->huidanalyses) ? 200 : 205);
-			//			return response(array_first($customer->huidanalyses) ? 200 : 205);
 		}
 		$huidanalyse->delete();
 

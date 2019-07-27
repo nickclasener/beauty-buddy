@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @include('layouts._head')
 
-<body class="bg-gray-200 font-sans text-base-font text-gray-700"
+<body class="bg-gray-200 font-sans text-base-font text-gray-700 min-h-screen"
       style="background-image: url('{{ asset('img/symphony.png') }}');"
 >
 

@@ -1,4 +1,4 @@
-<nav class="bg-teal-500 relative sticky top-0 z-20 ">
+<nav class="bg-teal-500 relative sticky top-0 z-20">
 	<div class="flex items-center lg:items-stretch justify-between flex-wrap lg:h-16 py-2 lg:py-0 px-4 lg:px-4"
 	     data-controller="dropdown"
 	>
@@ -60,10 +60,10 @@
 		>
 			@auth
 				<div class="px-2 pt-2 pb-4 border-b border-gray-800 lg:flex lg:border-b-0 lg:py-0 lg:px-0 gap gap-2">
-					<a href="{{ route('customer.index', false) }}"
-					   class="lg:flex lg:items-center block px-3 font-semibold lg:mt-0 lg:text-sm lg:px-4 {{ active_route_set_class('customer.index') }} lg:min-w-32 lg:justify-center"
-					>{{ svg_image('lineicons/network', 'py-1 h-8'. active_icon_route_set_class('customer.index')) }}
-					</a>
+					{{--					<a href="{{ route('customer.index', false) }}"--}}
+					{{--					   class="lg:flex lg:items-center block px-3 font-semibold lg:mt-0 lg:text-sm lg:px-4 {{ active_route_set_class('customer.index') }} lg:min-w-32 lg:justify-center"--}}
+					{{--					>{{ svg_image('lineicons/network', 'py-1 h-8'. active_icon_route_set_class('customer.index')) }}--}}
+					{{--					</a>--}}
 					<a href="{{ route('customer.create', false) }}"
 					   class="lg:flex lg:items-center block px-3 font-semibold lg:mt-0 lg:text-sm lg:px-4 {{ active_route_set_class('customer.create') }} lg:min-w-32 lg:justify-center"
 					>

@@ -12037,7 +12037,7 @@ var application = __WEBPACK_IMPORTED_MODULE_0_stimulus__["a" /* Application */].
 var context = __webpack_require__(87);
 application.load(Object(__WEBPACK_IMPORTED_MODULE_1_stimulus_webpack_helpers__["a" /* definitionsFromContext */])(context));
 
-// Turbolinks.start();
+Turbolinks.start();
 
 window.Toast = Swal.mixin({
   toast: true,

@@ -6,14 +6,14 @@
 		>
 			@method('DELETE')@csrf
 			<button type="submit"
-			        class="p-8 -ml-4 lg:ml-4 lg:mt-4 group"
+			        class="p-8 -ml-4 lg:ml-4 lg:mt-4 group sm:px-12 md:px-16 lg:px-8"
 			>{{ svg_image('lineicons/trash', 'fill-current self-center text-red-300 group-hover:text-red-600 h-8') }}
 			</button>
 		</form>
 
 		<button data-action="toggle#toggle"
-		        class="p-8 -mr-4 lg:mr-4 lg:mt-4 group"
-		>{{ svg_image('lineicons/pencil-alt', 'fill-current self-center text-red-300 group-hover:text-red-600 h-8') }}
+		        class="p-8 -mr-4 lg:mr-4 lg:mt-4 group sm:px-12 md:px-16 lg:px-8"
+		>{{ svg_image('lineicons/pencil-alt', 'fill-current self-center text-blue-300 group-hover:text-blue-600 h-8') }}
 		</button>
 	</div>
 	<div class="h-50 w-50 mb-4 -mt-12">
@@ -27,9 +27,9 @@
 	<h2 class="font-light">{{ $customer->naam }}</h2>
 	<h2 class="font-hairline">{{ $customer->geboortedatum }}</h2>
 </div>
-<hr class="border-b border-dashed mb-4 lg:mx-4">
+<hr class="border-b border-dashed my-4 lg:mx-4">
 <div class="mx-4 lg:mx-8 customer">
-	<h2 class="font-hairline mb-4">Contactinformatie</h2>
+	<h2 class="font-hairline mb-2">Contactinformatie:</h2>
 	<label for="email"
 	       class="font-hairline"
 	>Email</label>
@@ -79,9 +79,9 @@
 	</div>
 </div>
 
-<hr class="border-b border-dashed mb-4 lg:mx-4">
+<hr class="border-b border-dashed my-4 lg:mx-4">
 <div class="mx-4 lg:mx-8 customer">
-	<h2 class="font-hairline mb-8">Adresinformatie</h2>
+	<h2 class="font-hairline mb-2">Adresinformatie:</h2>
 
 	<label for="straatnaam + huisnummer"
 	       class="font-hairline"

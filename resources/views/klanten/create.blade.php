@@ -1,16 +1,15 @@
 @extends('layouts.main')
 @section('main')
 	<div class="container mx-auto flex">
-		<div class="bg-white mx-auto w-1/2 my-12 py-12 h-full shadow-2xl">
+		<div class="bg-white mx-auto w-1/2 my-4 py-8 h-full shadow-2xl">
 			<form action="{{ route('customer.store', false) }}"
-{{--			      method="POST"--}}
-								      data-controller="customer"
-										  data-customer-url="{{ route('customer.store', false) }}"
-										  data-action="customer#create"
+			      data-controller="customer"
+			      data-customer-url="{{ route('customer.store', false) }}"
+			      data-action="customer#create"
 
 			>@method('POST')@csrf
-				<div class="px-16">
-					<h2 class="font-hairline text-buddy-teal mb-5">Contactinformatie</h2>
+				<div class="mx-4 lg:mx-8 customer">
+					<h2 class="font-hairline mb-4">Contactinformatie</h2>
 					<label for="naam"
 					       class="font-hairline"
 					>Naam</label>
@@ -19,7 +18,8 @@
 						       type="text"
 						       value="{{ old('naam') }}"
 						       name="naam"
-						       class="bg-transparent appearance-none focus:outline-none"
+						       {{--						       class="bg-transparent appearance-none focus:outline-none"--}}
+						       class="w-full p-4 overflow-hidden outline-none resize-none bg-transparent border-b border-dashed focus:border-gray-200 focus:shadow-inner focus:outline-none"
 						>
 					</div>
 					<label for="geboortedatum"
