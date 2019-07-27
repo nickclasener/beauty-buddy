@@ -46,7 +46,6 @@ class NoteController extends Controller
 					->whereYear('created_at', $note->created_at)
 					->whereMonth('created_at', $note->created_at)
 					->get();
-
 			if ( count($notes) === 1 ) {
 				return response(
 						$content = view('klanten.noteAndHuidanalyse._monthyear')->with([
@@ -56,7 +55,6 @@ class NoteController extends Controller
 								'monthyearCreated' => $note->id,
 								'stimulusJs'       => 'note',
 						]), 200, [ 'monthyear' ]);
-
 			}
 
 			return response(
@@ -108,7 +106,6 @@ class NoteController extends Controller
 		}
 		$note->update(request()->all());
 		if ( request()->ajax() ) {
-
 			return view('klanten.noteAndHuidanalyse.show')->with([
 					'customer'   => $note->customer,
 					'model'      => $note,

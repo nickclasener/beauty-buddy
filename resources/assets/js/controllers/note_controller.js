@@ -4,6 +4,8 @@ export default class extends Controller {
     static targets = [
         "body",
         "note",
+        "saveButton",
+        "error"
     ];
 
     initialize() {
@@ -19,17 +21,28 @@ export default class extends Controller {
         }
     }
 
+    errors() {
+        this.errorTarget.innerText = '';
+        this.errorTarget.classList.add('hidden');
+    }
+
     edit(event) {
         event.preventDefault();
-        axios.patch(this.data.get("update"), this.form).then(response => {
-            this.note = response.data;
-            Swal.fire({
-                type: 'success',
-                title: 'Notitie is gewijzigd',
-                showConfirmButton: false,
-                timer: 1000
-            });
-        }).catch(error => console.log(error));
+        if (this.body === '') {
+            this.errorTarget.classList.remove('hidden');
+            this.errorTarget.innerText = 'U moet het veld vullen of annuleren';
+            event.stopImmediatePropagation();
+        } else {
+            axios.patch(this.data.get("update"), this.form).then(response => {
+                this.note = response.data;
+                Swal.fire({
+                    type: 'success',
+                    title: 'Notitie is gewijzigd',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+            }).catch(error => console.log(error));
+        }
     }
 
     removeNote() {
@@ -89,11 +102,16 @@ export default class extends Controller {
         return this.noteTarget.outerHTML = text;
     }
 
+    get body() {
+        return this.bodyTarget.value;
+    }
+
     get form() {
         return {
             body: this.bodyTarget.value,
         };
     }
+
 
     set form(text) {
         this.bodyTarget.value = text;

@@ -9,10 +9,6 @@ use Request;
 
 class DailyAdviceController extends Controller
 {
-	//	public function __construct ()
-	//	{
-	//		App::setLocale('dynamic-filler');
-	//	}
 
 	public function index ( Customer $customer )
 	{
@@ -35,7 +31,7 @@ class DailyAdviceController extends Controller
 				'midday'  => 'required_without_all:morning,evening',
 				'evening' => 'required_without_all:morning,midday',
 		]);
-		//		dd($validator->errors()->all());
+
 		if ( $validator->fails() ) {
 			return back()
 					->withErrors($validator)

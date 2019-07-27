@@ -14,9 +14,8 @@ class HuidanalyseController extends Controller
 		$huidanalyses = Huidanalyse
 				::where([ 'customer_id' => $customer->id ])
 				->orderByDesc('created_at')
-				->simplePaginate(5);
-		//				              ->orderByDesc('created_at')
-		//		                  ->paginate(15);
+				->simplePaginate(20);
+
 		return view('klanten.noteAndHuidanalyse.index')->with([
 				'customer'    => $customer,
 				'models'      => $huidanalyses,
@@ -65,9 +64,7 @@ class HuidanalyseController extends Controller
 							'model'        => $huidanalyse,
 							'modelCreated' => $huidanalyse->id,
 							'stimulusJs'   => 'huidanalyse',
-					]),
-					200,
-					[ 'huidanalyse' ]);
+					]), 200, [ 'huidanalyse' ]);
 		}
 
 		return redirect(route('huidanalyse.index', [
@@ -104,23 +101,19 @@ class HuidanalyseController extends Controller
 		$validator = Validator::make(request()->all(), [
 				'body' => 'required',
 		]);
-
 		if ( $validator->fails() ) {
 			return back()
 					->withErrors($validator)
 					->withInput();
 		}
-
+		$huidanalyse->update(request()->all());
 		if ( request()->ajax() ) {
-			$huidanalyse->update(request()->all());
-
 			return view('klanten.noteAndHuidanalyse.show')->with([
-					'customer'    => $huidanalyse->customer,
-					'huidanalyse' => $huidanalyse,
-					'stimulusJs'  => 'huidanalyse',
+					'customer'   => $huidanalyse->customer,
+					'model'      => $huidanalyse,
+					'stimulusJs' => 'huidanalyse',
 			]);
 		}
-		$huidanalyse->update(request()->all());
 
 		return redirect(route('huidanalyse.index', [
 				'customer'   => $huidanalyse->customer,
