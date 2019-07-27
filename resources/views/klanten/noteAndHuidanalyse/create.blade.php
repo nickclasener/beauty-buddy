@@ -17,7 +17,8 @@ Zijn er veder noemenswaardigheden"
 				<button data-action="{{ $stimulusJs }}s#cancel toggle#toggle"
 				        class="cursor-pointer py-2 px-8 bg-transparent text-red-200 hover:text-red-500 focus:outline-none"
 				        data-action="{{ $stimulusJs }}#delete monthyear#remove {{ $stimulusJs }}#remove"
-				>{{ svg_image('lineicons/close', 'h-6 fill-current') }}
+				>
+					{{ svg_image('lineicons/close', 'h-6 fill-current') }}
 				</button>
 				<button class="cursor-pointer py-2 px-8 bg-transparent text-teal-200 hover:text-teal-500 focus:outline-none"
 				        type="submit"
