@@ -21,8 +21,7 @@ Zijn er veder noemenswaardigheden"
 				</button>
 				<button class="cursor-pointer py-2 px-8 bg-transparent text-teal-200 hover:text-teal-500 focus:outline-none"
 				        type="submit"
-				>
-					{{ svg_image('lineicons/save', 'fill-current h-6') }}
+				>{{ svg_image('lineicons/save', 'fill-current h-6') }}
 				</button>
 			</div>
 		</div>
