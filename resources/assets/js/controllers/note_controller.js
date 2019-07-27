@@ -46,21 +46,9 @@ export default class extends Controller {
 
     delete(event) {
         event.preventDefault();
-        // const options = Array.from(this.element.closest('[data-controller="monthyear"]'));
         const monthyear = this.element.closest('[data-target="monthyear.monthyear"]');
         let newEvent = document.createEvent('Event');
         newEvent.initEvent('removeMonthyear', true, true);
-        //
-        // if (monthyear.children.length <= 2) {
-        //     monthyear.dispatchEvent(newEvent);
-        // }
-        // this.removeNote();
-        // const selected = this.resultsTarget.querySelector('[aria-selected="true"]');
-        // const index = options.indexOf(selected);
-        // console.log(monthyear..dispatchEvent('monthyear#remove'));
-        // axios.delete(this.data.get("destroy"))
-        //     .catch(error => console.log(error));
-        //
         Swal.fire({
             title: 'Wilt u de klant permanent verwijderen?',
             // text: "Deze handeling kan niet terug gedraaid worden",

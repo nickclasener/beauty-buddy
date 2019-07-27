@@ -16,7 +16,7 @@
 	     data-target="dailyadvices.monthyear monthyear.monthyear"
 	>
 	</div>
-	@foreach ( $dailyAdvices as $dailyAdvice )
+	@foreach ( monthYear($dailyAdvices) as $monthYear => $dailyAdvices )
 		@include('klanten.dailyadvice._monthyear')
 	@endforeach
 </div>

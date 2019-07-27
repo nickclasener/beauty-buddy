@@ -7,7 +7,8 @@ window._ = require('lodash');
  */
 
 try {
-    window.Popper = require('popper.js').default;
+    // window.Popper = require('popper.js').default;
+    window.Tippy = require('tippy.js').default.default;
     window.$ = window.jQuery = require('jquery');
 
 } catch (e) {

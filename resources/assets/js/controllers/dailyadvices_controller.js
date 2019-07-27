@@ -1,26 +1,36 @@
 import {Controller} from "stimulus";
 
 export default class extends Controller {
-    static targets = ["morning", "midday", "evening", "dailyadvice", "monthyear"];
+    static targets = ["morning", "midday", "evening", "dailyadvice", "monthyear", "saveButton", "error"];
 
+    errors() {
+        this.errorTarget.innerText = '';
+        this.errorTarget.classList.add('hidden');
+    }
 
     create(event) {
         event.preventDefault();
-        axios.post(this.data.get('store'), this.form).then(response => {
-            this.form = null;
-            console.log(response.data);
-            if (response.headers[0] === 'dailyAdvice') {
-                this.dailyadvice = response.data;
-            } else if (response.headers[0] === 'monthyear') {
-                this.monthyear = response.data;
-            }
-            Swal.fire({
-                type: 'success',
-                title: 'Product advies is toegevoegd',
-                showConfirmButton: false,
-                timer: 2000
-            });
-        }).catch(error => console.log(error));
+        if (this.form.morning + this.form.midday + this.form.evening === '') {
+            this.errorTarget.classList.remove('hidden');
+            this.errorTarget.innerText = 'U moet minimaal 1 van de velden invullen';
+            event.stopImmediatePropagation();
+        } else {
+            axios.post(this.data.get('store'), this.form)
+                .then(response => {
+                    this.form = null;
+                    if (response.headers[0] === 'dailyAdvice') {
+                        this.dailyadvice = response.data;
+                    } else if (response.headers[0] === 'monthyear') {
+                        this.monthyear = response.data;
+                    }
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Product advies is toegevoegd',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }).catch(error => console.log(error));
+        }
     }
 
     cancel(event) {

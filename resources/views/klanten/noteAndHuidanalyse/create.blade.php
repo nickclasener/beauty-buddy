@@ -12,7 +12,6 @@ Zijn er veder noemenswaardigheden"
            data-controller="textarea"
            data-target="{{ $stimulusJs }}s.body textarea.textarea"
            data-action="input->textarea#grow"
-           required
  >{{ old('body') }}</textarea>
 			<div class="flex justify-between">
 				<button data-action="{{ $stimulusJs }}s#cancel toggle#toggle"

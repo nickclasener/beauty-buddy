@@ -6,7 +6,14 @@ export default class extends Controller {
         "midday",
         "evening",
         "dailyadvice",
+        "saveButton",
+        "error"
     ];
+
+    errors() {
+        this.errorTarget.innerText = '';
+        this.errorTarget.classList.add('hidden');
+    }
 
     initialize() {
         if (this.data.get('created') !== null) {
@@ -23,18 +30,24 @@ export default class extends Controller {
 
     edit(event) {
         event.preventDefault();
-        axios.patch(this.data.get("update"), this.form).then(response => {
-            this.dailyadvice = response.data;
-            Swal.fire({
-                type: 'success',
-                title: 'Product advies is gewijzigd',
-                showConfirmButton: false,
-                timer: 1000
-            });
-        }).catch(error => console.log(error));
+        if (this.form.morning + this.form.midday + this.form.evening === '') {
+            this.errorTarget.classList.remove('hidden');
+            this.errorTarget.innerText = 'U moet minimaal 1 van de velden invullen';
+            event.stopImmediatePropagation();
+        } else {
+            axios.patch(this.data.get("update"), this.form).then(response => {
+                this.dailyadvice = response.data;
+                Swal.fire({
+                    type: 'success',
+                    title: 'Product advies is gewijzigd',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+            }).catch(error => console.log(error));
+        }
     }
 
-    remove() {
+    removeProductAvice() {
         TweenLite.to(this.dailyadvice, 1, {
             delay: 0.5,
             autoAlpha: 0,
@@ -48,13 +61,34 @@ export default class extends Controller {
 
     delete(event) {
         event.preventDefault();
-        axios.delete(this.data.get("destroy"))
-            .catch(error => console.log(error));
+        const monthyear = this.element.closest('[data-target="monthyear.monthyear"]');
+        let newEvent = document.createEvent('Event');
+        newEvent.initEvent('removeMonthyear', true, true);
         Swal.fire({
+            title: 'Wilt u dit advies verwijderen',
+            // text: "Deze handeling kan niet terug gedraaid worden",
             type: 'error',
-            title: 'Notitie is verwijderd',
-            showConfirmButton: false,
-            timer: 2000
+            showCancelButton: true,
+            confirmButtonText: 'Ja, verwijder dit Advies',
+            cancelButtonText: 'Annuleer deze actie'
+        }).then(result => {
+            if (result.value) {
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'Het advies is verwijderd.',
+                    type: 'success',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    onClose: () => {
+                        axios.delete(this.data.get("destroy"))
+                            .catch(error => console.log(error));
+                        if (monthyear.children.length <= 2) {
+                            monthyear.dispatchEvent(newEvent);
+                        }
+                        this.removeProductAvice();
+                    }
+                });
+            }
         });
     }
 

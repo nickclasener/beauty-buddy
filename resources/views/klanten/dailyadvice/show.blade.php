@@ -19,69 +19,75 @@
 		   data-action="click->toggle#toggle click->textarea#grow click->textarea#focus"
 		   data-target="toggle.show"
 		>
-			@isset( $dailyAdvice->highlight )
-				@isset( $dailyAdvice->highlight->morning[0] )
-					<div class="pb-2 border-b">
-						<span>{!! $dailyAdvice->highlight->morning[0] !!}</span>
-					</div>
-				@endisset
-				<p @isset( $dailyAdvice->highlight->morning[0] )
-				   class="pt-2"
-						@endisset
-				>{{ $dailyAdvice->morning }}</p>
-				@isset( $dailyAdvice->highlight->midday[0] )
-					<div class="pb-2 border-b">
-						<span>{!! $dailyAdvice->highlight->midday[0] !!}</span>
-					</div>
-				@endisset
-				<p @isset( $dailyAdvice->highlight->midday[0] )
-				   class="pt-2"
-						@endisset
-				>{{ $dailyAdvice->midday }}</p>
-				@isset( $dailyAdvice->highlight->evening[0] )
-					<div class="pb-2 border-b">
-						<span>{!! $dailyAdvice->highlight->evening[0] !!}</span>
-					</div>
-				@endisset
-				<p @isset( $dailyAdvice->highlight->evening[0] )
-				   class="pt-2"
-						@endisset
-				>{{ $dailyAdvice->evening }}</p>
-				<div class="flex justify-between">
-					<small class="font-hairline">
-						{{ timeAmPm($dailyAdvice) }}
-					</small>
-				</div>
-			@endisset
-			<div
-					@isset( $dailyAdvice->highlight)
-					class="pt-2.5"
-					@endisset
-			>
+			@isset( $dailyAdvice->morning )
 				<h3 class="font-hairline">
 					Ochtend:
 				</h3>
-				<p class="border-b">{{ $dailyAdvice->morning }}</p>
-				<hr class="border-b border-dashed focus-within:border-buddy-lightest">
-				<h3 class="font-hairline">
-					Middag:
-				</h3>
-				<p>{{ $dailyAdvice->midday }}</p>
-				<hr class="border-b border-dashed focus-within:border-buddy-lightest ">
-				<h3 class="font-hairline">
-					Avond:
-				</h3>
+				@isset( $dailyAdvice->highlight->morning[0] )
+					<div class="border-b">
+						<span>{!! $dailyAdvice->highlight->morning[0] !!}</span>
+					</div>
+				@endisset
+				<p class="border-b border-dashed pb-1">
+					{{--					FIXME: Border --}}
+					{{ $dailyAdvice->morning }}</p>
+			@endisset
+
+			@isset( $dailyAdvice->midday )
+				@isset( $dailyAdvice->highlight->midday[0] )
+					@isset( $dailyAdvice->highlight->morning[0] )
+						<h3 class="font-hairline pt-2">Middag:</h3>
+					@else
+						<h3 class="font-hairline">Middag:</h3>
+					@endif
+				@else
+					@isset( $dailyAdvice->morning )
+						<h3 class="font-hairline pt-2">Middag:</h3>
+					@else
+						<h3 class="font-hairline">Middag:</h3>
+					@endisset
+				@endisset
+
+				@isset( $dailyAdvice->highlight->midday[0] )
+					<div class="border-b">
+						<span>{!! $dailyAdvice->highlight->midday[0] !!}</span>
+					</div>
+				@endisset
+				<p class="border-b border-dashed pb-1">{{ $dailyAdvice->midday }}</p>
+			@endisset
+
+			@isset( $dailyAdvice->evening )
+				@isset( $dailyAdvice->highlight->evening[0] )
+					@if( isset($dailyAdvice->highlight->morning[0]) || isset($dailyAdvice->highlight->midday[0]) )
+						<h3 class="font-hairline pt-2">Avond:</h3>
+					@else
+						<h3 class="font-hairline">Avond:</h3>
+					@endif
+				@else
+					@if( isset($dailyAdvice->morning) || isset($dailyAdvice->midday) )
+						<h3 class="font-hairline pt-2">Avond:</h3>
+					@else
+						<h3 class="font-hairline">Avond:</h3>
+					@endif
+				@endisset
+				@isset( $dailyAdvice->highlight->evening[0] )
+					<div class="border-b">
+						<span>{!! $dailyAdvice->highlight->evening[0] !!}</span>
+					</div>
+				@endisset
 				<p>{{ $dailyAdvice->evening }}</p>
-				<hr class="border-b border-dashed focus-within:border-buddy-lightest ">
-			</div>
+			@endisset
 			<div class="flex justify-between">
-				<small class="font-hairline">{{ timeAmPm( $dailyAdvice ) }}</small>
+				<small class="font-hairline">
+					{{ timeAmPm($dailyAdvice) }}
+				</small>
 			</div>
 		</a>
-		<div class="hidden w-full"
+		<div class="hidden w-full flex-shrink flex"
 		     data-target="toggle.hide"
 		     data-action="click@window->toggle#hidden"
-		>@include('klanten.dailyadvice.edit', [ $dailyAdvice ])
+		>
+			@include('klanten.dailyadvice.edit', [ $dailyAdvice ])
 		</div>
 	</div>
 </div>

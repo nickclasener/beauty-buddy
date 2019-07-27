@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\DailyAdvice;
-//use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
+use Request;
 
 class DailyAdviceController extends Controller
 {
@@ -28,25 +28,27 @@ class DailyAdviceController extends Controller
 				]);
 	}
 
-	public function store ( Customer $customer )
+	public function store ( Customer $customer, Request $request )
 	{
 		$validator = Validator::make(request()->all(), [
 				'morning' => 'required_without_all:midday,evening',
 				'midday'  => 'required_without_all:morning,evening',
 				'evening' => 'required_without_all:morning,midday',
 		]);
-
+		//		dd($validator->errors()->all());
 		if ( $validator->fails() ) {
 			return back()
 					->withErrors($validator)
 					->withInput();
 		}
+
 		$dailyAdvice = $customer->addDailyAdvice([
 				'user_id' => auth()->id(),
 				'morning' => request('morning'),
 				'midday'  => request('midday'),
 				'evening' => request('evening'),
 		]);
+
 		if ( request()->ajax() ) {
 			$dailyAdvices = $customer
 					->dailyAdvices()
@@ -98,9 +100,26 @@ class DailyAdviceController extends Controller
 		]);
 	}
 
-	public function update ( DailyAdvice $dailyAdvice )
+	public function update ( DailyAdvice $dailyAdvice, Request $request )
 	{
+		$validator = Validator::make(request()->all(), [
+				'morning' => 'required_without_all:midday,evening',
+				'midday'  => 'required_without_all:morning,evening',
+				'evening' => 'required_without_all:morning,midday',
+		]);
+
+		if ( $validator->fails() ) {
+			return back()
+					->withErrors($validator)
+					->withInput();
+		}
 		$dailyAdvice->update(request()->all());
+		if ( request()->ajax() ) {
+			return view('klanten.dailyadvice.show')->with([
+					'customer'    => $dailyAdvice->customer,
+					'dailyAdvice' => $dailyAdvice,
+			]);
+		}
 
 		return redirect(route('dailyadvice.show', [
 				$dailyAdvice->customer,
@@ -110,11 +129,12 @@ class DailyAdviceController extends Controller
 
 	public function destroy ( DailyAdvice $dailyAdvice )
 	{
-		//		if ( request()->ajax() ) {
-		//			$dailyAdvice->delete();
+		if ( request()->ajax() ) {
+			$customer = $dailyAdvice->customer;
+			$dailyAdvice->delete();
 
-		//			return 200;
-		//		}
+			return response(null, array_first($customer->dailyAdvices) ? 200 : 205);
+		}
 		$dailyAdvice->delete();
 
 		return back();
