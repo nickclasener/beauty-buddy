@@ -1,7 +1,6 @@
 /node_modules
 /public/hot
 /public/storage
-/public
 /storage/*.key
 /vendor
 /.idea
@@ -14,7 +13,12 @@ yarn-error.log
 .env
 .phpunit.result.cache
 _ide_helper.php
+_ide_helper_models.php
 .phpstorm.meta.php
+php-cs.dist
+.php_cs.cache
+checklist.md
+report.xml
 GPATH
 GRTAGS
 GTAGS

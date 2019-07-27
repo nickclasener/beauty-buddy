@@ -8,40 +8,40 @@ use Elasticsearch\Client;
 class CustomerObserver
 {
 	private $elasticsearch;
-	
-	public function __construct(Client $elasticsearch)
+
+	public function __construct ( Client $elasticsearch )
 	{
 		$this->elasticsearch = $elasticsearch;
 	}
-	
-	public function saved(Customer $customer)
+
+	public function saved ( Customer $customer )
 	{
 		$this->elasticsearch->index([
-						'index' => $customer->getSearchIndex(),
-						'type'  => $customer->getSearchType(),
-						'id'    => $customer->id,
-						'body'  => $customer->toSearchArray(),
+				'index' => $customer->getSearchIndex(),
+				'type'  => $customer->getSearchType(),
+				'id'    => $customer->id,
+				'body'  => $customer->toSearchArray(),
 		]);
 	}
-	
-	public function updated(Customer $customer)
+
+	public function updated ( Customer $customer )
 	{
 		$this->elasticsearch->update([
-						'index' => $customer->getSearchIndex(),
-						'type'  => $customer->getSearchType(),
-						'id'    => $customer->id,
-						'body'  => [
-										'doc' => $customer->toSearchArray(),
-						],
+				'index' => $customer->getSearchIndex(),
+				'type'  => $customer->getSearchType(),
+				'id'    => $customer->id,
+				'body'  => [
+						'doc' => $customer->toSearchArray(),
+				],
 		]);
 	}
-	
-	public function deleted(Customer $customer)
+
+	public function deleted ( Customer $customer )
 	{
 		$this->elasticsearch->delete([
-						'index' => $customer->getSearchIndex(),
-						'type'  => $customer->getSearchType(),
-						'id'    => $customer->id,
+				'index' => $customer->getSearchIndex(),
+				'type'  => $customer->getSearchType(),
+				'id'    => $customer->id,
 		]);
 	}
 }

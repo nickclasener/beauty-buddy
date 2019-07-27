@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-	<form action="{{ route('intake.store',$customer) }}"
+	<form action="{{ route('intake.store', $customer, false) }}"
 				method="post"
 	>@csrf
-		
+
 		<label for="naam"
 		>Naam:</label>
 		<br>
@@ -15,7 +15,7 @@
 					 required
 		>
 		<hr>
-		
+
 		<label for="behandeling"
 		>Behandeling:</label>
 		<br>
@@ -25,7 +25,7 @@
 					 value="{{ old('behandeling') }}"
 		>
 		<hr>
-		
+
 		<label for="huidverbetering"
 		>Huidverbetering:</label>
 		<br>
@@ -35,7 +35,7 @@
 					 value="{{ old('huidverbetering') }}"
 		>
 		<hr>
-		
+
 		<label for="allergieen"
 		>Allergieen:</label>
 		<br>
@@ -45,7 +45,7 @@
 					 value="{{ old('allergieen') }}"
 		>
 		<hr>
-		
+
 		<label for="bijzonderheden"
 		>Bijzonderheden:</label>
 		<br>
@@ -55,7 +55,7 @@
 					 value="{{ old('bijzonderheden') }}"
 		>
 		<hr>
-		
+
 		<label for="bloeddruk"
 		>Bloeddruk:</label>
 		<br>
@@ -65,7 +65,7 @@
 					 value="{{ old('bloeddruk') }}"
 		>
 		<hr>
-		
+
 		<label for="chemisch"
 		>Chemisch:</label>
 		<br>
@@ -75,7 +75,7 @@
 					 value="{{ old('chemisch') }}"
 		>
 		<hr>
-		
+
 		<label for="cosmetisch"
 		>Cosmetisch:</label>
 		<br>
@@ -85,7 +85,7 @@
 					 value="{{ old('cosmetisch') }}"
 		>
 		<hr>
-		
+
 		<label for="diabetes"
 		>Diabetes:</label>
 		<br>
@@ -95,7 +95,7 @@
 					 value="{{ old('diabetes') }}"
 		>
 		<hr>
-		
+
 		<label for="eczeem"
 		>Eczeem:</label>
 		<br>
@@ -105,7 +105,7 @@
 					 value="{{ old('eczeem') }}"
 		>
 		<hr>
-		
+
 		<label for="huidkanker"
 		>Huidkanker:</label>
 		<br>
@@ -115,7 +115,7 @@
 					 value="{{ old('huidkanker') }}"
 		>
 		<hr>
-		
+
 		<label for="huidschimmel"
 		>Huidschimmel:</label>
 		<br>
@@ -125,7 +125,7 @@
 					 value="{{ old('huidschimmel') }}"
 		>
 		<hr>
-		
+
 		<label for="ipl"
 		>Ipl:</label>
 		<br>
@@ -135,7 +135,7 @@
 					 value="{{ old('ipl') }}"
 		>
 		<hr>
-		
+
 		<label for="kanker"
 		>Kanker:</label>
 		<br>
@@ -154,7 +154,7 @@
 		<input type="checkbox"
 					 name="immunotherapie" {{ old('immunotherapie') ? 'checked' : '' }} /> Imunnotherapie
 		<hr>
-		
+
 		<label for="laser"
 		>Laser:</label>
 		<br>
@@ -164,7 +164,7 @@
 					 value="{{ old('laser') }}"
 		>
 		<hr>
-		
+
 		<label for="medicatie"
 		>Medicatie:</label>
 		<br>
@@ -174,7 +174,7 @@
 					 value="{{ old('medicatie') }}"
 		>
 		<hr>
-		
+
 		<label for="operaties"
 		>Operaties:</label>
 		<br>
@@ -184,7 +184,7 @@
 					 value="{{ old('operaties') }}"
 		>
 		<hr>
-		
+
 		<label for="zon"
 		>Zon:</label>
 		<br>

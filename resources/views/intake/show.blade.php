@@ -1,4 +1,4 @@
-<form action="{{ route('intake.destroy',[$customer,$customer->intake]) }}"
+<form action="{{ route('intake.destroy',[$customer,$customer->intake], false) }}"
       method="POST"
 >
 	@method('DELETE')@csrf
@@ -19,32 +19,32 @@
 <p>{{ $customer->intake->ipl }}</p>
 <p>{{ $customer->intake->kanker }}</p>
 <input type="checkbox"
-       name="bestraling" {{ $customer->intake->bestraling ? 'checked' : '' }} /> Bestraling
+       name="bestraling" {{ checkbox($customer->intake->bestraling) }} /> Bestraling
 <br>
 <input type="checkbox"
-       name="chemo" {{ $customer->intake->chemo ? 'checked' : '' }} /> Chemo
+       name="chemo" {{ checkbox($customer->intake->chemo) }} /> Chemo
 <br>
 <input type="checkbox"
-       name="immunotherapie" {{ $customer->intake->immunotherapie ? 'checked' : '' }} /> Imunnotherapie
+       name="immunotherapie" {{ checkbox($customer->intake->immunotherapie) }} /> Imunnotherapie
 <p>{{ $customer->intake->laser }}</p>
 <p>{{ $customer->intake->medicatie }}</p>
 <p>{{ $customer->intake->operaties }}</p>
 <p>{{ $customer->intake->zon }}</p>
 <input type="checkbox"
-       name="koortslip" {{ $customer->intake->koortslip ? 'checked' : '' }} /> Koortslip
+       name="koortslip" {{ checkbox($customer->intake->koortslip) }} /> Koortslip
 <br>
 <input type="checkbox"
-       name="roken" {{ $customer->intake->roken ? 'checked' : '' }} /> Roken
+       name="roken" {{ checkbox($customer->intake->roken) }} /> Roken
 <br>
 <input type="checkbox"
-       name="overgang" {{ $customer->intake->overgang ? 'checked' : '' }} /> Overgang
+       name="overgang" {{ checkbox($customer->intake->overgang) }} /> Overgang
 <br>
 <input type="checkbox"
-       name="psoriasis" {{ $customer->intake->psoriasis ? 'checked' : '' }} /> Psoriasis
+       name="psoriasis" {{ checkbox($customer->intake->psoriasis) }} /> Psoriasis
 <br>
 <input type="checkbox"
-       name="vitrigilo" {{ $customer->intake->vitrigilo ? 'checked' : '' }} /> Vitrigilo
+       name="vitrigilo" {{ checkbox($customer->intake->vitrigilo) }} /> Vitrigilo
 <br>
 <input type="checkbox"
-       name="zwanger" {{ $customer->intake->zwanger ? 'checked' : '' }} /> Zwanger</p>
+       name="zwanger" {{ checkbox($customer->intake->zwanger) }} /> Zwanger</p>
 

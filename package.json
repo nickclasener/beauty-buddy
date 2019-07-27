@@ -10,6 +10,7 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
+    "@tailwindcss/custom-forms": "^0.2.0",
     "axios": "^0.18.0",
     "browser-sync": "^2.23.6",
     "browser-sync-webpack-plugin": "2.0.1",
@@ -20,15 +21,30 @@
     "less-loader": "^4.1.0",
     "lodash": "^4.17.4",
     "moment": "^2.19.1",
-    "popper.js": "^1.12",
     "resolve-url-loader": "^2.3.1",
-    "tailwindcss": "^0.7.4"
+    "tailwindcss": "^1.0.4",
+    "tailwindcss-filters": "^2.0.0",
+    "tailwindcss-gap": "^3.0.0",
+    "tailwindcss-interaction-variants": "^2.0.0",
+    "tailwindcss-transforms": "^2.1.0",
+    "tailwindcss-transitions": "^2.0.1",
+    "tippy.js": "^4.3.4",
+    "popper.js": "^1.15.0",
+    "webpack-livereload-plugin": "^1.2.0"
   },
   "dependencies": {
+    "animate.css": "^3.7.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "gsap": "^2.1.2",
+    "infinite-scroll": "^3.0.6",
     "jquery": "^3.3.1",
-    "jquery-ujs": "^1.2.2",
+    "jscroll": "^2.4.1",
+    "lodash.debounce": "^4.0.8",
+    "smooth-scroll": "^16.1.0",
     "stimulus": "^1.1.1",
-    "turbolinks": "^5.1.1"
+    "stimulus-conductor": "^1.0.3",
+    "sweetalert2": "^8.3.0",
+    "turbolinks": "^5.1.1",
+    "turbolinks-animate": "^3.2.0"
   }
 }

@@ -7,37 +7,50 @@ window._ = require('lodash');
  */
 
 try {
-	window.Popper = require('popper.js').default;
-	window.$ = window.jQuery = require('jquery');
+    // window.Popper = require('popper.js').default;
+    window.Tippy = require('tippy.js').default.default;
+    window.$ = window.jQuery = require('jquery');
 
 } catch (e) {
 }
-// require('./jquery_ujs');
-// window.Rails = require('./rails-ujs');
+// window.Rails = window.$.rails = require('jquery-ujs');
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
  * a simple convenience so we don't have to attach every token manually.
  */
-
+require('gsap');
+window.Swal = require('sweetalert2');
 window.Turbolinks = require("turbolinks");
 window.axios = require('axios');
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.axios.defaults.headers.common[ 'X-Requested-With' ] = 'XMLHttpRequest';
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
  * a simple convenience so we don't have to attach every token manually.
  */
-
-const token = document.head.querySelector('meta[name="csrf-token"]');
-
-if ( token ) {
-	window.axios.defaults.headers.common[ 'X-CSRF-TOKEN' ] = token.content;
+let token = document.head.querySelector('meta[name="csrf-token"]');
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    // window.fetch({
+    //     headers: {'X-CSRF-TOKEN': token.content}
+    // });
 } else {
-	console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+
+// window.fetch({
+//     headers: new Headers({'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')})
+// });
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -54,3 +67,4 @@ if ( token ) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+

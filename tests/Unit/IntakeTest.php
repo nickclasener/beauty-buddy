@@ -14,7 +14,7 @@ class IntakeTest extends TestCase
 	/** @test */
 	function intake_has_a_customer ()
 	{
-		$intake = factory(Intake::class)->create();
+		$intake = create(Intake::class);
 
 		$this->assertInstanceOf(Customer::class, $intake->customer);
 	}

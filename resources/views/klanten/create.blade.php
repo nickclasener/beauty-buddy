@@ -1,100 +1,126 @@
-@extends('layouts.app')
+@extends('layouts.main')
+@section('main')
+	<div class="container mx-auto flex">
+		<div class="bg-white mx-auto w-1/2 my-12 py-12 h-full shadow-2xl">
+			<form action="{{ route('customer.store', false) }}"
+{{--			      method="POST"--}}
+								      data-controller="customer"
+										  data-customer-url="{{ route('customer.store', false) }}"
+										  data-action="customer#create"
 
-@section('content')
-	
-	Voeg een nieuwe klant toe
-	<form action="/klanten"
-				method="post"
-	>@csrf
-		
-		<label for="naam"
-		>Naam:</label>
-		<input type="text"
-					 name="naam"
-					 placeholder="Naam"
-					 value="{{ old('naam') }}"
-					 required
-		>
-		<hr>
-		
-		<label for="email"
-		>Email:</label>
-		<input type="text"
-					 class="h-2"
-					 name="email"
-					 placeholder="Email"
-					 value="{{ old('email') }}"
-					 required
-		>
-		<hr>
-		
-		<label for="geboortedatum"
-		>Geboortedatum:</label>
-		<input type="text"
-					 name="geboortedatum"
-					 placeholder="Geboortedatum"
-					 value="{{ old('geboortedatum') }}"
-		>
-		
-		<hr>
-		
-		<label for="straatnaam"
-		>Straatnaam:</label>
-		<input type="text"
-					 name="straatnaam"
-					 placeholder="Straatnaam"
-					 value="{{ old('straatnaam') }}"
-		>
-		<hr>
-		
-		<label for="huisnummer"
-		>Huisnummer:</label>
-		<input type="text"
-					 name="huisnummer"
-					 placeholder="Huisnummer"
-					 value="{{ old('huisnummer') }}"
-		>
-		<hr>
-		
-		<label for="plaats"
-		>Plaats:</label>
-		<input type="text"
-					 name="plaats"
-					 placeholder="Plaats"
-					 value="{{ old('plaats') }}"
-		>
-		<hr>
-		
-		<label for="postcode"
-		>Postcode:</label>
-		<input type="text"
-					 name="postcode"
-					 placeholder="Postcode"
-					 value="{{ old('postcode') }}"
-		>
-		<hr>
-		
-		<label for="telefoon"
-		>Telefoon:</label>
-		<input type="text"
-					 name="telefoon"
-					 placeholder="Telefoon"
-					 value="{{ old('telefoon') }}"
-		>
-		<hr>
-		
-		<label for="mobiel"
-		>Mobiel:</label>
-		<input type="text"
-					 name="mobiel"
-					 placeholder="Mobiel"
-					 value="{{ old('mobiel') }}"
-		>
-		<hr>
-		
-		<button type="submit"
-		>Opslaan
-		</button>
-	</form>
-@endsection
+			>@method('POST')@csrf
+				<div class="px-16">
+					<h2 class="font-hairline text-buddy-teal mb-5">Contactinformatie</h2>
+					<label for="naam"
+					       class="font-hairline"
+					>Naam</label>
+					<div class="flex justify-between items-center mb-5">
+						<input data-target="customer.naam"
+						       type="text"
+						       value="{{ old('naam') }}"
+						       name="naam"
+						       class="bg-transparent appearance-none focus:outline-none"
+						>
+					</div>
+					<label for="geboortedatum"
+					       class="font-hairline"
+					>Geboortedatum:</label>
+					<div class="flex justify-between items-center mb-5">
+						<input data-target="customer.geboortedatum"
+						       type="text"
+						       name="geboortedatum"
+						       value="{{ old('geboortedatum')  }}"
+						       class="bg-transparent appearance-none focus:outline-none"
+						></div>
+					<label for="email"
+					       class="font-hairline"
+					>Email</label>
+					<div class="flex justify-between items-center mb-5">
+						<input data-target="customer.email"
+						       type="text"
+						       value="{{ old('email') }}"
+						       name="email"
+						       class="bg-transparent appearance-none focus:outline-none"
 
+						></div>
+
+					<label for="mobiel"
+					       class="font-hairline"
+					>Mobiel</label>
+					<div class="flex justify-between mb-5">
+						<input data-target="customer.mobiel"
+						       type="text"
+						       value="{{ old('mobiel') }}"
+						       name="mobiel"
+						       class="bg-transparent appearance-none focus:outline-none"
+
+						></div>
+
+					<label for="telefoon"
+					       class="font-hairline"
+					>Telefoon</label>
+					<div class="flex justify-between mb-5">
+						<input data-target="customer.telefoon"
+						       type="text"
+						       value="{{ old('telefoon') }}"
+						       name="telefoon"
+						       class="bg-transparent appearance-none focus:outline-none"
+
+						></div>
+				</div>
+
+				<hr class="border-b border-dashed mb-5 mx-10">
+				<div class="mx-15">
+					<h2 class="font-hairline text-buddy-teal  mb-5">Adresinformatie</h2>
+					<label for="straatnaam"
+					       class="font-hairline"
+					>Straatnaam</label>
+					<div class="flex justify-between mb-5">
+						<input data-target="customer.straatnaam"
+						       type="text"
+						       value="{{ old('straatnaam') }}"
+						       name="straatnaam"
+						       class="bg-transparent appearance-none focus:outline-none"
+						></div>
+					<label for="huisnummer"
+					       class="font-hairline"
+					>Huisnummer</label>
+					<div class="flex justify-between mb-5">
+						<input data-target="customer.huisnummer"
+						       type="text"
+						       value="{{ old('huisnummer') }}"
+						       name="huisnummer"
+						       class="bg-transparent appearance-none focus:outline-none"
+						></div>
+					<label for="plaats"
+					       class="font-hairline"
+					>Plaats</label>
+					<div class="flex justify-between mb-5">
+						<input data-target="customer.plaats"
+						       type="text"
+						       value="{{ old('plaats') }}"
+						       name="plaats"
+						       class="bg-transparent appearance-none focus:outline-none"
+						></div>
+					<label for="postcode"
+					       class="font-hairline"
+					>Postcode</label>
+					<div class="flex justify-between mb-5">
+						<input data-target="customer.postcode"
+						       type="text"
+						       value="{{ old('postcode') }}"
+						       name="postcode"
+						       class="bg-transparent appearance-none focus:outline-none"
+						></div>
+					<button type="submit"
+					>Opslaan
+					</button>
+					<button data-action="customer#cancel"
+					>Annuleer
+					</button>
+				</div>
+			</form>
+			<hr>
+		</div>
+	</div>
+@stop

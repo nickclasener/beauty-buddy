@@ -11,61 +11,73 @@
 |
 */
 
-use App\Repository\CustomersRepository;
-use App\Repository\NotesRepository;
-
 Auth::routes();
-
-//Route::get('/', function () {
-//	return view('notes.notes');
+Route::get('/', 'Auth\LoginController@showLoginForm');
+//Route::get('/', static function () {
+//	return view('welcome');
 //});
 
 Route::group([ 'middleware' => 'auth' ], function () {
-	Route::get('/', function () {
-		return view('klanten.create');
-	});
-
-	//	Route::get('/home', 'HomeController@index')->name('home');
-	// Klanten Routes
-	Route::get('klanten/search', function ( CustomersRepository $repository ) {
-		$customer = $repository->search((string)request('q'));
-
-		return compact('customer');
-	});
-	Route::get('klanten', 'CustomersController@index')->name('klanten.index');
-	Route::delete('klanten/{customer}', 'CustomersController@destroy')->name('klanten.destroy');
-	Route::get('klanten/nieuw', 'CustomersController@create')->name('klanten.create');
-	Route::get('klanten/{customer}', 'CustomersController@show')->name('klanten.show');
-	Route::post('klanten', 'CustomersController@store')->name('klanten.store');
-	Route::get('klanten/{customer}/bewerken', 'CustomersController@edit')->name('klanten.edit');
+	Route::get('klanten/search', 'CustomerSearchController@index')->name('customer.search');
+	Route::get('klanten/nieuw', 'CustomerController@create')->name('customer.create');
+	Route::get('klanten', 'CustomerController@index')->name('customer.index');
+	Route::post('klanten', 'CustomerController@store')->name('customer.store');
+	Route::delete('klanten/{customer}', 'CustomerController@destroy')->name('customer.destroy');
+	Route::get('klanten/{customer}', 'CustomerController@show')->name('customer.show');
+	Route::get('klanten/{customer}/bewerken', 'CustomerController@edit')->name('customer.edit');
 	Route::match([
 			'PATCH',
 			'PUT',
-	], 'klanten/{customer}', 'CustomersController@update')->name('klanten.update');
+	], 'klanten/{customer}', 'CustomerController@update')->name('customer.update');
 
-	// Notitie Routes
-	Route::get('klanten/{customer}/notities/search', function ( NotesRepository $repository ) {
-		//	Route::get('notities/search', function (NotesRepository $repository) {
-		$note = $repository->search((string)request('q'));
-
-		return compact('note');
-	});
-
-	Route::delete('notities/{note}', 'NotesController@destroy')->name('notities.destroy');
-	Route::get('klanten/{customer}/notities/nieuw', 'NotesController@create')->name('notities.create');
-	//	Route::get('klanten/{customer}/notities', 'NotesController@show')->name('notities.show');
-	Route::get('klanten/{customer}/notities', 'NotesController@index')->name('notities.index');
-	Route::get('klanten/{customer}/notities/{notes}', 'NotesController@show')->name('notities.show');
-	Route::get('klanten/{customer}/notities/{notes}/bewerken', 'NotesController@edit')->name('notities.edit');
-	Route::post('klanten/{customer}/notities', 'NotesController@store')->name('notities.store');
+	// Note Routes
+	Route::get('klanten/{customer}/notities/search', 'NoteSearchController@index')->name('note.search');
+	Route::delete('notities/{note}', 'NoteController@destroy')->name('note.destroy');
+	Route::get('klanten/{customer}/notities/nieuw', 'NoteController@create')->name('note.create');
+	//	Route::get('klanten/{customer}/notities', 'NoteController@show')->name('note.show');
+	Route::get('klanten/{customer}/notities', 'NoteController@index')->name('note.index');
+	Route::get('klanten/{customer}/notities/{note}', 'NoteController@show')->name('note.show');
+	Route::get('klanten/{customer}/notities/{note}/bewerken', 'NoteController@edit')->name('note.edit');
+	Route::post('klanten/{customer}/notities', 'NoteController@store')->name('note.store');
 	Route::match([
 			'put',
 			'patch',
-	], '/notities/{note}', 'NotesController@update')->name('notities.update');
+	], '/notities/{note}', 'NoteController@update')->name('note.update');
+
+	// Huidanalyses Routes
+	Route::get('klanten/{customer}/huidanalyses/search', 'HuidanalyseSearchController@index')
+	     ->name('huidanalyse.search');
+	Route::get('klanten/{customer}/huidanalyses/{huidanalyse}', 'HuidanalyseController@show')
+	     ->name('huidanalyse.show');
+	Route::get('klanten/{customer}/huidanalyses', 'HuidanalyseController@index')->name('huidanalyse.index');
+	Route::delete('huidanalyses/{huidanalyse}', 'HuidanalyseController@destroy')->name('huidanalyse.destroy');
+	Route::get('klanten/{customer}/huidanalyses/{huidanalyse}/bewerken', 'HuidanalyseController@edit')
+	     ->name('huidanalyse.edit');
+	Route::post('klanten/{customer}/huidanalyses', 'HuidanalyseController@store')->name('huidanalyse.store');
+	Route::match([
+			'put',
+			'patch',
+	], '/huidanalyses/{huidanalyse}', 'HuidanalyseController@update')->name('huidanalyse.update');
+
+	// DailyAdvice Routes
+	Route::get('klanten/{customer}/dagelijks-advies/search', 'DailyAdviceSearchController@index')->name('dailyadvice.search');
+	//	Route::get('klanten/{customer}/dagelijks-advies/nieuw', 'DailyAdviceController@create')->name('dailyadvice.create');
+	Route::get('klanten/{customer}/dagelijks-advies/{dailyAdvice}', 'DailyAdviceController@show')
+	     ->name('dailyadvice.show');
+	Route::get('klanten/{customer}/dagelijks-advies', 'DailyAdviceController@index')->name('dailyadvice.index');
+	Route::delete('dagelijks-advies/{dailyAdvice}', 'DailyAdviceController@destroy')->name('dailyadvice.destroy');
+	Route::post('klanten/{customer}/dagelijks-advies', 'DailyAdviceController@store')->name('dailyadvice.store');
+	Route::get('klanten/{customer}/dagelijks-advies/{dailyAdvice}/bewerken', 'DailyAdviceController@edit')
+	     ->name('dailyadvice.edit');
+	Route::match([
+			'put',
+			'patch',
+	], 'dagelijks-advies/{dailyAdvice}', 'DailyAdviceController@update')->name('dailyadvice.update');
 
 	// Intake Routes
-	Route::post('klanten/{customer}/intake', 'IntakeController@store')->name('intake.store');
 	Route::get('klanten/{customer}/intake/nieuw', 'IntakeController@create')->name('intake.create');
+	Route::get('klanten/{customer}/intake/{intake}', 'IntakeController@show')->name('intake.show');
+	Route::post('klanten/{customer}/intake', 'IntakeController@store')->name('intake.store');
 	Route::delete('klanten/{customer}/intake/{intake}', 'IntakeController@destroy')->name('intake.destroy');
 	Route::get('klanten/{customer}/intake/{intake}/bewerken', 'IntakeController@edit')->name('intake.edit');
 	Route::match([
