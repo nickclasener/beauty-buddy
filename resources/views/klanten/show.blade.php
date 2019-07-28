@@ -27,9 +27,9 @@
 			<div class="w-full bg-white mb-12  lg:block  lg:mt-4 shadow-lg pb-4"
 			     data-target="toggle.klantShow"
 			>
-				<div class="mx-4 ">
-					@yield('content')
-				</div>
+				{{--				<div class="mx-4 ">--}}
+				@yield('content')
+				{{--				</div>--}}
 			</div>
 		</div>
 	</div>

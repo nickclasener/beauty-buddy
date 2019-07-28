@@ -4235,6 +4235,18 @@ video {
   height: auto;
 }
 
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
 /**
  * This injects any component classes registered by plugins.
  *
