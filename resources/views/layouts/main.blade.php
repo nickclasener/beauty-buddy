@@ -7,7 +7,7 @@
 >
 
 @include('layouts._navbar2')
-<div class="mx-4 my-4">
+<div class="m-4">
 	@yield('main')
 </div>
 @if ( count($errors) )

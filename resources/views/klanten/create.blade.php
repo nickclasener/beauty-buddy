@@ -17,7 +17,7 @@
 					<div class="mx-4">
 						<label for="naam"
 						       class="font-hairline"
-						>Naam:</label>
+						>Naam</label>
 						<div class="flex justify-between items-center mb-4">
 							<input data-target="customer.naam"
 							       type="text"
@@ -59,7 +59,6 @@
 							       value="{{ old('mobiel') }}"
 							       name="mobiel"
 							       class="p-1 transition bg-white shadow focus:shadow-inner focus:outline-none border border-transparent focus:border-gray-300 placeholder-gray-700 block w-full appearance-none"
-
 							></div>
 
 						<label for="telefoon"
