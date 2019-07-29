@@ -3,7 +3,7 @@
       data-controller="textarea"
       data-action="autocomplete2#removeResults dailyadvices#create"
 >@method('POST')@csrf
-	<div class="border-b border-dashed p-4 pb-8">
+	<div class="border-b border-dashed pb-8">
 		<div class="group relative w-full shadow  border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none">
 			<div class="w-full px-4 pt-4 overflow-hidden outline-none resize-none bg-transparent">
 				<h3 class="font-hairline">

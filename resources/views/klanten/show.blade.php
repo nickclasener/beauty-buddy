@@ -23,7 +23,7 @@
 		</div>
 		<div class="lg:ml-4 w-full lg:w-2/3 ">
 			@include('layouts._submenu',['customer'=>$customer])
-			<div class="w-full bg-white mb-4 p-4 lg:p-8 lg:block  lg:mt-4 shadow-lg "
+			<div class="w-full bg-white mb-4 lg:block  lg:mt-4 shadow-lg "
 			     data-target="toggle.klantShow"
 			>
 				@yield('content')

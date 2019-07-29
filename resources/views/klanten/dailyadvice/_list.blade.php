@@ -1,5 +1,5 @@
 <div data-target="dailyadvices.list"
-     class="list px-4"
+     class="list"
      data-controller="infinitescroll"
      data-action="scroll@window->infinitescroll#next"
 >
