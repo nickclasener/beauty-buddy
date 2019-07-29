@@ -1,5 +1,5 @@
 <div data-target="dailyadvices.list"
-     class="list"
+     class="list px-4"
      data-controller="infinitescroll"
      data-action="scroll@window->infinitescroll#next"
 >
@@ -21,7 +21,7 @@
 	@endforeach
 </div>
 {{--<!-- status elements -->--}}
-<div class="flex justify-center">
+<div class="flex justify-center pb-4">
 	<p>
 		...
 	</p>
