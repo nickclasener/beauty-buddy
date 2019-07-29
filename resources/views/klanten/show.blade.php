@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('main')
 
-	<div class="flex flex-col lg:flex-row lg:-mt-20 -mt-20 h-full">
-		<div class="w-full lg:w-1/3  hidden lg:block lg:sticky lg:top-0  lg:pt-20 mt-16 h-full"
+	<div class="flex flex-col lg:flex-row h-full">
+		<div class="w-full lg:w-1/3  hidden lg:block lg:sticky lg:top-0 lg:pt-20 lg:-mt-4 h-full"
 		     data-target="toggle.klantHide"
 		     id="{{ $customer->slug }}"
 		>
@@ -21,9 +21,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="lg:ml-4 w-full lg:w-2/3 pt-20 ">
+		<div class="lg:ml-4 w-full lg:w-2/3 ">
 			@include('layouts._submenu',['customer'=>$customer])
-			<div class="w-full bg-white mb-4  lg:block  lg:mt-4 shadow-lg "
+			<div class="w-full bg-white mb-4 p-4 lg:p-8 lg:block  lg:mt-4 shadow-lg "
 			     data-target="toggle.klantShow"
 			>
 				@yield('content')

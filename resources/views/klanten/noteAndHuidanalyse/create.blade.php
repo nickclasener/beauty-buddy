@@ -2,7 +2,7 @@
       method="POST"
       data-action="autocomplete2#removeResults {{ $stimulusJs }}s#create"
 >@method('POST')@csrf
-	<div class="border-b border-dashed px-4 pb-8">
+	<div class="border-b border-dashed pb-8">
 		<div class="group relative w-full shadow border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none">
  <textarea type="text"
            class="w-full p-4 overflow-hidden outline-none resize-none bg-transparent border-b border-dashed "
