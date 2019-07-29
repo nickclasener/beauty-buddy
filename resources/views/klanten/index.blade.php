@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('main')
-	<div class=" bg-white gap gap-y-2 p-4 shadow-md">
+	<div class=" bg-white  shadow-md">
 		@foreach ($customers as $customer)
 			<div>
 				<a href="{{ route('note.index', $customer, false) }}"

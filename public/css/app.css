@@ -4701,6 +4701,16 @@ h3 {
           box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.3), 0px 5px 5px -2px rgba(0, 0, 0, 0.15);
 }
 
+.input-shadow {
+  -webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.input-shadow:hover {
+  -webkit-box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.3), 0px 5px 5px -2px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.3), 0px 5px 5px -2px rgba(0, 0, 0, 0.15);
+}
+
 .main-search {
   -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 4px 4px 4px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 4px 4px 4px 0 rgba(0, 0, 0, 0.2);
@@ -9791,6 +9801,10 @@ table tr {
 
 .h-screen{
   height: 100vh;
+}
+
+.h-quarter{
+  height: 75vh;
 }
 
 .leading-none{
@@ -21256,6 +21270,10 @@ table tr {
     height: 100vh;
   }
 
+  .sm\:h-quarter{
+    height: 75vh;
+  }
+
   .sm\:leading-none{
     line-height: 1;
   }
@@ -32703,6 +32721,10 @@ table tr {
 
   .md\:h-screen{
     height: 100vh;
+  }
+
+  .md\:h-quarter{
+    height: 75vh;
   }
 
   .md\:leading-none{
@@ -44154,6 +44176,10 @@ table tr {
     height: 100vh;
   }
 
+  .lg\:h-quarter{
+    height: 75vh;
+  }
+
   .lg\:leading-none{
     line-height: 1;
   }
@@ -55601,6 +55627,10 @@ table tr {
 
   .xl\:h-screen{
     height: 100vh;
+  }
+
+  .xl\:h-quarter{
+    height: 75vh;
   }
 
   .xl\:leading-none{

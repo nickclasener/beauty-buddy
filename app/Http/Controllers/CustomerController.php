@@ -59,15 +59,15 @@ class CustomerController extends Controller
 
 			return redirect(route('note.index', [
 					$customer,
-			]));
+			], false));
 		}
 
-		return redirect(route('note.index', $customer));
+		return redirect(route('note.index', $customer, false));
 	}
 
 	public function show ( Customer $customer )
 	{
-		return view('klanten._show_small')->with([
+		return view('klanten.show')->with([
 				'customer' => $customer,
 		]);
 	}
@@ -110,9 +110,9 @@ class CustomerController extends Controller
 	{
 		$customer->delete();
 		if ( request()->ajax() ) {
-			return route('customer.create');
+			return route('customer.create', [], false);
 		}
 
-		return redirect(route('customer.create'));
+		return redirect(route('customer.create', [], false));
 	}
 }
