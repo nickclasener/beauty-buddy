@@ -72,10 +72,10 @@
 
 						></div>
 				</div>
-				<hr class="border-b border-dashed my-4">
+				<hr class="border-b border-dashed mt-0">
 				<div class="mx-4 customer">
 					<h2 class="font-hairline pb-2">Adresinformatie</h2>
-					<div class="pb-4">>
+					<div class="pb-4">
 						<label for="straatnaam"
 						       class="font-hairline"
 						>Straatnaam</label>
@@ -123,10 +123,12 @@
 				<p class="w-full text-red-500 px-4  py-4  border-t border-dashed hidden"
 				   data-target="customer.error"
 				></p>
-				<div class="flex justify-between px-4   border-t border-dashed">
+
+				<hr class="border-b border-dashed my-0">
+				<div class="flex justify-between mx-4">
 					<button data-action="customer#cancel toggle#toggle"
 					        class="cursor-pointer p-4 bg-transparent text-red-200 hover:text-red-500 focus:outline-none"
-					>{{ svg_image('lineicons/close', 'h-6 fill-current') }}
+					>{{ svg_image('lineicons/close', 'h-8 fill-current') }}
 					</button>
 					<button class="cursor-pointer p-4 bg-transparent text-teal-200 hover:text-teal-500 focus:outline-none"
 					        type="submit"

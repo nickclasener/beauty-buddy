@@ -14,7 +14,6 @@
 					@include('klanten._show')
 				</div>
 				<div data-target="toggle.hide"
-						{{--				     class="hidden"--}}
 				>
 					@include('klanten.edit')
 				</div>
@@ -22,7 +21,7 @@
 		</div>
 		<div class="lg:pl-2 w-full lg:w-2/3 ">
 			@include('layouts._submenu',['customer'=>$customer])
-			<div class="w-full bg-white mb-4  lg:p-8  lg:mt-4 shadow-lg ">
+			<div class="w-full bg-white mb-4 lg:mt-4 shadow-lg ">
 				@if( !Route::is('customer.show') )
 					@yield('content')
 				@endif
