@@ -1,4 +1,4 @@
-<div class="lg:sticky lg:top-0 lg:z-10 lg:pt-20 -mx-4 lg:mx-0">
+<div class="lg:sticky lg:top-0 lg:z-10 lg:pt-20  lg:-mt-20 -ml-4 lg:ml-0">
 	<div class="w-full bg-buddy-lightest flex justify-between items-stretch fixed bg-teal-500 bottom-0 lg:bottom-auto z-10 lg:mx-auto text-white lg:relative lg:h-12  shadow-md"
 	     data-controller="submenu"
 	>

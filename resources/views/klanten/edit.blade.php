@@ -22,7 +22,7 @@
       method="post"
       data-action="customer#update"
 >@method('PATCH')@csrf
-	<div class="mx-4 customer">
+	<div class="px-4 customer">
 		<h2 class="font-hairline pb-2">Contactinformatie:</h2>
 		<div class="pb-4">
 			<label for="naam"
@@ -79,7 +79,7 @@
 			></div>
 	</div>
 	<hr class="border-b border-dashed my-4">
-	<div class="mx-4 customer">
+	<div class="px-4 customer">
 		<h2 class="font-hairline pb-2">Adresinformatie</h2>
 		<div class="pb-4">
 			<label for="straatnaam"

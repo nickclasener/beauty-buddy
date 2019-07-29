@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('main')
-	<div class="container mx-auto flex lg:pt-0  items-center">
-		<div class="bg-white mx-auto lg:w-2/3 md:w-3/4 sm:w-4/5 w-full py-4 my-auto">
+	<div class="container mx-auto flex lg:pt-0 items-center mt-16">
+		<div class="bg-white mx-auto lg:w-2/3 md:w-3/4 sm:w-4/5 w-full pt-4">
 			<h1 class="font-hairline w-full text-center pb-4">Nieuwe Klant</h1>
 			<hr class="border-b border-dashed mb-4 mt-0">
 			<form action="{{ route('customer.store', false) }}"
@@ -125,12 +125,12 @@
 				></p>
 				<div class="flex justify-between px-4   border-t border-dashed">
 					<button data-action="customer#cancel toggle#toggle"
-					        class="cursor-pointer py-2 px-4 bg-transparent text-red-200 hover:text-red-500 focus:outline-none"
+					        class="cursor-pointer p-4 bg-transparent text-red-200 hover:text-red-500 focus:outline-none"
 					>{{ svg_image('lineicons/close', 'h-6 fill-current') }}
 					</button>
-					<button class="cursor-pointer py-2 px-4 bg-transparent text-teal-200 hover:text-teal-500 focus:outline-none"
+					<button class="cursor-pointer p-4 bg-transparent text-teal-200 hover:text-teal-500 focus:outline-none"
 					        type="submit"
-					>{{ svg_image('lineicons/save', 'fill-current h-6') }}
+					>{{ svg_image('lineicons/save', 'fill-current h-8') }}
 					</button>
 				</div>
 			</form>

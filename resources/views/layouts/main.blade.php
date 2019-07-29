@@ -7,7 +7,9 @@
 >
 
 @include('layouts._navbar2')
-@yield('main')
+<div class="m-4">
+	@yield('main')
+</div>
 @if ( count($errors) )
 	@foreach ( $errors->all() as $error)
 		<ul class="alert alert-danger">
