@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('main')
-	<div class="container mx-auto flex h-screen -mt-16 items-center">
-		<div class="bg-white mx-auto lg:w-2/3 md:w-3/4 sm:w-4/5 w-full py-4 ">
+	<div class="container mx-auto flex lg:pt-0  items-center">
+		<div class="bg-white mx-auto lg:w-2/3 md:w-3/4 sm:w-4/5 w-full py-4 my-auto">
 			<h1 class="font-hairline w-full text-center pb-4">Nieuwe Klant</h1>
 			<hr class="border-b border-dashed mb-4 mt-0">
 			<form action="{{ route('customer.store', false) }}"
