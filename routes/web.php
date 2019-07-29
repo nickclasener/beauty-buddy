@@ -15,10 +15,6 @@ Auth::routes();
 Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/dashboard', 'DashboardController@show');
 
-//Route::get('/', static function () {
-//	return view('welcome');
-//});
-
 Route::group([ 'middleware' => 'auth' ], function () {
 	Route::get('klanten/search', 'CustomerSearchController@index')->name('customer.search');
 	Route::get('klanten/nieuw', 'CustomerController@create')->name('customer.create');
@@ -36,7 +32,6 @@ Route::group([ 'middleware' => 'auth' ], function () {
 	Route::get('klanten/{customer}/notities/search', 'NoteSearchController@index')->name('note.search');
 	Route::delete('notities/{note}', 'NoteController@destroy')->name('note.destroy');
 	Route::get('klanten/{customer}/notities/nieuw', 'NoteController@create')->name('note.create');
-	//	Route::get('klanten/{customer}/notities', 'NoteController@show')->name('note.show');
 	Route::get('klanten/{customer}/notities', 'NoteController@index')->name('note.index');
 	Route::get('klanten/{customer}/notities/{note}', 'NoteController@show')->name('note.show');
 	Route::get('klanten/{customer}/notities/{note}/bewerken', 'NoteController@edit')->name('note.edit');

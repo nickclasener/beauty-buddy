@@ -6,7 +6,6 @@ export default class extends Controller {
         "midday",
         "evening",
         "dailyadvice",
-        "saveButton",
         "error"
     ];
 

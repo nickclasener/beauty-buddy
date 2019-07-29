@@ -49429,22 +49429,34 @@ var _class = function (_Controller) {
     }
 
     _createClass(_class, [{
+        key: "errors",
+        value: function errors() {
+            this.errorTarget.innerText = '';
+            this.errorTarget.classList.add('hidden');
+        }
+    }, {
         key: "create",
         value: function create(event) {
             event.preventDefault();
-            axios.post(this.data.get('url'), this.form).then(function (response) {
-                Swal.fire({
-                    type: 'success',
-                    title: 'Nieuwe klant is toegevoegd',
-                    showConfirmButton: false,
-                    timer: 2000,
-                    onClose: function onClose() {
-                        return [Turbolinks.visit(response.request.responseURL)];
-                    }
+            if (this.empty() === '') {
+                this.errorTarget.classList.remove('hidden');
+                this.errorTarget.innerText = 'U moet het veld vullen of annuleren';
+                event.stopImmediatePropagation();
+            } else {
+                axios.post(this.data.get('url'), this.form).then(function (response) {
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Nieuwe klant is toegevoegd',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        onClose: function onClose() {
+                            return [Turbolinks.visit(response.request.responseURL)];
+                        }
+                    });
+                }).catch(function (error) {
+                    return console.log(error);
                 });
-            }).catch(function (error) {
-                return console.log(error);
-            });
+            }
         }
     }, {
         key: "update",
@@ -49493,7 +49505,13 @@ var _class = function (_Controller) {
         key: "cancel",
         value: function cancel(event) {
             event.preventDefault();
+            this.errorTarget.classList.add('hidden');
             this.form = '';
+        }
+    }, {
+        key: "empty",
+        value: function empty() {
+            return this.naamTarget.value + this.straatnaamTarget.value + this.huisnummerTarget.value + this.postcodeTarget.value + this.plaatsTarget.value + this.telefoonTarget.value + this.mobielTarget.value + this.emailTarget.value + this.geboortedatumTarget.value;
         }
     }, {
         key: "form",
@@ -49526,7 +49544,7 @@ var _class = function (_Controller) {
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ["naam", "straatnaam", "huisnummer", "postcode", "plaats", "telefoon", "mobiel", "email", "geboortedatum"];
+_class.targets = ["naam", "straatnaam", "huisnummer", "postcode", "plaats", "telefoon", "mobiel", "email", "geboortedatum", "error"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
@@ -49681,7 +49699,7 @@ var _class = function (_Controller) {
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ["morning", "midday", "evening", "dailyadvice", "saveButton", "error"];
+_class.targets = ["morning", "midday", "evening", "dailyadvice", "error"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
@@ -49749,6 +49767,7 @@ var _class = function (_Controller) {
         key: "cancel",
         value: function cancel(event) {
             event.preventDefault();
+            this.errorTarget.classList.add('hidden');
             this.form = '';
         }
     }, {
@@ -49794,7 +49813,7 @@ var _class = function (_Controller) {
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ["morning", "midday", "evening", "dailyadvice", "monthyear", "saveButton", "error"];
+_class.targets = ["morning", "midday", "evening", "dailyadvice", "monthyear", "error"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
@@ -50050,7 +50069,7 @@ var _class = function (_Controller) {
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ["body", "huidanalyse", "saveButton", "error"];
+_class.targets = ["body", "huidanalyse", "error"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
@@ -50118,8 +50137,7 @@ var _class = function (_Controller) {
         key: "cancel",
         value: function cancel(event) {
             event.preventDefault();
-            this.errorTarget.classList.remove('hidden');
-            this.errorTarget.innerText = 'U kunt geen lege notitie opslaan';
+            this.errorTarget.classList.add('hidden');
             this.form = '';
         }
     }, {
@@ -50166,7 +50184,7 @@ var _class = function (_Controller) {
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ["body", "huidanalyse", "monthyear", "saveButton", "error"];
+_class.targets = ["body", "huidanalyse", "monthyear", "error"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
@@ -51539,7 +51557,7 @@ var _class = function (_Controller) {
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ["body", "note", "saveButton", "error"];
+_class.targets = ["body", "note", "error"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
@@ -51607,8 +51625,7 @@ var _class = function (_Controller) {
         key: "cancel",
         value: function cancel(event) {
             event.preventDefault();
-            this.errorTarget.classList.remove('hidden');
-            this.errorTarget.innerText = 'U kunt geen lege notitie opslaan';
+            this.errorTarget.classList.add('hidden');
             this.form = '';
         }
     }, {
@@ -51655,7 +51672,7 @@ var _class = function (_Controller) {
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ["body", "note", "monthyear", "saveButton", "error"];
+_class.targets = ["body", "note", "monthyear", "error"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),

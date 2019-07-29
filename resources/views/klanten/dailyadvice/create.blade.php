@@ -49,7 +49,6 @@
 				>{{ svg_image('lineicons/close', 'h-6 fill-current') }}
 				</button>
 				<button class="cursor-pointer py-2 px-8 bg-transparent text-teal-200 hover:text-teal-500 focus:outline-none"
-				        data-target="dailyadvices.saveButton"
 				        type="submit"
 				>{{ svg_image('lineicons/save', 'fill-current  h-6') }}
 				</button>

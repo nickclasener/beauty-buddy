@@ -1,7 +1,14 @@
 import {Controller} from "stimulus";
 
 export default class extends Controller {
-    static targets = ["morning", "midday", "evening", "dailyadvice", "monthyear", "saveButton", "error"];
+    static targets = [
+        "morning",
+        "midday",
+        "evening",
+        "dailyadvice",
+        "monthyear",
+        "error"
+    ];
 
     errors() {
         this.errorTarget.innerText = '';
@@ -35,6 +42,7 @@ export default class extends Controller {
 
     cancel(event) {
         event.preventDefault();
+        this.errorTarget.classList.add('hidden');
         this.form = '';
     }
 
