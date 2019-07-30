@@ -220,4 +220,5 @@
 				</label>
 			</div>
 		</div>
+	</div>
 @stop

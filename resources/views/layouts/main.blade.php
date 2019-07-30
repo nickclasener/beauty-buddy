@@ -7,8 +7,8 @@
 >
 
 @include('layouts._navbar2')
-<div class="m-4">
-	@yield('main')
+<div class="p-4">
+@yield('main')
 </div>
 @if ( count($errors) )
 	@foreach ( $errors->all() as $error)
