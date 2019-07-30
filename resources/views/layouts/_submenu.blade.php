@@ -27,7 +27,7 @@
 		</a>
 
 		<a class="no-underline lg:py-2 {{ active_route_set_class('intake.show',true) }} flex items-center justify-center text-center flex-grow "
-		   href="#"
+		   href="{{ route('intake.show', [$customer,$customer->intake], false) }}"
 		>{{ svg_image('lineicons/support', 'h-8'. active_icon_route_set_class('intake.show',true)) }}
 		</a>
 	</div>

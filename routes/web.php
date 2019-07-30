@@ -13,7 +13,6 @@
 
 Auth::routes();
 Route::get('/', 'Auth\LoginController@showLoginForm');
-Route::get('/dashboard', 'DashboardController@show');
 
 Route::group([ 'middleware' => 'auth' ], function () {
 	Route::get('klanten/search', 'CustomerSearchController@index')->name('customer.search');

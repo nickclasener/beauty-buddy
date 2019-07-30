@@ -98,12 +98,12 @@ class CustomerController extends Controller
 		if ( request()->ajax() ) {
 			return route('note.index', [
 					'customer' => $customer,
-			]);
+			], false);
 		}
 
 		return redirect(route('note.index', [
 				'customer' => $customer,
-		]));
+		], false));
 	}
 
 	public function destroy ( Customer $customer )

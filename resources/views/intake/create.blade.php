@@ -2,17 +2,17 @@
 
 @section('content')
 	<form action="{{ route('intake.store', $customer, false) }}"
-				method="post"
+	      method="post"
 	>@csrf
 
 		<label for="naam"
 		>Naam:</label>
 		<br>
 		<input type="text"
-					 name="naam"
-					 placeholder="Naam"
-					 value="{{ old('naam') }}"
-					 required
+		       name="naam"
+		       placeholder="Naam"
+		       value="{{ old('naam') }}"
+		       required
 		>
 		<hr>
 
@@ -20,9 +20,9 @@
 		>Behandeling:</label>
 		<br>
 		<input type="text"
-					 name="behandeling"
-					 placeholder="behandeling"
-					 value="{{ old('behandeling') }}"
+		       name="behandeling"
+		       placeholder="behandeling"
+		       value="{{ old('behandeling') }}"
 		>
 		<hr>
 
@@ -30,9 +30,9 @@
 		>Huidverbetering:</label>
 		<br>
 		<input type="text"
-					 name="huidverbetering"
-					 placeholder="huidverbetering"
-					 value="{{ old('huidverbetering') }}"
+		       name="huidverbetering"
+		       placeholder="huidverbetering"
+		       value="{{ old('huidverbetering') }}"
 		>
 		<hr>
 
@@ -40,9 +40,9 @@
 		>Allergieen:</label>
 		<br>
 		<input type="text"
-					 name="allergieen"
-					 placeholder="allergieen"
-					 value="{{ old('allergieen') }}"
+		       name="allergieen"
+		       placeholder="allergieen"
+		       value="{{ old('allergieen') }}"
 		>
 		<hr>
 
@@ -50,9 +50,9 @@
 		>Bijzonderheden:</label>
 		<br>
 		<input type="text"
-					 name="bijzonderheden"
-					 placeholder="bijzonderheden"
-					 value="{{ old('bijzonderheden') }}"
+		       name="bijzonderheden"
+		       placeholder="bijzonderheden"
+		       value="{{ old('bijzonderheden') }}"
 		>
 		<hr>
 
@@ -60,9 +60,9 @@
 		>Bloeddruk:</label>
 		<br>
 		<input type="text"
-					 name="bloeddruk"
-					 placeholder="bloeddruk"
-					 value="{{ old('bloeddruk') }}"
+		       name="bloeddruk"
+		       placeholder="bloeddruk"
+		       value="{{ old('bloeddruk') }}"
 		>
 		<hr>
 
@@ -70,9 +70,9 @@
 		>Chemisch:</label>
 		<br>
 		<input type="text"
-					 name="chemisch"
-					 placeholder="chemisch"
-					 value="{{ old('chemisch') }}"
+		       name="chemisch"
+		       placeholder="chemisch"
+		       value="{{ old('chemisch') }}"
 		>
 		<hr>
 
@@ -80,9 +80,9 @@
 		>Cosmetisch:</label>
 		<br>
 		<input type="text"
-					 name="cosmetisch"
-					 placeholder="cosmetisch"
-					 value="{{ old('cosmetisch') }}"
+		       name="cosmetisch"
+		       placeholder="cosmetisch"
+		       value="{{ old('cosmetisch') }}"
 		>
 		<hr>
 
@@ -90,9 +90,9 @@
 		>Diabetes:</label>
 		<br>
 		<input type="text"
-					 name="diabetes"
-					 placeholder="diabetes"
-					 value="{{ old('diabetes') }}"
+		       name="diabetes"
+		       placeholder="diabetes"
+		       value="{{ old('diabetes') }}"
 		>
 		<hr>
 
@@ -100,9 +100,9 @@
 		>Eczeem:</label>
 		<br>
 		<input type="text"
-					 name="eczeem"
-					 placeholder="eczeem"
-					 value="{{ old('eczeem') }}"
+		       name="eczeem"
+		       placeholder="eczeem"
+		       value="{{ old('eczeem') }}"
 		>
 		<hr>
 
@@ -110,9 +110,9 @@
 		>Huidkanker:</label>
 		<br>
 		<input type="text"
-					 name="huidkanker"
-					 placeholder="huidkanker"
-					 value="{{ old('huidkanker') }}"
+		       name="huidkanker"
+		       placeholder="huidkanker"
+		       value="{{ old('huidkanker') }}"
 		>
 		<hr>
 
@@ -120,9 +120,9 @@
 		>Huidschimmel:</label>
 		<br>
 		<input type="text"
-					 name="huidschimmel"
-					 placeholder="huidschimmel"
-					 value="{{ old('huidschimmel') }}"
+		       name="huidschimmel"
+		       placeholder="huidschimmel"
+		       value="{{ old('huidschimmel') }}"
 		>
 		<hr>
 
@@ -130,9 +130,9 @@
 		>Ipl:</label>
 		<br>
 		<input type="text"
-					 name="ipl"
-					 placeholder="ipl"
-					 value="{{ old('ipl') }}"
+		       name="ipl"
+		       placeholder="ipl"
+		       value="{{ old('ipl') }}"
 		>
 		<hr>
 
@@ -140,28 +140,28 @@
 		>Kanker:</label>
 		<br>
 		<input type="text"
-					 name="kanker"
-					 placeholder="kanker"
-					 value="{{ old('kanker') }}"
+		       name="kanker"
+		       placeholder="kanker"
+		       value="{{ old('kanker') }}"
 		>
 		<br>
 		<input type="checkbox"
-					 name="bestraling" {{ old('bestraling') ? 'checked' : '' }} /> Bestraling
+		       name="bestraling" {{ old('bestraling') ? 'checked' : '' }} /> Bestraling
 		<br>
 		<input type="checkbox"
-					 name="chemo" {{ old('chemo') ? 'checked' : '' }} /> Chemo
+		       name="chemo" {{ old('chemo') ? 'checked' : '' }} /> Chemo
 		<br>
 		<input type="checkbox"
-					 name="immunotherapie" {{ old('immunotherapie') ? 'checked' : '' }} /> Imunnotherapie
+		       name="immunotherapie" {{ old('immunotherapie') ? 'checked' : '' }} /> Imunnotherapie
 		<hr>
 
 		<label for="laser"
 		>Laser:</label>
 		<br>
 		<input type="text"
-					 name="laser"
-					 placeholder="laser"
-					 value="{{ old('laser') }}"
+		       name="laser"
+		       placeholder="laser"
+		       value="{{ old('laser') }}"
 		>
 		<hr>
 
@@ -169,9 +169,9 @@
 		>Medicatie:</label>
 		<br>
 		<input type="text"
-					 name="medicatie"
-					 placeholder="medicatie"
-					 value="{{ old('medicatie') }}"
+		       name="medicatie"
+		       placeholder="medicatie"
+		       value="{{ old('medicatie') }}"
 		>
 		<hr>
 
@@ -179,9 +179,9 @@
 		>Operaties:</label>
 		<br>
 		<input type="text"
-					 name="operaties"
-					 placeholder="operaties"
-					 value="{{ old('operaties') }}"
+		       name="operaties"
+		       placeholder="operaties"
+		       value="{{ old('operaties') }}"
 		>
 		<hr>
 
@@ -189,28 +189,28 @@
 		>Zon:</label>
 		<br>
 		<input type="text"
-					 name="zon"
-					 placeholder="zon"
-					 value="{{ old('zon') }}"
+		       name="zon"
+		       placeholder="zon"
+		       value="{{ old('zon') }}"
 		>
 		<hr>
 		<input type="checkbox"
-					 name="koortslip" {{ old('koortslip') ? 'checked' : '' }} /> Koortslip
+		       name="koortslip" {{ old('koortslip') ? 'checked' : '' }} /> Koortslip
 		<br>
 		<input type="checkbox"
-					 name="roken" {{ old('roken') ? 'checked' : '' }} /> Roken
+		       name="roken" {{ old('roken') ? 'checked' : '' }} /> Roken
 		<br>
 		<input type="checkbox"
-					 name="overgang" {{ old('overgang') ? 'checked' : '' }} /> Overgang
+		       name="overgang" {{ old('overgang') ? 'checked' : '' }} /> Overgang
 		<br>
 		<input type="checkbox"
-					 name="psoriasis" {{ old('psoriasis') ? 'checked' : '' }} /> Psoriasis
+		       name="psoriasis" {{ old('psoriasis') ? 'checked' : '' }} /> Psoriasis
 		<br>
 		<input type="checkbox"
-					 name="vitrigilo" {{ old('vitrigilo') ? 'checked' : '' }} /> Vitrigilo
+		       name="vitrigilo" {{ old('vitrigilo') ? 'checked' : '' }} /> Vitrigilo
 		<br>
 		<input type="checkbox"
-					 name="zwanger" {{ old('zwanger') ? 'checked' : '' }} /> Zwanger
+		       name="zwanger" {{ old('zwanger') ? 'checked' : '' }} /> Zwanger
 		<hr>
 		<button type="submit"
 		>Opslaan

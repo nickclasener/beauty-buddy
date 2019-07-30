@@ -9,11 +9,11 @@
 		>
 			<div class="bg-white shadow-lg">
 				<div data-target="toggle.show"
-				     class="hidden"
 				>
 					@include('klanten._show')
 				</div>
 				<div data-target="toggle.hide"
+				     class="hidden"
 				>
 					@include('klanten.edit')
 				</div>
