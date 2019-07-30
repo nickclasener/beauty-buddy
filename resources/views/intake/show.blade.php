@@ -7,103 +7,137 @@
 				<label for="behandeling"
 				       class="font-hairline"
 				>behandeling</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->behandeling }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->behandeling }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="huidverbetering"
 				       class="font-hairline"
 				>huidverbetering</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->huidverbetering }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->huidverbetering }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="allergieen"
 				       class="font-hairline"
 				>allergieen</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->allergieen }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->allergieen }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="bijzonderheden"
 				       class="font-hairline"
 				>bijzonderheden</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->bijzonderheden }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->bijzonderheden }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="bloeddruk"
 				       class="font-hairline"
 				>bloeddruk</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->bloeddruk }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->bloeddruk }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="chemisch"
 				       class="font-hairline"
 				>chemisch</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->chemisch }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->chemisch }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="cosmetisch"
 				       class="font-hairline"
 				>cosmetisch</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->cosmetisch }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->cosmetisch }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="diabetes"
 				       class="font-hairline"
 				>diabetes</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->diabetes }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->diabetes }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="eczeem"
 				       class="font-hairline"
 				>eczeem</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->eczeem }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->eczeem }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="huidkanker"
 				       class="font-hairline"
 				>huidkanker</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->huidkanker }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->huidkanker }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="huidschimmel"
 				       class="font-hairline"
 				>huidschimmel</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->huidschimmel }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->huidschimmel }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="ipl"
 				       class="font-hairline"
 				>ipl</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->ipl }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->ipl }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="laser"
 				       class="font-hairline"
 				>laser</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->laser }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->laser }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="medicatie"
 				       class="font-hairline"
 				>medicatie</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->medicatie }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->medicatie }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="operaties"
 				       class="font-hairline"
 				>operaties</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->operaties }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->operaties }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="zon"
 				       class="font-hairline"
 				>zon</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->zon }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->zon }}
+				</p>
 			</div>
 			<div class="lg:w-1/3 w-full">
 				<label for="kanker"
 				       class="font-hairline"
 				>kanker</label>
-				<p class="bg-transparent appearance-none focus:outline-none w-full">{{ $customer->intake->kanker }}</p>
+				<p class="bg-transparent appearance-none focus:outline-none w-full">
+					{{ $customer->intake->kanker }}
+				</p>
 			</div>
 		</div>
 		<hr class="border-b border-dashed my-4">

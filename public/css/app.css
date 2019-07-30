@@ -4726,7 +4726,7 @@ h3 {
 }
 
 .switch {
-  height: 1.25rem;
+  height: 1rem;
   width: 2rem;
   position: relative;
   display: inline-block;
@@ -4754,11 +4754,8 @@ h3 {
 .slider:before {
   height: 0.75rem;
   width: 0.75rem;
-  margin: 0.25rem;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  margin-top: 0.125rem;
+  margin-left: 0.125rem;
   background-color: #fff;
   position: absolute;
   content: "";
@@ -12788,7 +12785,7 @@ table tr {
   left: 4px;
 }
 
-.inset-0-5{
+.inset-05{
   top: 0.125rem;
   right: 0.125rem;
   bottom: 0.125rem;
@@ -12852,12 +12849,12 @@ table tr {
   left: 4px;
 }
 
-.inset-y-0-5{
+.inset-y-05{
   top: 0.125rem;
   bottom: 0.125rem;
 }
 
-.inset-x-0-5{
+.inset-x-05{
   right: 0.125rem;
   left: 0.125rem;
 }
@@ -12952,19 +12949,19 @@ table tr {
   left: 4px;
 }
 
-.top-0-5{
+.top-05{
   top: 0.125rem;
 }
 
-.right-0-5{
+.right-05{
   right: 0.125rem;
 }
 
-.bottom-0-5{
+.bottom-05{
   bottom: 0.125rem;
 }
 
-.left-0-5{
+.left-05{
   left: 0.125rem;
 }
 
@@ -24255,7 +24252,7 @@ table tr {
     left: 4px;
   }
 
-  .sm\:inset-0-5{
+  .sm\:inset-05{
     top: 0.125rem;
     right: 0.125rem;
     bottom: 0.125rem;
@@ -24319,12 +24316,12 @@ table tr {
     left: 4px;
   }
 
-  .sm\:inset-y-0-5{
+  .sm\:inset-y-05{
     top: 0.125rem;
     bottom: 0.125rem;
   }
 
-  .sm\:inset-x-0-5{
+  .sm\:inset-x-05{
     right: 0.125rem;
     left: 0.125rem;
   }
@@ -24419,19 +24416,19 @@ table tr {
     left: 4px;
   }
 
-  .sm\:top-0-5{
+  .sm\:top-05{
     top: 0.125rem;
   }
 
-  .sm\:right-0-5{
+  .sm\:right-05{
     right: 0.125rem;
   }
 
-  .sm\:bottom-0-5{
+  .sm\:bottom-05{
     bottom: 0.125rem;
   }
 
-  .sm\:left-0-5{
+  .sm\:left-05{
     left: 0.125rem;
   }
 
@@ -35708,7 +35705,7 @@ table tr {
     left: 4px;
   }
 
-  .md\:inset-0-5{
+  .md\:inset-05{
     top: 0.125rem;
     right: 0.125rem;
     bottom: 0.125rem;
@@ -35772,12 +35769,12 @@ table tr {
     left: 4px;
   }
 
-  .md\:inset-y-0-5{
+  .md\:inset-y-05{
     top: 0.125rem;
     bottom: 0.125rem;
   }
 
-  .md\:inset-x-0-5{
+  .md\:inset-x-05{
     right: 0.125rem;
     left: 0.125rem;
   }
@@ -35872,19 +35869,19 @@ table tr {
     left: 4px;
   }
 
-  .md\:top-0-5{
+  .md\:top-05{
     top: 0.125rem;
   }
 
-  .md\:right-0-5{
+  .md\:right-05{
     right: 0.125rem;
   }
 
-  .md\:bottom-0-5{
+  .md\:bottom-05{
     bottom: 0.125rem;
   }
 
-  .md\:left-0-5{
+  .md\:left-05{
     left: 0.125rem;
   }
 
@@ -47161,7 +47158,7 @@ table tr {
     left: 4px;
   }
 
-  .lg\:inset-0-5{
+  .lg\:inset-05{
     top: 0.125rem;
     right: 0.125rem;
     bottom: 0.125rem;
@@ -47225,12 +47222,12 @@ table tr {
     left: 4px;
   }
 
-  .lg\:inset-y-0-5{
+  .lg\:inset-y-05{
     top: 0.125rem;
     bottom: 0.125rem;
   }
 
-  .lg\:inset-x-0-5{
+  .lg\:inset-x-05{
     right: 0.125rem;
     left: 0.125rem;
   }
@@ -47325,19 +47322,19 @@ table tr {
     left: 4px;
   }
 
-  .lg\:top-0-5{
+  .lg\:top-05{
     top: 0.125rem;
   }
 
-  .lg\:right-0-5{
+  .lg\:right-05{
     right: 0.125rem;
   }
 
-  .lg\:bottom-0-5{
+  .lg\:bottom-05{
     bottom: 0.125rem;
   }
 
-  .lg\:left-0-5{
+  .lg\:left-05{
     left: 0.125rem;
   }
 
@@ -58614,7 +58611,7 @@ table tr {
     left: 4px;
   }
 
-  .xl\:inset-0-5{
+  .xl\:inset-05{
     top: 0.125rem;
     right: 0.125rem;
     bottom: 0.125rem;
@@ -58678,12 +58675,12 @@ table tr {
     left: 4px;
   }
 
-  .xl\:inset-y-0-5{
+  .xl\:inset-y-05{
     top: 0.125rem;
     bottom: 0.125rem;
   }
 
-  .xl\:inset-x-0-5{
+  .xl\:inset-x-05{
     right: 0.125rem;
     left: 0.125rem;
   }
@@ -58778,19 +58775,19 @@ table tr {
     left: 4px;
   }
 
-  .xl\:top-0-5{
+  .xl\:top-05{
     top: 0.125rem;
   }
 
-  .xl\:right-0-5{
+  .xl\:right-05{
     right: 0.125rem;
   }
 
-  .xl\:bottom-0-5{
+  .xl\:bottom-05{
     bottom: 0.125rem;
   }
 
-  .xl\:left-0-5{
+  .xl\:left-05{
     left: 0.125rem;
   }
 

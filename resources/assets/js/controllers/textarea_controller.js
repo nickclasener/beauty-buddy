@@ -2,7 +2,11 @@ import {Controller} from "stimulus";
 import tippy from "tippy.js";
 
 export default class extends Controller {
-    static targets = ["textarea", "required"];
+    static targets = [
+        "textarea",
+        "required"
+    ];
+
 
     focus() {
         this.textareaTarget.focus();
@@ -10,10 +14,25 @@ export default class extends Controller {
 
     grow() {
         this.textareaTargets.forEach(function (target) {
+            console.log(target.scrollHeight.toPrecision());
+            console.log(target.style.height);
             if (target.scrollHeight >= '80') {
-                target.style.height = target.scrollHeight + 'px';
+                target.style.height = '80px';
             }
+            target.style.height = target.scrollHeight + 'px';
         });
     }
+
+    grow24() {
+        this.textareaTargets.forEach(function (target) {
+            console.log(target.scrollHeight.toPrecision());
+            console.log(target.style.height);
+            if (target.scrollHeight >= '24') {
+                target.style.height = '24px';
+            }
+            target.style.height = target.scrollHeight + 'px';
+        });
+    }
+
 
 }

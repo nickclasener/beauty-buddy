@@ -68,7 +68,7 @@ class IntakeController extends Controller
 
 	public function edit ( Intake $intake )
 	{
-		return view('noteAndHuidanalyse.edit')->with([
+		return view('intake.edit')->with([
 				'intake' => $intake,
 		]);
 	}

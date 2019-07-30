@@ -51712,9 +51712,24 @@ var _class = function (_Controller) {
         key: "grow",
         value: function grow() {
             this.textareaTargets.forEach(function (target) {
+                console.log(target.scrollHeight.toPrecision());
+                console.log(target.style.height);
                 if (target.scrollHeight >= '80') {
-                    target.style.height = target.scrollHeight + 'px';
+                    target.style.height = '80px';
                 }
+                target.style.height = target.scrollHeight + 'px';
+            });
+        }
+    }, {
+        key: "grow24",
+        value: function grow24() {
+            this.textareaTargets.forEach(function (target) {
+                console.log(target.scrollHeight.toPrecision());
+                console.log(target.style.height);
+                if (target.scrollHeight >= '24') {
+                    target.style.height = '24px';
+                }
+                target.style.height = target.scrollHeight + 'px';
             });
         }
     }]);
