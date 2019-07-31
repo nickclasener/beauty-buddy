@@ -42,36 +42,36 @@ class ExampleAccountData extends Command
 	 */
 	public function handle ()
 	{
-//		factory(Customer::class)
-		//				->create([
-		//						'id'      => 1,
-		//						'user_id' => 1,
-		//				]);
-		//		factory(Customer::class)
-		//				->create([
-		//						'id'      => 2,
-		//						'user_id' => 1,
-		//				]);
-		//		factory(Note::class, 40)
-		//				->create([
-		//						'user_id'     => 1,
-		//						'customer_id' => 1,
-		//				]);
-		//		//		factory(Huidanalyse::class, 40)
-		//		//				->create([
-		//		//						'user_id'     => 1,
-		//		//						'customer_id' => 1,
-		//		//				]);
-		//		factory(DailyAdvice::class, 40)
+		factory(Customer::class)
+				->create([
+						'id'      => 1,
+						'user_id' => 1,
+				]);
+		factory(Customer::class)
+				->create([
+						'id'      => 2,
+						'user_id' => 1,
+				]);
+		factory(Note::class, 40)
+				->create([
+						'user_id'     => 1,
+						'customer_id' => 1,
+				]);
+		//		factory(Huidanalyse::class, 40)
 		//				->create([
 		//						'user_id'     => 1,
 		//						'customer_id' => 1,
 		//				]);
-		//		factory(Intake::class)
-		//				->create([
-		//						'user_id'     => 1,
-		//						'customer_id' => 2,
-		//				]);
+		factory(DailyAdvice::class, 40)
+				->create([
+						'user_id'     => 1,
+						'customer_id' => 1,
+				]);
+		factory(Intake::class)
+				->create([
+						'user_id'     => 1,
+						'customer_id' => 2,
+				]);
 
 	}
 }
