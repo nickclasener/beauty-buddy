@@ -29,7 +29,6 @@ window.Toast = Swal.mixin({
     showConfirmButton: false,
     timer: 3000
 });
-
 // var randomColours = ['3c6dd1', 'd13c9e', '3cd19e'];
 // var currentColour = 0;
 // var currentDemoColour = 0;

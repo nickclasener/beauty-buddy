@@ -6,368 +6,416 @@
 		      method="post"
 		      data-controller="textarea"
 		>@method('POST')@csrf
-			<div class="flex flex-wrap group relative w-full shadow border border-gray-200 shadow-inner outline-none py-4">
-				<div class="w-full px-4">
+			<div class="flex flex-wrap group relative w-full shadow border border-gray-200 shadow-inner outline-none">
+				<div class="w-full ">
 					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<h3 class="font-hairline ml-2">
-							behandeling:
-						</h3>
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+						<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+							<h3 class="font-hairline">
+								behandeling:
+							</h3>
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="behandeling.morning textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="behandeling"
 							          placeholder="behandeling"
 							>{{ old('behandeling') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						huidverbetering:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							huidverbetering:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.huidverbetering textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="huidverbetering"
 							          placeholder="huidverbetering"
-							> {{ old('huidverbetering') }} </textarea>
+							>{{ old('huidverbetering') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						allergieen:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							allergieen:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.allergieen textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="allergieen"
 							          placeholder="allergieen"
-							> {{ old('allergieen') }}
-							</textarea>
+							>{{ old('allergieen') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
-
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						bijzonderheden:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							bijzonderheden:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.bijzonderheden textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="bijzonderheden"
 							          placeholder="bijzonderheden"
-							> {{ old('bijzonderheden') }}
-							</textarea>
+							>{{ old('bijzonderheden') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
-
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						bloeddruk:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							bloeddruk:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.bloeddruk textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="bloeddruk"
 							          placeholder="bloeddruk"
-							>
-								{{ old('bloeddruk') }}
-							</textarea>
+							>{{ old('bloeddruk') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
 
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						chemisch:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							chemisch:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.chemisch textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="chemisch"
 							          placeholder="chemisch"
-							> {{ old('chemisch') }}
-							</textarea>
+							>{{ old('chemisch') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
 
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						cosmetisch:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							cosmetisch:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.cosmetisch textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="cosmetisch"
 							          placeholder="cosmetisch"
-							> {{ old('cosmetisch') }}
-							</textarea>
+							>{{ old('cosmetisch') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						diabetes:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							diabetes:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.diabetes textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="diabetes"
 							          placeholder="diabetes"
-							> {{ old('diabetes') }}
-							</textarea>
+							>{{ old('diabetes') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						eczeem:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							eczeem:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.eczeem textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="eczeem"
 							          placeholder="eczeem"
-							> {{ old('eczeem') }}
-							</textarea>
+							>{{ old('eczeem') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						huidkanker:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							huidkanker:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.huidkanker textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="huidkanker"
 							          placeholder="huidkanker"
-							> {{ old('huidkanker') }}
-							</textarea>
+							>{{ old('huidkanker') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
 
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						huidschimmel:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							huidschimmel:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.huidschimmel textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="huidschimmel"
 							          placeholder="huidschimmel"
-							> {{ old('huidschimmel') }}
-							</textarea>
+							>{{ old('huidschimmel') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						ipl:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							ipl:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.ipl textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="ipl"
 							          placeholder="ipl"
-							> {{ old('ipl') }}
-							</textarea>
+							>{{ old('ipl') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
 
-
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						laser:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							laser:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.laser textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="laser"
 							          placeholder="laser"
-							> {{ old('laser') }}
-							</textarea>
+							>{{ old('laser') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						medicatie:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							medicatie:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.medicatie textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="medicatie"
 							          placeholder="medicatie"
-							>
-								{{ old('medicatie') }}
-							</textarea>
+							>{{ old('medicatie') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
-				<div class="lg:w-1/2 w-full p-4">
-					<h3 class="font-hairline ml-2">
-						operaties:
-					</h3>
-					<div class="group relative w-full focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							operaties:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.operaties textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="operaties"
 							          placeholder="operaties"
-							> {{ old('operaties') }}
-							</textarea>
+							>{{ old('operaties') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						zon:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4 border-b border-dashed">
+						<h3 class="font-hairline">
+							zon:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.zon textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="zon"
 							          placeholder="zon"
-							>{{ old('zon') }}
-							</textarea>
+							>{{ old('zon') }}</textarea>
 						</div>
 					</div>
-					<hr class="border-b border-dashed my-4">
 				</div>
-				<div class="w-full px-4">
-					<h3 class="font-hairline ml-2">
-						kanker:
-					</h3>
-					<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
-						<div class="w-full p-2 pt-4 overflow-hidden outline-none resize-none bg-transparent">
+				<div class="group relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none">
+					<div class=" p-4 w-full overflow-hidden outline-none resize-none bg-transparent pb-4">
+						<h3 class="font-hairline">
+							kanker:
+						</h3>
+						<div class="w-full pt-4 overflow-hidden outline-none resize-none bg-transparent">
 							<textarea type="text"
 							          rows="1"
 							          class="w-full overflow-hidden outline-none resize-none bg-transparent"
-							          data-target="dailyadvice.morning textarea.textarea"
-							          data-action="click->textarea#grow24 input->textarea#grow24 input->dailyadvice#errors"
+							          data-target="intake.kanker textarea.textarea"
+							          data-action="click->textarea#grow24 input->textarea#grow24 input->intake#errors"
 							          name="kanker"
 							          placeholder="kanker"
-							>{{ old('kanker') }}
-							</textarea>
+							>{{ old('kanker') }}</textarea>
 						</div>
 					</div>
 				</div>
 			</div>
-			<br>
-			<input type="checkbox"
-			       name="bestraling" {{ old('bestraling') ? 'checked' : '' }} /> Bestraling
-			<br>
-			<input type="checkbox"
-			       name="chemo" {{ old('chemo') ? 'checked' : '' }} /> Chemo
-			<br>
-			<input type="checkbox"
-			       name="immunotherapie" {{ old('immunotherapie') ? 'checked' : '' }} /> Imunnotherapie
-			<hr>
-			<input type="checkbox"
-			       name="koortslip" {{ old('koortslip') ? 'checked' : '' }} /> Koortslip
-			<br>
-			<input type="checkbox"
-			       name="roken" {{ old('roken') ? 'checked' : '' }} /> Roken
-			<br>
-			<input type="checkbox"
-			       name="overgang" {{ old('overgang') ? 'checked' : '' }} /> Overgang
-			<br>
-			<input type="checkbox"
-			       name="psoriasis" {{ old('psoriasis') ? 'checked' : '' }} /> Psoriasis
-			<br>
-			<input type="checkbox"
-			       name="vitrigilo" {{ old('vitrigilo') ? 'checked' : '' }} /> Vitrigilo
-			<br>
-			<input type="checkbox"
-			       name="zwanger" {{ old('zwanger') ? 'checked' : '' }} /> Zwanger
-			<hr>
-			<button type="submit"
-			>Opslaan
-			</button>
+			<hr class="border-b border-dashed my-4">
+			<div class="flex flex-wrap">
+				<div class="flex items-center sm:w-1/3 sm:w-1/2 w-full">
+					<label class="switch flex items-center">
+						<input type="checkbox"
+						       name="bestraling"
+								{{ old('bestraling') ? 'checked' : '' }}>
+						<span class="slider"></span>
+					</label>
+					<label for="bestraling"
+					       class="font-hairline ml-1"
+					>bestraling
+					</label>
+				</div>
+				<div class="flex items-center sm:w-1/3 sm:w-1/2 w-full">
+					<label class="switch flex items-center">
+						<input type="checkbox"
+						       name="chemo"
+								{{ old('chemo') ? 'checked' : '' }}>
+						<span class="slider"></span>
+					</label>
+					<label for="chemo"
+					       class="font-hairline ml-1"
+					>chemo
+					</label>
+				</div>
+				<div class="flex items-center sm:w-1/3 sm:w-1/2 w-full">
+					<label class="switch flex items-center">
+						<input type="checkbox"
+						       name="immunotherapie"
+								{{ old('immunotherapie') ? 'checked' : '' }}>
+						<span class="slider"></span>
+					</label>
+					<label for="immunotherapie"
+					       class="font-hairline ml-1"
+					>immunotherapie
+					</label>
+				</div>
+				<div class="flex items-center sm:w-1/3 sm:w-1/2 w-full">
+					<label class="switch flex items-center">
+						<input type="checkbox"
+						       name="koortslip"
+						       {{ old('koortslip') ? 'checked' : '' }} }
+						>
+						<span class="slider"></span>
+					</label>
+					<label for="koortslip"
+					       class="font-hairline ml-1"
+					>koortslip
+					</label>
+				</div>
+				<div class="flex items-center sm:w-1/3 sm:w-1/2 w-full">
+					<label class="switch flex items-center">
+						<input type="checkbox"
+						       name="roken"
+								{{ old('roken') ? 'checked' : '' }}>
+						<span class="slider"></span>
+					</label>
+					<label for="roken"
+					       class="font-hairline ml-1"
+					>roken
+					</label>
+				</div>
+				<div class="flex items-center sm:w-1/3 sm:w-1/2 w-full">
+					<label class="switch flex items-center">
+						<input type="checkbox"
+						       name="overgang"
+								{{ old('overgang') ? 'checked' : '' }}>
+						<span class="slider"></span>
+					</label>
+					<label for="overgang"
+					       class="font-hairline ml-1"
+					>overgang
+					</label>
+				</div>
+				<div class="flex items-center sm:w-1/3 sm:w-1/2 w-full">
+					<label class="switch flex items-center">
+						<input type="checkbox"
+						       name="psoriasis"
+								{{ old('psoriasis') ? 'checked' : '' }}>
+						<span class="slider"></span>
+					</label>
+					<label for="psoriasis"
+					       class="font-hairline ml-1"
+					>psoriasis
+					</label>
+				</div>
+				<div class="flex items-center sm:w-1/3 sm:w-1/2 w-full">
+					<label class="switch flex items-center">
+						<input type="checkbox"
+						       name="vitrigilo"
+								{{ old('vitrigilo') ? 'checked' : '' }}>
+						<span class="slider"></span>
+					</label>
+					<label for="vitrigilo"
+					       class="font-hairline ml-1"
+					>vitrigilo
+					</label>
+				</div>
+				<div class="flex items-center sm:w-1/3 sm:w-1/2 w-full">
+					<label class="switch flex items-center">
+						<input type="checkbox"
+						       name="zwanger"
+								{{ old('zwanger') ? 'checked' : '' }}>
+						<span class="slider"></span>
+					</label>
+					<label for="zwanger"
+					       class="font-hairline ml-1"
+					>zwanger
+					</label>
+				</div>
+				<button type="submit"
+				>Opslaan
+				</button>
+			</div>
 		</form>
 	</div>
 @endsection

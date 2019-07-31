@@ -24,6 +24,7 @@ export default class extends Controller {
     }
 
     grow24() {
+
         this.textareaTargets.forEach(function (target) {
             console.log(target.scrollHeight.toPrecision());
             console.log(target.style.height);
