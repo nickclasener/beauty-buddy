@@ -21,7 +21,7 @@
 	@endforeach
 </div>
 {{--<!-- status elements -->--}}
-<div class="flex justify-center">
+<div class="flex justify-center pb-4">
 	<p>
 		...
 	</p>

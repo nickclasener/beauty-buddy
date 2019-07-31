@@ -130,15 +130,15 @@ class Customer extends Model
 		return $this->hasMany(Huidanalyse::class);
 	}
 
-	//	public function updateDailyAdvice ( $dailyAdvice )
-	//	{
-	//		return $this->dailyAdvices()->update($dailyAdvice);
-	//	}
-
 	public function monthYearDailyAdvices ()
 	{
 		return monthYearDesc($this->dailyAdvices);
 	}
+
+	//	public function updateDailyAdvice ( $dailyAdvice )
+	//	{
+	//		return $this->dailyAdvices()->update($dailyAdvice);
+	//	}
 
 	public function addDailyAdvice ( $dailyAdvice )
 	{
@@ -174,4 +174,5 @@ class Customer extends Model
 	{
 		return $this->intake()->update($intake);
 	}
+
 }

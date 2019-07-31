@@ -51,6 +51,13 @@ class IntakeController extends Controller
 				'vitrigilo'       => request('vitrigilo'),
 				'zwanger'         => request('zwanger'),
 		]);
+		if ( request()->ajax() ) {
+			return response(
+					view('intake._show')->with([
+							'customer' => $customer,
+							'intake'   => $customer->intake,
+					]));
+		}
 
 		return redirect(route('intake.show', [
 				'customer' => $customer,
@@ -62,14 +69,15 @@ class IntakeController extends Controller
 	{
 		return view('intake.show')->with([
 				'customer' => $customer,
-				'intake'   => $intake,
+				'intake'   => $customer->intake,
 		]);
 	}
 
-	public function edit ( Intake $intake )
+	public function edit ( Customer $customer )
 	{
-		return view('noteAndHuidanalyse.edit')->with([
-				'intake' => $intake,
+		return view('intake.edit')->with([
+				'customer' => $customer,
+				'intake'   => $customer->intake,
 		]);
 	}
 
@@ -113,6 +121,15 @@ class IntakeController extends Controller
 
 	public function destroy ( Customer $customer )
 	{
+		$customer->deleteIntake();
+		if ( request()->ajax() ) {
+			return response(route('intake.create', $customer, false));
+		}
+		//		if ( request()->ajax() ) {
+		//			$customer->deleteIntake();
+		//
+		//			return response(null, array_first($customer) ? 200 : 205);
+		//		}
 		$customer->deleteIntake();
 
 		return redirect(route('customer.show', $customer));

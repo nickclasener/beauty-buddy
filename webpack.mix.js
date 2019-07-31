@@ -25,6 +25,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .browserSync({
         proxy: 'beauty-buddy.test',
         open: false,
+        ghostMode: true,
         snippetOptions: {
             rule: {
                 match: /<\/head>/i,

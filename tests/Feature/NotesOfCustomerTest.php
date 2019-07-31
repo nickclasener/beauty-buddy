@@ -41,7 +41,7 @@ class NotesOfCustomerTest extends TestCase
 	}
 
 	/** @test */
-	function an_authenticated_user_can_add_a_note_to_a_customer_via_ajax ()
+	function an_authenticated_user_can_add_a_note_to_a_customer_via_json ()
 	{
 
 		// Arrange

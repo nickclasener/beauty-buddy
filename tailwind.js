@@ -33,23 +33,45 @@ module.exports = {
             '6': '1.5rem',
             '1/2': '50%',
             'full': '100%',
-            'right-up': ['100%', '-100%'],
-            '3d': ['40px', '-60px', '-130px'],
+            'right-up': [
+                '100%',
+                '-100%'
+            ],
+            '3d': [
+                '40px',
+                '-60px',
+                '-130px'
+            ],
         },
         scale: { // defaults to {}
             '90': '0.9',
             '100': '1',
             '110': '1.1',
             '-100': '-1',
-            'stretched-x': ['2', '0.5'],
-            'stretched-y': ['0.5', '2'],
-            '3d': ['0.5', '1', '2'],
+            'stretched-x': [
+                '2',
+                '0.5'
+            ],
+            'stretched-y': [
+                '0.5',
+                '2'
+            ],
+            '3d': [
+                '0.5',
+                '1',
+                '2'
+            ],
         },
         rotate: { // defaults to {}
             '90': '90deg',
             '180': '180deg',
             '270': '270deg',
-            '3d': ['0', '1', '0.5', '45deg'],
+            '3d': [
+                '0',
+                '1',
+                '0.5',
+                '45deg'
+            ],
         },
         skew: { // defaults to {}
             '-5': '-5deg',
@@ -208,7 +230,7 @@ module.exports = {
         spacing: {
             px: '1px',
             '0': '0',
-            '0.5': '0.125rem',
+            '05': '0.125rem',
             '1': '0.25rem',
             '1.5': '0.375rem',
             '2': '0.5rem',
@@ -226,7 +248,9 @@ module.exports = {
             '16': '4rem',
             '20': '5rem',
             '24': '6rem',
+            '26': '7rem',
             '32': '8rem',
+            '36': '9rem',
             '40': '10rem',
             '48': '12rem',
             '50': '12.5rem',
@@ -366,10 +390,11 @@ module.exports = {
             ...theme('spacing'),
             full: '100%',
             screen: '100vh',
+            quarter: '75vh'
         }),
         inset: {
             '0': '0',
-            '0-5': '0.125rem',
+            '05': '0.125rem',
             '1': '0.25rem',
             // '2': '0.5rem',
             // '3': '0.75rem',
@@ -535,18 +560,41 @@ module.exports = {
         alignSelf: ['responsive'],
         appearance: ['responsive'],
         backgroundAttachment: ['responsive'],
-        backgroundColor: ['responsive', 'hover', 'focus', 'group-hover', 'focus-within'],
+        backgroundColor: [
+            'responsive',
+            'hover',
+            'focus',
+            'group-hover',
+            'focus-within'
+        ],
         backgroundPosition: ['responsive'],
         backgroundRepeat: ['responsive'],
         backgroundSize: ['responsive'],
         borderCollapse: ['responsive'],
-        borderColor: ['responsive', 'hover', 'focus', 'group-focus', 'focus-within'],
+        borderColor: [
+            'responsive',
+            'hover',
+            'focus',
+            'group-focus',
+            'focus-within'
+        ],
         borderRadius: ['responsive'],
         borderStyle: ['responsive'],
         borderWidth: ['responsive'],
-        boxShadow: ['responsive', 'hover', 'focus', 'group-focus', 'focus-within'],
+        boxShadow: [
+            'responsive',
+            'hover',
+            'focus',
+            'group-focus',
+            'focus-within'
+        ],
         cursor: ['responsive'],
-        display: ['responsive', 'hover', 'group-hover', 'focus-within'],
+        display: [
+            'responsive',
+            'hover',
+            'group-hover',
+            'focus-within'
+        ],
         fill: ['responsive'],
         flex: ['responsive'],
         flexDirection: ['responsive'],
@@ -558,7 +606,11 @@ module.exports = {
         fontSize: ['responsive'],
         fontSmoothing: ['responsive'],
         fontStyle: ['responsive'],
-        fontWeight: ['responsive', 'hover', 'focus'],
+        fontWeight: [
+            'responsive',
+            'hover',
+            'focus'
+        ],
         height: ['responsive'],
         inset: ['responsive'],
         justifyContent: ['responsive'],
@@ -575,7 +627,12 @@ module.exports = {
         objectPosition: ['responsive'],
         opacity: ['responsive'],
         order: ['responsive'],
-        outline: ['responsive', 'focus', 'group-focus', 'focus-within'],
+        outline: [
+            'responsive',
+            'focus',
+            'group-focus',
+            'focus-within'
+        ],
         overflow: ['responsive'],
         padding: ['responsive'],
         pointerEvents: ['responsive'],
@@ -584,8 +641,19 @@ module.exports = {
         stroke: ['responsive'],
         tableLayout: ['responsive'],
         textAlign: ['responsive'],
-        textColor: ['responsive', 'hover', 'focus', 'group-hover', 'group-focus', 'focus-within'],
-        textDecoration: ['responsive', 'hover', 'focus'],
+        textColor: [
+            'responsive',
+            'hover',
+            'focus',
+            'group-hover',
+            'group-focus',
+            'focus-within'
+        ],
+        textDecoration: [
+            'responsive',
+            'hover',
+            'focus'
+        ],
         textTransform: ['responsive'],
         userSelect: ['responsive'],
         verticalAlign: ['responsive'],

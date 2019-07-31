@@ -1,29 +1,45 @@
 import {Controller} from "stimulus";
 
 export default class extends Controller {
-    static targets = ["body", "note", "monthyear"];
+    static targets = [
+        "body",
+        "note",
+        "monthyear",
+        "error"
+    ];
 
+    errors() {
+        this.errorTarget.innerText = '';
+        this.errorTarget.classList.add('hidden');
+    }
 
     create(event) {
         event.preventDefault();
-        axios.post(this.data.get('store'), this.form).then(response => {
-            this.form = null;
-            if (response.headers[0] === 'note') {
-                this.note = response.data;
-            } else if (response.headers[0] === 'monthyear') {
-                this.monthyear = response.data;
-            }
-            Swal.fire({
-                type: 'success',
-                title: 'Notitie is toegevoegd',
-                showConfirmButton: false,
-                timer: 2000
-            });
-        }).catch(error => console.log(error));
+        if (this.body === '') {
+            this.errorTarget.classList.remove('hidden');
+            this.errorTarget.innerText = 'U kunt geen lege notitie opslaan';
+            event.stopImmediatePropagation();
+        } else {
+            axios.post(this.data.get('store'), this.form).then(response => {
+                this.form = null;
+                if (response.headers[0] === 'note') {
+                    this.note = response.data;
+                } else if (response.headers[0] === 'monthyear') {
+                    this.monthyear = response.data;
+                }
+                Swal.fire({
+                    type: 'success',
+                    title: 'Notitie is toegevoegd',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }).catch(error => console.log(error));
+        }
     }
 
     cancel(event) {
         event.preventDefault();
+        this.errorTarget.classList.add('hidden');
         this.form = '';
     }
 
@@ -49,6 +65,10 @@ export default class extends Controller {
 
     set note(text) {
         return this.noteTarget.insertAdjacentHTML('beforebegin', text);
+    }
+
+    get body() {
+        return this.bodyTarget.value;
     }
 
     get form() {

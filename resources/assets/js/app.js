@@ -21,7 +21,7 @@ const application = Application.start();
 const context = require.context("./controllers", true, /\.js$/);
 application.load(definitionsFromContext(context));
 
-// Turbolinks.start();
+Turbolinks.start();
 
 window.Toast = Swal.mixin({
     toast: true,
@@ -29,7 +29,6 @@ window.Toast = Swal.mixin({
     showConfirmButton: false,
     timer: 3000
 });
-
 // var randomColours = ['3c6dd1', 'd13c9e', '3cd19e'];
 // var currentColour = 0;
 // var currentDemoColour = 0;

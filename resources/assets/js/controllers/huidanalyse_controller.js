@@ -4,6 +4,7 @@ export default class extends Controller {
     static targets = [
         "body",
         "huidanalyse",
+        "error"
     ];
 
     initialize() {
@@ -19,17 +20,28 @@ export default class extends Controller {
         }
     }
 
+    errors() {
+        this.errorTarget.innerText = '';
+        this.errorTarget.classList.add('hidden');
+    }
+
     edit(event) {
         event.preventDefault();
-        axios.patch(this.data.get("update"), this.form).then(response => {
-            this.huidanalyse = response.data;
-            Swal.fire({
-                type: 'success',
-                title: 'Huidanalyse is gewijzigd',
-                showConfirmButton: false,
-                timer: 1000
-            });
-        }).catch(error => console.log(error));
+        if (this.body === '') {
+            this.errorTarget.classList.remove('hidden');
+            this.errorTarget.innerText = 'U moet het veld vullen of annuleren';
+            event.stopImmediatePropagation();
+        } else {
+            axios.patch(this.data.get("update"), this.form).then(response => {
+                this.huidanalyse = response.data;
+                Swal.fire({
+                    type: 'success',
+                    title: 'Huidanalyse is gewijzigd',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+            }).catch(error => console.log(error));
+        }
     }
 
     remove() {
@@ -68,6 +80,10 @@ export default class extends Controller {
 
     set huidanalyse(text) {
         return this.huidanalyseTarget.outerHTML = text;
+    }
+
+    get body() {
+        return this.bodyTarget.value;
     }
 
     get form() {

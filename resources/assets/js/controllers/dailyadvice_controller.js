@@ -6,14 +6,9 @@ export default class extends Controller {
         "midday",
         "evening",
         "dailyadvice",
-        "saveButton",
         "error"
     ];
 
-    errors() {
-        this.errorTarget.innerText = '';
-        this.errorTarget.classList.add('hidden');
-    }
 
     initialize() {
         if (this.data.get('created') !== null) {
@@ -26,6 +21,11 @@ export default class extends Controller {
                 height: 0,
             });
         }
+    }
+
+    errors() {
+        this.errorTarget.innerText = '';
+        this.errorTarget.classList.add('hidden');
     }
 
     edit(event) {

@@ -10,25 +10,36 @@ export default class extends Controller {
         "telefoon",
         "mobiel",
         "email",
-        "geboortedatum"
+        "geboortedatum",
+        "error"
     ];
+
+    errors() {
+        this.errorTarget.innerText = '';
+        this.errorTarget.classList.add('hidden');
+    }
 
     create(event) {
         event.preventDefault();
-        axios.post(this.data.get('url'), this.form).then(response => {
-            Swal.fire({
-                type: 'success',
-                title: 'Nieuwe klant is toegevoegd',
-                showConfirmButton: false,
-                timer: 2000,
-                onClose: () => {
-                    return [
-                        Turbolinks.visit(response.request.responseURL)
-                    ];
-                }
-            });
-        }).catch(error => console.log(error));
-
+        if (this.empty() === '') {
+            this.errorTarget.classList.remove('hidden');
+            this.errorTarget.innerText = 'U moet het veld vullen of annuleren';
+            event.stopImmediatePropagation();
+        } else {
+            axios.post(this.data.get('url'), this.form).then(response => {
+                Swal.fire({
+                    type: 'success',
+                    title: 'Nieuwe klant is toegevoegd',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    onClose: () => {
+                        return [
+                            Turbolinks.visit(response.request.responseURL)
+                        ];
+                    }
+                });
+            }).catch(error => console.log(error));
+        }
     }
 
     update(event) {
@@ -71,7 +82,12 @@ export default class extends Controller {
 
     cancel(event) {
         event.preventDefault();
+        this.errorTarget.classList.add('hidden');
         this.form = '';
+    }
+
+    empty() {
+        return this.naamTarget.value + this.straatnaamTarget.value + this.huisnummerTarget.value + this.postcodeTarget.value + this.plaatsTarget.value + this.telefoonTarget.value + this.mobielTarget.value + this.emailTarget.value + this.geboortedatumTarget.value;
     }
 
     get form() {
