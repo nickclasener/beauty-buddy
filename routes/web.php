@@ -72,12 +72,12 @@ Route::group([ 'middleware' => 'auth' ], function () {
 
 	// Intake Routes
 	Route::get('klanten/{customer}/intake/nieuw', 'IntakeController@create')->name('intake.create');
-	Route::get('klanten/{customer}/intake/{intake}', 'IntakeController@show')->name('intake.show');
+	Route::get('klanten/{customer}/intake', 'IntakeController@show')->name('intake.show');
 	Route::post('klanten/{customer}/intake', 'IntakeController@store')->name('intake.store');
-	Route::delete('klanten/{customer}/intake/{intake}', 'IntakeController@destroy')->name('intake.destroy');
-	Route::get('klanten/{customer}/intake/{intake}/bewerken', 'IntakeController@edit')->name('intake.edit');
+	Route::delete('klanten/{customer}/intake', 'IntakeController@destroy')->name('intake.destroy');
+	Route::get('klanten/{customer}/intake/bewerken', 'IntakeController@edit')->name('intake.edit');
 	Route::match([
 			'put',
 			'patch',
-	], 'klanten/{customer}/intake/{intake}', 'IntakeController@update')->name('intake.update');
+	], 'klanten/{customer}/intake', 'IntakeController@update')->name('intake.update');
 });

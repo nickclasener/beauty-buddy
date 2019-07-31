@@ -51862,25 +51862,87 @@ var _class = function (_Controller) {
     }
 
     _createClass(_class, [{
+        key: 'delete',
+        value: function _delete(event) {
+            event.preventDefault();
+            axios.delete(this.data.get('destroy')).then(function (response) {
+                Turbolinks.visit(response.data, { action: 'replace' });
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        }
+    }, {
+        key: 'create',
+        value: function create(event) {
+            var _this2 = this;
+
+            event.preventDefault();
+            axios.post(this.data.get('store'), this.form).then(function (response) {
+                _this2.intake = response.data;
+                Swal.fire({
+                    type: 'success',
+                    title: 'Intake is opgeslagen',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        }
+    }, {
         key: 'form',
         get: function get() {
             return {
-                morning: this.morningTarget.value,
-                midday: this.middayTarget.value,
-                evening: this.eveningTarget.value
+                behandeling: this.behandelingTarget.value,
+                huidverbetering: this.huidverbeteringTarget.value,
+                allergieen: this.allergieenTarget.value,
+                bijzonderheden: this.bijzonderhedenTarget.value,
+                bloeddruk: this.bloeddrukTarget.value,
+                chemisch: this.chemischTarget.value,
+                cosmetisch: this.cosmetischTarget.value,
+                diabetes: this.diabetesTarget.value,
+                eczeem: this.eczeemTarget.value,
+                huidkanker: this.huidkankerTarget.value,
+                huidschimmel: this.huidschimmelTarget.value,
+                ipl: this.iplTarget.value,
+                laser: this.laserTarget.value,
+                medicatie: this.medicatieTarget.value,
+                operaties: this.operatiesTarget.value,
+                zon: this.zonTarget.value,
+                kanker: this.kankerTarget.value,
+                bestraling: this.bestralingTarget.value,
+                chemo: this.chemoTarget.value,
+                immunotherapie: this.immunotherapieTarget.value,
+                koortslip: this.koortslipTarget.value,
+                roken: this.rokenTarget.value,
+                overgang: this.overgangTarget.value,
+                psoriasis: this.psoriasisTarget.value,
+                vitrigilo: this.vitrigiloTarget.value,
+                zwanger: this.zwangerTarget.value
             };
+        }
+    }, {
+        key: 'intake',
+        get: function get() {
+            return this.intakeTarget;
         },
         set: function set(text) {
-            this.morningTarget.value = text;
-            this.middayTarget.value = text;
-            this.eveningTarget.value = text;
+            return this.intakeTarget.outerHTML = text;
         }
+
+        //
+        // set form(text) {
+        //     this.morningTarget.value = text;
+        //     this.middayTarget.value = text;
+        //     this.eveningTarget.value = text;
+        // }
+
     }]);
 
     return _class;
 }(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
 
-_class.targets = ['behandeling', 'huidverbetering', 'allergieen', 'bijzonderheden', 'bloeddruk', 'chemisch', 'cosmetisch', 'diabetes', 'eczeem', 'huidkanker', 'huidschimmel', 'ipl', 'kanker', 'laser', 'medicatie', 'operaties', 'zon', 'bestraling', 'chemo', 'immunotherapie', 'koortslip', 'roken', 'overgang', 'psoriasis', 'vitrigilo', 'zwanger'];
+_class.targets = ['intake', 'behandeling', 'huidverbetering', 'allergieen', 'bijzonderheden', 'bloeddruk', 'chemisch', 'cosmetisch', 'diabetes', 'eczeem', 'huidkanker', 'huidschimmel', 'ipl', 'kanker', 'laser', 'medicatie', 'operaties', 'zon', 'bestraling', 'chemo', 'immunotherapie', 'koortslip', 'roken', 'overgang', 'psoriasis', 'vitrigilo', 'zwanger'];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ })

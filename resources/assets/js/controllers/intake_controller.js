@@ -1,7 +1,9 @@
 import {Controller} from "stimulus";
 
+
 export default class extends Controller {
     static targets = [
+        'intake',
         'behandeling',
         'huidverbetering',
         'allergieen',
@@ -30,17 +32,72 @@ export default class extends Controller {
         'zwanger',
     ];
 
+
+    delete(event) {
+        event.preventDefault();
+        axios.delete(this.data.get('destroy')).then(response => {
+            Turbolinks.visit(response.data, {action: 'replace'});
+        })
+            .catch(error => console.log(error));
+    }
+
+    create(event) {
+        event.preventDefault();
+        axios.post(this.data.get('store'), this.form)
+            .then(response => {
+                this.intake = response.data;
+                Swal.fire({
+                    type: 'success',
+                    title: 'Intake is opgeslagen',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }).catch(error => console.log(error));
+    }
+
     get form() {
         return {
-            morning: this.morningTarget.value,
-            midday: this.middayTarget.value,
-            evening: this.eveningTarget.value
+            behandeling: this.behandelingTarget.value,
+            huidverbetering: this.huidverbeteringTarget.value,
+            allergieen: this.allergieenTarget.value,
+            bijzonderheden: this.bijzonderhedenTarget.value,
+            bloeddruk: this.bloeddrukTarget.value,
+            chemisch: this.chemischTarget.value,
+            cosmetisch: this.cosmetischTarget.value,
+            diabetes: this.diabetesTarget.value,
+            eczeem: this.eczeemTarget.value,
+            huidkanker: this.huidkankerTarget.value,
+            huidschimmel: this.huidschimmelTarget.value,
+            ipl: this.iplTarget.value,
+            laser: this.laserTarget.value,
+            medicatie: this.medicatieTarget.value,
+            operaties: this.operatiesTarget.value,
+            zon: this.zonTarget.value,
+            kanker: this.kankerTarget.value,
+            bestraling: this.bestralingTarget.value,
+            chemo: this.chemoTarget.value,
+            immunotherapie: this.immunotherapieTarget.value,
+            koortslip: this.koortslipTarget.value,
+            roken: this.rokenTarget.value,
+            overgang: this.overgangTarget.value,
+            psoriasis: this.psoriasisTarget.value,
+            vitrigilo: this.vitrigiloTarget.value,
+            zwanger: this.zwangerTarget.value,
         };
     }
 
-    set form(text) {
-        this.morningTarget.value = text;
-        this.middayTarget.value = text;
-        this.eveningTarget.value = text;
+    get intake() {
+        return this.intakeTarget;
     }
+
+    set intake(text) {
+        return this.intakeTarget.outerHTML = text;
+    }
+
+    //
+    // set form(text) {
+    //     this.morningTarget.value = text;
+    //     this.middayTarget.value = text;
+    //     this.eveningTarget.value = text;
+    // }
 }

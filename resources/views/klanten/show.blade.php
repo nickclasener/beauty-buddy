@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('main')
-	<div class="flex flex-col lg:flex-row h-full mt-16">
+	<div class="flex flex-col lg:flex-row h-full mt-12 mb-4">
 		<div class="lg:pr-2 w-full lg:w-1/3 {{ Route::is('customer.show') ? 'block ':' hidden lg:block' }}  lg:sticky lg:top-0 lg:pt-20 lg:-mt-4 h-full"
 		     data-controller="toggle customer"
 		     data-customer-update="{{ route('customer.update', $customer, false) }}"

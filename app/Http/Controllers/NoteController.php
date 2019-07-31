@@ -121,13 +121,12 @@ class NoteController extends Controller
 
 	public function destroy ( Note $note )
 	{
+		$customer = $note->customer;
+		$note->delete();
 		if ( request()->ajax() ) {
-			$customer = $note->customer;
-			$note->delete();
 
 			return response(null, array_first($customer->notes) ? 200 : 205);
 		}
-		$note->delete();
 
 		return back();
 	}
