@@ -21,8 +21,8 @@
     "tightenco/ziggy": "^0.7.1"
   },
   "require-dev": {
-    "barryvdh/laravel-debugbar": "^3.2",
     "barryvdh/laravel-ide-helper": "^2.6",
+    "barryvdh/laravel-debugbar": "^3.2",
     "beyondcode/laravel-dump-server": "^1.2",
     "brianium/paratest": "^2.2",
     "codedungeon/phpunit-result-printer": "^0.26",

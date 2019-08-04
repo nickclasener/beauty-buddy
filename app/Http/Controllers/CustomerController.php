@@ -11,6 +11,7 @@ class CustomerController extends Controller
 {
 	public function index ()
 	{
+
 		$customers = Customer::where([ 'user_id' => auth()->id() ])->get()->sortBy('naam', SORT_NATURAL | SORT_FLAG_CASE);
 
 		return view('klanten.index')->with([
@@ -28,7 +29,7 @@ class CustomerController extends Controller
 		$validator = Validator::make($request->all(), [
 				'naam'          => 'required',
 				'email'         => 'required|email',
-				'geboortedatum' => 'nullable|date',
+				'geboortedatum' => 'nullable|date_format:d-m-Y',
 		]);
 
 		if ( $validator->fails() ) {
