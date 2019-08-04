@@ -12003,7 +12003,7 @@ module.exports = debounce;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(34);
-module.exports = __webpack_require__(112);
+module.exports = __webpack_require__(113);
 
 
 /***/ }),
@@ -48692,12 +48692,12 @@ var map = {
 	"./huidanalyse_controller.js": 96,
 	"./huidanalyses_controller.js": 97,
 	"./infinitescroll_controller.js": 98,
-	"./intake_controller.js": 118,
-	"./monthyear_controller.js": 107,
-	"./note_controller.js": 108,
-	"./notes_controller.js": 109,
-	"./textarea_controller.js": 110,
-	"./toggle_controller.js": 111
+	"./intake_controller.js": 107,
+	"./monthyear_controller.js": 108,
+	"./note_controller.js": 109,
+	"./notes_controller.js": 110,
+	"./textarea_controller.js": 111,
+	"./toggle_controller.js": 112
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -51338,6 +51338,116 @@ return InfiniteScroll;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var _class = function (_Controller) {
+    _inherits(_class, _Controller);
+
+    function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass(_class, [{
+        key: 'delete',
+        value: function _delete(event) {
+            event.preventDefault();
+            axios.delete(this.data.get('destroy')).then(function (response) {
+                Turbolinks.visit(response.data, { action: 'replace' });
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        }
+    }, {
+        key: 'create',
+        value: function create(event) {
+            var _this2 = this;
+
+            event.preventDefault();
+            axios.post(this.data.get('store'), this.form).then(function (response) {
+                _this2.intake = response.data;
+                Swal.fire({
+                    type: 'success',
+                    title: 'Intake is opgeslagen',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        }
+    }, {
+        key: 'form',
+        get: function get() {
+            return {
+                behandeling: this.behandelingTarget.value,
+                huidverbetering: this.huidverbeteringTarget.value,
+                allergieen: this.allergieenTarget.value,
+                bijzonderheden: this.bijzonderhedenTarget.value,
+                bloeddruk: this.bloeddrukTarget.value,
+                chemisch: this.chemischTarget.value,
+                cosmetisch: this.cosmetischTarget.value,
+                diabetes: this.diabetesTarget.value,
+                eczeem: this.eczeemTarget.value,
+                huidkanker: this.huidkankerTarget.value,
+                huidschimmel: this.huidschimmelTarget.value,
+                ipl: this.iplTarget.value,
+                laser: this.laserTarget.value,
+                medicatie: this.medicatieTarget.value,
+                operaties: this.operatiesTarget.value,
+                zon: this.zonTarget.value,
+                kanker: this.kankerTarget.value,
+                bestraling: this.bestralingTarget.value,
+                chemo: this.chemoTarget.value,
+                immunotherapie: this.immunotherapieTarget.value,
+                koortslip: this.koortslipTarget.value,
+                roken: this.rokenTarget.value,
+                overgang: this.overgangTarget.value,
+                psoriasis: this.psoriasisTarget.value,
+                vitrigilo: this.vitrigiloTarget.value,
+                zwanger: this.zwangerTarget.value
+            };
+        }
+    }, {
+        key: 'intake',
+        get: function get() {
+            return this.intakeTarget;
+        },
+        set: function set(text) {
+            return this.intakeTarget.outerHTML = text;
+        }
+
+        //
+        // set form(text) {
+        //     this.morningTarget.value = text;
+        //     this.middayTarget.value = text;
+        //     this.eveningTarget.value = text;
+        // }
+
+    }]);
+
+    return _class;
+}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
+
+_class.targets = ['intake', 'behandeling', 'huidverbetering', 'allergieen', 'bijzonderheden', 'bloeddruk', 'chemisch', 'cosmetisch', 'diabetes', 'eczeem', 'huidkanker', 'huidschimmel', 'ipl', 'kanker', 'laser', 'medicatie', 'operaties', 'zon', 'bestraling', 'chemo', 'immunotherapie', 'koortslip', 'roken', 'overgang', 'psoriasis', 'vitrigilo', 'zwanger'];
+/* harmony default export */ __webpack_exports__["default"] = (_class);
+
+/***/ }),
+/* 108 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__application_controller__ = __webpack_require__(8);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -51405,7 +51515,7 @@ _class.targets = ["monthyear"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51561,7 +51671,7 @@ _class.targets = ["body", "note", "error"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51676,7 +51786,7 @@ _class.targets = ["body", "note", "monthyear", "error"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51742,7 +51852,7 @@ _class.targets = ["textarea", "required"];
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51825,125 +51935,10 @@ _class.targets = ["show", "hide", "klantShow", "klantHide", "active", "activeico
 /* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 113 */,
-/* 114 */,
-/* 115 */,
-/* 116 */,
-/* 117 */,
-/* 118 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_stimulus__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var _class = function (_Controller) {
-    _inherits(_class, _Controller);
-
-    function _class() {
-        _classCallCheck(this, _class);
-
-        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-    }
-
-    _createClass(_class, [{
-        key: 'delete',
-        value: function _delete(event) {
-            event.preventDefault();
-            axios.delete(this.data.get('destroy')).then(function (response) {
-                Turbolinks.visit(response.data, { action: 'replace' });
-            }).catch(function (error) {
-                return console.log(error);
-            });
-        }
-    }, {
-        key: 'create',
-        value: function create(event) {
-            var _this2 = this;
-
-            event.preventDefault();
-            axios.post(this.data.get('store'), this.form).then(function (response) {
-                _this2.intake = response.data;
-                Swal.fire({
-                    type: 'success',
-                    title: 'Intake is opgeslagen',
-                    showConfirmButton: false,
-                    timer: 2000
-                });
-            }).catch(function (error) {
-                return console.log(error);
-            });
-        }
-    }, {
-        key: 'form',
-        get: function get() {
-            return {
-                behandeling: this.behandelingTarget.value,
-                huidverbetering: this.huidverbeteringTarget.value,
-                allergieen: this.allergieenTarget.value,
-                bijzonderheden: this.bijzonderhedenTarget.value,
-                bloeddruk: this.bloeddrukTarget.value,
-                chemisch: this.chemischTarget.value,
-                cosmetisch: this.cosmetischTarget.value,
-                diabetes: this.diabetesTarget.value,
-                eczeem: this.eczeemTarget.value,
-                huidkanker: this.huidkankerTarget.value,
-                huidschimmel: this.huidschimmelTarget.value,
-                ipl: this.iplTarget.value,
-                laser: this.laserTarget.value,
-                medicatie: this.medicatieTarget.value,
-                operaties: this.operatiesTarget.value,
-                zon: this.zonTarget.value,
-                kanker: this.kankerTarget.value,
-                bestraling: this.bestralingTarget.value,
-                chemo: this.chemoTarget.value,
-                immunotherapie: this.immunotherapieTarget.value,
-                koortslip: this.koortslipTarget.value,
-                roken: this.rokenTarget.value,
-                overgang: this.overgangTarget.value,
-                psoriasis: this.psoriasisTarget.value,
-                vitrigilo: this.vitrigiloTarget.value,
-                zwanger: this.zwangerTarget.value
-            };
-        }
-    }, {
-        key: 'intake',
-        get: function get() {
-            return this.intakeTarget;
-        },
-        set: function set(text) {
-            return this.intakeTarget.outerHTML = text;
-        }
-
-        //
-        // set form(text) {
-        //     this.morningTarget.value = text;
-        //     this.middayTarget.value = text;
-        //     this.eveningTarget.value = text;
-        // }
-
-    }]);
-
-    return _class;
-}(__WEBPACK_IMPORTED_MODULE_0_stimulus__["b" /* Controller */]);
-
-_class.targets = ['intake', 'behandeling', 'huidverbetering', 'allergieen', 'bijzonderheden', 'bloeddruk', 'chemisch', 'cosmetisch', 'diabetes', 'eczeem', 'huidkanker', 'huidschimmel', 'ipl', 'kanker', 'laser', 'medicatie', 'operaties', 'zon', 'bestraling', 'chemo', 'immunotherapie', 'koortslip', 'roken', 'overgang', 'psoriasis', 'vitrigilo', 'zwanger'];
-/* harmony default export */ __webpack_exports__["default"] = (_class);
 
 /***/ })
 /******/ ]);
