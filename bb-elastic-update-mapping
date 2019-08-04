@@ -1,0 +1,5 @@
+#!/bin/sh
+php artisan elastic:update-mapping App\\Customer &&
+php artisan elastic:update-mapping App\\Note &&
+php artisan elastic:update-mapping App\\Huidanalyse &&
+php artisan elastic:update-mapping App\\DailyAdvice

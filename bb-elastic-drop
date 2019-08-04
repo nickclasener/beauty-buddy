@@ -1,0 +1,5 @@
+#!/bin/sh
+php artisan elastic:drop-index App\\CustomerConfigurator &&
+php artisan elastic:drop-index App\\NoteConfigurator &&
+php artisan elastic:drop-index App\\HuidanalyseConfigurator &&
+php artisan elastic:drop-index App\\DailyAdviceConfigurator
