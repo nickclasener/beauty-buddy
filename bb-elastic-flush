@@ -1,0 +1,5 @@
+#!/bin/sh
+php artisan scout:flush App\\Customer &&
+php artisan scout:flush App\\Note &&
+php artisan scout:flush App\\Huidanalyse &&
+php artisan scout:flush App\\DailyAdvice

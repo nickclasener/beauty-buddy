@@ -1,0 +1,5 @@
+#!/bin/sh
+php artisan scout:import App\\Customer &&
+php artisan scout:import App\\Note &&
+php artisan scout:import App\\Huidanalyse &&
+php artisan scout:import App\\DailyAdvice

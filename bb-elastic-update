@@ -1,0 +1,5 @@
+#!/bin/sh
+php artisan elastic:update-index App\\CustomerConfigurator &&
+php artisan elastic:update-index App\\NoteConfigurator &&
+php artisan elastic:update-index App\\HuidanalyseConfigurator &&
+php artisan elastic:update-index App\\DailyAdviceConfigurator
