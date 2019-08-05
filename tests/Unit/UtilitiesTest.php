@@ -14,8 +14,9 @@ class UtilitiesTest extends TestCase
 	private $customer;
 	private $note;
 
-	public function setUp ():void
-{
+	public function setUp ()
+	:void
+	{
 		parent::setUp();
 
 		$this->note = create(Note::class, [
@@ -71,6 +72,15 @@ class UtilitiesTest extends TestCase
 		$booleanFalse = false;
 		$this->assertEquals('checked', checkbox($booleanTrue));
 		$this->assertEquals('', checkbox($booleanFalse));
+	}
+
+	/** @test */
+	function saveCheckbox ()
+	{
+		$booleanTrue = true;
+		$null = null;
+		$this->assertEquals(true, saveCheckbox($booleanTrue));
+		$this->assertEquals(false, saveCheckbox($null));
 	}
 
 	/** @test */

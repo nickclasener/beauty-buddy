@@ -50,6 +50,12 @@ if ( ! function_exists('checkbox') ) {
 		return $boolean ? 'checked' : '';
 	}
 }
+if ( ! function_exists('saveCheckbox') ) {
+	function saveCheckbox ( $boolean )
+	{
+		return $boolean ? true : false;
+	}
+}
 
 if ( ! function_exists('monthYearDesc') ) {
 	function monthYearDesc ( $array )

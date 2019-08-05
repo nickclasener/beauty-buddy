@@ -41,6 +41,10 @@ export default class extends Controller {
             .catch(error => console.log(error));
     }
 
+    errors() {
+
+    }
+
     create(event) {
         event.preventDefault();
         axios.post(this.data.get('store'), this.form)
@@ -49,6 +53,21 @@ export default class extends Controller {
                 Swal.fire({
                     type: 'success',
                     title: 'Intake is opgeslagen',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }).catch(error => console.log(error));
+    }
+
+    update(event) {
+        event.preventDefault();
+        // console.log(this.data.get('update'));
+        axios.patch(this.data.get('update'), this.form)
+            .then(response => {
+                this.intake = response.data;
+                Swal.fire({
+                    type: 'success',
+                    title: 'Intake is geupdate',
                     showConfirmButton: false,
                     timer: 2000
                 });
@@ -74,15 +93,15 @@ export default class extends Controller {
             operaties: this.operatiesTarget.value,
             zon: this.zonTarget.value,
             kanker: this.kankerTarget.value,
-            bestraling: this.bestralingTarget.value,
-            chemo: this.chemoTarget.value,
-            immunotherapie: this.immunotherapieTarget.value,
-            koortslip: this.koortslipTarget.value,
-            roken: this.rokenTarget.value,
-            overgang: this.overgangTarget.value,
-            psoriasis: this.psoriasisTarget.value,
-            vitrigilo: this.vitrigiloTarget.value,
-            zwanger: this.zwangerTarget.value,
+            bestraling: this.bestralingTarget.checked,
+            chemo: this.chemoTarget.checked,
+            immunotherapie: this.immunotherapieTarget.checked,
+            koortslip: this.koortslipTarget.checked,
+            roken: this.rokenTarget.checked,
+            overgang: this.overgangTarget.checked,
+            psoriasis: this.psoriasisTarget.checked,
+            vitrigilo: this.vitrigiloTarget.checked,
+            zwanger: this.zwangerTarget.checked,
         };
     }
 
