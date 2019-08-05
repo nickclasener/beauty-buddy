@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Intake;
+use Request;
 
 class IntakeController extends Controller
 {
@@ -20,7 +21,7 @@ class IntakeController extends Controller
 		]);
 	}
 
-	public function store ( Customer $customer )
+	public function store ( Customer $customer, Request $request )
 	{
 		$customer->addIntake([
 				'user_id'         => auth()->id(),
@@ -36,20 +37,20 @@ class IntakeController extends Controller
 				'huidkanker'      => request('huidkanker'),
 				'huidschimmel'    => request('huidschimmel'),
 				'ipl'             => request('ipl'),
-				'kanker'          => request('kanker'),
-				'bestraling'      => request('bestraling'),
-				'chemo'           => request('chemo'),
-				'immunotherapie'  => request('immunotherapie'),
 				'laser'           => request('laser'),
 				'medicatie'       => request('medicatie'),
 				'operaties'       => request('operaties'),
 				'zon'             => request('zon'),
-				'koortslip'       => request('koortslip'),
-				'roken'           => request('roken'),
-				'overgang'        => request('overgang'),
-				'psoriasis'       => request('psoriasis'),
-				'vitrigilo'       => request('vitrigilo'),
-				'zwanger'         => request('zwanger'),
+				'kanker'          => request('kanker'),
+				'bestraling'      => saveCheckbox(request('bestraling')),
+				'chemo'           => saveCheckbox(request('chemo')),
+				'immunotherapie'  => saveCheckbox(request('immunotherapie')),
+				'koortslip'       => saveCheckbox(request('koortslip')),
+				'roken'           => saveCheckbox(request('roken')),
+				'overgang'        => saveCheckbox(request('overgang')),
+				'psoriasis'       => saveCheckbox(request('psoriasis')),
+				'vitrigilo'       => saveCheckbox(request('vitrigilo')),
+				'zwanger'         => saveCheckbox(request('zwanger')),
 		]);
 		if ( request()->ajax() ) {
 			return response(
@@ -97,21 +98,28 @@ class IntakeController extends Controller
 				'huidkanker'      => request('huidkanker'),
 				'huidschimmel'    => request('huidschimmel'),
 				'ipl'             => request('ipl'),
-				'kanker'          => request('kanker'),
-				'bestraling'      => request('bestraling'),
-				'chemo'           => request('chemo'),
-				'immunotherapie'  => request('immunotherapie'),
 				'laser'           => request('laser'),
 				'medicatie'       => request('medicatie'),
 				'operaties'       => request('operaties'),
 				'zon'             => request('zon'),
-				'koortslip'       => request('koortslip'),
-				'roken'           => request('roken'),
-				'overgang'        => request('overgang'),
-				'psoriasis'       => request('psoriasis'),
-				'vitrigilo'       => request('vitrigilo'),
-				'zwanger'         => request('zwanger'),
+				'kanker'          => request('kanker'),
+				'bestraling'      => saveCheckbox(request('bestraling')),
+				'chemo'           => saveCheckbox(request('chemo')),
+				'immunotherapie'  => saveCheckbox(request('immunotherapie')),
+				'koortslip'       => saveCheckbox(request('koortslip')),
+				'roken'           => saveCheckbox(request('roken')),
+				'overgang'        => saveCheckbox(request('overgang')),
+				'psoriasis'       => saveCheckbox(request('psoriasis')),
+				'vitrigilo'       => saveCheckbox(request('vitrigilo')),
+				'zwanger'         => saveCheckbox(request('zwanger')),
 		]);
+		if ( request()->ajax() ) {
+			return response(
+					view('intake._show')->with([
+							'customer' => $customer,
+							'intake'   => $customer->intake,
+					]));
+		}
 
 		return redirect(route('intake.show', [
 				'customer' => $customer,

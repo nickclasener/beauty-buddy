@@ -27,11 +27,12 @@
 						<label for="geboortedatum"
 						       class="font-hairline"
 						>Geboortedatum</label>
-{{--						<input data-controller="flatpickr"--}}
-						{{--						       data-flatpickr-enable-time="true"--}}
-						{{--						       type="text"--}}
-						{{--						       name="appointement[start_time]"--}}
-						{{--						>--}}
+						<input data-controller="flatpickr"
+						       data-flatpickr-enable-time="true"
+						       type="text"
+						       flatpickr_format="d-m-Y"
+						       name="customer[geboortedatum]"
+						>
 						<input data-target="customer.geboortedatum"
 						       type="date"
 						       name="geboortedatum"

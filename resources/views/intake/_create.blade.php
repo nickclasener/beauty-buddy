@@ -5,11 +5,9 @@
 >
 	<h2 class="font-hairline pb-2">Intake:</h2>
 	<form action="{{ route('intake.store', $customer, false) }}"
-	      data-action="intake#create"
+	      {{--	      data-action="intake#create"--}}
 	      method="POST"
 	>@method('POST')@csrf
-		<button type="submit">Opslaan
-		</button>
 		<div class="flex flex-wrap group relative w-full shadow border border-gray-200 shadow-inner outline-none">
 			<div class="w-full ">
 				<div class="group cursor-pointer relative w-full border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none focus-within:outline-none"
@@ -363,7 +361,7 @@
 					<input type="checkbox"
 					       name="bestraling"
 					       data-target="intake.bestraling"
-							{{ old('bestraling') ? 'checked' : '' }}>
+							{{ checkbox(old('bestraling')) }}>
 					<span class="slider"></span>
 				</label>
 				<label for="bestraling"
@@ -376,7 +374,7 @@
 					<input type="checkbox"
 					       name="chemo"
 					       data-target="intake.chemo"
-							{{ old('chemo') ? 'checked' : '' }}>
+							{{ checkbox(old('chemo')) }}>
 					<span class="slider"></span>
 				</label>
 				<label for="chemo"
@@ -389,7 +387,7 @@
 					<input type="checkbox"
 					       name="immunotherapie"
 					       data-target="intake.immunotherapie"
-							{{ old('immunotherapie') ? 'checked' : '' }}>
+							{{ checkbox(old('immunotherapie')) }}>
 					<span class="slider"></span>
 				</label>
 				<label for="immunotherapie"
@@ -402,7 +400,7 @@
 					<input type="checkbox"
 					       name="koortslip"
 					       data-target="intake.koortslip"
-					       {{ old('koortslip') ? 'checked' : '' }} }
+							{{ checkbox(old('koortslip')) }}>
 					>
 					<span class="slider"></span>
 				</label>
@@ -416,7 +414,7 @@
 					<input type="checkbox"
 					       name="roken"
 					       data-target="intake.roken"
-							{{ old('roken') ? 'checked' : '' }}>
+							{{ checkbox(old('roken')) }}>
 					<span class="slider"></span>
 				</label>
 				<label for="roken"
@@ -429,7 +427,7 @@
 					<input type="checkbox"
 					       name="overgang"
 					       data-target="intake.overgang"
-							{{ old('overgang') ? 'checked' : '' }}>
+							{{ checkbox(old('overgang')) }}>
 					<span class="slider"></span>
 				</label>
 				<label for="overgang"
@@ -442,7 +440,7 @@
 					<input type="checkbox"
 					       name="psoriasis"
 					       data-target="intake.psoriasis"
-							{{ old('psoriasis') ? 'checked' : '' }}>
+							{{ checkbox(old('psoriasis')) }}>
 					<span class="slider"></span>
 				</label>
 				<label for="psoriasis"
@@ -455,7 +453,7 @@
 					<input type="checkbox"
 					       name="vitrigilo"
 					       data-target="intake.vitrigilo"
-							{{ old('vitrigilo') ? 'checked' : '' }}>
+							{{ checkbox(old('vitrigilo')) }}>
 					<span class="slider"></span>
 				</label>
 				<label for="vitrigilo"
@@ -468,7 +466,7 @@
 					<input type="checkbox"
 					       name="zwanger"
 					       data-target="intake.zwanger"
-							{{ old('zwanger') ? 'checked' : '' }}>
+							{{ checkbox(old('zwanger')) }}>
 					<span class="slider"></span>
 				</label>
 				<label for="zwanger"
@@ -476,7 +474,17 @@
 				>zwanger
 				</label>
 			</div>
-
+		</div>
+		<hr class="border-t border-dashed mt-4 mb-0">
+		<div class="flex justify-between border-r border-l border-b border-gray-200 shadow-inner w-full">
+			<button data-action="intake#cancel toggle#toggle"
+			        class="cursor-pointer  py-4 px-4 bg-transparent text-red-200 hover:text-red-500"
+			>{{ svg_image('lineicons/close', 'fill-current  h-8') }}
+			</button>
+			<button type="submit"
+			        class="cursor-pointer py-4 px-4 bg-transparent text-blue-300 hover:text-blue-600"
+			>{{ svg_image('lineicons/save', 'fill-current  h-8') }}
+			</button>
 		</div>
 	</form>
 </div>
