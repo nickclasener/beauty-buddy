@@ -29,7 +29,8 @@ class CustomerController extends Controller
 		$validator = Validator::make($request->all(), [
 				'naam'          => 'required',
 				'email'         => 'required|email',
-				'geboortedatum' => 'nullable|date_format:d-m-Y',
+				'geboortedatum' => 'nullable|date',
+				//				'geboortedatum' => 'nullable|date_format:d-m-Y',
 		]);
 
 		if ( $validator->fails() ) {

@@ -33,7 +33,7 @@ class CustomersTest extends TestCase
 				'email'         => 'jane@doe.com',
 				'telefoon'      => '0564894576',
 				'mobiel'        => '0668598654',
-				'geboortedatum' => '20-12-1991',
+				'geboortedatum' => '20-12-1989',
 				'straatnaam'    => 'laralane',
 				'huisnummer'    => '18',
 				'postcode'      => '5896 AB',
