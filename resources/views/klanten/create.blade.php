@@ -27,8 +27,13 @@
 						<label for="geboortedatum"
 						       class="font-hairline"
 						>Geboortedatum</label>
+{{--						<input data-controller="flatpickr"--}}
+						{{--						       data-flatpickr-enable-time="true"--}}
+						{{--						       type="text"--}}
+						{{--						       name="appointement[start_time]"--}}
+						{{--						>--}}
 						<input data-target="customer.geboortedatum"
-						       type="text"
+						       type="date"
 						       name="geboortedatum"
 						       value="{{ old('geboortedatum')  }}"
 						       placeholder="20-12-1991"
