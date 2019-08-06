@@ -1,4 +1,5 @@
 import {Controller} from "stimulus";
+import {convertDateFormat} from "stimulus-flatpickr/src/strftime_mapping";
 
 export default class extends Controller {
     static targets = [
@@ -21,6 +22,7 @@ export default class extends Controller {
 
     create(event) {
         event.preventDefault();
+
         if (this.empty() === '') {
             this.errorTarget.classList.remove('hidden');
             this.errorTarget.innerText = 'U moet het veld vullen of annuleren';
