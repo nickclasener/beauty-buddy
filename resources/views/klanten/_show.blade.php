@@ -22,7 +22,7 @@
 		>
 	</div>
 	<h2 class="font-light">{{ $customer->naam }}</h2>
-	<h2 class="font-hairline">{{ $customer->geboortedatum }}</h2>
+	<h2 class="font-hairline">{{ date('d-m-Y',strtotime($customer->geboortedatum)) }}</h2>
 </div>
 <hr class="border-b border-dashed my-4">
 <div class="mx-4 customer">

@@ -86,7 +86,7 @@ class CustomerController extends Controller
 		$validator = Validator::make($request->all(), [
 				'naam'          => 'required',
 				'email'         => 'required|email',
-				'geboortedatum' => 'nullable|date',
+				'geboortedatum' => 'nullable|date:d-m-Y',
 		]);
 
 		if ( $validator->fails() ) {
@@ -95,7 +95,10 @@ class CustomerController extends Controller
 					->withInput();
 		}
 
-		$customer->update($request->all());
+		$customer->update([
+				$request->except('geboortedatum'),
+				'geboortedatum' => request('geboortedatum'),
+		]);
 
 		if ( request()->ajax() ) {
 			return route('note.index', [

@@ -5,10 +5,12 @@
 			<h1 class="font-hairline w-full text-center pb-4">Nieuwe Klant</h1>
 			<hr class="border-b border-dashed mb-4 mt-0">
 			<form action="{{ route('customer.store', false) }}"
-			      data-controller="customer"
-			      data-customer-url="{{ route('customer.store', false) }}"
-			      data-action="customer#create"
+			      method="POST"
 			>@method('POST')@csrf
+				{{--			      data-controller="customer"--}}
+				{{--			      data-customer-url="{{ route('customer.store', false) }}"--}}
+				{{--			      data-action="customer#create"--}}
+				{{--				>@method('POST')@csrf--}}
 				<div class="mx-4 customer">
 					<h2 class="font-hairline mb-2">Contactinformatie:</h2>
 					<div class="pb-4">
@@ -24,22 +26,30 @@
 						>
 					</div>
 					<div class="pb-4">
+
 						<label for="geboortedatum"
 						       class="font-hairline"
 						>Geboortedatum</label>
-						<input data-controller="flatpickr"
-						       data-flatpickr-enable-time="true"
-						       type="text"
-						       flatpickr_format="d-m-Y"
-						       name="customer[geboortedatum]"
-						>
 						<input data-target="customer.geboortedatum"
-						       type="date"
+						       type="text"
 						       name="geboortedatum"
-						       value="{{ old('geboortedatum')  }}"
-						       placeholder="20-12-1991"
+						       value="{{ old('geboortedatum') }}"
+						       data-controller="flatpickr"
+						       data-flatpickr-enable-time="false"
+						       data-flatpickr-date-format="d-m-Y"
+						       data-flatpickr-now="{{ now()->format('d-m-Y') }}"
+						       placeholder="{{ now()->format('d-m-Y') }}"
 						       class="p-1 transition bg-white shadow focus:shadow-inner focus:outline-none border border-transparent focus:border-gray-300 placeholder-gray-700 block w-full appearance-none"
-						></div>
+						>
+						{{--						<input data-target="customer.geboortedatum"--}}
+						{{--						       id="flatpicker"--}}
+						{{--						       type="date"--}}
+						{{--						       name="geboortedatum"--}}
+						{{--						       value="{{ old('geboortedatum')  }}"--}}
+						{{--						       placeholder="20-12-1991"--}}
+						{{--						class="p-1 transition bg-white shadow focus:shadow-inner focus:outline-none border border-transparent focus:border-gray-300 placeholder-gray-700 block w-full appearance-none"--}}
+						{{--						>--}}
+					</div>
 					<div class="pb-4">
 						<label for="email"
 						       class="font-hairline"

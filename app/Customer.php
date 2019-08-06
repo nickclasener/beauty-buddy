@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use ScoutElastic\Searchable;
@@ -11,6 +12,9 @@ class Customer extends Model
 	use Sluggable;
 	use Searchable;
 
+	//	protected $casts = [
+	//			'geboortedatum' => 'date:Y-m-d',
+	//	];
 	protected $guarded           = [ 'id' ];
 	protected $indexConfigurator = CustomerConfigurator::class;
 	protected $mapping           = [
