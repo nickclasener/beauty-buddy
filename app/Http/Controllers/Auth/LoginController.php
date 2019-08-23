@@ -26,25 +26,25 @@ class LoginController extends Controller
 	 *
 	 * @var string
 	 */
-	protected $redirectTo = '/klanten/nieuw';
+	protected $redirectTo = '/klanten/antonietta-auer/notities';
 
 	/**
 	 * Create a new controller instance.
 	 *
 	 * @return void
 	 */
-	public function __construct ()
+	public function __construct()
 	{
 		$this->middleware('guest')->except('logout');
 	}
 
-	public function showLoginForm ()
+	public function showLoginForm()
 	{
-		if ( ! asset('img/login5.jpg') ) {
+		if (!asset('img/login5.jpg')) {
 			Image::load('img/login.jpg')->width(1024)->blur(30)->optimize()->save('img/login5.jpg');
 		}
 		$image = true;
 
-		return view('auth.login')->with([ 'image' => $image ]);
+		return view('auth.login')->with(['image' => $image]);
 	}
 }
