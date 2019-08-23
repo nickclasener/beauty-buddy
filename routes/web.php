@@ -12,7 +12,9 @@
 */
 
 Auth::routes();
-Route::get('register', 'Auth\LoginController@showLoginForm');
+Route::get('register', function () {
+	return redirect('/');
+});
 Route::get('/', 'Auth\LoginController@showLoginForm');
 
 Route::group([ 'middleware' => 'auth' ], function () {
