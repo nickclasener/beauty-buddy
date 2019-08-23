@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes();
+Auth::routes()->except('register');
 Route::get('/', 'Auth\LoginController@showLoginForm');
 
 Route::group(['middleware' => 'auth'], function () {
