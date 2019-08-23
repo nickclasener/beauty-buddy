@@ -321,12 +321,12 @@
 			@method('DELETE')@csrf
 			<button type="submit"
 			        class="cursor-pointer  py-2 px-2 bg-transparent text-red-200 hover:text-red-500"
-			>{{ svg_image('lineicons/trash', 'fill-current  h-6') }}
+			>{{ svg_image('lineicons/trash', 'fill-current  h-8') }}
 			</button>
 		</form>
 		<a href="{{ route('intake.edit',$customer,false) }}"
 		   class="cursor-pointer py-2 px-2 bg-transparent text-blue-300 hover:text-blue-600"
-		>{{ svg_image('lineicons/pencil-alt', 'fill-current  h-6') }}
+		>{{ svg_image('lineicons/pencil-alt', 'fill-current  h-8') }}
 		</a>
 	</div>
 </div>
