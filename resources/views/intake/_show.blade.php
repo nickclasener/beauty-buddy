@@ -320,12 +320,12 @@
 		>
 			@method('DELETE')@csrf
 			<button type="submit"
-			        class="cursor-pointer  py-4 px-4 -mr-4 bg-transparent text-red-200 hover:text-red-500"
+			        class="cursor-pointer  py-4 px-4 -ml-4 bg-transparent text-red-200 hover:text-red-500"
 			>{{ svg_image('lineicons/trash', 'fill-current  h-8') }}
 			</button>
 		</form>
 		<a href="{{ route('intake.edit',$customer,false) }}"
-		   class="cursor-pointer py-4 px-4 -ml-4 bg-transparent text-blue-300 hover:text-blue-600"
+		   class="cursor-pointer py-4 px-4 -mr-4 bg-transparent text-blue-300 hover:text-blue-600"
 		>{{ svg_image('lineicons/pencil-alt', 'fill-current  h-8') }}
 		</a>
 	</div>
