@@ -312,7 +312,8 @@
 		</div>
 	</div>
 	<hr class="border-t border-dashed mt-4 mb-0 ">
-	<div class="flex justify-between border-r border-l border-b border-gray-200 shadow-inner">
+	{{--	<div class="flex justify-between border-r border-l border-b border-gray-200 shadow-inner">--}}
+	<div class="flex justify-between ">
 		<form action="{{ route('intake.destroy', [$customer,$customer->intake], false) }}"
 		      method="POST"
 		      data-action="intake#delete"
