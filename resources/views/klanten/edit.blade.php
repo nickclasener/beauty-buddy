@@ -42,6 +42,11 @@
 			<input data-target="customer.geboortedatum"
 			       type="text"
 			       name="geboortedatum"
+			       data-controller="flatpickr"
+			       data-flatpickr-enable-time="false"
+			       data-flatpickr-date-format="d-m-Y"
+			       data-flatpickr-now="{{ now()->format('d-m-Y') }}"
+			       placeholder="{{ now()->format('d-m-Y') }}"
 			       value="{{ old('geboortedatum') ?: $customer->geboortedatum  }}"
 			       class="p-1 transition bg-white shadow-md focus:shadow-inner focus:outline-none border border-transparent border-gray-200 focus:border-gray-400 placeholder-gray-700 block w-full appearance-none"
 			></div>
