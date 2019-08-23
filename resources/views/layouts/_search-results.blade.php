@@ -5,10 +5,10 @@
 				<div data-autocomplete-href="{{ route('note.index', $customer, false) }}"
 				     data-autocomplete-value="{{ $customer->id }}"
 				     role="option"
-{{--				     @if ( $loop->first )--}}
-				     {{--				     class="flex items-baseline mt-2 py-2 px-2 hover:bg-blue-100 cursor-pointer border-b"--}}
+				     @if ( $loop->first )
+				     class="flex items-baseline mt-2 py-2 px-2 hover:bg-teal-100 cursor-pointer border-b"
 				     @if ( $loop->last )
-				     class="flex items-baseline py-2 px-2 hover:bg-blue-100 cursor-pointer "
+				     class="flex items-baseline py-2 px-2 hover:bg-teal-100 cursor-pointer "
 				     @else
 				     class="flex items-baseline py-2 px-2 border-b hover:bg-teal-100 cursor-pointer"
 						@endif
