@@ -70,12 +70,12 @@ export default class extends Controller {
             type: 'error',
             showCancelButton: true,
             confirmButtonText: 'Ja, verwijder dit Advies',
-            cancelButtonText: 'Annuleer deze actie'
+            cancelButtonText: 'Annuleer'
         }).then(result => {
             if (result.value) {
                 Swal.fire({
-                    title: 'Deleted!',
-                    text: 'Het advies is verwijderd.',
+                    title: 'Verwijderd!',
+                    text: 'Uw advies is verwijderd.',
                     type: 'success',
                     showConfirmButton: false,
                     timer: 2000,

@@ -44,7 +44,7 @@ export default class extends Controller {
         }
     }
 
-    remove() {
+    removeHuidanalyse() {
         TweenLite.to(this.huidanalyse, 1, {
             delay: 0.5,
             opacity: 0,
@@ -58,15 +58,43 @@ export default class extends Controller {
 
     delete(event) {
         event.preventDefault();
-        axios.delete(this.data.get("destroy"))
-            .then(() => {
-            })
-            .catch(error => console.log(error));
+
+        // Swal.fire({
+        //     type: 'error',
+        //     title: 'Huidanalyse is verwijderd',
+        //     showConfirmButton: false,
+        //     timer: 2000
+        // });
+
+        event.preventDefault();
+        const monthyear = this.element.closest('[data-target="monthyear.monthyear"]');
+        let newEvent = document.createEvent('Event');
+        newEvent.initEvent('removeMonthyear', true, true);
         Swal.fire({
+            title: 'Wilt u deze huidanalyse permanent verwijderen?',
+            // text: "Deze handeling kan niet terug gedraaid worden",
             type: 'error',
-            title: 'Huidanalyse is verwijderd',
-            showConfirmButton: false,
-            timer: 2000
+            showCancelButton: true,
+            confirmButtonText: 'Ja, verwijder huidanalyse',
+            cancelButtonText: 'Annuleer'
+        }).then(result => {
+            if (result.value) {
+                Swal.fire({
+                    title: 'Verwijderd!',
+                    text: 'Uw huidanalyse is verwijderd.',
+                    type: 'success',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    onClose: () => {
+                        axios.delete(this.data.get("destroy"))
+                            .catch(error => console.log(error));
+                        if (monthyear.children.length <= 2) {
+                            monthyear.dispatchEvent(newEvent);
+                        }
+                        this.removeHuidanalyse();
+                    }
+                });
+            }
         });
     }
 

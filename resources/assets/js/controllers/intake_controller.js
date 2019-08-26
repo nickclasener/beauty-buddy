@@ -35,14 +35,30 @@ export default class extends Controller {
 
     delete(event) {
         event.preventDefault();
-        axios.delete(this.data.get('destroy')).then(response => {
-            Turbolinks.visit(response.data, {action: 'replace'});
-        })
-            .catch(error => console.log(error));
-    }
 
-    errors() {
-
+        Swal.fire({
+            title: 'Wilt u deze intake permanent verwijderen?',
+            // text: "Deze handeling kan niet terug gedraaid worden",
+            type: 'error',
+            showCancelButton: true,
+            confirmButtonText: 'Ja, verwijder Intake',
+            cancelButtonText: 'Annuleer'
+        }).then(result => {
+            if (result.value) {
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'Deze Intake is verwijderd.',
+                    type: 'success',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    onClose: () => {
+                        axios.delete(this.data.get('destroy')).then(response => {
+                            Turbolinks.visit(response.data, {action: 'replace'});
+                        }).catch(error => console.log(error));
+                    }
+                });
+            }
+        });
     }
 
     create(event) {

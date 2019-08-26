@@ -62,17 +62,17 @@ export default class extends Controller {
         let newEvent = document.createEvent('Event');
         newEvent.initEvent('removeMonthyear', true, true);
         Swal.fire({
-            title: 'Wilt u de klant permanent verwijderen?',
+            title: 'Wilt u deze notitie permanent verwijderen?',
             // text: "Deze handeling kan niet terug gedraaid worden",
             type: 'error',
             showCancelButton: true,
-            confirmButtonText: 'Ja, verwijder klant',
-            cancelButtonText: 'Annuleer deze actie'
+            confirmButtonText: 'Ja, verwijder notitie',
+            cancelButtonText: 'Annuleer'
         }).then(result => {
             if (result.value) {
                 Swal.fire({
-                    title: 'Deleted!',
-                    text: 'Your file has been deleted.',
+                    title: 'Verwijderd!',
+                    text: 'Uw notitie is verwijderd.',
                     type: 'success',
                     showConfirmButton: false,
                     timer: 2000,

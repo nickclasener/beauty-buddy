@@ -53023,12 +53023,12 @@ var _class = function (_Controller) {
                 type: 'error',
                 showCancelButton: true,
                 confirmButtonText: 'Ja, verwijder klant',
-                cancelButtonText: 'Annuleer deze actie'
+                cancelButtonText: 'Annuleer'
             }).then(function (result) {
                 if (result.value) {
                     Swal.fire({
-                        title: 'Deleted!',
-                        text: 'Your file has been deleted.',
+                        title: 'Verwijderd!',
+                        text: 'Uw Klant is verwijderd.',
                         type: 'success',
                         showConfirmButton: false,
                         timer: 2000,
@@ -53239,12 +53239,12 @@ var _class = function (_Controller) {
                 type: 'error',
                 showCancelButton: true,
                 confirmButtonText: 'Ja, verwijder dit Advies',
-                cancelButtonText: 'Annuleer deze actie'
+                cancelButtonText: 'Annuleer'
             }).then(function (result) {
                 if (result.value) {
                     Swal.fire({
-                        title: 'Deleted!',
-                        text: 'Het advies is verwijderd.',
+                        title: 'Verwijderd!',
+                        text: 'Uw advies is verwijderd.',
                         type: 'success',
                         showConfirmButton: false,
                         timer: 2000,
@@ -53604,8 +53604,8 @@ var _class = function (_Controller) {
             }
         }
     }, {
-        key: "remove",
-        value: function remove() {
+        key: "removeHuidanalyse",
+        value: function removeHuidanalyse() {
             TweenLite.to(this.huidanalyse, 1, {
                 delay: 0.5,
                 opacity: 0,
@@ -53619,15 +53619,47 @@ var _class = function (_Controller) {
     }, {
         key: "delete",
         value: function _delete(event) {
+            var _this3 = this;
+
             event.preventDefault();
-            axios.delete(this.data.get("destroy")).then(function () {}).catch(function (error) {
-                return console.log(error);
-            });
+
+            // Swal.fire({
+            //     type: 'error',
+            //     title: 'Huidanalyse is verwijderd',
+            //     showConfirmButton: false,
+            //     timer: 2000
+            // });
+
+            event.preventDefault();
+            var monthyear = this.element.closest('[data-target="monthyear.monthyear"]');
+            var newEvent = document.createEvent('Event');
+            newEvent.initEvent('removeMonthyear', true, true);
             Swal.fire({
+                title: 'Wilt u deze huidanalyse permanent verwijderen?',
+                // text: "Deze handeling kan niet terug gedraaid worden",
                 type: 'error',
-                title: 'Huidanalyse is verwijderd',
-                showConfirmButton: false,
-                timer: 2000
+                showCancelButton: true,
+                confirmButtonText: 'Ja, verwijder huidanalyse',
+                cancelButtonText: 'Annuleer'
+            }).then(function (result) {
+                if (result.value) {
+                    Swal.fire({
+                        title: 'Verwijderd!',
+                        text: 'Uw huidanalyse is verwijderd.',
+                        type: 'success',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        onClose: function onClose() {
+                            axios.delete(_this3.data.get("destroy")).catch(function (error) {
+                                return console.log(error);
+                            });
+                            if (monthyear.children.length <= 2) {
+                                monthyear.dispatchEvent(newEvent);
+                            }
+                            _this3.removeHuidanalyse();
+                        }
+                    });
+                }
             });
         }
     }, {
@@ -54955,24 +54987,44 @@ var _class = function (_Controller) {
     _createClass(_class, [{
         key: 'delete',
         value: function _delete(event) {
-            event.preventDefault();
-            axios.delete(this.data.get('destroy')).then(function (response) {
-                Turbolinks.visit(response.data, { action: 'replace' });
-            }).catch(function (error) {
-                return console.log(error);
-            });
-        }
-    }, {
-        key: 'errors',
-        value: function errors() {}
-    }, {
-        key: 'create',
-        value: function create(event) {
             var _this2 = this;
 
             event.preventDefault();
+
+            Swal.fire({
+                title: 'Wilt u deze intake permanent verwijderen?',
+                // text: "Deze handeling kan niet terug gedraaid worden",
+                type: 'error',
+                showCancelButton: true,
+                confirmButtonText: 'Ja, verwijder Intake',
+                cancelButtonText: 'Annuleer'
+            }).then(function (result) {
+                if (result.value) {
+                    Swal.fire({
+                        title: 'Deleted!',
+                        text: 'Deze Intake is verwijderd.',
+                        type: 'success',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        onClose: function onClose() {
+                            axios.delete(_this2.data.get('destroy')).then(function (response) {
+                                Turbolinks.visit(response.data, { action: 'replace' });
+                            }).catch(function (error) {
+                                return console.log(error);
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    }, {
+        key: 'create',
+        value: function create(event) {
+            var _this3 = this;
+
+            event.preventDefault();
             axios.post(this.data.get('store'), this.form).then(function (response) {
-                _this2.intake = response.data;
+                _this3.intake = response.data;
                 Swal.fire({
                     type: 'success',
                     title: 'Intake is opgeslagen',
@@ -54986,12 +55038,12 @@ var _class = function (_Controller) {
     }, {
         key: 'update',
         value: function update(event) {
-            var _this3 = this;
+            var _this4 = this;
 
             event.preventDefault();
             // console.log(this.data.get('update'));
             axios.patch(this.data.get('update'), this.form).then(function (response) {
-                _this3.intake = response.data;
+                _this4.intake = response.data;
                 Swal.fire({
                     type: 'success',
                     title: 'Intake is geupdate',
@@ -55223,17 +55275,17 @@ var _class = function (_Controller) {
             var newEvent = document.createEvent('Event');
             newEvent.initEvent('removeMonthyear', true, true);
             Swal.fire({
-                title: 'Wilt u de klant permanent verwijderen?',
+                title: 'Wilt u deze notitie permanent verwijderen?',
                 // text: "Deze handeling kan niet terug gedraaid worden",
                 type: 'error',
                 showCancelButton: true,
-                confirmButtonText: 'Ja, verwijder klant',
-                cancelButtonText: 'Annuleer deze actie'
+                confirmButtonText: 'Ja, verwijder notitie',
+                cancelButtonText: 'Annuleer'
             }).then(function (result) {
                 if (result.value) {
                     Swal.fire({
-                        title: 'Deleted!',
-                        text: 'Your file has been deleted.',
+                        title: 'Verwijderd!',
+                        text: 'Uw notitie is verwijderd.',
                         type: 'success',
                         showConfirmButton: false,
                         timer: 2000,

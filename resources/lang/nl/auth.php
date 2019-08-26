@@ -12,8 +12,8 @@ return [
 	| these language lines according to your application's requirements.
 	|
 	*/
-	'Login'    => 'Sign into your account',
-	'failed'   => 'These credentials do not match our records.',
-	'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+	'Login'    => 'Login op uw account',
+	'failed'   => 'De gegegevens komen niet overeen',
+	'throttle' => 'Teveel login pogingen. Probeer het in :seconds seconden opnieuw',
 
 ];
