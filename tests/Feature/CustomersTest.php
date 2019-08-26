@@ -8,7 +8,9 @@ use App\Huidanalyse;
 use App\Intake;
 use App\Note;
 use App\User;
+use DateTime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Date;
 use Tests\TestCase;
 
 class CustomersTest extends TestCase
@@ -33,7 +35,7 @@ class CustomersTest extends TestCase
 				'email'         => 'jane@doe.com',
 				'telefoon'      => '0564894576',
 				'mobiel'        => '0668598654',
-				'geboortedatum' => '20-12-1989',
+				'geboortedatum' => new DateTime('20-12-1989'),
 				'straatnaam'    => 'laralane',
 				'huisnummer'    => '18',
 				'postcode'      => '5896 AB',
@@ -134,13 +136,6 @@ class CustomersTest extends TestCase
 	{
 		$this->createCustomer([ 'email' => null ])
 		     ->assertSessionHasErrors('email');
-	}
-
-	protected function createCustomer ( $overrides = [] )
-	{
-		$customer = make(Customer::class, $overrides);
-
-		return $this->post('/klanten', $customer->toArray());
 	}
 
 	/** @test */
@@ -259,5 +254,12 @@ class CustomersTest extends TestCase
 		     ->assertSee('1')
 		     ->assertSee('1')
 		     ->assertSee('1');
+	}
+
+	protected function createCustomer ( $overrides = [] )
+	{
+		$customer = make(Customer::class, $overrides);
+
+		return $this->post('/klanten', $customer->toArray());
 	}
 }

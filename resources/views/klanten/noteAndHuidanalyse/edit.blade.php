@@ -4,14 +4,13 @@
       class="w-full"
 >@method('PATCH') @csrf
 	<div class="group relative w-full shadow  border border-transparent focus-within:border-gray-200 focus-within:shadow-inner focus-within:outline-none">
-	<textarea class="w-full p-4 overflow-hidden outline-none resize-none bg-transparent border-b border-dashed"
-	          type="text"
-	          name="body"
-	          placeholder="Hoe is de behandeling gegaan?
-Zijn er veder noemenswaardigheden"
-	          data-target="{{ $stimulusJs }}.body textarea.textarea"
-	          data-action="click->textarea#grow input->textarea#grow input->{{ $stimulusJs }}#errors"
-	>{{ old('body') ?: $model->body }}</textarea>
+		<textarea class="w-full p-4 overflow-hidden outline-none resize-none bg-transparent border-b border-dashed"
+		          type="text"
+		          name="body"
+		          placeholder="{{ __($stimulusJs.'.formPlaceholder') }}"
+		          data-target="{{ $stimulusJs }}.body textarea.textarea"
+		          data-action="click->textarea#grow input->textarea#grow input->{{ $stimulusJs }}#errors"
+		>{{ old('body') ?: $model->body }}</textarea>
 		<p class="w-full text-red-500 px-4 py-2 my-0.5 border-b border-dashed hidden"
 		   data-target="{{ $stimulusJs }}.error"
 		></p>
