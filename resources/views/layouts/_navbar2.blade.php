@@ -17,7 +17,8 @@
 						<div class="relative w-full">
 							<input class="h-8 lg:h-auto transition focus:outline-none placeholder-gray-700 rounded py-1 lg:py-2 pr-4 pl-10 block w-full appearance-none leading-normal main-search"
 							       type="text"
-							       placeholder="Search the docs (Press &quot;/&quot; to focus)"
+							       placeholder="Zoek naar klanten..."
+							       {{--							       placeholder="Search the docs (Press &quot;/&quot; to focus)"--}}
 							       data-action="focus->dropdown#hideAccountMenu focus->dropdown#hideResponsiveMenu"
 							       data-target="autocomplete.input"
 							/> <input type="hidden"
