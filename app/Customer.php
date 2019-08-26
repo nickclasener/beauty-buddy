@@ -12,9 +12,6 @@ class Customer extends Model
 	use Sluggable;
 	use Searchable;
 
-	//	protected $casts = [
-	//			'geboortedatum' => 'date:Y-m-d',
-	//	];
 	protected $guarded           = [ 'id' ];
 	protected $indexConfigurator = CustomerConfigurator::class;
 	protected $mapping           = [

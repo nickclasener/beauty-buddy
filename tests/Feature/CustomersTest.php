@@ -8,9 +8,7 @@ use App\Huidanalyse;
 use App\Intake;
 use App\Note;
 use App\User;
-use DateTime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Date;
 use Tests\TestCase;
 
 class CustomersTest extends TestCase
@@ -35,7 +33,7 @@ class CustomersTest extends TestCase
 				'email'         => 'jane@doe.com',
 				'telefoon'      => '0564894576',
 				'mobiel'        => '0668598654',
-				'geboortedatum' => new DateTime('20-12-1989'),
+				'geboortedatum' => '20-12-1991',
 				'straatnaam'    => 'laralane',
 				'huisnummer'    => '18',
 				'postcode'      => '5896 AB',
@@ -102,16 +100,16 @@ class CustomersTest extends TestCase
 		     ->assertSee('Laraville');
 	}
 
-	/** @test */
-	function a_user_can_view_multiple_customers ()
-	{
-		$this->get(route('customer.index'))
-		     ->assertStatus(200)
-		     ->assertSee($this->customer->naam)
-		     ->assertSee($this->customer->email)
-		     ->assertSee($this->customer->telefoon)
-		     ->assertSee($this->customer->mobiel);
-	}
+//	/** @test */
+	//	function a_user_can_view_multiple_customers ()
+	//	{
+	//		$this->get(route('customer.index'))
+	//		     ->assertStatus(200)
+	//		     ->assertSee($this->customer->naam)
+	//		     ->assertSee($this->customer->email)
+	//		     ->assertSee($this->customer->telefoon)
+	//		     ->assertSee($this->customer->mobiel);
+	//	}
 
 	/** @test */
 	function a_authenticated_user_can_add_a_customer ()

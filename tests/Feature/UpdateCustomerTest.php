@@ -23,6 +23,8 @@ class UpdateCustomerTest extends TestCase
 		parent::setUp();
 		$this->signIn();
 		$this->customer = create(Customer::class, [
+				'id'            => 1,
+				'user_id'       => 1,
 				'naam'          => 'example example',
 				'email'         => 'example@hotmail.com',
 				'geboortedatum' => '22-09-1960',
@@ -56,6 +58,8 @@ class UpdateCustomerTest extends TestCase
 	{
 		$this->withoutExceptionHandling();
 		$customer = make(Customer::class, [
+				'id'            => 1,
+				'user_id'       => 1,
 				'naam'          => 'My new Name',
 				'email'         => 'mynewemail@email.com',
 				'straatnaam'    => 'ikleefnuhier',
@@ -66,7 +70,7 @@ class UpdateCustomerTest extends TestCase
 				'mobiel'        => '0631231940',
 				'geboortedatum' => '20-12-1991',
 		]);
-		$response = $this->put($this->customer->path(), $customer->toArray());
+		$response = $this->put(route('customer.update', $this->customer), $customer->toArray());
 		$this->get($response->headers->get('Location'))
 		     ->assertSee('my-new-name')
 		     ->assertSee('My new Name')
@@ -101,13 +105,6 @@ class UpdateCustomerTest extends TestCase
 	{
 		$this->updateCustomer([ 'naam' => null ])
 		     ->assertSessionHasErrors('naam');
-	}
-
-	protected function updateCustomer ( $overrides )
-	{
-		$customer = make(Customer::class, $overrides);
-
-		return $this->put($this->customer->path(), $customer->toArray());
 	}
 
 	/** @test */
@@ -171,5 +168,12 @@ class UpdateCustomerTest extends TestCase
 		]));
 		$response->assertStatus(200)
 		         ->assertSee('Original huidanalyse');
+	}
+
+	protected function updateCustomer ( $overrides )
+	{
+		$customer = make(Customer::class, $overrides);
+
+		return $this->put($this->customer->path(), $customer->toArray());
 	}
 }

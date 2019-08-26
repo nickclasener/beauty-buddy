@@ -22,7 +22,7 @@ Route::group([ 'middleware' => 'auth' ], function () {
 	Route::get('klanten/nieuw', 'CustomerController@create')->name('customer.create');
 	Route::get('klanten', function () {
 		return redirect('klanten/nieuw');
-	});
+	})->name('customer.index');
 	//	Route::get('klanten', 'CustomerController@index')->name('customer.index');
 	Route::post('klanten', 'CustomerController@store')->name('customer.store');
 	Route::delete('klanten/{customer}', 'CustomerController@destroy')->name('customer.destroy');
