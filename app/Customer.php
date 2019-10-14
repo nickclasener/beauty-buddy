@@ -3,18 +3,20 @@
 namespace App;
 
 use Carbon\Carbon;
-use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Model;
 use ScoutElastic\Searchable;
+use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Customer extends Model
 {
 	use Sluggable;
 	use Searchable;
 
-	protected $guarded           = [ 'id' ];
+	protected $guarded = [ 'id' ];
+
 	protected $indexConfigurator = CustomerConfigurator::class;
-	protected $mapping           = [
+
+	protected $mapping = [
 			'properties' => [
 					'naam'  => [
 							'copy_to'         => [
@@ -55,7 +57,8 @@ class Customer extends Model
 					],
 			],
 	];
-	protected $searchRules       = [
+
+	protected $searchRules = [
 			CustomerRule::class,
 	];
 
@@ -117,7 +120,6 @@ class Customer extends Model
 
 	public function monthYearHuidanalyses ()
 	{
-
 		return monthYearDesc($this->huidanalyses);
 	}
 
@@ -175,5 +177,4 @@ class Customer extends Model
 	{
 		return $this->intake()->update($intake);
 	}
-
 }
