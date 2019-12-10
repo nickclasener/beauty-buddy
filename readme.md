@@ -16,7 +16,7 @@ Beautybuddy is a crm for a small beauty parlor.
 
 The main tools used to build this.
 - Laravel
-- PhpUnit
+- PHPUnit
 - Elasticsearch
 - Tailwindcss
 - StimulusJs
