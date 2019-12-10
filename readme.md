@@ -1,4 +1,17 @@
-# Readme
+<h1 align="center">Readme</h1>
+---
+
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Introduction](#introduction)
+- [Server Requirements](#server-requirements)
+- [Installation](#installation)
+- [Config](#config)
+
+<!-- /code_chunk_output -->
 ## Introduction
 Beautybuddy is a crm for a small beauty parlor.
 
@@ -12,10 +25,7 @@ Beautybuddy is a crm for a small beauty parlor.
 - Elasticsearch
 
 ## Installation
-  add the following to .env
-  ```
-  SCOUT_DRIVER=elastic
-  ```
+
 - [Laravel installation](https://laravel.com/docs/5.8/installation)
 - [Elasticsearch installation](https://www.elastic.co/guide/en/elasticsearch/reference/6.7/install-elasticsearch.html)
 - [Docker installation ](https://gist.github.com/rstacruz/297fc799f094f55d062b982f7dac9e41) for Linux, MacOS, and Windows.
@@ -33,3 +43,10 @@ Beautybuddy is a crm for a small beauty parlor.
   ```
 	##### Production mode
 	[Config for Production with docker](https://www.elastic.co/guide/en/elasticsearch/reference/6.8/docker.html#docker-cli-run-prod-mode)
+
+## Config
+
+add the following to .env
+```
+SCOUT_DRIVER=elastic
+```
