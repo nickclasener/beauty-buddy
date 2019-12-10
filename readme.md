@@ -14,15 +14,9 @@
 ## Introduction
 Beautybuddy is a crm for a small beauty parlor.
 
-The main tools used to build this.
-- Laravel
-- PHPUnit
-- Elasticsearch
-- Tailwindcss
-- StimulusJs
-- Turbolinks
 
 ## Server Requirements
+Back-end:
 - PHP 7.2+ or newer
 - HTTP server with PHP support (eg: Apache, Nginx, Caddy)
 - Composer
@@ -30,6 +24,11 @@ The main tools used to build this.
 - Laravel
 - Docker *(Optional but recommended)*
 - Elasticsearch
+
+Front-end:
+- Tailwindcss
+- StimulusJS
+- Turbolinks
 
 ## Installation
 
