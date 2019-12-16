@@ -29,7 +29,6 @@
     "doctrine/dbal": "^2.9",
     "filp/whoops": "^2.4",
     "fzaninotto/faker": "^1.8",
-    "laravel/dusk": "^5.2.0",
     "mockery/mockery": "^1.2",
     "nunomaduro/collision": "^3.0",
     "nunomaduro/larastan": "^0.4.1",
