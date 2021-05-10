@@ -19,7 +19,7 @@
     "laravel-mix-purgecss": "^2.1.0",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "moment": "^2.19.1",
     "popper.js": "^1.15.0",
     "resolve-url-loader": "^2.3.1",
